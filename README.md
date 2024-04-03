@@ -4,11 +4,11 @@
 Utibu Health is a mobile application designed exclusively for patients of Utibu clinic who are managing chronic health conditions. THis user friendly app  is built entirely on React Native.The app empowers you to take control of your health journey by offering convenient features at your fingertips. 
 
 ## Key Features
- # (1) Remote refill orders
+ #  Remote refill orders
 * Easily request for refills of your prescribed medications directly through the app. This removes the need for unnecessary clinic visits.
 
  # Secure payments.
-* Utilize popular mobile payment platforms like M-Pesa and Airtel-money to seamlessly pay for your medication refills within the app.
+* Utilize popular mobile payment platforms like M-Pesa and Airtel-money to seamlessly pay for your medication refills within the app. You can choose the payment method by mmoving to profiles page and clicking on payments tab.
 
  # Intuitive navigation.
 * Effortlessly navigate through the app's interface using clear and recognizable icons.
@@ -44,3 +44,5 @@ To use it, follow the steps below
     * Basic react-native library
 
 
+# AUTHOR
+David Njagi - [Github](https://github.com/DAVENJAGI)
