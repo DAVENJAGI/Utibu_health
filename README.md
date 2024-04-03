@@ -5,7 +5,7 @@ Utibu Health is a mobile application designed exclusively for patients of Utibu 
 
 ```
 ![Login Screen](/pics/login.jpeg)
-[Github](pics/login.jpeg)
+![Github](pics/login.jpeg)
 ```
 ## Key Features
  #  Remote refill orders
