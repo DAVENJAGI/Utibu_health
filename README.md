@@ -1,13 +1,40 @@
-# Utibu_health
+## Utibu_health:
+# Your mobile medical companion for Chronic COndition management.
 
-* The following README.md file contains the solution to the problem faced by utibu health. It will involve the front-end and the back-end for the development of a mobile application designed for Utibu Health, a healthcare facility for managing chronic conditions. THe app would seek to allow registered users to:
-    ** Order refills for their prescribed medication remotely
-    ** View the list of their medication history and order history.
+Utibu Health is a mobile application designed exclusively for patients of Utibu clinic who are managing chronic health conditions. THis user friendly app  is built entirely on React Native.The app empowers you to take control of your health journey by offering convenient features at your fingertips. 
 
-## Features
- (1) The app will provide a user login and authentication - Since medical data is private and confidential, the app will seek to require a login and authentication to access the app. 
- (2) Provide a secure medication list display - This show the type of medication available for a certain patient
- (3) Medication ordering with the quantity - The app will provide the ability for the patient to select the medicine they want with the required quantity.
- (4) Delivery and payment option - This will ensure that the patient is able to complete a pyment transaction for their medical bill.
- (5) Order confirmation message - This will ensure that once the transaction is successful, the patient gets a confirmation message, if otherwise, they get an error message
- (6) Order history and status - This will ensure to keep track of the patients previous orders, and their confirmation statuses, and their date of completion.
+## Key Features
+ # (1) Remote refill orders
+* Easily request for refills of your prescribed medications directly through the app. This removes the need for unnecessary clinic visits.
+
+ # Secure payments.
+* Utilize popular mobile payment platforms like M-Pesa and Airtel-money to seamlessly pay for your medication refills within the app.
+
+ # Intuitive navigation.
+* Effortlessly navigate through the app's interface using clear and recognizable icons.
+    1. Home Icon. Returns you to the app's main landing page
+    2. Prescription Icon: Grants access to your medication list and refill oprion
+    3. Appointment Icon(calendar): Provides a view of your scheduled appointments 
+    4. Profile Icon: Leads you to your personal profile settings
+
+## Geting started.
+* The app is currently not deployed. 
+To use it, follow the steps below
+(i) Download the Utibu_health repository using "git clone https://github.com/DAVENJAGI/Utibu_health.git"
+(ii) Navigate to the folder Utibu_health, ie type "cd Utibu_health" in your terminal.
+(iii) Navigate to the ReactNative folder, ie type "cd ReactNative" in your terminal.
+(iv) Type "npx expo start" in your terminal, while in the ReactNative folder. This will typically take a few seconds to launch.
+(v) To check the functionality of the app's front-end, in IOS devices, Scan the QR-code using the camera and it will redirect you to the login page. For android phones, install Expo go from playstore and scan the QR-code from Expo go app. It will redirect you to the login page. If there's a routing dependency missing, click on the  and click the login.js page. This will load up the login page.
+(vi) On the login page, enter the default email, ie "njagidave@gmail.com", and enter password "12345". Click the login button and it will route you to the home page.
+(vii)Navigate from there.
+
+## NB, The app is currently front end alone.There's not APIs linking to the back-end of utibu health. So we are just using the defaults. No data is being loaded to the app. This is the next feature seeking to be implemented. The app currently doesn't allow signing up for new users since to avoid the risk of illegally acquiring unprescribed drug.
+
+# Libraries used.
+* The libraries used for this project are
+    * @react-navigation/native: RHis is the core react library providing the foundation for the navigation management
+    * @react-navigation/drawer: Used for creating stacked navigation
+    * react-navigation/native-stack: Used for navigation
+    * Basic react-native library
+
+
