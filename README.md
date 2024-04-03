@@ -3,10 +3,9 @@
 
 Utibu Health is a mobile application designed exclusively for patients of Utibu clinic who are managing chronic health conditions. THis user friendly app  is built entirely on React Native.The app empowers you to take control of your health journey by offering convenient features at your fingertips. 
 
-```
+
 ![Login Screen](/pics/login.jpeg)
-![Github](pics/login.jpeg)
-```
+
 ## Key Features
  #  Remote refill orders
 * Easily request for refills of your prescribed medications directly through the app. This removes the need for unnecessary clinic visits.
