@@ -1,5 +1,5 @@
 ## Utibu_health:
-# Your mobile medical companion for Chronic COndition management.
+# Your mobile medical companion for Chronic Condition management.
 
 Utibu Health is a mobile application designed exclusively for patients of Utibu clinic who are managing chronic health conditions. THis user friendly app  is built entirely on React Native.The app empowers you to take control of your health journey by offering convenient features at your fingertips. 
 
