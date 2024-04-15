@@ -1,3 +1,5 @@
+#                            This branch, DAVE, contains the basic information about the app. The code is in the master branch in the app directory
+
 ## Utibu_health:
 # Your mobile medical companion for Chronic Condition management.
 
@@ -71,7 +73,7 @@ To use it, follow the steps below
 
 (vii)Navigate from there.
 
-## NB, The app is currently front end alone.There's not APIs linking to the back-end of utibu health. So we are just using the defaults. No data is being loaded to the app. This is the next feature seeking to be implemented. The app currently doesn't allow signing up for new users since to avoid the risk of illegally acquiring unprescribed drug.
+## NB, The app is currently front end alone. The back-end API endpoints are not currently available.
 
 # Libraries used.
 * The libraries used for this project are
@@ -80,6 +82,11 @@ To use it, follow the steps below
     * react-navigation/native-stack: Used for navigation
     * Basic react-native library
 
+
+## How does the orders placed get updated in the legacy database???
+The approach to connect to the server with a private IP address is using a Demilitarized Zone, DMZ.
+* We can create a demilitarized zone within the network, a subnetwork that sits between the internal network where the server resides and the public internet. The server with the legacy database would be placed in the DMZ, firewall perimeter configured to restrict certain ports from being accessed by the traffic from the front-end server to reach the server to update the databse. This is to ensure security of the patient's data records.
+* The front end accesses to send order to the server in the demilitarized zone. The server interacts with the database to update the orders table.
 
 # AUTHOR
 David Njagi - [Github](https://github.com/DAVENJAGI)
