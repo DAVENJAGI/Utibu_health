@@ -61,17 +61,16 @@ The app ensures the following:
 ## Geting started.
 * The app is currently not deployed. 
 To use it, follow the steps below
-(i) Download the Utibu_health repository using "git clone https://github.com/DAVENJAGI/Utibu_health.git
-"
-(ii) Navigate to the folder Utibu_health, ie type "cd Utibu_health" in your terminal.
+(i) Download the Utibu_health repository to your local machine using ```git clone https://github.com/DAVENJAGI/Utibu_health.git```
+(ii) Navigate to the folder Utibu_health, ie type ```cd Utibu_health``` in your terminal.
 
-(iii) Navigate to the ReactNative folder, ie type "cd ReactNative" in your terminal.
+(iii) Navigate to the ReactNative folder, ie type ```cd ReactNative``` in your terminal.
 
-(iv) Type "npx expo start" in your terminal, while in the ReactNative folder. This will typically take a few seconds to launch.
+(iv) Type ```npx expo start``` in your terminal, while in the ReactNative folder. This will typically take a few seconds to launch.
 
 (v) To check the functionality of the app's front-end, in IOS devices, Scan the QR-code using the camera and it will redirect you to the login page. For android phones, install Expo go from playstore and scan the QR-code from Expo go app. It will redirect you to the login page. If there's a routing dependency missing, click on the  and click the login.js page. This will load up the login page.
 
-(vi) On the login page, enter the default email, ie ```njagidave@gmail.com```, and enter password "12345". Click the login button and it will route you to the home page.
+(vi) On the login page, enter the default email, ie ```njagidave@gmail.com```, and enter password ```12345```. Click the login button and it will route you to the home page.
 
 (vii)Navigate from there.
 
