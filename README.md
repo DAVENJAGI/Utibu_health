@@ -30,7 +30,7 @@ Utibu Health is a mobile application designed exclusively for patients of Utibu 
 ![Profile Screen](/pics/profile.jpeg)
 
 ## Payment Screen
-* A payment page to allow patients to complete their transactional payment. Seek to implement availabe APIs.
+* A payment page to allow patients to complete their transactional payment. Will seek to implement availabe APIs for the payment method the clinic offers.
 ![Payment Screen](/pics/payment.jpeg)
 
 ## Previous order Screen
