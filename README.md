@@ -1,4 +1,6 @@
+```
 ###                            This branch, DAVE, contains the basic information about the app. The code is in the master branch in the app directory
+```
 
 ## Utibu_health:
 # Your mobile medical companion for Chronic Condition management.
