@@ -1,6 +1,7 @@
-```
-This branch, DAVE, contains the basic information about the app. The code is in the master branch in the app directory
-```
+
+### This branch, DAVE, contains the basic information about the app. The code is in the master branch in the app directory, to navigate to the code:
+## [ClickME](https://www.github.com/DAVENJAGI/Utibu_health/tree/master)
+
 
 ## Utibu_health:
 # Your mobile medical companion for Chronic Condition management.
