@@ -1,5 +1,5 @@
 ```
-###                            This branch, DAVE, contains the basic information about the app. The code is in the master branch in the app directory
+This branch, DAVE, contains the basic information about the app. The code is in the master branch in the app directory
 ```
 
 ## Utibu_health:
@@ -71,7 +71,7 @@ To use it, follow the steps below
 
 (v) To check the functionality of the app's front-end, in IOS devices, Scan the QR-code using the camera and it will redirect you to the login page. For android phones, install Expo go from playstore and scan the QR-code from Expo go app. It will redirect you to the login page. If there's a routing dependency missing, click on the  and click the login.js page. This will load up the login page.
 
-(vi) On the login page, enter the default email, ie "njagidave@gmail.com", and enter password "12345". Click the login button and it will route you to the home page.
+(vi) On the login page, enter the default email, ie ```njagidave@gmail.com```, and enter password "12345". Click the login button and it will route you to the home page.
 
 (vii)Navigate from there.
 
