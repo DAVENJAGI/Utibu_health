@@ -1,12 +1,12 @@
 ## Utibu_health:
 # Your mobile medical companion for Chronic Condition management.
 
-Utibu Health is a mobile application designed exclusively for patients of Utibu clinic who are managing chronic health conditions. THis user friendly app  is built entirely on React Native.The app empowers you to take control of your health journey by offering convenient features at your fingertips. 
+Utibu Health is a mobile application designed exclusively for patients of Utibu clinic who are managing chronic health conditions. This user friendly app  is built entirely on React Native.The app empowers you to take control of your health journey by offering convenient features at your fingertips. 
 
 # App Screen Layout.
 
 ## Login Screen
-* Since medical records is private information, the Utibu health app integrates a login page To grant the user privacy of their medical information. Every user is required to use an email and password to log in to the app.
+* Since medical records is private information, the Utibu health app integrates a login page to grant the user privacy of their medical information. Every user is required to use an email and password to log in to the app.
 ![Login Screen](/pics/login.jpeg)
 
 ## Home Screen
