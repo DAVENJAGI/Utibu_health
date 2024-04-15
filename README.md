@@ -10,7 +10,8 @@ Utibu Health is a mobile application designed exclusively for patients of Utibu 
 ![Login Screen](/pics/login.jpeg)
 
 ## Home Screen
-* EAsy to use home layout with popular choice of icons. The home page also incorporates a greeting based on the time of day, eg Good morning for mornig, good afternoon for afternoon, and good evening for evening hours, with the patient's username. This ensures a welcoming and personalized experience for users.
+* Easy to use home layout with popular choice of icons.
+* The home page also incorporates a greeting based on the time of day, eg Good morning for mornig, good afternoon for afternoon, and good evening for evening hours, with the patient's username. This ensures a welcoming and personalized experience for users.
 ![Home Screen](/pics/home.jpeg)
 
 ## Prescriptions Screen
@@ -19,7 +20,7 @@ Utibu Health is a mobile application designed exclusively for patients of Utibu 
 
 ## Appointment Screen
 * An appointment page to allow patients see next appointmens.
-* The icon chosen for this is a calendar. The no appointments page is integrated with emojis, to display emotions. This feature will also ensure scalability and addition of more features such as the set appointment feature, and integration of APIs like Calendly API to ensure scheduling of the events abd reminder of appointment day to ensure that all set appointments are attended.
+* The icon chosen for this is a calendar. The no appointments page is integrated with emojis, to display emotions. This feature will also ensure scalability and addition of more features such as the set appointment feature, and integration of APIs like Calendly API to ensure scheduling of the events abd reminder of appointment day to ensure that all set appointments are attended. It will also seek to enable setting of appointment with the medical professional available to the patient in implementation of features later on.
 ![Appointment Screen](/pics/appointments.jpeg)
 
 ## Profile Screen
