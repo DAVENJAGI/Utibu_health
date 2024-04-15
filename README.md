@@ -16,6 +16,7 @@ Utibu Health is a mobile application designed exclusively for patients of Utibu 
 
 ## Prescriptions Screen
 * A prescription page to allow patients see drugs available to them.
+* This will ensure that only drugs prescribes to the patient can be viewed by the patient, with their availability. This is to prevent abuse of drugs.
 ![Prescriptions Screen](/pics/prescriptions.jpeg)
 
 ## Appointment Screen
