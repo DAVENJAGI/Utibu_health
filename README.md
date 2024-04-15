@@ -59,9 +59,10 @@ The app ensures the following:
     4. Profile Icon: The icon chosen for this is the menu icon. It provides you a view of your profile page
 
 ## Geting started.
-* The app is currently not deployed. 
-To use it, follow the steps below
+* The app is currently not deployed. To use it, follow the steps below
+
 (i) Download the Utibu_health repository to your local machine using ```git clone https://github.com/DAVENJAGI/Utibu_health.git```
+
 (ii) Navigate to the folder Utibu_health, ie type ```cd Utibu_health``` in your terminal.
 
 (iii) Navigate to the ReactNative folder, ie type ```cd ReactNative``` in your terminal.
