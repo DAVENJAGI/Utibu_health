@@ -1,0 +1,3 @@
+create Medication name="Metformin" description="Helps_your_body_use_insulin_more_effectively_and_lowers_blood_sugar_production_in_the_liver." in_stock=True disease_id="d16485fd-9d37-473e-adc0-abbd581cd2a2"
+
+all Medication

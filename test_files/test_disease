@@ -1,0 +1,3 @@
+create Disease name="Diabetes" description="A_chronic_condition_affecting_blood_sugar_regulation" medication_id="f32672d8-d22d-45b9-9654-9796065e8fe7"
+
+all Disease
