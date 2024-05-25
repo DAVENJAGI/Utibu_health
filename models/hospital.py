@@ -12,8 +12,8 @@ class Hospital(BaseModel, Base):
     """Represents user details"""
     if models.storage_type == 'db':
         __tablename__ = 'hospitals'
-        town_id = Column(String(60), ForeignKey('towns.id'), nullable=False)
-        email = Column(String(128), nullable=False)
+        town_id = Column(String(60), ForeignKey('wards.id'), nullable=False)
+        email = Column(String(128), unique=True, nullable=False)
         name = Column(String(128), nullable=False)
         longitude = Column(Float, nullable=True)
         latitude = Column(Float, nullable=True)

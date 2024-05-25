@@ -15,9 +15,10 @@ class Disease(BaseModel, Base):
         name = Column(String(128), nullable=False)
         description = Column(String(256), nullable=False)
         medication_id = Column(String(60), ForeignKey('medication.id'), nullable=False)
-        users_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+        medication = relationship("Medication", backref="diseases")
+        user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
+        user = relationship("User", backref="diseases")
 
-        medication = relationship("Medication", backref="disease")
 
     else:
         name = ""

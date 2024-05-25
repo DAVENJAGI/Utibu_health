@@ -5,7 +5,7 @@ from models.base_model import BaseModel, Base
 from models.town import Town
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
 
@@ -14,10 +14,12 @@ class County(BaseModel, Base):
     
     if models.storage_type == "db":
         __tablename__ = 'counties'
-        name = Column(String(128), nullable=False)
+        name = Column(String(128), unique=True, nullable=False)
         town = relationship("Town", backref="county")
+        county_code = Column(String(64), unique=True, nullable=False)
     else:
         name = ""
+        county_code = ""
 
     def __init__(self, *args, **kwargs):
         """initializes state"""

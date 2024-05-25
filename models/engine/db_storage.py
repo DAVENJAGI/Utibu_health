@@ -13,6 +13,7 @@ from models.county import County
 from models.disease import Disease
 from models.medication import Medication
 from models.user import User
+from models.constituency import Constituency
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker

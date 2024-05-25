@@ -8,17 +8,15 @@ from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 
-class Town(BaseModel, Base):
+class Constituency(BaseModel, Base):
     """Representation of city """ 
     if models.storage_type == "db":
-        __tablename__ = 'wards'
-        county_id = Column(String(60), ForeignKey('counties.id', ondelete="CASCADE"), nullable=False)
-        constituency_id = Column(String(60), ForeignKey('constituencies.id'), nullable=False) 
-        town_name = Column(String(128), nullable=False)
-        hospital = relationship("Hospital", backref="town")
+        __tablename__ = 'constituencies'
+        county_id = Column(String(60), ForeignKey('counties.id'), nullable=False)
+        constituency_name = Column(String(128), nullable=False)
     else:
+        constituency_name =""
         county_id = ""
-        name = ""
 
     def __init__(self, *args, **kwargs):
         """initializes city"""

@@ -12,14 +12,13 @@ class Doctor(BaseModel, Base):
     """Represents user details"""
     if models.storage_type == 'db':
         __tablename__ = 'doctors'
-        email = Column(String(128), nullable=False)
+        email = Column(String(128), unique=True, nullable=False)
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=False)
         last_name = Column(String(128), nullable=False)
-        license_no = Column(String(128), nullable=False)
+        license_no = Column(String(128), unique=True, nullable=False)
         availability_time = Column(String(128), nullable=True)
-        user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
-        hospital_id = Column(String(60), ForeignKey('hospitals.id'), nullable=False)
+        hospital_id = Column(String(60), ForeignKey('hospitals.id', ondelete="CASCADE"), nullable=False)
   
 
 
