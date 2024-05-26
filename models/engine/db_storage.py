@@ -23,7 +23,7 @@ from os import getenv
 """Maps the names eg, "Amenity", to classes, egw class Amenity"""
 
 classes = {"Appointment": Appointment, "BaseModel": BaseModel, "County": County, "Town": Town,
-           "Hospital": Hospital, "Doctor": Doctor, "User": User, "Disease": Disease, "Medication": Medication}
+           "Hospital": Hospital, "Doctor": Doctor, "User": User, "Constituency": Constituency, "Disease": Disease, "Medication": Medication}
 
 class DBStorage:
     """class storage"""
