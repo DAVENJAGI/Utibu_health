@@ -4,8 +4,17 @@ from models.base_model import BaseModel, Base
 import models
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
+
+
+if models.storage_type == 'db':
+    user_disease = Table('user_disease', Base.metadata,
+                          Column('user_id', String(60),
+                                 ForeignKey('users.id'), nullable=False),
+                          Column('disease_id', String(60),
+                                 ForeignKey('diseases.id'), nullable=False)
+                         )
 
 
 class User(BaseModel, Base):
@@ -19,7 +28,9 @@ class User(BaseModel, Base):
         date_of_birth = Column(String(128), nullable=False)
         doctor_id = Column(String(64), ForeignKey("doctors.id"), nullable=False)
         doctor = relationship("Doctor", backref="users")
-        disease_id = Column(String(64), nullable=True)
+        diseases = relationship("Disease", secondary=user_disease, backref="users")
+        disease_id = Column(String(64), ForeignKey("diseases.id"), nullable=True)
+
 
     else:
         email = ""

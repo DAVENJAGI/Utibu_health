@@ -8,6 +8,19 @@ from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
 
 
+if models.storage_type == 'db':
+    hospital_doctors = Table('hospital_doctors', Base.metadata,
+                          Column('hospital_id', String(60),
+                                 ForeignKey('hospitals.id', onupdate='CASCADE',
+                                            ondelete='CASCADE'),
+                                 primary_key=True),
+                          Column('doctor_id', String(60),
+                                 ForeignKey('doctors.id', onupdate='CASCADE',
+                                            ondelete='CASCADE'),
+                                 primary_key=True))
+
+
+
 class Hospital(BaseModel, Base):
     """Represents user details"""
     if models.storage_type == 'db':
@@ -17,6 +30,8 @@ class Hospital(BaseModel, Base):
         name = Column(String(128), nullable=False)
         longitude = Column(Float, nullable=True)
         latitude = Column(Float, nullable=True)
+        doctors = relationship("Doctor", backref="assigned_hospital", cascade="all, delete-orphan")
+        
 
     else:
         town_id = ""
@@ -24,3 +39,14 @@ class Hospital(BaseModel, Base):
         name = ""
         longitude = 0.0
         latitude = 0.0
+        doctors = []
+
+        @property
+        def doctor(self):
+            from models.doctor import Doctor
+            doctor_list = []
+            all_doctors = models.storage.all(Doctor)
+            for doctor in all_doctors.values():
+                if doctor.hospital_id == self.id:
+                    doctor_list.append(doctor)
+            return doctor_list

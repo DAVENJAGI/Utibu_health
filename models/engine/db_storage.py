@@ -90,4 +90,3 @@ class DBStorage:
         obj = self.all(cls)
         return len(obj)
 
-
