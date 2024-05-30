@@ -41,6 +41,30 @@ def get_medication_by_disease_id(disease_id):
     medication = [meds.to_dict() for meds in all_meds] # if  all_meds else []
     return jsonify(medication)
 
+@app_views.route("/disease/<string:disease_id>/medication", methods=['POST'], strict_slashes=False)
+def update_disease_medication_by_medication_id(disease_id):
+    """get doctor by id"""
+    if not request.get_json():
+        return make_response(jsonify({"Error": "Not a JSON"}), 400)
+
+    data = request.json
+    
+    if "medication_id" not in data:
+        return make_response(jsonify({"Error": "Missing medication_id"}), 400)
+
+    medication_id = data['medication_id']
+
+    disease = storage.get(Disease, disease_id)
+    if not disease:
+        return make_response(jsonify({"Error": "Disease not found"}), 400)
+    medication = storage.get(Medication, medication_id)
+    if not medication:
+        return make_response(jsonify({"Error": "Medication not found"}), 400)
+
+    disease.medication.append(medication)
+    storage.save()
+    return (jsonify({"Message": "Medication added successfully"}), 201)
+
 
 @app_views.route("/disease/<string:disease_id>", methods=["DELETE"], strict_slashes=False)
 def delete_disease(disease_id):

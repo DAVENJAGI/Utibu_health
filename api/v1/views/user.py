@@ -47,6 +47,28 @@ def get_disease_by_user_id(user_id):
     disease_dict = [dis.to_dict() for dis in diseases] if diseases else []
     return jsonify(disease_dict)
 
+@app_views.route("/user/<string:user_id>/disease/", methods=['POST'], strict_slashes=False)
+def add_disease_to_user_profile(user_id):
+    """get doctor by id"""
+    if not request.get_json():
+        return make_response(jsonify({"error": "Not a JSON"}), 400)
+    data = request.json
+    if "disease_id" not in data:
+        return make_response(jsonify({"error": "Missin disease_id"}), 400)
+
+    disease_id = data["disease_id"]
+
+    user = storage.get(User, user_id)
+    if not user:
+        return make_response(jsonify({"Error": "User not found"}), 400)
+    disease = storage.get(Disease, disease_id)
+    if not disease:
+        return make_response(jsonify({"Error": "Disease not found"}), 400)
+
+    user.diseases.append(disease)
+    storage.save()
+    return (jsonify({"message": "Disease added successfully"}), 201)
+
 
 @app_views.route("/users/", methods=["POST"], strict_slashes=False)
 def create_user():
