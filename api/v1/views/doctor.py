@@ -5,6 +5,7 @@ from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request
 from models import storage
 from models.doctor import Doctor
+from models.hospital import Hospital
 import json
 
 # user_view = Blueprint("users", __name__)
@@ -17,6 +18,17 @@ def return_doctors():
     for doctor in all_doctors:
         doctor_list.append(doctor.to_dict())
     return jsonify(doctor_list)
+
+'''
+@app_views.route("/hospitals/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
+def get_doctor_by_hospital_id(hospital_id):
+    """get doctor by id"""
+    hospital = storage.get(Hospital, hospital_id)
+    if hospital is None:
+        abort(404)
+    doctors = [dkt.to_dict() for dkt in hospital.doctors]
+    return jsonify(doctors)
+'''
 
 @app_views.route("/doctor/<string:doctor_id>", methods=['GET'], strict_slashes=False)
 def get_doctor_by_id(doctor_id):

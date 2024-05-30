@@ -2,10 +2,11 @@ import { View, ScrollView, SafeAreaView, Text, Image, ImageBackground, Alert } f
 import { useNavigation } from "expo-router"; // Correct import
 /*import { ProfileScreen } from '../screens/profile'*/
 /*import Navigator from '../routes/drawer'*/
+import { useRoute } from '@react-navigation/native';
 
 import { COLORS, icons, SIZES } from "../jobsift-starter/constants";
 import { ScreenHeaderBtn, Welcome } from "../jobsift-starter/components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TouchableOpacity } from "react-native";
 // import { home } from "../app/home"
 import { profile } from "./profile";
@@ -27,7 +28,32 @@ import { useRouter } from "expo-router";
 
 const Prescription = () => {
   const navigation = useNavigation();
-/*  const route = useRouter();*/
+  const route = useRoute();
+  const diseaseId = route.params?.diseaseId;
+  console.log(diseaseId);
+  /* This is where it will make the API request to get user's diseases with the use of disease ID from user
+  const [medications, setMedications] = useState([]); // State to store retrieved diseases
+
+  useEffect(() => {
+    const fetchMedication = async () => {
+      try {
+        const response = await fetch(`http://0.0.0.0:5000/api/v1/disease/${diseaseId}/medication`);
+        if (!response.ok) {
+          throw new Error('Network response not OK');
+        }
+        const data = await response.json();
+        console.log(data);
+        console.log(data?.name)
+        setMedications(data.medications); // Update state with fetched diseases
+      } catch (error) {
+        console.error('Error fetching diseases:', error);
+        Alert.alert('Error', 'Failed to fetch diseases. Please try again later.');
+      }
+    };
+
+    fetchMedication();
+  }, [diseaseId]);
+  */
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -36,6 +62,7 @@ const Prescription = () => {
             <TouchableOpacity style={{marginLeft: 10, width: "50%"}} onPress={() => {
                 navigation.navigate('home')}}>
                 <Text style={{fontFamily: "Roboto",fontStyle: "italic", color: COLORS.lightWhite, fontWeight: "900", fontSize: 30}}>Utibu Health</Text>
+                <Text style={{color: COLORS.lightWhite}}>Prescriptions</Text>
             </TouchableOpacity>
         </View>
       <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: "#DDDDDD"}}>
@@ -48,7 +75,7 @@ const Prescription = () => {
                 />
             </View>
             <View style={{paddingLef: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Sulfonyrea</Text>
+                <Text style={{fontSize: 13}}>{"metformin" || "Loading...." }</Text>
             </View>
             <View style={{padding: SIZES.small, justifyContent: "center"}}>
                 <Text style={{fontSize: 13}}>Diabetes</Text>
@@ -58,62 +85,7 @@ const Prescription = () => {
             </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{position: "relative", justifyContent: "space-between", flex: 1, flexDirection: "row", height: 100, marginTop: SIZES.medium, borderRadius: 8, width: "99%",left: "0.5%", backgroundColor: "#CCCCCC"}} onPress={() => {
-                navigation.navigate('payment')}}>
-            <View style={{padding: SIZES.large}}>
-                <Image
-                    source={medicine2}
-                    resizeMode="contain"
-                />
-            </View>
-            <View style={{paddingLef: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Insulin</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Diabetes</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Available</Text>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{position: "relative", justifyContent: "space-between", flex: 1, flexDirection: "row", height: 100, marginTop: SIZES.medium, borderRadius: 8, width: "99%",left: "0.5%", backgroundColor: "#CCCCCC"}} onPress={() => {
-                navigation.navigate('unavailable')}}>
-            <View style={{padding: SIZES.large}}>
-                <Image
-                    source={medicine3}
-                    resizeMode="contain"
-                />
-            </View>
-            <View style={{paddingLeft: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Felodipine</Text>
-            </View>
-            <View style={{paddingLeft: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Hypertension</Text>
-            </View>
-            <View style={{padding: SIZES.large, justifyContent: "center"}}>
-                <Text style={{fontSize: 13, color: "red"}}>Unavailable</Text>
-            </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{position: "relative", justifyContent: "space-between", flex: 1, flexDirection: "row", height: 100, marginTop: SIZES.medium, borderRadius: 8, width: "99%",left: "0.5%", backgroundColor: "#CCCCCC"}} onPress={() => {
-                navigation.navigate('payment')}}>
-            <View style={{padding: SIZES.large}}>
-                <Image
-                    source={medicine4}
-                    resizeMode="contain"
-                />
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>ARVs</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>HIV</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Available</Text>
-            </View>
-        </TouchableOpacity>
+       
       </ScrollView>
 
       <View>

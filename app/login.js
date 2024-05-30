@@ -10,7 +10,7 @@ import { TouchableOpacity } from "react-native"; // Might need replacement
 import { FlatList, TextInput } from 'react-native'
 import { notMember } from "./notMember"
 import { home } from "./home"
-
+// import { useRouter } from "expo-router";
 
 import places from "../icons/icons/png/filled/places/home_alt.png";
 import medicine from "../icons/icons/png/filled/medications/medicines.png";
@@ -28,10 +28,11 @@ const Login = () => {
 
     const [useremail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     console.log(useremail);
     console.log(password);
-
+/*
     const handleLogin = () => {
     const correctEmail = 'njagidave@gmail.com';
     const correctPassword = '12345';
@@ -43,7 +44,43 @@ const Login = () => {
       Alert.alert('Login Error', 'Invalid email or password');
     }
     };
-    
+*/  
+    const handleLogin = async () => {
+      setIsLoading(true)
+
+      try {
+        const response = await fetch('http://localhost:5000/api/v1/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: useremail,
+            password: password
+          }),
+        });
+        console.log('Fetch response:', response);
+      if (!response.ok) {
+        throw new Error('Network response not okay');
+      }
+      const data = await response.json();
+      console.log('Fetched data:', data);
+      console.log(data.message);
+      if (data.message === 'Login sucessful') {
+        console.log(data.user);
+        navigation.navigate('home', { userObject: data.user });
+        // router.navigate('home', { userObject: data.user });
+      } else {
+        Alert.alert('Login Error', 'Invalid email or password');
+        // Alert.alert('Login Error', data,message || 'Invalid email or password');
+      }
+     } catch (error) {
+      console.error('Error during login:', error);
+      Alert.alert('Login Error', 'An unexpected error occured. Please try again later');
+     } finally {
+      setIsLoading(false);
+     }
+    }
   
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#EEEEEE" }}>

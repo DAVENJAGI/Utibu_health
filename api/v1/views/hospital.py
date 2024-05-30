@@ -5,7 +5,9 @@ from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request
 from models import storage
 from models.hospital import Hospital 
+from models.doctor import Doctor
 import json
+from sqlalchemy.orm import joinedload, session 
 
 # user_view = Blueprint("users", __name__)
 
@@ -36,6 +38,22 @@ def delete_hospital(hospital_id):
     hospital.delete()
     storage.save()
     return jsonify({})
+
+
+@app_views.route("/hospital/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
+def get_doctor_by_hospital_id(hospital_id):
+    """get doctor by id"""
+    hospital = storage.get(Hospital, hospital_id)
+    
+    if hospital is None:
+        abort(404)
+        
+    if hasattr(hospital, 'doctors'):
+        doctors = [dkt.to_dict() for dkt in hospital.doctors]
+    else:
+        all_doctors = storage.all(Doctor)
+        doctors = [dkt.to_dict() for dkt in all_doctors if dkt.hospital_id == hospital_id]
+    return jsonify(doctors)
 
 
 @app_views.route("/hospitals/", methods=["POST"], strict_slashes=False)

@@ -1,11 +1,13 @@
 import { View, ScrollView, SafeAreaView, Text, Image, ImageBackground, Alert } from "react-native";
 import { useNavigation } from "expo-router"; // Correct import
+// import { useRouter } from "expo-router";
+import { useRoute } from '@react-navigation/native';
 /*import { ProfileScreen } from '../screens/profile'*/
 /*import Navigator from '../routes/drawer'*/
 
 import { COLORS, icons, SIZES } from "../jobsift-starter/constants";
 import { ScreenHeaderBtn, Welcome } from "../jobsift-starter/components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TouchableOpacity, TouchableHighlight } from "react-native"; // Might need replacement
 
 
@@ -15,11 +17,29 @@ import medicine from "../icons/icons/png/filled/medications/medicines.png";
 import calendar from "../icons/icons/png/filled/symbols/calendar.png";
 import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
 import menu from "../icons/icons/png/filled/symbols/ui_menu.png";
-import { useRouter } from "expo-router";
+// import { useRouter } from "expo-router";
 
 const Home = () => {
   const navigation = useNavigation();
+  const route = useRoute();
+  const userObject = route.params?.userObject;
+  console.log(userObject);
 
+  const [greeting, setGreeting] = useState('');
+  // A function that handles greetings
+  useEffect(() => {
+    const now = new Date();
+    const hours = now.getHours();
+
+    if (hours >= 0 && hours < 12) {
+      setGreeting('Good morning');
+    } else if (hours >= 12 && hours < 18) {
+      setGreeting('Good afternoon');
+    } else {
+      setGreeting('Good evening');
+    }
+  }, []);
+  // console.log(userObject.first_name);
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       {/* Removed incorrect options prop */}
@@ -27,11 +47,18 @@ const Home = () => {
             <TouchableOpacity style={{marginLeft: 10, width: "50%"}} onPress={() => {
                 navigation.navigate('home')}}>
                 <Text style={{fontFamily: "Roboto",fontStyle: "italic", color: COLORS.lightWhite, fontWeight: "900", fontSize: 30}}>Utibu Health</Text>
+                <Text style={{color: COLORS.lightWhite}}>Home</Text>
             </TouchableOpacity>
         </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ flex: 1, padding: SIZES.medium }}>
-          <Welcome />
+          <View>
+            <View >
+              <Text style={{fontSize: 40, fontWeight: "800", marginBottom: SIZES.medium}}>{greeting}, David</Text>
+              <Text style={{fontSize: 20, fontWeight: "600"}}>Welcome to Utibu Health.</Text>
+              <Text style={{fontSize: 15, fontWeight: "600"}}>Your go to medical clinic</Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
       <View
@@ -55,7 +82,9 @@ const Home = () => {
           <Image source={places} resizeMode="contain" />
         </TouchableOpacity>
         <TouchableHighlight onPress={() => {
-          navigation.navigate('prescriptions')  
+          // console.log(userObject.disease_id);
+          // console.log{ diseaseId: userObject.disease_id }
+          navigation.navigate('prescriptions');
         }}
         activeOpacity={0.8}
         underlayColor="gray"

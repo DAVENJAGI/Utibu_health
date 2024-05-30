@@ -31,6 +31,7 @@ const Payment = () => {
             <TouchableOpacity style={{marginLeft: 10, width: "50%"}} onPress={() => {
                 navigation.navigate('home')}}>
                 <Text style={{fontFamily: "Roboto",fontStyle: "italic", color: COLORS.lightWhite, fontWeight: "900", fontSize: 30}}>Utibu Health</Text>
+                <Text style={{color: COLORS.lightWhite}}>Payment</Text>
             </TouchableOpacity>
         </View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -50,6 +51,7 @@ const Payment = () => {
       </ScrollView>
 
       <View>
+      <View>
       <View
         style={{
           position: "absolute",
@@ -68,11 +70,29 @@ const Payment = () => {
         }}
       >
         <TouchableOpacity onPress={() => {
-          navigation.navigate('home')
+            navigation.navigate('home')
         }}>
-          <Image source={places} resizeMode="contain"/>
+          <Image source={places} resizeMode="contain" />
         </TouchableOpacity>
-        
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('prescriptions')  
+        }}
+        underlayColor="gray"
+        >
+          <Image source={medicine} resizeMode="contain" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('myAppointments')
+        }}>
+          <Image source={calendar} resizeMode="contain" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('profile')
+        }}>
+          <Image source={menu} resizeMode="cover" />
+        </TouchableOpacity>
+      </View>
       </View>
       </View>
     </SafeAreaView>

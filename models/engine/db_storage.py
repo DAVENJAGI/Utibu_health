@@ -89,4 +89,9 @@ class DBStorage:
         """counts the number of object in storage"""
         obj = self.all(cls)
         return len(obj)
+    def getLogin(self, cls, email):
+        """A method to retrieve one object"""
+        query = self.__session.query(cls).filter(cls.email == email)
+        return query.first()
+
 
