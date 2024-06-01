@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""Creates the endpoint route for /users"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request
@@ -13,7 +13,7 @@ from sqlalchemy.orm import joinedload, session
 
 @app_views.route("/hospitals", strict_slashes=False, methods=["GET"])
 def return_hospitals():
-    """get all users"""
+    """get all hospitals"""
     all_hospitals = storage.all(Hospital).values()
     hospital_list = []
     for hospital in all_hospitals:
@@ -22,7 +22,7 @@ def return_hospitals():
 
 @app_views.route("/hospital/<string:hospital_id>", methods=['GET'], strict_slashes=False)
 def get_hospital_by_id(hospital_id):
-    """get user by id"""
+    """get a specific hospital by hospital_id"""
     hospital = storage.get(Hospital, hospital_id)
     if hospital is None:
         abort(400) 
@@ -31,7 +31,7 @@ def get_hospital_by_id(hospital_id):
 
 @app_views.route("/hospital/<string:hospital_id>", methods=["DELETE"], strict_slashes=False)
 def delete_hospital(hospital_id):
-    """deletes doctor with  specific id"""
+    """deletes specific hospital using specific hospital_id"""
     hospital = storage.get(Hospital, hospital_id)
     if hospital is None:
         abort(404)
@@ -42,7 +42,7 @@ def delete_hospital(hospital_id):
 
 @app_views.route("/hospital/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
 def get_doctor_by_hospital_id(hospital_id):
-    """get doctor by id"""
+    """get doctor related to a specific hospital"""
     hospital = storage.get(Hospital, hospital_id)
     
     if hospital is None:
@@ -58,7 +58,7 @@ def get_doctor_by_hospital_id(hospital_id):
 
 @app_views.route("/hospitals/", methods=["POST"], strict_slashes=False)
 def create_hospital():
-    """Creates a new user"""
+    """Creates a new hospital"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'town_id' not in request.get_json():
@@ -75,7 +75,7 @@ def create_hospital():
 
 @app_views.route("/hospital/<string:hospital_id>", methods=['PUT'], strict_slashes=False)
 def update_hospital(hospital_id):
-    """updates user's properties except the created, updated, email, and id"""
+    """updates hospital properties except the created_at, updated, email, and id"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     hosp = storage.get(Hospital, hospital_id)
