@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""creates a variable app, instance of flask, and tears down"""
+"""creates a variable app, instance of flask, and tears down.
+It then starts the API running on the port 5000, and address 0.0.0.0
+"""
 
 from flask import Flask
 from api.v1.views import app_views
