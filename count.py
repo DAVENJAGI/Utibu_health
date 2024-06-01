@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Used to make the count of objects in the storage"""
 
 from models import storage
 
