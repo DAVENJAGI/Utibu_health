@@ -13,7 +13,7 @@ import json
 
 @app_views.route("/user/<string:user_id>/disease/", methods=['GET'], strict_slashes=False)
 def get_disease_by_user_id(user_id):
-    """get doctor by id"""
+    """get diseases associated to a certain specific user"""
     user = storage.get(User, user_id)
     if user is None:
         abort(404)
