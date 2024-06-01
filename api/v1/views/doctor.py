@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""Creates the doctors routing"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request
@@ -12,27 +12,17 @@ import json
 
 @app_views.route("/doctors", strict_slashes=False, methods=["GET"])
 def return_doctors():
-    """get all users"""
+    """gets all doctors"""
     all_doctors = storage.all(Doctor).values()
     doctor_list = []
     for doctor in all_doctors:
         doctor_list.append(doctor.to_dict())
     return jsonify(doctor_list)
 
-'''
-@app_views.route("/hospitals/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
-def get_doctor_by_hospital_id(hospital_id):
-    """get doctor by id"""
-    hospital = storage.get(Hospital, hospital_id)
-    if hospital is None:
-        abort(404)
-    doctors = [dkt.to_dict() for dkt in hospital.doctors]
-    return jsonify(doctors)
-'''
 
 @app_views.route("/doctor/<string:doctor_id>", methods=['GET'], strict_slashes=False)
 def get_doctor_by_id(doctor_id):
-    """get user by id"""
+    """get doctor by doctor_id"""
     doctor = storage.get(Doctor, doctor_id)
     if doctor is None:
         abort(400) 
@@ -51,7 +41,7 @@ def delete_doctor(doctor_id):
 
 @app_views.route("/doctors/", methods=["POST"], strict_slashes=False)
 def create_doctor():
-    """Creates a new user"""
+    """Creates a new doctor"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'email' not in request.get_json():
@@ -74,7 +64,7 @@ def create_doctor():
 
 @app_views.route("/doctor/<string:doctor_id>", methods=['PUT'], strict_slashes=False)
 def update_doctor(doctor_id):
-    """updates user's properties except the created, updated, email, and id"""
+    """updates doctor's properties except the created_at, updated_at, email, and id"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     dkt = storage.get(Doctor, doctor_id)
