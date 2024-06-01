@@ -16,7 +16,7 @@ import json
 
 @app_views.route("/status")
 def api_status():
-    """returns a json file"""
+    """returns a json file with api status"""
     return jsonify({"status": "OK"})
 
 @app_views.route("/stats")
