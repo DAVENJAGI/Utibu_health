@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""init for the views module"""
+"""init for the views module
+Creates a blueprint for the app_views object. Then imports views
+from the api.v1.views package. IMporting routes related to various files in the module.
+"""
 from flask import Blueprint
 
 
