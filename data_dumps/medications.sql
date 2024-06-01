@@ -49,6 +49,7 @@ INSERT INTO `medication` VALUES
 ('861d9025-fb5f-4100-b4c4-31bbd3da2d7c','2024-05-25 18:10:00','2024-05-25 18:10:00','Stanins','A class of drugs that lower cholestrol level by blocking an enzyme in liver needed to produce cholestrol. Prevents stroke and heart disease','2*3','True'),
 ('a1ddad6d-3bd8-48d3-9189-ef5518561ab1','2024-05-25 18:07:43','2024-05-25 18:07:43','Metformin','Used to treat type 2 diabetes by helping the body use insulin more effectively and lowering blood sugar levels.','2*4','True'),
 ('aafb0a5c-716a-4080-a23f-d34a1e5da12f','2024-05-25 18:22:21','2024-05-25 18:22:21','Omeprazole','A proton pump inhibitor used to treat and prevent heartburn, acid reflux ulcers. It works by reducing stomach acid production','1*2','False'),
+('c42b049e-67d9-4adb-bd44-1a842a3a025c','2024-05-27 20:42:25','2024-05-27 20:42:25','Anti_Retro_Viral','Used_to_manage_HIV_','3*3','True'),
 ('db979a05-f977-4828-bb9c-30baba5242b7','2024-05-25 18:15:12','2024-05-25 18:15:12','Insulin','Used to treat type I diabetes. It helps regulate blood sugar levels by allowing glucose to enter cells for energy','1*1','True'),
 ('f9d0f097-d5f4-4529-8717-f103a6689890','2024-05-25 18:11:34','2024-05-25 18:11:34','Losartan','An angiotensin II receptor used to treat high blood pressure and heart failure. Relaxes blood vessel allowing blood to flow more ewaily','3*3','True');
 /*!40000 ALTER TABLE `medication` ENABLE KEYS */;
@@ -63,4 +64,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-25 15:32:34
+-- Dump completed on 2024-06-01 11:46:10

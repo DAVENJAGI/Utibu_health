@@ -54,8 +54,11 @@ INSERT INTO `diseases` VALUES
 ('9fce7877-4c61-41ad-9374-c073bf456714','2024-05-25 18:51:51','2024-05-25 18:51:51','Hypertension','This is a disease where the force of blood pushing artery walls is consistently too high. This extra strain can damage arteries over time leading to diseases like stroke.','f9d0f097-d5f4-4529-8717-f103a6689890',NULL),
 ('acb376d1-76b6-48b6-b39b-0063508ba67b','2024-05-25 18:37:05','2024-05-25 18:37:05','Bipolar Disorder','A mental condition that causes significant shifts in mood, energy, and activity levels. Mood swings can be extreme and disrupt te daily life','4f5bca29-e4d7-45d5-af8b-c00d47d5f5fd',NULL),
 ('b9b6c2a8-2ccf-44fc-9685-1c64d5d13b5f','2024-05-25 18:45:44','2024-05-25 18:45:44','Asthma','A chronic lung condition that causes inflamation of theairways making breathing difficult','03b3d006-67c4-45a2-a67f-b51cf9f9e407',NULL),
+('c566542b-8a75-41c9-ad94-ffe24dea279f','2024-05-28 19:46:27','2024-05-28 19:46:27','Erdheim_Chester_Disease','A_rare_form_of_non-Langerhans_cells_histiocytis_where_body_produces_too_many_histiocytes.','a1ddad6d-3bd8-48d3-9189-ef5518561ab1',NULL),
 ('da008408-2d4b-458b-8200-1db1e987b2b1','2024-05-25 18:47:44','2024-05-25 18:47:44','Chronic obtrusive pulmonary disease','A lung disease that makes it hard to breath. Develops due to long term exposure to irritants like cigarette or air pollution','03b3d006-67c4-45a2-a67f-b51cf9f9e407',NULL),
-('dc51bbaf-9312-44c7-aed7-4cf6146a9efa','2024-05-25 18:41:11','2024-05-25 18:41:11','Type I Diabetes','A condition in which the body attacks the insulin producing cells. Due to this attack the pancrease stops making enough insulin, a crucial hormone used for blood sugar regulation','db979a05-f977-4828-bb9c-30baba5242b7',NULL);
+('dc51bbaf-9312-44c7-aed7-4cf6146a9efa','2024-05-25 18:41:11','2024-05-25 18:41:11','Type I Diabetes','A condition in which the body attacks the insulin producing cells. Due to this attack the pancrease stops making enough insulin, a crucial hormone used for blood sugar regulation','db979a05-f977-4828-bb9c-30baba5242b7',NULL),
+('e9ed5eea-6980-4dc5-9464-09bb1fd132b2','2024-05-28 20:14:16','2024-05-28 20:14:16','Stiff_Person_Syndrome','A_rare_form_of_non-Langerhans_cells_histiocytis_where_body_produces_too_many_histiocytes.','a1ddad6d-3bd8-48d3-9189-ef5518561ab1',NULL),
+('f6ebae06-db0e-4407-bb9d-92c08b465c2d','2024-05-27 20:45:57','2024-05-27 20:45:57','HIV','Body_is_unable_to_manage_infections','c42b049e-67d9-4adb-bd44-1a842a3a025c',NULL);
 /*!40000 ALTER TABLE `diseases` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -68,4 +71,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-25 15:33:22
+-- Dump completed on 2024-06-01 11:47:47

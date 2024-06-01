@@ -49,7 +49,8 @@ INSERT INTO `hospitals` VALUES
 ('43cae53d-30df-4578-83b8-5623b71e54a9','2024-05-25 13:23:43','2024-05-25 13:23:43','894100c8-a9e0-4396-baf1-100def204a8d','knhadmin@knh.or.ke','Kenyatta National Hospital',36.8116,-1.30118),
 ('4e0aa448-5dbb-4b93-9775-a3bb0cdaabb2','2024-05-25 14:03:17','2024-05-25 14:03:17','894100c8-a9e0-4396-baf1-100def204a8d','mbagathihosp@gmail.com','Mbagathi County Hospital',36.8035,-1.30842),
 ('8c88d30f-8343-4647-bde2-1502b5f5cb0f','2024-05-25 13:58:02','2024-05-25 13:58:02','7df6feb5-9d1d-4379-bc43-e268d00e6267','enquiry@nairobiwesthospital.com','Nairobi West',36.8259,-1.3066),
-('c5a91327-d68b-4465-be03-9689af28b191','2024-05-25 14:21:36','2024-05-25 14:21:36','06ee101d-80f0-44b8-9345-5e7a5fe38eea','info@mpshahhospital.org','MP Shah',36.8121,-1.2635);
+('c5a91327-d68b-4465-be03-9689af28b191','2024-05-25 14:21:36','2024-05-25 14:21:36','06ee101d-80f0-44b8-9345-5e7a5fe38eea','info@mpshahhospital.org','MP Shah',36.8121,-1.2635),
+('fb17d810-7807-445a-8ad9-726e0fa288eb','2024-05-27 22:50:29','2024-05-27 22:50:29','e02aea2e-d9d0-4740-a52b-d5148b780386','bathlomew@gmail.com','St_Bathlomey',-3.43,44);
 /*!40000 ALTER TABLE `hospitals` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -62,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-25 11:34:26
+-- Dump completed on 2024-06-01 11:46:40
