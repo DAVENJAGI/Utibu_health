@@ -39,7 +39,7 @@ def delete_user(user_id):
 
 @app_views.route("/user/<string:user_id>/disease/", methods=['GET'], strict_slashes=False)
 def get_disease_by_user_id(user_id):
-    """get doctor by id"""
+    """get disease associated with a specific user"""
     user = storage.get(User, user_id)
     if user is None:
         abort(404)
@@ -49,7 +49,7 @@ def get_disease_by_user_id(user_id):
 
 @app_views.route("/user/<string:user_id>/disease/", methods=['POST'], strict_slashes=False)
 def add_disease_to_user_profile(user_id):
-    """get doctor by id"""
+    """add disease to a specific user"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     data = request.json
