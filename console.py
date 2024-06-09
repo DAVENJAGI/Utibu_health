@@ -17,11 +17,11 @@ from models.disease import Disease
 from models.medication import Medication
 from models.user import User
 from models.constituency import Constituency
-
+from models.admin import Admin
 """Maps the names eg, "Amenity", to classes, egw class Amenity"""
 
 classes = {"Appointment": Appointment, "BaseModel": BaseModel, "County": County, "Town": Town,
-           "Hospital": Hospital, "Constituency": Constituency, "Doctor": Doctor, "User": User, "Disease": Disease, "Medication": Medication}
+           "Hospital": Hospital, "Constituency": Constituency, "Doctor": Doctor, "User": User, "Disease": Disease, "Medication": Medication, "Admin": Admin}
 
 
 class HBNBCommand(cmd.Cmd):
