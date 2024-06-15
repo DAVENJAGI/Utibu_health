@@ -18,6 +18,7 @@ class County(BaseModel, Base):
 #        town = relationship("Town", backref="county")
         county_code = Column(String(64), unique=True, nullable=False)
         wards = relationship("Town", backref="counties")
+        constituencies = relationship("Constituency", backref="counties")
     else:
         name = ""
         county_code = ""
