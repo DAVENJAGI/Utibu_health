@@ -16,3 +16,4 @@ from api.v1.views.medication import *
 from api.v1.views.disease import *
 from api.v1.views.login import *
 from api.v1.views.admin import *
+from api.v1.views.appointment import *

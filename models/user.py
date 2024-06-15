@@ -6,6 +6,7 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
+from models.doctor import Doctor
 
 
 if models.storage_type == 'db':
@@ -30,6 +31,7 @@ class User(BaseModel, Base):
         doctor = relationship("Doctor", backref="users")
         diseases = relationship("Disease", secondary=user_disease, backref="users")
         disease_id = Column(String(64), ForeignKey("diseases.id"), nullable=True)
+        appointments = relationship("Appointment", backref="users")
 
 
     else:
