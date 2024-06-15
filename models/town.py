@@ -16,6 +16,7 @@ class Town(BaseModel, Base):
         constituency_id = Column(String(60), ForeignKey('constituencies.id'), nullable=False) 
         town_name = Column(String(128), nullable=False)
         hospital = relationship("Hospital", backref="town")
+        
     else:
         county_id = ""
         name = ""
