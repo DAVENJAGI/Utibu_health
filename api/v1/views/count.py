@@ -12,6 +12,7 @@ from models.doctor import Doctor
 from models.disease import Disease
 from models.county import County
 from models.constituency import Constituency
+from models.appointment import Appointment
 import json
 
 @app_views.route("/status")
