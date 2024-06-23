@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/home.css">
+    <script type="text/javascript" src="../admin_front_end/scripts/home.js"></script>
     <title>Home</title>
 </head>
 <body>
@@ -16,13 +17,15 @@
                 <div id="title_name"> 
                     <h1 id="title_text">Utibu Health</h1>
                 </div>
-                <div id="dashboard_div" class="">
+                
+                <div id="items_in_sidebar">
+                    <div id="dashboard" class="items">
                         <div id="dashboard_icon" class="icons"></div>
                         <div id="dashboard_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text" id="dashboard">Dashboard</h2>
+                            <h2 class="sidebar_text_text">Dashboard</h2>
                         </div>
-                </div>
-                <div id="items_in_sidebar">
+                    </div>
+
                     <div id="regions" class="items">
                         <div id="region_icon" class="icons">
                             <i id="region_web_icon" class="fa fa-globe" aria-hidden="true" style="font-size: 50px; margin-left: 20%; margin-top: 8%;"></i>
@@ -99,56 +102,62 @@
                     </button>
                 </div>
             </div>
-            <div id="inner_content_container">
-                <div id="inner_content_container2">
-                    <div id="regions_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+            
+            <div id="whole_body">
+                <!--GRAPHS-->
+                <div id="overview">
+                    <h1 id="overview_div">Overview</h1> 
+                </div>
+                <!--OVERVIEW DIVS-->
+                <div id="inner_content_container">
+                    
 
-                    <div id="hospitals_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                    <div id="inner_content_container2">
+                        <div id="regions_div" class="content_div">
+                            <div class="cont_name">Regions</div>
+                            <div class="cont_count" id="regions_count"> </div>
+                        </div>
 
-                    <div id="hospitals_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                        <div id="hospitals_div" class="content_div">
+                            <div class="cont_name">Hospitals</div>
+                            <div class="cont_count" id="hospitals_count"></div>
+                        </div>
 
-                    <div id="doctors_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                        <div id="doctors_div" class="content_div">
+                            <div class="cont_name">Doctors</div>
+                            <div class="cont_count" id="doctors_count"></div>
+                        </div>
 
-                    <div id="patients_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                        <div id="patients_div" class="content_div">
+                            <div class="cont_name">Patients</div>
+                            <div class="cont_count" id="patients_count"></div>
+                        </div>
 
-                    <div id="diseases_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                        <div id="diseases_div" class="content_div">
+                            <div class="cont_name">Diseases</div>
+                            <div class="cont_count" id="diseases_count"></div>
+                        </div>
 
-                    <div id="medication_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                        <div id="medication_div" class="content_div">
+                            <div class="cont_name">Meds</div>
+                            <div class="cont_count" id="medications_count"></div>
+                        </div>
 
-                    <div id="appointment_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                        <div id="appointment_div" class="content_div">
+                            <div class="cont_name">Appoints</div>
+                            <div class="cont_count" id="appointments_count"></div>
+                        </div>
 
-                    <div id="orders_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
-                    </div>
+                        <div id="orders_div" class="content_div">
+                            <div class="cont_name">Orders</div>
+                            <div class="cont_count" id="orders_count"></div>
+                        </div>
 
-                    <div id="payment_div" class="content_div">
-                        <div class="cont_name"></div>
-                        <div class="cont_count"></div>
+                        <div id="payment_div" class="content_div">
+                            <div class="cont_name">Payments</div>
+                            <div class="cont_count" id="payments_count"></div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
