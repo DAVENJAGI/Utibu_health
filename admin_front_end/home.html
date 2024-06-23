@@ -22,7 +22,7 @@
                     <div id="dashboard" class="items">
                         <div id="dashboard_icon" class="icons"></div>
                         <div id="dashboard_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Dashboard</h2>
+                            <h2 class="sidebar_text_text">Overview</h2>
                         </div>
                     </div>
 
@@ -95,10 +95,19 @@
         <!-- CONTENT PAGE-->
         <div id="content_container">
             <div id="header">
+                <div id="greetings">
+                    <h2 id="greeting_text">Hello, Dave</h2>
+                </div>
+                <div id="search_div">
+                    <div id="search_bar">
+                        <input type="text" id="search_input" placeholder="Search Hospital, Patient.......">
+                        <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                    </div>
+                </div>
                 <div id="admin_div">
                    <button id="admin_button">
-                        <i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 30px;"></i>
-                        <h3 id="admin_text">Admin</h3>
+                        <i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 35px;"></i>
+                        <h4 id="admin_text">Admin</h4>
                     </button>
                 </div>
             </div>
@@ -106,12 +115,10 @@
             <div id="whole_body">
                 <!--GRAPHS-->
                 <div id="overview">
-                    <h1 id="overview_div">Overview</h1> 
                 </div>
+
                 <!--OVERVIEW DIVS-->
                 <div id="inner_content_container">
-                    
-
                     <div id="inner_content_container2">
                         <div id="regions_div" class="content_div">
                             <div class="cont_name">Regions</div>

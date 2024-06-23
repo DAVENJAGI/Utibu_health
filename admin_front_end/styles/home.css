@@ -169,39 +169,88 @@
 }
 
 #header{
+    border: 1px solid black;
     height: 10vh;
-    /*border-bottom: solid 1px #111113;*/
-    box-shadow: 2px 1px 8px #8c8f91;
+    display: flex;
+    column-gap: 25px;
+    /*box-shadow: 2px 1px 8px #8c8f91;*/
     position:relative;
-    /*width: 99%;*/
+    justify-content: center;
+}
+#greetings{
+    border: 1px solid red;
+    width: 200px;
+    align-content: center;
+}
+#greeting_text{
+    font-size: auto;
+}
+#search_div{
+    /*border: 1px solid red;*/
+    width: 45%;
+    margin-left: 15%;
+    margin-right: 15%;
+    position: center;
+    align-content: center;
+}
+#search_bar{
+    display: flex;
+    width: 90%;
+    /*border: 1px red solid;*/
+    height: 60%;
+    margin-left: 5%;
+    /*border: 1px;*/
+}
+#search_input{
+    width: 80%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid black;
+    background: #eff3f7;
+    font-size: auto;
+}
+
+#search_button{
+    width: 20%;
+    border: 1px solid black;
+    border-left: 1px #eff3f7;;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#search_button:hover{
+    opacity: 0.75;
+}
+#admin_div{
+    /*border: solid 1px red;*/
+    align-content: center;
 }
 #admin_icon{
-    /*border: solid red 1px;*/
-    align-content: center;
-    margin-top: 2px;
+    /*border: solid green 1px;*/
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    margin-top: 1px;
 }
 #admin_text{
     /*border: solid red 1px;*/
-    margin-left: 5px;
-    margin-top: 2px;
-    height: 3.1vh;
-    width: 60%;
+    margin-top: 0;
+    height: 35px;
+    float: right;
+    text-align: center;
+    align-content: center;
     font-weight: bolder;
     align-content: center;
 }
 #admin_button{
+    column-gap: 4px;
     border: solid 1px black;
-    margin-top: 3vh;
-    width: 120px;
-    height: 4vh;
-    float: inline-end;
-    margin-right: 1vw;
+    height: 40px;
+    width: 100px;
     border-radius: 6px;
-    text-align: center;
     align-content: center;
     background-color: #fffdfd;
     box-shadow: 2px 5px 8px #b7bbbd;
-    color: black;
+    color: #38baee;
     display: flex;
 }
 #admin_button:hover{
@@ -215,17 +264,21 @@
 }
 
 #overview{
-    color: #38baee;
+    color: black;
     /*border: 1px solid #38baee;*/
-    height: 150px;
+    height: 130px;
     align-content: center;
     background: aliceblue;
-    display: flex;
+    /*display: flex;*/
 }
-#overview_div{
-    margin-left: 45px;
-    margin-top: 60px;
+#overview_content{
+    border: solid red 1px;
+    margin-left: 3%;
+    margin-right: 5%;
+    height: 95%;
+    align-content: center;
 }
+
 #api_status{
     /*border: solid 1px red;*/
     height: 20px;
@@ -246,6 +299,7 @@
     overflow-x: hidden;
     background: white;
     box-shadow: 3px 5px 8px #9d9fa0;
+    margin-top: 4%;
 }
 #inner_content_container::-webkit-scrollbar{
     width: 12px;
@@ -264,7 +318,7 @@
     height: auto;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 25px;
+    column-gap: 20px;
     row-gap: 55px;
     align-content: center;
     width: 95%;
@@ -275,7 +329,7 @@
     padding-bottom: 100px;
 }
 
-/*
+
 #whole_content_div{
     border: solid black 1px;
     margin-top: 10px;
@@ -287,25 +341,27 @@
     border-radius: 6px;
     box-shadow: 2px 5px 8px #b7bbbd;
     overflow-y: auto;
-}*/
-
+}
 
 .content_div{
     border: solid rgb(107, 107, 107) 1px;
-    /*margin-top: 10px;*/
+    margin-top: 10px;
     margin-left: 3vh;
     row-gap: 5px;
+    column-gap: 5px;
     margin-bottom: 2px;
     width: 200px;
     height: 150px;
     border-radius: 6px;
     box-shadow: 2px 5px 8px #b7bbbd;
+    background-color: white;
     display: block;
 }
 .content_div:hover{
     transform: scale(1.008);
     opacity: 0.65;
 }
+
 .cont_name{
     /*border: solid 1px red;*/
     height: 70px;
@@ -317,9 +373,11 @@
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
+
+
 .cont_count{
     /*border: solid 1px red;*/
-    height: 45%;
+    height: 44%;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     text-align: center;
