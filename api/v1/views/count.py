@@ -13,6 +13,7 @@ from models.disease import Disease
 from models.county import County
 from models.constituency import Constituency
 from models.appointment import Appointment
+from models.order import Order
 import json
 
 @app_views.route("/status")
@@ -32,6 +33,7 @@ def count_objects():
             "Diseases": storage.count(Disease),
             "Counties": storage.count(County),
             "Constituencies": storage.count(Constituency),
-            "Appointments": storage.count(Appointment)
+            "Appointments": storage.count(Appointment),
+            "Orders": storage.count(Order)
             }
     return jsonify(data)

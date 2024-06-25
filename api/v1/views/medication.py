@@ -50,6 +50,8 @@ def create_medication():
         return make_response(jsonify({"error": "Missing medication dosage"}), 400)
     if 'in_stock' not in request.get_json():
         return make_response(jsonify({"error": "Missing medication in stock"}), 400)
+    if "medication_price" not in request.get_json():
+        return make_response(jsonify({"error": "Missing medication price"}), 400)
     
     obj = request.get_json()
     med = Medication(**obj)

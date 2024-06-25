@@ -20,6 +20,7 @@ class Doctor(BaseModel, Base):
         availability_time = Column(String(128), nullable=True)
         hospital_id = Column(String(60), ForeignKey('hospitals.id', ondelete="CASCADE"), nullable=False)
         appointments = relationship("Appointment", backref="doctors")
+        orders = relationship("Order", backref="doctors")
 
 #        hospital =  relationship("Hospital", back_populates="doctors")
   
