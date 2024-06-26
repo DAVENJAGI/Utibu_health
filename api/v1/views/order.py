@@ -28,7 +28,7 @@ def get_order_by_id(order_id):
     """get order by id"""
     order = storage.get(Order, order_id)
     if order is None:
-        abort(400)
+        return make_response(jsonify({"Error": "Order with id not found"}), 400)
     return jsonify(order.to_dict())
 
 
