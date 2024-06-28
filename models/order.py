@@ -11,16 +11,7 @@ from models.hospital import Hospital
 from models.user import User
 from models.medication import Medication
 
-'''
-if models.storage_type == 'db':
-    all_ = Table('all_appointments', Base.metadata,
-                          Column('user_id', String(60),
-                                 ForeignKey('users.id'), nullable=False),
-                          Column('doctor_id', String(60),
-                                 ForeignKey('doctors.id'), nullable=False),                         
-                         )
 
-'''
 class Order(BaseModel, Base):
     """Represents order details"""
     if models.storage_type == "db":
@@ -32,11 +23,7 @@ class Order(BaseModel, Base):
         billing_cost = Column(Integer, nullable=False)
         order_status = Column(String(60), nullable=False, default="pending approval")
         quantity = Column(Integer, nullable=False)
-'''
-        appointments = relationship("User", secondary=all_appointments, backref="appointment",
-                                    primaryjoin="all_appointments.c.user_id == Appointment.user_id",
-                                    secondaryjoin="all_appointments.c.doctor_id == User.id")
-     
+ 
 #        user = relationship("User", backref="appointment") 
 #         doctor = relationship("Doctor", backref="appointment")
     else:
@@ -46,4 +33,4 @@ class Order(BaseModel, Base):
         description = ""
         time = ""
         date = ""
-'''
+
