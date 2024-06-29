@@ -30,10 +30,10 @@ def get_county_by_id(county_id):
         abort(400) 
     return jsonify(county.to_dict())
 
-# GETS ALL WARDS PRESENT IN A CERTAIN COUNTY
+# GETS ALL WARDS AND CONSTITUENCIES PRESENT IN A CERTAIN COUNTY
 @app_views.route("/county/<string:county_id>/wards", methods=['GET'], strict_slashes=False)
 def get_wards_by_county_id(county_id):
-    """gets all wards in a county"""
+    """gets all constituencies in a county"""
     county = storage.get(County, county_id)
 
     if county is None:
@@ -46,6 +46,23 @@ def get_wards_by_county_id(county_id):
     else:
         ward = [ward.to_dict() for ward in all_wards] # if  all_meds else []
         return jsonify(ward)
+
+@app_views.route("/county/<string:county_id>/constituencies", methods=['GET'], strict_slashes=False)
+def get_consitituencies_by_county_id(county_id):
+    """gets all wards in a county"""
+    county = storage.get(County, county_id)
+
+    if county is None:
+        abort(404)
+
+    all_consts = county.constituencies 
+
+    if not all_consts:
+        return make_response(jsonify({"Error": "No constituencies added for this county yet"}), 400)
+    else:
+        constituencies = [constituency.to_dict() for constituency in all_consts] # if  all_meds else []
+        return jsonify(constituencies)
+
 
 
 # GETS ALL WARDS IN A CONSTITUENCY AND A WARD PRESENT IN A CERTAIN CONSTITUENCY BY ID
