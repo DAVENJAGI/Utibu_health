@@ -17,6 +17,7 @@ class County(BaseModel, Base):
         name = Column(String(128), unique=True, nullable=False)
         town = relationship("Town", backref="county")
         county_code = Column(String(64), unique=True, nullable=False)
+ 
     else:
         name = ""
         county_code = ""

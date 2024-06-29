@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    const searchInput = document.getElementById('search_input');
+    const searchButton = document.getElementById('search_button');
+
+    
+
     // Function to display counties for the current page
     function displayCurrentPage() {
         const startIndex = (currentPage - 1) * pageSize;
@@ -61,7 +66,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch all counties data when DOM is loaded
     fetchAllCounties();
 
-    // Add click event listeners for pagination buttons
+
+    searchButton.addEventListener('click', () => {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+
+        // Filter counties data based on search term
+        const filteredCounties = countiesData.filter(county =>
+            county.name.toLowerCase().includes(searchTerm)
+        );
+
+        // Update table with filtered data
+        tableBody.innerHTML = '';
+        filteredCounties.forEach(county => {
+            const tableRow = document.createElement("tr");
+            tableRow.innerHTML = `
+                <td>${county.id}</td>
+                <td>${county.county_code}</td>
+                <td>${county.name}</td>
+                <td>${county.numberOfConstituencies}</td>
+                <td>${county.numberOfWards}</td>
+            `;
+            tableBody.appendChild(tableRow);
+        });
+
+        // Clear search input
+        searchInput.value = '';
+    });
+
+    // Add click event listeners for pagination buttons and increments them on clicking till there' no more data to append to table
     prevButton.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;

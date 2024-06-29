@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/regions.css">
     <script type="text/javascript" src="../admin_front_end/scripts/regions.js"></script>
+    <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
     <title>Home</title>
 </head>
 <body>
@@ -96,13 +97,26 @@
         <div id="content_container">
             <div id="header">
                 <div id="greetings">
-                    <h2 id="greeting_text">Hello, Dave</h2>
+                    <h2 id="greeting_text"></h2>
                 </div>
                 <div id="admin_div">
-                   <button id="admin_button">
-                        <i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 35px;"></i>
+                   <div id="admin_button" onclick="showDropdownDiv()">
+                        <i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 30px; text-align: center; align-content: center;"></i>
                         <h4 id="admin_text">Admin</h4>
-                    </button>
+                        <i class="fas fa-angle-down"></i>
+                   </div>
+                   <div id="dropdown_div">
+                    <div id="profile" class="dropdown"> Profile</div>
+                    <div id="logout" class="dropdown"> LogOut</div>
+
+                   </div>
+                </div>
+            </div>
+
+            <div id="search_div">
+                <div id="search_bar">
+                    <input type="text" id="search_input" placeholder="Search Counties by name....">
+                    <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
                 </div>
             </div>
             
@@ -125,12 +139,13 @@
                             </tbody>
                         </table>
 
-                        <div id="pagination">
-                            <button id="prev" class="nav_buttons">Prev</button>
-                            <span id="page-num"></span>
-                            <button id="next" class="nav_buttons">Next</button>
-                        </div>
                     </div>
+                    <div id="pagination">
+                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
+                        <span id="page-num"></span>
+                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
+                    </div>
+                   
                 </div>
             </div>
         </div>
