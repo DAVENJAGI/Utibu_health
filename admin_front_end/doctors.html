@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="./styles/regions.css">
     <link rel="stylesheet" href="./styles/common.css">
-    <script type="text/javascript" src="../admin_front_end/scripts/regions.js"></script>
+    <link rel="stylesheet" href="./styles/doctors.css">
+    <script type="text/javascript" src="../admin_front_end/scripts/doctors.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
-    <title>Home</title>
+    <title>Doctors</title>
 </head>
 <body>
     <div id="whole_container">
@@ -50,7 +50,7 @@
                             <i class="fa fa-user-md" aria-hidden="true" style="font-size: 50px; margin-left: 20%; margin-top: 8%;"></i>
                         </div>
                         <div id="doctor_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Doctors</h2>
+                            <h2 id="doctor_text" class="sidebar_text_text">Doctors</h2>
                         </div>
                     </div>
                     <div id="patients" class="items" onclick="routePatients()">
@@ -117,7 +117,7 @@
 
             <div id="search_div">
                 <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Counties by name....">
+                    <input type="text" id="search_input" placeholder="Search Doctor by first name....">
                     <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
                 </div>
             </div>
@@ -129,12 +129,11 @@
                           <thead id="table_head">
                                 <tr id="">
                                     <th>ID</th>
-                                    <th>County Code</th>
-                                    <th>County Name</th>
-                                    <!--
-                                    <th>No. of Constituencies</th>
-                                    <th>Number of Wards</th>
-                                    -->
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>License Number</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>

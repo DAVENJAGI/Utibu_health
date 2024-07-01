@@ -3,10 +3,12 @@
     height: 100vh;
     width: 100vw;
     /*border-radius: 50px;*/
-    border: 1px solid black;
+    border: 1px solid white;
     align-items: center;
     background-image: linear-gradient(to bottom, #95bce2 0%, #3297df 100%);
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     
 }
 

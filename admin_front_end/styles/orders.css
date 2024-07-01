@@ -1,0 +1,10 @@
+#orders{
+    background-color: aliceblue;
+    color: black;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    transform: scale(1.04);
+}
+#order_text{
+    color: orange;
+}

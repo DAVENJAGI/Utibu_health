@@ -39,6 +39,7 @@ async function displayGreetings() {
   setInterval(displayGreetings, 3600000);
   window.onload = displayGreetings;
 
+
 function showDropdownDiv() {
   const dropdownInfo = document.getElementById('dropdown_div');
   if (dropdownInfo.style.display === 'none') {
@@ -47,3 +48,4 @@ function showDropdownDiv() {
     dropdownInfo.style.display = 'none';
   }
 } window.onload = showDropdownDiv();
+

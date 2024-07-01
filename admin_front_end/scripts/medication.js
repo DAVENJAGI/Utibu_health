@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const requestUrl = 'http://0.0.0.0:5000/api/v1/counties'; // Replace with your actual API endpoint
+    const requestUrl = 'http://0.0.0.0:5000/api/v1/medications'; // Replace with your actual API endpoint
     const pageSize = 10; // Number of items to display per page
     let currentPage = 1;
-    let countiesData = []; // Array to store all counties data
+    let medicationData = []; // Array to store all counties data
 
     // DOM elements
     const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageNumSpan = document.getElementById('page-num');
 
     // Function to fetch all counties data
-    function fetchAllCounties() {
+    function fetchAllMedications() {
         fetch(requestUrl)
             .then(response => {
                 if (!response.ok) {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(data => {
-                countiesData = data; // Store all counties data
+                medicationData = data; // Store all counties data
                 displayCurrentPage(); // Display initial page
             })
             .catch(error => {
@@ -36,22 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    // Function to display counties for the current page
+    // Function to display docor for the current page
     function displayCurrentPage() {
         const startIndex = (currentPage - 1) * pageSize;
         const endIndex = startIndex + pageSize;
-        const currentPageCounties = countiesData.slice(startIndex, endIndex);
+        const currentPageMedication = medicationData.slice(startIndex, endIndex);
 
         // Clear existing table rows before adding new ones
         tableBody.innerHTML = '';
 
         // Loop through counties for the current page and populate table rows
-        currentPageCounties.forEach(county => {
+        currentPageMedication.forEach(medication => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td>${county.id}</td>
-                <td>${county.county_code}</td>
-                <td>${county.name}</td>
+                <td>${medication.id}</td>
+                <td>${medication.name}</td>
+                <td>${medication.description}</td>
+                <td>${medication.in_stock}</td>
+                <td>${medication.dosage}</td>
             `;
             tableBody.appendChild(tableRow);
         });
@@ -61,39 +63,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Disable buttons if on first or last page
         prevButton.disabled = currentPage === 1;
-        nextButton.disabled = endIndex >= countiesData.length;
+        nextButton.disabled = endIndex >= medicationData.length;
     }
 
     // Fetch all counties data when DOM is loaded
-    fetchAllCounties();
+    fetchAllMedications();
 
 
     searchButton.addEventListener('click', () => {
         const searchTerm = searchInput.value.trim().toLowerCase();
 
         // Filter counties data based on search term
-        const filteredCounties = countiesData.filter(county =>
-            county.name.toLowerCase().includes(searchTerm)
+        const filteredMedications = medicationData.filter(medication =>
+            medication.name.toLowerCase().includes(searchTerm)
         );
 
         // Update table with filtered data
         tableBody.innerHTML = '';
-        filteredCounties.forEach(county => {
+        filteredMedications.forEach(medication => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td>${county.id}</td>
-                <td>${county.county_code}</td>
-                <td>${county.name}</td>
+            <td>${medication.id}</td>
+            <td>${medication.name}</td>
+            <td>${medication.description}</td>
+            <td>${medication.in_stock}</td>
+            <td>${medication.dosage}</td>
             `;
             tableBody.appendChild(tableRow);
         });
 
-        /* commented out part of table data that will be sorted later on <td>${county.numberOfConstituencies}</td>
-        <td>${county.numberOfWards}</td>
-        */
         // Clear search input
         searchInput.value = '';
     });
+    
 
     // Add click event listeners for pagination buttons and increments them on clicking till there' no more data to append to table
     prevButton.addEventListener('click', () => {
@@ -104,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextButton.addEventListener('click', () => {
-        if (currentPage < Math.ceil(countiesData.length / pageSize)) {
+        if (currentPage < Math.ceil(doctorData.length / pageSize)) {
             currentPage++;
             displayCurrentPage();
         }

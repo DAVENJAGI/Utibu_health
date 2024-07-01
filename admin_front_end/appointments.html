@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="./styles/regions.css">
     <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/appointments.css">
     <script type="text/javascript" src="../admin_front_end/scripts/regions.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
-    <title>Home</title>
+    <title>Appoitments</title>
 </head>
 <body>
     <div id="whole_container">
@@ -76,7 +76,7 @@
                     <div id="appointments" class="items" onclick="routeAppointments()">
                         <div id="appointment_icon" class="icons"></div>
                         <div id="appointment_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Appointments</h2>
+                            <h2 id="appointment_text" class="sidebar_text_text">Appointments</h2>
                         </div>
                     </div>
                     <div id="orders" class="items" onclick="routeOrders()">
@@ -117,7 +117,7 @@
 
             <div id="search_div">
                 <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Counties by name....">
+                    <input type="text" id="search_input" placeholder="Search Appointment....">
                     <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
                 </div>
             </div>

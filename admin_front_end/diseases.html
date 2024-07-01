@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="./styles/regions.css">
     <link rel="stylesheet" href="./styles/common.css">
-    <script type="text/javascript" src="../admin_front_end/scripts/regions.js"></script>
+    <link rel="stylesheet" href="./styles/diseases.css">
+    <script type="text/javascript" src="../admin_front_end/scripts/diseases.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
-    <title>Home</title>
+    <title>Diseases</title>
 </head>
 <body>
     <div id="whole_container">
@@ -64,7 +64,7 @@
                     <div id="diseases" class="items" onclick="routeDiseases()">
                         <div id="disease_icon" class="icons"></div>
                         <div id="disease_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Diseases</h2>
+                            <h2 id="disease_text" class="sidebar_text_text">Diseases</h2>
                         </div>
                     </div>
                     <div id="medication" class="items" onclick="routeMedications()">
@@ -117,7 +117,7 @@
 
             <div id="search_div">
                 <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Counties by name....">
+                    <input type="text" id="search_input" placeholder="Search Disease by name....">
                     <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
                 </div>
             </div>
@@ -129,8 +129,8 @@
                           <thead id="table_head">
                                 <tr id="">
                                     <th>ID</th>
-                                    <th>County Code</th>
-                                    <th>County Name</th>
+                                    <th>Disease Name</th>
+                                    <th>Description</th>
                                     <!--
                                     <th>No. of Constituencies</th>
                                     <th>Number of Wards</th>
