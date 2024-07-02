@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/hospitals.css">
+    <script type="text/javascript" src="../admin_front_end/scripts/display.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/hospitals.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
@@ -95,8 +96,11 @@
             </div>
         </div>
 
+
+
         <!-- CONTENT PAGE-->
         <div id="content_container">
+            
             <div id="header">
                 <div id="greetings">
                     <h2 id="greeting_text"></h2>
@@ -115,12 +119,55 @@
                 </div>
             </div>
 
+            <div id="new_hospital">
+                <div id="form_div">
+                    <div id="header_input">ADD NEW HOSPITAL</div>
+                    <form id="newHospitalForm">
+                        <div class="hosital_data_form">
+                            <label for="name" class="input_name">Hospital Name:</label> <br>
+                            <input type="text" id="name" class="input" name="name" required><br><br>
+                        </div>
+                        <div class="hosital_data_form">
+                            <label for="town_id" class="input_name">Town ID:</label> <br>
+                            <input type="text" id="town_id" name="town_id" class="input" required><br><br>
+                        </div>
+                        <div class="hosital_data_form">
+                            <label for="email" class="input_name">Email:</label><br>
+                            <input type="email" id="email" name="email" class="input" required><br><br>
+                        </div>
+                        <div class="hosital_data_form">
+                            <label for="latitude" class="input_name">Latitude:</label><br>
+                            <input type="text" id="latitude" name="latitude" class="input" required><br><br>
+                        </div>
+                        <div class="hosital_data_form" class="input_name">
+                            <label for="longitude" class="input_name">Longitude:</label><br>
+                            <input type="text" id="longitude" name="longitude" class="input" required><br><br>
+                        </div>
+                    </form>
+                    
+                </div>
+                <div id="exit_div">
+                    <div id="inner_exit_div">
+                        <div class="inner_button_div">
+                            <button id="exit_hospital_form_button" class="inner_exit_div_button">Exit</button>
+                        </div>
+                        <div class="inner_button_div">
+                            <button id="save_button" class="inner_exit_div_button">ADD</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
             <div id="search_div">
                 <div id="search_bar">
                     <input type="text" id="search_input" placeholder="Search Hospital by name....">
                     <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
                 </div>
+                <div id="add_new" onclick="showAddNewHospital()">+</div>
             </div>
+            
+            
             
             <div id="whole_body">
                 <div id="content">
