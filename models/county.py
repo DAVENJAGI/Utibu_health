@@ -15,7 +15,8 @@ class County(BaseModel, Base):
     if models.storage_type == "db":
         __tablename__ = 'counties'
         name = Column(String(128), unique=True, nullable=False)
-        town = relationship("Town", backref="county")
+        wards = relationship("Town", backref="county")
+        constituencies = relationship("Constituency", backref="county")
         county_code = Column(String(64), unique=True, nullable=False)
  
     else:

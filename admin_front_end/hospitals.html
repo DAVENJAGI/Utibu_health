@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/hospitals.css">
-    <script type="text/javascript" src="../admin_front_end/scripts/display.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/hospitals.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
@@ -103,7 +102,7 @@
             
             <div id="header">
                 <div id="greetings">
-                    <h2 id="greeting_text"></h2>
+                    <h2 id="greeting_text" ></h2>
                 </div>
                 <div id="admin_div">
                    <div id="admin_button" onclick="showDropdownDiv()">
@@ -122,15 +121,46 @@
             <div id="new_hospital">
                 <div id="form_div">
                     <div id="header_input">ADD NEW HOSPITAL</div>
+                    
                     <form id="newHospitalForm">
+                        <div id="feedback_info"></div>
+                        <div class="hosital_data_form">
+                            <label for="county_id" class="input_name">County:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="county_select" name="county_id" class="input" required>
+                                <option value="" id="option_select">Select County</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+                        <div class="hosital_data_form">
+                            <label for="constituency_id" class="input_name">Constituency:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="constituency_select" name="constituency_id" class="input" required>
+                                <option value="">Select Constituency</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+                        <div class="hosital_data_form">
+                            <label for="town_id" class="input_name">Ward:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="town_select" name="town_id" class="input" required>
+                                <option value="">Select Ward</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+
                         <div class="hosital_data_form">
                             <label for="name" class="input_name">Hospital Name:</label> <br>
                             <input type="text" id="name" class="input" name="name" required><br><br>
                         </div>
-                        <div class="hosital_data_form">
-                            <label for="town_id" class="input_name">Town ID:</label> <br>
-                            <input type="text" id="town_id" name="town_id" class="input" required><br><br>
-                        </div>
+                        
+
                         <div class="hosital_data_form">
                             <label for="email" class="input_name">Email:</label><br>
                             <input type="email" id="email" name="email" class="input" required><br><br>
@@ -149,10 +179,10 @@
                 <div id="exit_div">
                     <div id="inner_exit_div">
                         <div class="inner_button_div">
-                            <button id="exit_hospital_form_button" class="inner_exit_div_button">Exit</button>
+                            <button id="exit_hospital_form_button" class="inner_exit_div_button" onclick="showAddNewHospital()">Cancel</button>
                         </div>
                         <div class="inner_button_div">
-                            <button id="save_button" class="inner_exit_div_button">ADD</button>
+                            <button id="save_button" class="inner_exit_div_button" onclick="createNewHospital()">ADD</button>
                         </div>
                     </div>
                 </div>

@@ -14,6 +14,7 @@ class Constituency(BaseModel, Base):
         __tablename__ = 'constituencies'
         county_id = Column(String(60), ForeignKey('counties.id'), nullable=False)
         constituency_name = Column(String(128), nullable=False)
+        wards = relationship("Town", backref="constituency")
     else:
         constituency_name =""
         county_id = ""
