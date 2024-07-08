@@ -4,12 +4,12 @@
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
-from models.user import User
+from models.admin import Admin
 import json
 
 # user_view = Blueprint("users", __name__)
 
-@app_views.route("/login", strict_slashes=False, methods=["POST"])
+@app_views.route("/admin/login", strict_slashes=False, methods=["POST"])
 def login():
     """A post request sent with email and password from the login page
         Handles login for the app
@@ -23,13 +23,13 @@ def login():
     password = data.get('password')
 
 # The data is sorted in the database, using the email and checks the password. 
-    user = storage.getLogin(User, email)
-    if not user:
-        return make_response(jsonify({"error": "User not found"}), 401)
+    admin = storage.getLogin(Admin, email)
+    if not admin:
+        return make_response(jsonify({"error": "Admin not found"}), 401)
 
-    if user.password != password:
+    if admin.password != password:
         return make_response(jsonify({"error": "Invalid password"}), 401)
 
 # returns the object in dictionary format, associated with the email.
-    return (jsonify({"message": "Login sucessful", "user": user.to_dict()}), 200)
+    return (jsonify({"message": "Login sucessful", "admin": admin.to_dict()}), 200)
 

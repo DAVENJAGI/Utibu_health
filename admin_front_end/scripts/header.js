@@ -1,9 +1,7 @@
 async function displayGreetings() {
-    try {
-      //const response = await fetch('scripts/data/.json')
-      // const parsedData = await response.json();
-      
-      // const name = parsedData.login;
+
+  try {
+  
       const greetingsElement = document.getElementById('greeting_text');
       const date = new Date();
       const hours = date.getHours();
@@ -28,7 +26,7 @@ async function displayGreetings() {
     
     
       if (greetingsElement) {
-        greetingsElement.textContent = `${greeting}, Dave.`; 
+        greetingsElement.textContent = `${greeting}, `; 
       } else {
         console.log(`${greeting}, Dave`);
       }

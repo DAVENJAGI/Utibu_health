@@ -11,14 +11,14 @@
 
 #new_hospital{
     background: white;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     position: absolute;
     height: 82vh;
     margin-left: 1%;
     margin-top: 2vh;
     width: 98%;
     display: none;
-    box-shadow: 0px 0px 15px #464747;
+    box-shadow: 1px 0px 15px #464747;
     border-radius: 8px;
     z-index: 11;
 }
@@ -56,8 +56,8 @@
 .hosital_data_form{
     margin: 2%;
     padding-left: 1%;
-    border: 1px solid black;
-    box-shadow: 1px 2px 5px #464747;
+    /*border: 1px solid black;*/
+    box-shadow: 1px 1px 0px #464747;
 }
 
 .input{

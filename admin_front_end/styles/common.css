@@ -365,11 +365,12 @@ th, td {
   
 
 tbody tr:hover {
-    background: #38baee;
-    color: white;
+    /*background: #38baee;
+    color: white;*/
     font-weight: 500;
-    /*opacity: 0.4;*/
+    opacity: 0.7;
     transform: scale(1.001);
+    box-shadow: 1px 2px 3px #8c8f91;
 }
 
 #pagination{
