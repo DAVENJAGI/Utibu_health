@@ -1,10 +1,10 @@
 #content_div{
-    width: 96%;
-    /*display: block;*/
-    height: 85vh;
-    margin-left: 2.5%;
-    margin-bottom: 2.5vh;
-    margin-top: 1.5vh;
+    width: 97%;
+    display: block;
+    height: 84vh;
+    margin-left: 1.25%;
+    /*margin-bottom: 2.5vh;
+    /*margin-top: 1.5vh;*/
     background: white;
     box-shadow: 2px 1px 8px #8c8f91;
     /*width: 80%;
@@ -16,6 +16,56 @@
 
 #nav_div{
     border: solid 1px red;
-    margin: 2vw;
+    margin: 3px;
     margin-top: 2%;
+    height: 8vh;
+    display: flex;
+    column-gap: 80%;
+}
+
+#nav_arrow{
+    height: 100%;
+    width: 8%;
+    border: 1px solid red;
+    align-content: center;
+    text-align: center;
+    
+}
+#nav_arrow:hover{
+    color: #38baae;
+    transform: scale(1.05);
+}
+#edit_profile{
+    border: 1px red solid;
+    width: 15%;
+    align-content: center;
+    text-align: center;
+}
+#little_info{
+    border: solid 1px red;
+    height: 30%;
+    margin: 3vw;
+    margin-top: 2vh;
+}
+
+#people_info{
+    border: solid 1px red;
+    height: 50%;
+    margin: 3vw;
+    margin-top: 2vh;
+    display: flex;
+    column-gap: 40px;
+}
+
+#doctor_div{
+    border: solid 1px red;
+    width: 46%;
+    margin: 1%;
+    margin-left: 1.25%;
+}
+
+#patient_div{
+    border: solid 1px red;
+    width: 46%;
+    margin: 1%;
 }
