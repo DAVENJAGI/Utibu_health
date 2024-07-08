@@ -2,9 +2,6 @@
     background: #68c5ff;
     height: 100vh;
     width: 100vw;
-    /*border-radius: 50px;*/
-    border: 1px solid white;
-    align-items: center;
     background-image: linear-gradient(to bottom, #95bce2 0%, #3297df 100%);
     position: absolute;
     top: 0;
@@ -14,12 +11,10 @@
 
 #title_container{
     margin: 55px;
-    /*border: 1px solid black;*/
     text-align: center;
     font-size: xx-large;
     font-weight:bolder;
     position: relative;
-    background-image: linear-gradient(to left, #69b4e2 0%, #4094cf 50%, #78abcf 100%);
 }
 #top_text{
     color: white;
@@ -29,16 +24,13 @@
 
 #login_div{
     /*border: 1px white solid;*/
-    margin: 55px;
-    margin-top: 60px;
-    align-self: center;
-    height: 50%;
-    width: 70%;
-    align-items: center;
-    padding-top: 40px;
-    padding-left: 20vw;
-    position: absolute;
+    margin-top: 15vh;
+    height: 65vh;
+    width: 80%;
+    margin-left: 10%;
+    align-content: center;
 }
+
 #login_name{
     color: white;
     font-size: xx-large;
@@ -48,11 +40,12 @@
 }
 #login_div2{
     /*border: 1px solid red;*/
-    width: 75%;
+    width: 500px;
     height: 45vh;
     background-color: #60b9f0;
     box-shadow: 0px 0px 30px #0000003d;
     background-image: linear-gradient(to bottom, #3297df 0%, #95bce2 100%);
+    margin: auto;
 }
 #login_div2:hover{
     transform: scale(1.005);
@@ -80,7 +73,6 @@
     padding: 10px;
     text-align: center;
     margin-top: 8px;
-    background-image: linear-gradient(to left, #a3c6df 0%, #e2e2e2 100%);
     border: 1px solid #a3c6df;
     box-shadow: 2px 5px 8px #4697c9;
     border-radius: 7px;
@@ -98,7 +90,6 @@
     text-align: center;
     margin-top: 8px;
     border-radius: 7px;
-    background-image: linear-gradient(to left, #e2e2e2 0%,  #a3c6df 100%);
     box-shadow: 2px 5px 8px #4697c9;
     border: 1px solid #a3c6df;
 }
@@ -113,10 +104,14 @@
     margin-top: 7%;
     font-weight: bolder;
     font-size: 20px;
-    width: 40%;
+    width: 80px;
     color: white;
     height: 3.5vh;
     border-radius: 7px;
     border: 1.5px solid #1a415c;
     background-image: linear-gradient(to left, #69b4e2 0%, #388cc9 50%, #6ca4cc 100%);
+}
+#login_button:hover{
+    opacity: 0.80;
+    color: black;
 }
