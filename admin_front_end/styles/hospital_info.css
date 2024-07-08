@@ -1,0 +1,21 @@
+#content_div{
+    width: 96%;
+    /*display: block;*/
+    height: 85vh;
+    margin-left: 2.5%;
+    margin-bottom: 2.5vh;
+    margin-top: 1.5vh;
+    background: white;
+    box-shadow: 2px 1px 8px #8c8f91;
+    /*width: 80%;
+    display: flex;
+    align-items: center;
+    column-gap: 10%;*/
+
+}
+
+#nav_div{
+    border: solid 1px red;
+    margin: 2vw;
+    margin-top: 2%;
+}

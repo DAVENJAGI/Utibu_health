@@ -115,12 +115,93 @@
                 </div>
             </div>
 
+            <div id="new_doctor">
+                <div id="form_div">
+                    <div id="header_input">ADD NEW DOCTOR</div>
+                    
+                    <form id="newDoctorForm">
+                        <div id="feedback_info"></div>
+                        <div class="doctor_data_form">
+                            <label for="county_id" class="input_name">County:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="county_select" name="county_id" class="input" required>
+                                <option value="" id="option_select">Select County</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+                        <div class="doctor_data_form">
+                            <label for="constituency_id" class="input_name">Constituency:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="constituency_select" name="constituency_id" class="input" required>
+                                <option value="">Select Constituency</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+                        <div class="doctor_data_form">
+                            <label for="town_id" class="input_name">Ward:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="town_select" name="town_id" class="input" required>
+                                <option value="">Select Ward</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+                        <div class="doctor_data_form">
+                            <label for="hospital_id" class="input_name">Hospital:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="hospital_select" name="hospital_id" class="input" required>
+                                <option value="">Select Hospital</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+
+                        <div class="doctor_data_form">
+                            <label for="name" class="input_name">Doctor Name:</label> <br>
+                            <input type="text" id="name" class="input" name="name" required><br><br>
+                        </div>
+                        
+
+                        <div class="doctor_data_form">
+                            <label for="email" class="input_name">Email:</label><br>
+                            <input type="email" id="email" name="email" class="input" required><br><br>
+                        </div>
+                        <div class="doctor_data_form">
+                            <label for="password" class="input_name">Password:</label><br>
+                            <input type="text" id="latitude" name="license_no" class="input" required><br><br>
+                        </div>
+                        <div class="doctor_data_form" class="input_name">
+                            <label for="license_no" class="input_name">License No:</label><br>
+                            <input type="text" id="license_no" name="license_no" class="input" required><br><br>
+                        </div>
+                    </form>
+                    
+                </div>
+                <div id="exit_div">
+                    <div id="inner_exit_div">
+                        <div class="inner_button_div">
+                            <button id="exit_hospital_form_button" class="inner_exit_div_button" onclick="showAddNewDoctor()">Cancel</button>
+                        </div>
+                        <div class="inner_button_div">
+                            <button id="save_button" class="inner_exit_div_button" onclick="createNewDoctor()">ADD</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
             <div id="search_div">
                 <div id="search_bar">
                     <input type="text" id="search_input" placeholder="Search Doctor by first name....">
                     <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
                 </div>
-                <div id="add_new">+</div>
+                <div id="add_new" onclick="showAddNewDoctor()">+</div>
             </div>
             
             <div id="whole_body">

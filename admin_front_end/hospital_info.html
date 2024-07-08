@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/hospital_info.css">
+    <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
+    <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
+    <title>Hospital</title>
+</head>
+<body>
+    <div id="whole_container">
+
+        <!--SIDE PANEL-->
+        <div id="side_panel">
+            <div id="inner_side_bar">
+                <div id="title_name"> 
+                    <h1 id="title_text">Utibu Health</h1>
+                </div>
+                
+                <div id="items_in_sidebar">
+                    <div id="overview_div" class="items" onclick="routeHome()">
+                        <div id="dashboard_icon" class="icons"></div>
+                        <div id="dashboard_text" class="items_in_sidebar_text">
+                            <h2 id="overview_text" class="sidebar_text_text">Overview</h2>
+                        </div>
+                    </div>
+
+                    <div id="regions_div" class="items" onclick="routeRegions()">
+                        <div id="region_icon" class="icons">
+                            <i id="region_web_icon" class="fa fa-globe" aria-hidden="true" style="font-size: 50px; margin-left: 20%; margin-top: 8%;"></i>
+                        </div>
+                        <div id="region_text" class="items_in_sidebar_text">
+                            <h2 id="region_text" class="sidebar_text_text">Regions</h2>
+                        </div>
+                    </div>
+                    <div id="hospitals" class="items" onclick="routeHospitals()">
+                        <div id="hospitals_icon" class="icons">
+                            <i class="fa fa-h-square" aria-hidden="true" style="font-size: 50px; margin-left: 20%; margin-top: 8%;"></i>
+                        </div>
+                        <div id="hospital_text" class="items_in_sidebar_text">
+                            <h2 class="sidebar_text_text">Hospitals</h2>
+                        </div>
+                    </div>
+                    <div id="doctors" class="items" onclick="routeDoctors()">
+                        <div id="doctor_icon" class="icons">
+                            <i class="fa fa-user-md" aria-hidden="true" style="font-size: 50px; margin-left: 20%; margin-top: 8%;"></i>
+                        </div>
+                        <div id="doctor_text" class="items_in_sidebar_text">
+                            <h2 class="sidebar_text_text">Doctors</h2>
+                        </div>
+                    </div>
+                    <div id="patients" class="items" onclick="routePatients()">
+                        <div id="patient_icon" class="icons">
+                            <i class="fa fa-user" aria-hidden="true" style="font-size: 50px; margin-left: 20%; margin-top: 8%;"></i>
+                        </div>
+                        <div id="patient_text" class="items_in_sidebar_text">
+                            <h2 class="sidebar_text_text">Patients</h2>
+                        </div>
+                    </div>
+                    <div id="diseases" class="items" onclick="routeDiseases()">
+                        <div id="disease_icon" class="icons"></div>
+                        <div id="disease_text" class="items_in_sidebar_text">
+                            <h2 class="sidebar_text_text">Diseases</h2>
+                        </div>
+                    </div>
+                    <div id="medication" class="items" onclick="routeMedications()">
+                        <div id="medication_icon" class="icons"></div>
+                        <div id="medication_text" class="items_in_sidebar_text">
+                            <h2 class="sidebar_text_text">Medication</h2>
+                        </div>
+                    </div>
+                    <div id="appointments" class="items" onclick="routeAppointments()">
+                        <div id="appointment_icon" class="icons"></div>
+                        <div id="appointment_text" class="items_in_sidebar_text">
+                            <h2 class="sidebar_text_text">Appointments</h2>
+                        </div>
+                    </div>
+                    <div id="orders" class="items" onclick="routeOrders()">
+                        <div id="order_icon" class="icons"></div>
+                        <div id="order_text" class="items_in_sidebar_text">
+                            <h2 id="order_text" class="sidebar_text_text">Orders</h2>
+                        </div>
+                    </div>
+                    <div id="payment" class="items" onclick="routePayments()">
+                        <div id="payment_icon" class="icons"></div>
+                        <div id="payment_text" class="items_in_sidebar_text">
+                            <h2 class="sidebar_text_text">Payment</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTENT PAGE-->
+        <div id="content_container">
+            <div id="header">
+                <div id="greetings">
+                    <h2 id="greeting_text"></h2>
+                </div>
+                <div id="admin_div">
+                   <div id="admin_button" onclick="showDropdownDiv()">
+                        <i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 30px; text-align: center; align-content: center;"></i>
+                        <h4 id="admin_text">Admin</h4>
+                        <i class="fas fa-angle-down"></i>
+                   </div>
+                   <div id="dropdown_div">
+                    <div id="profile" class="dropdown"> Profile</div>
+                    <div id="logout" class="dropdown" onclick="logOut()"> LogOut</div>
+
+                   </div>
+                </div>
+            </div>
+        
+            <div id="content_div">
+                <div id="nav_div"></div>
+            </div>
+        
+        </div>
+    </div>
+    
+</body>
+</html>

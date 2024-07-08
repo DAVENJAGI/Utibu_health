@@ -61,12 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update the page number displayed
         pageNumSpan.textContent = currentPage;
 
-        // Disable buttons if on first or last page
         prevButton.disabled = currentPage === 1;
         nextButton.disabled = endIndex >= doctorData.length;
     }
 
-    // Fetch all counties data when DOM is loaded
     fetchAllDoctors();
 
 
@@ -111,4 +109,116 @@ document.addEventListener('DOMContentLoaded', () => {
             displayCurrentPage();
         }
     });
+
+// A FUNCTION TO SELECT COUNTY IN WHICH TO ADD HOSPITAL OBJECT TO IT.
+const countySelect = document.getElementById("county_select");
+const constituencySelect = document.getElementById("constituency_select");
+const townSelect = document.getElementById("town_select");
+const hospitalSelect = document.getElementById("hospital_select");
+
+// Function to fetch counties data from the API endpoint
+function fetchCounties() {
+  fetch("http://0.0.0.0:5000/api/v1/counties")
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(county => {
+        const option = document.createElement("option");
+        option.value = county.id; 
+        option.innerText = county.name;
+        countySelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Error fetching counties:", error));
+}
+console.log('finished fetching counties')
+
+// Function to fetch towns data based on the selected county
+console.log('starting to fetch constituencies based on counties')
+function fetchConstituencies(countyId) {
+    fetch(`http://0.0.0.0:5000/api/v1/county/${countyId}/constituencies`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('Fetched Consts', data);
+      constituencySelect.disabled = false; 
+      constituencySelect.innerHTML = "";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.innerText = "Select Constituency";
+      constituencySelect.appendChild(defaultOption);
+      data.forEach(constituency => {
+        const option = document.createElement("option");
+        option.value = constituency.id;
+        option.innerText = constituency.constituency_name;
+        constituencySelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Error fetching constituencies:", error));
+}
+  console.log('Successfully fetched Constituencies');
+
+//FUNCTION TO FETCH WARD BASED ON CONSTITUENCY
+console.log('Starting to fetch Wards');
+function fetchTowns(constituencyId) {
+  fetch(`http://0.0.0.0:5000/api/v1/constituency/${constituencyId}/wards`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('Fetched Wards', data);
+      townSelect.disabled = false;
+      townSelect.innerHTML = "";
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.innerText = "Select Ward";
+      townSelect.appendChild(defaultOption);
+      data.forEach(town => {
+        const option = document.createElement("option");
+        option.value = town.id;
+        option.innerText = town.town_name;
+        townSelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Error fetching towns:", error));
+}
+console.log("finished fetching Wards");
+fetchCounties();
+
+// Event listeners for county selection change and constituency selection change.
+countySelect.addEventListener("change", function() {
+  const countyId = this.value;
+  if (countyId) {
+    fetchConstituencies(countyId);
+  } else {
+    constituencySelect.disabled = true;
+    constituencySelect.innerHTML = ""; 
+  }
+});
+
+constituencySelect.addEventListener("change", function() {
+    const constituencyId = this.value;
+    if (constituencyId) {
+      fetchTowns(constituencyId);
+    } else {
+      townSelect.disabled = true; 
+      townSelect.innerHTML = "";
+    }
+  });
+
+
+
+
+});
+
+
+function showAddNewDoctor() {
+    const showAddNewForm = document.getElementById('new_doctor');
+  
+     
+    if (showAddNewForm.style.display === 'none') {
+      showAddNewForm.style.display = 'block';
+    } else {
+      showAddNewForm.style.display = 'none';
+    }
+  } window.onload = showAddNewHospital();
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    showAddNewHospital();
 });
