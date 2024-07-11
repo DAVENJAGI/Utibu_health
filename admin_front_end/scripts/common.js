@@ -49,4 +49,8 @@ function routePayments() {
   window.location.href = "payments.html";
 }
 
-console.log('routes running succesfuly!!');
+function goBackToHospitals() {
+  window.location.href = "hospitals.html";
+}
+
+console.log('Functions running succesfuly!!');

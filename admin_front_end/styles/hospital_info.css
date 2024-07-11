@@ -1,32 +1,47 @@
+#hospitals{
+    background-color: aliceblue;
+    color: black;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    transform: scale(1.04);
+}
+#hospital_text{
+    color: orange;
+}
 #content_div{
-    width: 97%;
+    position: relative;
+    top: 0;
+    width: 99.9%;
     display: block;
-    height: 84vh;
-    margin-left: 1.25%;
+    height: 87.725vh;
+    /*margin-left: 1.25%;*/
     /*margin-bottom: 2.5vh;
     /*margin-top: 1.5vh;*/
-    background: white;
+    background: aliceblue;
     box-shadow: 2px 1px 8px #8c8f91;
-    /*width: 80%;
-    display: flex;
-    align-items: center;
-    column-gap: 10%;*/
+    overflow: auto;
+    /*border: 1px solid red;*/
 
 }
 
 #nav_div{
-    border: solid 1px red;
-    margin: 3px;
-    margin-top: 2%;
+    /*border: solid 1px red;*/
+    /*margin: 3px;*/
+    /*margin-top: 2%;*/
     height: 8vh;
+    width: 100%;
     display: flex;
     column-gap: 80%;
+    background-color: white;
+    /*border-top-left-radius: 10px;
+    border-top-right-radius: 10px;*/
+    box-shadow: 1px 1px 5px #8c8f91;
 }
 
 #nav_arrow{
     height: 100%;
     width: 8%;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     align-content: center;
     text-align: center;
     
@@ -36,36 +51,190 @@
     transform: scale(1.05);
 }
 #edit_profile{
-    border: 1px red solid;
+    /*border: 1px red solid;*/
     width: 15%;
     align-content: center;
     text-align: center;
+    font-size: 20px;
+}
+#edit_profile:hover{
+    color: #38baae;
+    transform: scale(1.05);
 }
 #little_info{
-    border: solid 1px red;
-    height: 30%;
+    /*border: solid 1px red;*/
+    height: 40%;
     margin: 3vw;
     margin-top: 2vh;
+    display: flex;
+    background-color: rgb(242, 249, 255);
+    box-shadow: 1px 1px 3px #8c8f91;
 }
 
 #people_info{
-    border: solid 1px red;
+    /*border: solid 1px red;*/
     height: 50%;
     margin: 3vw;
     margin-top: 2vh;
     display: flex;
     column-gap: 40px;
+    box-shadow: 1px 1px 3px #8c8f91;
 }
 
 #doctor_div{
-    border: solid 1px red;
+    /*border: solid 1px red;*/
     width: 46%;
     margin: 1%;
     margin-left: 1.25%;
+    background: white;
+    overflow: auto;
+    border-radius: 8px;
+    box-shadow: 1px 1px 3px #8c8f91;
 }
 
 #patient_div{
     border: solid 1px red;
     width: 46%;
     margin: 1%;
+}
+
+#hospital_name{
+    /*border: solid 1px red;*/
+    margin: 15px;
+    width: 250px;
+    /*box-shadow: 1px 1px 3px #8c8f91;*/
+}
+#hospital_icon_1{
+    /*border: 1px solid red;*/
+    margin: 12px;
+    height: 55%;
+    background-color: white;
+    border-radius: 8px;
+    align-content: center;
+    box-shadow: 1px 1px 8px #8c8f91;
+}
+#h_icon{
+    border: 1px solid #d8d8d8;
+    border-radius: 50%;
+    height: 90%;
+    width: 70%;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+    color: #d8d8d8;
+    background-color: aliceblue;
+    /*box-shadow: -0px -1px 2px #8c8f91;*/
+}
+#hospital_name_text{
+    /*border: solid red 1px;*/
+    margin: 12px;
+    height: 30%;
+    align-content: center;
+    text-align: center;
+    font-weight: 900;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 1px 1px 8px #8c8f91;
+}
+#hospital_name_text_1{
+    /*border: solid red 1px;*/
+    height: 80%;
+    width: 80%;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+    font-weight: 900;
+    background-color: white;
+    border-radius: 8px;
+}
+
+#description_div{
+    /*border: solid 1px red;*/
+    margin: 15px;
+    margin-left: 5%;
+    width: 80%;
+    display: block;
+}
+#short_description{
+    border: solid 1px #8c8f91;
+    margin: 15px;
+    width: 90%;
+    height: 60%;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 1px 1px 6px #8c8f91;
+}
+#short_description_text{
+    /*border: solid 1px red;*/
+    margin: 15px;
+    height: 75%;
+    padding: 10px;
+    overflow: auto;
+    font-size: 18px;
+    word-spacing: 1px;
+    
+}
+
+#short_info{
+    /*border: solid 1px red;*/
+    margin-right: 8%;
+    width: 175px;
+    height: 25%;
+    align-content: center;
+    background: white;
+    float: right;
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px #8c8f91;
+}
+
+#del_hosp{
+    border: solid 1px red;
+    width: 150px;
+    height: 40px;
+    float: right;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    color: white;
+    background-color: #38baae;
+    background: red;
+}
+#del_hosp:hover{
+    opacity: 0.85;
+    color: black;
+    transform: scale(1.02);
+    box-shadow: 1px 1px 6px #8c8f91;
+}
+#trash_icon{
+    border: solid 1px red;
+    height: 100%;
+    width: 35%;
+    align-content: center;
+    
+}
+#delete_icon{
+    border: solid 1px red;
+    width: 80%;
+    height: 80%;
+    margin-left: 10%;
+    align-content: center;
+    font-size: 16px;
+    background-color: aliceblue;
+    color: #c5c5c5;
+    border-radius: 50%;
+    font-weight: 900;
+    
+}
+
+#trash_text{
+    border: solid 1px red;
+    height: 35px;
+    width: 80%;
+    align-content: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+.hover_div:hover{
+    transform: scale(1.02);
 }

@@ -222,6 +222,7 @@
     box-shadow: 2px 5px 8px #b7bbbd;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+    z-index: 11;
 }
 .dropdown:hover{
     background: #f0f4f8;
