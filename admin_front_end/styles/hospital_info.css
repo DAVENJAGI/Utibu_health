@@ -10,14 +10,15 @@
 }
 #content_div{
     position: relative;
-    top: 0;
-    width: 99.9%;
+    margin-top: 0;
+    width: 100%;
     display: block;
     height: 87.725vh;
     /*margin-left: 1.25%;*/
     /*margin-bottom: 2.5vh;
     /*margin-top: 1.5vh;*/
     background: aliceblue;
+    /*background: white;*/
     box-shadow: 2px 1px 8px #8c8f91;
     overflow: auto;
     /*border: 1px solid red;*/
@@ -32,10 +33,11 @@
     width: 100%;
     display: flex;
     column-gap: 80%;
-    background-color: white;
+    border-bottom: #8c8f91;
+    /*background-color: white;*/
     /*border-top-left-radius: 10px;
     border-top-right-radius: 10px;*/
-    box-shadow: 1px 1px 5px #8c8f91;
+    /*box-shadow: 1px 1px 5px #8c8f91;*/
 }
 
 #nav_arrow{
@@ -67,7 +69,8 @@
     margin: 3vw;
     margin-top: 2vh;
     display: flex;
-    background-color: rgb(242, 249, 255);
+    /*background-color: rgb(242, 249, 255);*/
+    background: white;
     box-shadow: 1px 1px 3px #8c8f91;
 }
 
@@ -93,9 +96,12 @@
 }
 
 #patient_div{
-    border: solid 1px red;
+    /*border: solid 1px red;*/
     width: 46%;
     margin: 1%;
+    background: white;
+    box-shadow: 2px 1px 8px #8c8f91;
+    border-radius: 8px;
 }
 
 #hospital_name{
@@ -237,4 +243,17 @@
 }
 .hover_div:hover{
     transform: scale(1.02);
+}
+
+#doctors_title{
+    /*border: solid 1px red;*/
+    font-size: 22px;
+    font-weight: 700;
+    margin: 15px;
+    margin-left: 15px;
+    color: #38baae;
+}
+
+#graph{
+    
 }
