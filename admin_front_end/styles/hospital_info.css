@@ -25,25 +25,27 @@
 
 }
 
-#nav_div{
+#profile_background{
     /*border: solid 1px red;*/
-    /*margin: 3px;*/
-    /*margin-top: 2%;*/
-    height: 8vh;
-    width: 100%;
-    display: flex;
-    column-gap: 80%;
-    border-bottom: #8c8f91;
-    /*background-color: white;*/
-    /*border-top-left-radius: 10px;
-    border-top-right-radius: 10px;*/
-    /*box-shadow: 1px 1px 5px #8c8f91;*/
+    height: 45%;
+    display: block;
 }
-
+#hosp_title{
+    /*border: 1px solid red;*/
+    display: flex;
+    height: 12%;
+    align-content: center;
+    margin: 1%;
+    font-size: 20px;
+    font-weight: 900;
+    color: #1a6860;
+}
 #nav_arrow{
     height: 100%;
+    margin-top: 0;
     width: 8%;
     /*border: 1px solid red;*/
+    border-right: solid 1px #d8d8d8;
     align-content: center;
     text-align: center;
     
@@ -52,8 +54,303 @@
     color: #38baae;
     transform: scale(1.05);
 }
-#edit_profile{
+
+#title_header{
+    /*border: solid red 1px;*/
+    align-content: center;
+    margin-left: 30%;
+}
+
+
+#backgrond_photo{
+    position: relative;
+    border: 2px solid white;
+    height: 12%;
+    /*align-content: center;*/
+    margin: 1%;
+    height: 75%;
+    background-image: url("../icons/best-hospital-for-infectious-disease-in-kochi.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#inner_div{
+    position: relative;
+    /*: solid 1px red;*/
+    height: 20%;
+    margin-top: 23vh;
+    align-content: center;
+}
+
+#edit_text{
+    width: 30%;
+    font-size: 15px;
+}
+#profile_photo{
+    position: absolute;
+    border: solid 2px white;
+    height: 150px;
+    width: 150px;
+    margin: 2%;
+    margin-top: 18vh;
+    margin-left: 5%;
+    border-radius: 50%;
+}
+#profile_photo:hover{
+    transform: scale(1.01);
+}
+#hospital_icon_1{
+    /*border: 1px solid red;*/
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: rgb(248, 248, 248);
+    /*border-radius: ;*/
+    align-content: center;
+}
+#h_icon{
+    border: 1px solid #d8d8d8;
+    border-radius: 95%;
+    height: 90%;
+    width: 95%;
+    margin: auto;
+    align-content: center;
+    text-align: center;
+    color: #d8d8d8;
+    background-color: aliceblue;
+    /*box-shadow: -0px -1px 2px #8c8f91;*/
+}
+
+/*NAVIGATION PANEL DIVS*/
+
+#navigation_panel{
+    /*border: solid 1px red;*/
+    height: 9%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    /*position: sticky;
+    top: 0;*/
+    
+}
+#inner_nav_panel{
+    
+    border: solid 1px #cfcfcf;
+    margin: 1%;
+    margin-top: 10px;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    gap: 12%;
+    background: white;
+}
+.route{
+    /*border: 1px solid red;*/
+    margin: 5px;
+    text-align: center;
+    align-content: center;
+    color: #1a6860;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.route:hover{
+    color: #38baae;
+}
+
+/*ABOUT HOSPITAL DIV*/
+
+#about_div{
+    /*border: 1px solid red;*/
+    height: 50%;
+    margin-top: 1%;
+    
+}
+#about_div_header{
+    background: white;
+    /*border: solid 1px red;*/
+    border-top: solid 3px #1a6860;
+    border-bottom: 1px solid #cfcfcf;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin: 1%;
+    height: 20%;
+    display: flex;
+    gap: 2%;
+    color: #1a6860;
+    margin-bottom: 0px;
+}
+#head_text{
     /*border: 1px red solid;*/
+    width: 50%;
+    align-content: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+#txt_hosp{
+    margin: 1%;
+}
+
+#edit_text{
+    /*border: 1px red solid;*/
+    width: 50%;
+    align-content: center;
+}
+#edit_button{
+    display: flex;
+    float: right;
+    height: 40px;
+    width: 40px;
+    margin-right: 2%;
+    justify-content: center;
+    align-items: center;
+    background: #1a6860;
+    border-radius: 8px;
+    border: 1px #1a6860 solid;
+    color: white;
+}
+#edit_button:hover{
+    background: black;
+}
+
+#about_content{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    margin-top: 0px;
+    height: 72.5%;
+    background: white;
+    display: flex;
+    overflow: auto;
+}
+
+.about_content_inner{
+    /*border: 1px solid red;*/
+    width: 50%;
+    display: block;
+    overflow: auto;
+}
+.about_content_data{
+    /*border: 1px solid red;*/
+    border-bottom: solid 1px #cfcfcf;
+    margin: 1%;
+    height: 25%;
+    margin-bottom: 1%;
+    display: flex;
+}
+.data_name{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    width: 30%;
+    align-content: center;
+    text-align: center;
+    word-spacing: 2px;
+    font-weight: 600;
+    color: #1a6860;
+    overflow-x: auto;
+}
+.data_data{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    width: 70%;
+    align-content: center;
+    text-align: center;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow-x: auto;
+}
+
+/*DESCRIPTION DIV*/
+
+#hosp_description{
+    /*border: solid 1px red;*/
+    margin-top: 3%;
+    height: 30%;
+    overflow: auto;
+}
+#short_description{
+    border: 1px solid white;
+    margin: 1%;
+    margin-top: 0;
+    height: 70%;
+    background-color: white;
+    /*box-shadow: 1px 1px 6px #8c8f91;*/
+}
+#short_description_text{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    height: 70%;
+    padding: 10px;
+    padding-top: 15px;
+    overflow: auto;
+    font-size: 18px;
+    word-spacing: 1px;
+    
+}
+
+/*DOCTORS DIV */
+#hosp_doctors{
+    /*border: solid 1px red;*/
+    margin-top: 1%;
+    height: 60%;
+    overflow: auto;
+    
+}
+#about_div_header_1{
+    background: white;
+    /*border: solid 1px red;*/
+    border-bottom: 1px solid #cfcfcf;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin: 1%;
+    height: 20%;
+    display: flex;
+    gap: 2%;
+    color: #1a6860;
+    margin-bottom: 0px;
+}
+#doctor_div{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    margin-left: 1.25%;
+    background: white;
+    overflow: auto;
+    height: 100%;
+    /*border-radius: 8px;*/
+    box-shadow: 1px 1px 3px #8c8f91;
+    border-top: solid 3px #1a6860;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+#doctors_title{
+    border: solid 1px red;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 1%;
+    margin-left: 15px;
+    color: #1a6860;
+}
+
+
+/* COMMENTED OUT */
+
+/*
+
+#nav_div{
+    /*border: solid 1px red;
+    /*margin: 3px;*
+    /*margin-top: 2%;
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    column-gap: 80%;
+    /*background-color: white;
+    /*border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /*box-shadow: 1px 1px 5px #8c8f91;
+}
+
+
+
+#edit_profile{
+    /*border: 1px red solid;
     width: 15%;
     align-content: center;
     text-align: center;
@@ -64,18 +361,18 @@
     transform: scale(1.05);
 }
 #little_info{
-    /*border: solid 1px red;*/
+    /*border: solid 1px red;
     height: 40%;
     margin: 3vw;
     margin-top: 2vh;
     display: flex;
-    /*background-color: rgb(242, 249, 255);*/
+    /*background-color: rgb(242, 249, 255);
     background: white;
     box-shadow: 1px 1px 3px #8c8f91;
 }
 
 #people_info{
-    /*border: solid 1px red;*/
+    /*border: solid 1px red;
     height: 50%;
     margin: 3vw;
     margin-top: 2vh;
@@ -84,19 +381,9 @@
     box-shadow: 1px 1px 3px #8c8f91;
 }
 
-#doctor_div{
-    /*border: solid 1px red;*/
-    width: 46%;
-    margin: 1%;
-    margin-left: 1.25%;
-    background: white;
-    overflow: auto;
-    border-radius: 8px;
-    box-shadow: 1px 1px 3px #8c8f91;
-}
 
 #patient_div{
-    /*border: solid 1px red;*/
+    /*border: solid 1px red;
     width: 46%;
     margin: 1%;
     background: white;
@@ -105,34 +392,14 @@
 }
 
 #hospital_name{
-    /*border: solid 1px red;*/
+    border: solid 1px red;
     margin: 15px;
     width: 250px;
-    /*box-shadow: 1px 1px 3px #8c8f91;*/
 }
-#hospital_icon_1{
-    /*border: 1px solid red;*/
-    margin: 12px;
-    height: 55%;
-    background-color: white;
-    border-radius: 8px;
-    align-content: center;
-    box-shadow: 1px 1px 8px #8c8f91;
-}
-#h_icon{
-    border: 1px solid #d8d8d8;
-    border-radius: 50%;
-    height: 90%;
-    width: 70%;
-    margin: auto;
-    align-content: center;
-    text-align: center;
-    color: #d8d8d8;
-    background-color: aliceblue;
-    /*box-shadow: -0px -1px 2px #8c8f91;*/
-}
+
+
 #hospital_name_text{
-    /*border: solid red 1px;*/
+    /*border: solid red 1px;
     margin: 12px;
     height: 30%;
     align-content: center;
@@ -143,7 +410,7 @@
     box-shadow: 1px 1px 8px #8c8f91;
 }
 #hospital_name_text_1{
-    /*border: solid red 1px;*/
+    /*border: solid red 1px;
     height: 80%;
     width: 80%;
     margin: auto;
@@ -155,34 +422,16 @@
 }
 
 #description_div{
-    /*border: solid 1px red;*/
+    /*border: solid 1px red;
     margin: 15px;
     margin-left: 5%;
     width: 80%;
     display: block;
 }
-#short_description{
-    border: solid 1px #8c8f91;
-    margin: 15px;
-    width: 90%;
-    height: 60%;
-    background-color: white;
-    border-radius: 7px;
-    box-shadow: 1px 1px 6px #8c8f91;
-}
-#short_description_text{
-    /*border: solid 1px red;*/
-    margin: 15px;
-    height: 75%;
-    padding: 10px;
-    overflow: auto;
-    font-size: 18px;
-    word-spacing: 1px;
-    
-}
+
 
 #short_info{
-    /*border: solid 1px red;*/
+    /*border: solid 1px red;
     margin-right: 8%;
     width: 175px;
     height: 25%;
@@ -242,18 +491,9 @@
     font-weight: 700;
 }
 .hover_div:hover{
-    transform: scale(1.02);
+    transform: scale(1.0);
 }
-
-#doctors_title{
-    /*border: solid 1px red;*/
-    font-size: 22px;
-    font-weight: 700;
-    margin: 15px;
-    margin-left: 15px;
-    color: #38baae;
-}
-
 #graph{
     
 }
+*/

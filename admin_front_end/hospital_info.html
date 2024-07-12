@@ -117,6 +117,136 @@
             </div>
         
             <div id="content_div">
+                <div id="profile_background">
+                    <div id="hosp_title">
+                        <div id="nav_arrow" onclick="goBackToHospitals()"><i class="fa fa-arrow-left" aria-hidden="true" style="font-size: 30px;"></i></div>
+                        <div id="title_header">***** Hospital Profile ***** </div>
+                    </div>
+                    
+                    <div id="backgrond_photo">
+                        <div id="profile_photo">
+                            <div id="hospital_icon_1" class="hover_div">
+                                <div id="h_icon"><i class="fa fa-h-square" aria-hidden="true" style="font-size: 75px;"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="navigation_panel">
+                    <div id="inner_nav_panel">
+                        <a id="home_route" class="route" href=#profile_background>Home</a>
+                        <a id="hospital_info_route" class="route" href=#about_div>Hospital Information</a>
+                        <a id="hospital_route" class="route" href=#hosp_description>Hospital Description</a>
+                        <a id="doctors_route" class="route" href=#hosp_doctors>Doctors</a>
+                    </div>
+                </div>
+                <div id="about_div">
+                    <div id="about_div_header">
+                        <div id="head_text">
+                            <h3 id="txt_hosp"> About Hospital</h2>
+                        </div>
+                        <div id="edit_text">
+                            <button id="edit_button" class="button_text"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <div id="about_content">
+                        <div class="about_content_inner">
+                            <div class="about_content_data">
+                                <div id="hopital_name" class="data_name">Hospital Name:</div>
+                                <div id="name_data" class="data_data"> </div>
+                            </div>
+                            <div class="about_content_data">
+                                <div id="" class="data_name"> Hospital Email:</div>
+                                <div id="hospital_email" class="data_data"></div>
+                            </div>
+                            <div class="about_content_data">
+                                <div id="" class="data_name">Doctors:</div>
+                                <div id="dkt_num" class="data_data"></div>
+                            </div>
+                            <div class="about_content_data">
+                                <div id="" class="data_name">County:</div>
+                                <div id="county_name" class="data_data"></div>
+                            </div>
+                        </div>
+                        <div class="about_content_inner">
+                            <div class="about_content_data">
+                                <div id="" class="data_name">Constituency Found:</div>
+                                <div id="const_name" class="data_data"></div>
+                            </div>
+                            <div class="about_content_data">
+                                <div id="" class="data_name">Town Found:</div>
+                                <div id="town_name" class="data_data"></div>
+                            </div>
+                            <div class="about_content_data">
+                                <div id="" class="data_name">Longitude:</div>
+                                <div id="hosp_longitude" class="data_data"></div>
+                            </div>
+                            <div class="about_content_data">
+                                <div id="" class="data_name">Latitude:</div>
+                                <div id="hosp_latitude" class="data_data"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="hosp_description">
+                    <div id="about_div_header">
+                        <div id="head_text">
+                            <h3 id="txt_hosp">Hospital Description</h2>
+                        </div>
+                        <div id="edit_text">
+                            <button id="edit_button" class="button_text"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <div id="short_description" class="hover_div">
+                        <div id="short_description_text">At the forefront of specialized care, Apex Conic Institute is a beacon of hope for those living with conic diseases.  Our team of world-renowned ophthalmologists diagnoses and treats a full spectrum of corneal conditions, from keratoconus to Fuchs' dystrophy.  We offer advanced technology like corneal topography and wavefront aberrometry for precise diagnosis.  Our treatment options include everything from corneal collagen cross-linking to endothelial keratoplasty, all delivered in a compassionate and supportive environment.  Don't let your vision dim – contact Apex Conic Institute today</div>
+                    </div>
+                    
+                </div>
+
+                <div id="hosp_doctors">
+                    <div id="doctor_div">
+                        <div id="about_div_header_1">
+                            <div id="head_text">
+                                <h3 id="txt_hosp"> Doctors</h2>
+                            </div>
+                        </div>
+                        <div id="search_div" style="height: 6vh;">
+                            <div id="search_bar">
+                                <input type="text" id="search_input" style="font-size: 18px;" placeholder="Search Doctor by first name....">
+                                <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                            </div>
+                        </div>
+
+                        <div id="content">
+                            <div id="tables_content">
+                                <table id="myTable">
+                                  <thead id="table_head">
+                                        <tr id="">
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>License Number</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+        
+                            </div>
+                            <div id="pagination">
+                                <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
+                                <span id="page-num"></span>
+                                <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <!--
                 <div id="nav_div">
                     <div id="nav_arrow" onclick="goBackToHospitals()"><i class="fa fa-arrow-left" aria-hidden="true" style="font-size: 30px;"></i></div>
                     <div id="edit_profile">Edit Hospital</div>
@@ -145,6 +275,7 @@
                     </div>
                     
                 </div>
+            
 
                 <div id="people_info">
                     <div id="doctor_div">
@@ -188,6 +319,7 @@
                         <div id="graph"></div>
                     </div>
                 </div>
+            -->
             </div>
         
         </div>

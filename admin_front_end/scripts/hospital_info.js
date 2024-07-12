@@ -20,12 +20,53 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             console.log("API data:", data);
-            const hospitalName = document.getElementById('hospital_name_text_1');
             
-
+            const hospitalName = document.getElementById('name_data');
+            const hospitalEmail = document.getElementById('hospital_email');
+            const hospitalLogitude = document.getElementById('hosp_longitude');
+            const hospitalLatitude = document.getElementById('hosp_latitude');
+            
+            
+      
             hospitalName.textContent = data.name;
+            hospitalEmail.textContent = data.email;
+            hospitalLogitude.textContent = data.longitude;
+            hospitalLatitude.textContent = data.latitude;
+
+            const requestTown = `http://0.0.0.0:5000/api/v1/ward/${data.town_id}`;
+            return fetch(requestTown);
+        })
+        .then(response => response.json())
+        .then(townData => {
+          console.log("Town API data:", townData);
+
+          const hospitalTown = document.getElementById('town_name');
+          hospitalTown.textContent = townData.town_name;
+
+          const requestConstituency = `http://0.0.0.0:5000/api/v1/constituency/${townData.constituency_id}`;
+          return fetch(requestConstituency);
 
         })
+        .then(response => response.json())
+        .then(constituencyData => {
+          console.log("Constituency API data:", constituencyData);
+
+          const hospitalConstituency = document.getElementById('const_name');
+          hospitalConstituency.textContent = constituencyData.constituency_name;
+
+          const requestCounty = `http://0.0.0.0:5000/api/v1/county/${constituencyData.county_id}`;
+          return fetch(requestCounty);
+        })
+        .then(response => response.json())
+        .then(countyData => {
+          console.log("County API data:", countyData);
+
+          const hospitalCounty = document.getElementById('county_name');
+          hospitalCounty.textContent = countyData.name;
+        })
+        
+
+
         .catch(error => {
             console.error("Error fetching data:", error);
         });
@@ -41,8 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(data => {
-                doctorData = data; // Store all counties data
-                displayCurrentPage(); // Display initial page
+                doctorData = data;
+                const doctorNumber = doctorData.length;
+                const doctorInHospital = document.getElementById('dkt_num');
+                doctorInHospital.textContent = doctorNumber;
+                console.log(doctorNumber);
+                displayCurrentPage();
             })
             .catch(error => {
                 console.error("Error fetching data:", error);

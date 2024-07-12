@@ -30,6 +30,22 @@ def get_county_by_id(county_id):
         abort(400) 
     return jsonify(county.to_dict())
 
+@app_views.route("/ward/<string:ward_id>", methods=['GET'], strict_slashes=False)
+def get_ward_by_id(ward_id):
+    """get a specific town by town_id"""
+    town = storage.get(Town, ward_id)
+    if town is None:
+        abort(400) 
+    return jsonify(town.to_dict())
+@app_views.route("/constituency/<string:constituency_id>", methods=['GET'], strict_slashes=False)
+def get_constituency_by_id(constituency_id):
+    """get a specific constituency by id"""
+    const = storage.get(Constituency, constituency_id)
+    if const is None:
+        abort(400)
+    return jsonify(const.to_dict())
+
+
 # GETS ALL WARDS AND CONSTITUENCIES PRESENT IN A CERTAIN COUNTY
 @app_views.route("/county/<string:county_id>/wards", methods=['GET'], strict_slashes=False)
 def get_wards_by_county_id(county_id):
