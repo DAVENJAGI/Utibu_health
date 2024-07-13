@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const requestUrl = 'http://0.0.0.0:5000/api/v1/users'; // Replace with your actual API endpoint
+    const urlParams = new URLSearchParams(window.location.search);
+    const doctorId = urlParams.get('doctorId');
+
+    const requestDoctor = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}`;
+    const requestDoctorPatients = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/patients`;
     const pageSize = 10; // Number of items to display per page
     let currentPage = 1;
-    let userData = []; // Array to store all counties data
+    let doctorData = []; // Array to store all counties data
 
     // DOM elements
     const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
@@ -10,9 +14,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
 
-    // Function to fetch all counties data
+
+    fetch(requestDoctor)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Doctor API data:", data);
+            
+            const firstName = document.getElementById('first_name');
+            const lastName = document.getElementById('last_name');
+            const userEmail = document.getElementById('dkt_email');
+            const dateOfBirth = document.getElementById('hospital_assigned');
+            const licenseNumber = document.getElementById('license_no');
+            
+      
+            firstName.textContent = data.first_name;
+            lastName.textContent = data.last_name
+            userEmail.textContent = data.email;
+            dateOfBirth.textContent = data.date_of_birth;
+            licenseNumber.textContent = data.license_no;
+
+            const requestHospital = `http://0.0.0.0:5000/api/v1/hospital/${data.hospital_id}`;
+            return fetch(requestHospital);
+        })
+        .then(response => response.json())
+        .then(hospitalData => {
+          console.log("Doctor API data:", doctorData);
+          const assignedHospital = document.getElementById('hospital_assigned');
+
+          assignedHospital.textContent = hospitalData.name;
+
+        })
+
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    
+
+    // STARTING TO FETCH USERS
     function fetchAllUsers() {
-        fetch(requestUrl)
+        fetch(requestDoctorPatients)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -49,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageUser.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
                 <td>${user.email}</td>
@@ -66,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.disabled = endIndex >= userData.length;
     }
 
-    // Fetch all counties data when DOM is loaded
+    // FETCHING ALL USERS WITH THAT NAME
     fetchAllUsers();
 
 
@@ -83,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredUsers.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
                 <td>${user.email}</td>
@@ -111,12 +149,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    tableBody.addEventListener('click', (event) => {
-        if (event.target.tagName !== 'TD') return;
-
-        const clickedRow = event.target.parentNode;
-        const userId = clickedRow.cells[0].textContent;
-
-        window.location.href = `user_profile.html?userId=${userId}`;
-    });
 });

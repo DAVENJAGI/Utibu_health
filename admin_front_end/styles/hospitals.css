@@ -9,46 +9,76 @@
     color: orange;
 }
 
+
 #new_hospital{
-    background: white;
+    background: aliceblue;
     /*border: 1px solid red;*/
     position: absolute;
-    height: 82vh;
-    margin-left: 1%;
-    margin-top: 2vh;
-    width: 98%;
+    height: 87.725vh;
+    /*margin-left: 1%;*/
+    /*margin-top: 2vh;*/
+    width: 100%;
     display: none;
-    box-shadow: 1px 0px 15px #464747;
-    border-radius: 8px;
-    z-index: 11;
+    /*border-radius: 8px;*/
+    z-index: 8;
 }
 #header_input{
     /*border: solid 1px red;*/
-    height: 5%;
+    height: 8%;
     text-align: center;
     align-content: center;
     font-weight: 900;
     font-size: 24px;
+    color: #1a6860;
+    display: flex;
+    border-top: 2px solid #1a6860;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: solid 1px #b4b4b4;
+} 
+#back_arrow{
+    /*border: 1px solid red;*/
+    width: 8%;
+    align-content: center;
+}
+#back_arrow:hover{
     color: #38baee;
+    transform: scale(1.05);
+}
+#new_hosp_header{
+    /*border: solid 1px red;*/
+    width: 100%;
+    align-content: center;
 }
 
 #exit_div{
     /*border: solid 1px red;*/
     margin: 2%;
+    margin-top: 1%;
     height: 10%;
+    border-top: 1px solid #1a6860;
+    justify-content: center;
+    align-content: center;
 }
 #form_div{
-    /*border: 1px solid red;*/
+    /*border: 1px solid black;*/
     margin: 2%;
-    height: 80%;
+    height:83vh;
+    margin-top: 3%;
+    background-color: white;
+    overflow: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 1px 1px 3px #464747;
     
 }
-
+/*#1a6860*/*
 #newHospitalForm{
-    border: 1px dashed #38baee;
+    /*border: 1px solid red;*/
     margin: 2%;
     margin-top: 1%;
-    height: 90%;
+    margin-bottom: 2%;
+    height: 64vh;
     overflow: auto;
     border-radius: 8px;
     
@@ -56,8 +86,8 @@
 .hosital_data_form{
     margin: 2%;
     padding-left: 1%;
-    /*border: 1px solid black;*/
-    box-shadow: 1px 1px 0px #464747;
+    border: 0.5px solid #b4b4b4;
+    /*box-shadow: 1px 1px 0px #464747;*/
 }
 
 .input{
@@ -68,6 +98,7 @@
 }
 .input_name{
     font-size: 24px;
+    color: #1a6860;
 }
 
 #inner_exit_div {
@@ -86,10 +117,7 @@
     font-size: 24px;
 
 }
-.inner_exit_div_button:hover{
-    transform: scale(1.001);
-    box-shadow: 2px 1px 8px #8c8f91;
-}
+
 .inner_button_div{
     /*border: 1px solid red;*/
     width: 50%;
@@ -100,15 +128,22 @@
     color: white;
     background: red;
     border: 1px solid red;
-    border-radius: 8px;
+    border-radius: 5px;
     overflow:hidden;
+}
+#exit_hospital_form_button:hover{
+    transform: scale(1.01);
 }
 
 #save_button{
-    color: black;
-    background: #38baee;
-    border: 1px solid #38baee;
-    border-radius: 8px;
+    color: white;
+    background: #1a6860;
+    border: 1px solid #1a6860;
+    border-radius: 5px;
+}
+#save_button:hover{
+    transform: scale(1.01);
+    background-color: black;
 }
 #county_select{
     background-color: white;

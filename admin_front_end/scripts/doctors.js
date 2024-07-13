@@ -110,6 +110,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    tableBody.addEventListener('click', (event) => {
+      if (event.target.tagName !== 'TD') return;
+
+      const clickedRow = event.target.parentNode;
+      const doctorId = clickedRow.cells[0].textContent;
+
+      window.location.href = `doctor_profile.html?doctorId=${doctorId}`;
+  });
+
+    
+
+
+
 // A FUNCTION TO SELECT COUNTY IN WHICH TO ADD HOSPITAL OBJECT TO IT.
 const countySelect = document.getElementById("county_select");
 const constituencySelect = document.getElementById("constituency_select");

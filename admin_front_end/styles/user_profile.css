@@ -1,11 +1,11 @@
-#hospitals{
+#patients{
     background-color: aliceblue;
     color: black;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     transform: scale(1.04);
 }
-#hospital_text{
+#patient_text{
     color: orange;
 }
 #content_div{
@@ -70,7 +70,7 @@
     /*align-content: center;*/
     margin: 1%;
     height: 75%;
-    background-image: url("../icons/best-hospital-for-infectious-disease-in-kochi.jpg");
+    background-image: url("../icons/sunset-pictures-l4lql05zgmoeviss.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -109,7 +109,7 @@
     align-content: center;
 }
 #h_icon{
-    border: 1px solid #d8d8d8;
+    /*border: 1px solid #d8d8d8;*/
     border-radius: 95%;
     height: 90%;
     width: 95%;
@@ -186,7 +186,7 @@
     font-size: 18px;
     font-weight: 600;
 }
-#txt_hosp{
+#txt_usr{
     margin: 1%;
 }
 

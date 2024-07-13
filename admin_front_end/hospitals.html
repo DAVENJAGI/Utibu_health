@@ -121,7 +121,10 @@
 
             <div id="new_hospital">
                 <div id="form_div">
-                    <div id="header_input">ADD NEW HOSPITAL</div>
+                    <div id="header_input">
+                        <div id="back_arrow" onclick="goBackToHospitals()"><i class="fa fa-arrow-left" aria-hidden="true" style="font-size: 30px;"></i></div>
+                        <div id="new_hosp_header">***** NEW HOSPITAL DETAILS *****</div>
+                    </div>
                     
                     <form id="newHospitalForm">
                         <div id="feedback_info"></div>
@@ -175,18 +178,18 @@
                             <input type="text" id="longitude" name="longitude" class="input" required><br><br>
                         </div>
                     </form>
-                    
-                </div>
-                <div id="exit_div">
-                    <div id="inner_exit_div">
-                        <div class="inner_button_div">
-                            <button id="exit_hospital_form_button" class="inner_exit_div_button" onclick="showAddNewHospital()">Cancel</button>
-                        </div>
-                        <div class="inner_button_div">
-                            <button id="save_button" class="inner_exit_div_button" onclick="createNewHospital()">ADD</button>
+                    <div id="exit_div">
+                        <div id="inner_exit_div">
+                            <div class="inner_button_div">
+                                <button id="exit_hospital_form_button" class="inner_exit_div_button" onclick="showAddNewHospital()">Cancel</button>
+                            </div>
+                            <div class="inner_button_div">
+                                <button id="save_button" class="inner_exit_div_button" onclick="createNewHospital()">ADD</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
                 
             </div>
 

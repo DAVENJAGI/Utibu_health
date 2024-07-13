@@ -114,12 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // const tableBody = document.querySelector('#myTable tbody');
 
     tableBody.addEventListener('click', (event) => {
-        if (event.target.tagName !== 'TD') return; // Only handle clicks on table cells
+        if (event.target.tagName !== 'TD') return;
 
-        const clickedRow = event.target.parentNode; // Get the parent <tr> of the clicked cell
-        const hospitalId = clickedRow.cells[0].textContent; // Assuming hospital ID is in the first cell
+        const clickedRow = event.target.parentNode;
+        const hospitalId = clickedRow.cells[0].textContent;
 
-        // Redirect to hospital_info.html with hospitalId as a query parameter
         window.location.href = `hospital_info.html?hospitalId=${hospitalId}`;
     });
 

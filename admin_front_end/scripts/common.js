@@ -53,4 +53,15 @@ function goBackToHospitals() {
   window.location.href = "hospitals.html";
 }
 
+function goBackToHospitals() {
+  window.location.href = "hospitals.html";
+}
+function goBackToUser() {
+  window.location.href = "patients.html";
+}
+function goBackToDoctor() {
+  window.location.href = "doctors.html";
+}
+
+
 console.log('Functions running succesfuly!!');

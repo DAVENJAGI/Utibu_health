@@ -18,6 +18,9 @@
     overflow: hidden;
     background-color: #38baee;
 }
+#header{
+    border-bottom: solid 1px #b4b4b4;
+}
 #dashboard_div{
     margin-top: 55px;
     border: 1px solid rgb(37, 32, 32);
@@ -167,7 +170,7 @@
     display: flex;
     column-gap: 25px;
     background: white;
-    box-shadow: 2px 1px 8px #8c8f91;
+    box-shadow: 2px 1px 8px #8f9091;
     position:relative;
     /*justify-content: center;*/
 }
