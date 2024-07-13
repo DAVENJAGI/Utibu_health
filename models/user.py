@@ -28,7 +28,7 @@ class User(BaseModel, Base):
         last_name = Column(String(128), nullable=False)
         date_of_birth = Column(String(128), nullable=False)
         doctor_id = Column(String(64), ForeignKey("doctors.id"), nullable=False)
-        doctor = relationship("Doctor", backref="users")
+        doctors = relationship("Doctor", backref="users")
         diseases = relationship("Disease", secondary=user_disease, backref="users")
         disease_id = Column(String(64), ForeignKey("diseases.id"), nullable=True)
         appointments = relationship("Appointment", backref="users")

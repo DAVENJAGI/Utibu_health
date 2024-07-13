@@ -27,6 +27,19 @@ def get_doctor_by_id(doctor_id):
     if doctor is None:
         abort(400) 
     return jsonify(doctor.to_dict())
+@app_views.route("/doctor/<string:doctor_id>/patients", methods=['GET'], strict_slashes=False)
+def get_all_patients_to_a_doctor(doctor_id):
+    """get patients belonging to a specific doctor"""
+    doctor = storage.get(Doctor, doctor_id)
+
+    if doctor is None:
+        abort(404)
+
+    all_patients = doctor.patients
+
+#    all_meds = storage.all(Medication)
+    patients = [patient.to_dict() for patient in all_patients] # if  all_meds else []
+    return jsonify(patients)
 
 @app_views.route("/doctor/<string:doctor_id>", methods=["DELETE"], strict_slashes=False)
 def delete_doctor(doctor_id):
