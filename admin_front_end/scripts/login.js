@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById("password");
     const loginButton = document.getElementById("login_button");
 
+    const passwordEntry = document.getElementById('password');
+    const emailEntry = document.getElementById('email');
     
     loginButton.addEventListener('click', (event) => {
         event.preventDefault();
@@ -34,9 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(request)
         .then(response => response.json())
         .then(data => {
+            console.log('cheers');
             if (data.message === 'Login sucessful') {
                 window.location.href = 'home.html'; 
             } else {
+                data.message === 'Invalid password';
+                passwordEntry.style.border = '1px solid red';
                 alert(data.error);
             }
         })

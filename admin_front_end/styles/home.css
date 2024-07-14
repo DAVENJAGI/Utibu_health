@@ -18,14 +18,14 @@
 
 
 #inner_content_container{
-    /*border: solid 2px black;*/
-    margin-top: 15vh;
-    margin-left: 2vw;
-    width: 90%;
-    height: 75%;
+    border: solid 2px black;
+    /*margin-top: 15vh;*/
+    margin-left: 2%;
+    width: 96%;
+    height: 30vh;
     align-items: center;
     display: block;
-    overflow-x: hidden;
+    overflow-x: auto;
     background: white;
     box-shadow: 3px 5px 8px #9d9fa0;
     /*margin-top: 4%;*/
@@ -38,24 +38,35 @@
     background-color: #636060;
     border-radius: 8px;
 }
+#overview_txt{
+    border: solid 1px red;
+    height: 15%;
+    align-content: center;
+    margin: 1%;
+    margin-top: 1%;
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    color: #1a6860;
+}
+#dash_disp{
+    border: solid 1px red;
+    height: 65%;
+    margin: 1%;
+    width: 98%;
+    align-content: center;
+    overflow: auto;
+}
+
 
 #inner_content_container2{
-    /*border: solid 2px black;*/
-    margin-left: 2vw;
-    margin-top: 25px;
-    margin-right: 1vw;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 20px;
-    row-gap: 55px;
-    align-content: center;
-    width: 95%;
-    overflow-y: auto;
+    border: solid 2px green;
+    /*margin: 1%;*/
+    height: 165px;
+    display: inline-flex;
+    overflow-x: auto;
     background: white;
-    position: relative;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    align-items: center;
 }
 
 
@@ -72,19 +83,26 @@
     overflow-y: auto;
 }
 
+
 .content_div{
-    border: solid rgb(107, 107, 107) 1px;
-    margin-top: 10px;
-    margin-left: 3vh;
-    row-gap: 5px;
-    column-gap: 5px;
-    margin-bottom: 2px;
+    border: solid red 1px;
+    height: 16vh;
+    margin: 1%;
+    width: 290px;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 2px 5px 8px #b7bbbd;
+    
+    /*
+    border: solid red 1px;
+    position: relative;
+    margin: 1%;
     width: 200px;
     height: 150px;
     border-radius: 6px;
     box-shadow: 2px 5px 8px #b7bbbd;
     background-color: white;
-    display: block;
+    display: block;*/
 }
 .content_div:hover{
     transform: scale(1.008);
@@ -92,8 +110,8 @@
 }
 
 .cont_name{
-    /*border: solid 1px red;*/
-    height: 70px;
+    border: solid 1px green;
+    height: 7vh;
     margin-bottom: 4%;
     align-content: center;
     text-align: center;
@@ -101,15 +119,48 @@
     font-weight: 900;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    margin-bottom: 1.75vh;
 }
 
 
 .cont_count{
-    /*border: solid 1px red;*/
-    height: 44%;
+    border: solid 1px green;
+    height: 7vh;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     text-align: center;
     align-content: center;
     font-size: 35px;
+}
+
+#left_chevron{
+    border: solid 1px blue;
+    position: absolute;
+    height: 16vh;
+    margin-top: 10px;
+    width: 65px;
+    /*display: block;*/
+    align-content: center;
+    text-align: center;
+    font-size: 44px;
+}
+#right_chevron{
+    border: solid 1px blue;
+    position: absolute;
+    right: 2%;
+    height: 16vh;
+    margin-right: 1%;
+    width: 65px;
+    /*display: block;*/
+    top: 20vh;
+    align-content: center;
+    text-align: center;
+    font-size: 44px;
+}
+#round_icon{
+    border: solid 1px red;
+    border-radius: 50%;
+}
+.chevrons{
+    display: none;
 }
