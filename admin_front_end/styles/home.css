@@ -8,17 +8,20 @@
 #overview_text{
     color: orange;
 }
+#whole_body{
+    background: #f1f0f0;
+    height: 80vh;
+}
 
 #content_container{
     /*border: 2px solid black;*/
-    background-color: white;
     width: 90%;
     display: block;
 }
 
 
 #inner_content_container{
-    border: solid 2px black;
+    /*border: solid 2px black;*/
     /*margin-top: 15vh;*/
     margin-left: 2%;
     width: 96%;
@@ -26,8 +29,7 @@
     align-items: center;
     display: block;
     overflow-x: auto;
-    background: white;
-    box-shadow: 3px 5px 8px #9d9fa0;
+    
     /*margin-top: 4%;*/
 }
 #inner_content_container::-webkit-scrollbar{
@@ -39,7 +41,7 @@
     border-radius: 8px;
 }
 #overview_txt{
-    border: solid 1px red;
+    /*border: solid 1px red;*/
     height: 15%;
     align-content: center;
     margin: 1%;
@@ -50,8 +52,8 @@
     color: #1a6860;
 }
 #dash_disp{
-    border: solid 1px red;
-    height: 65%;
+    /*border: solid 1px red;*/
+    height: 70%;
     margin: 1%;
     width: 98%;
     align-content: center;
@@ -60,13 +62,15 @@
 
 
 #inner_content_container2{
-    border: solid 2px green;
-    /*margin: 1%;*/
-    height: 165px;
+    /*border: solid 3px green;*/
+    border-top: 1px solid #1a6860;
+    /*border-bottom: 1px solid #1a6860;
+    margin: 1%;*/
+    height: 20vh;
     display: inline-flex;
     overflow-x: auto;
-    background: white;
-    align-items: center;
+    /*align-items: center;
+    align-content: center;*/
 }
 
 
@@ -79,58 +83,129 @@
     width: 200px;
     height: 100px;
     border-radius: 6px;
-    box-shadow: 2px 5px 8px #b7bbbd;
+    /*box-shadow: 2px 5px 8px #b7bbbd;*/
     overflow-y: auto;
 }
 
 
 .content_div{
-    border: solid red 1px;
-    height: 16vh;
-    margin: 1%;
-    width: 290px;
+    border: solid #cacaca 1px;
+    height: 17vh;
+    margin: auto;
+    margin-left: 1%;
+    column-gap: 1%;
+    width: 320px;
     position: relative;
     border-radius: 6px;
-    box-shadow: 2px 5px 8px #b7bbbd;
+    background: white;
     
-    /*
-    border: solid red 1px;
-    position: relative;
-    margin: 1%;
-    width: 200px;
-    height: 150px;
-    border-radius: 6px;
-    box-shadow: 2px 5px 8px #b7bbbd;
-    background-color: white;
-    display: block;*/
 }
 .content_div:hover{
-    transform: scale(1.008);
-    opacity: 0.65;
+    transform: scale(1.08);
+    border: solid 1px black;
+    box-shadow: 3px 5px 8px #9d9fa0;
 }
 
 .cont_name{
-    border: solid 1px green;
+    /*border: solid 1px green;*/
     height: 7vh;
     margin-bottom: 4%;
     align-content: center;
     text-align: center;
-    font-size: 35px;
+    /*font-size: 35px;*/
     font-weight: 900;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
     margin-bottom: 1.75vh;
+    column-gap: 5%;
+    display: flex;
+    color: #1a6860;
+}
+.cont_name:hover{
+    /*color: white;*/
+}
+.dash_icons{
+    /*border: solid 1px red;*/
+    height: 5vh;
+    width: 5vh;
+    margin: 2%;
+    border-radius: 50%;
+    align-content: center;
+    background-color: #aeafaf;
+}
+.dash_txt{
+    /*border: solid 1px red;*/
+    width: 70%;
+    height: 7vh;
+    align-content: center;
+    color: inherit;
+    font-size: 24px;
+    font-weight: 900;
+}
+.dash_overview_icons{
+    /*border: solid red 1px;*/
+    height: 35px;
+    width: 35px;
+    align-content: center;
+    margin: auto;
+    border-radius: 50%;
+    /*background-color: #aeafaf;
+    box-shadow: 1px 1px 8px #9d9fa0;*/
+}
+#dash_region_icon{
+    background-image: url('../icons/png/filled/places/village.png');
+    background-size: contain;
+    /*background-color: #beef00;*/
+}
+#dash_hosp_icon{
+    background-image: url('../icons/png/filled/places/hospital.png');
+    background-size: contain;
+    /*background-color: #a28089;*/
+}
+#dash_patient_icon{
+    background-image: url('../icons/png/filled/people/person.png');
+    background-size: contain;
+    /*background-color: #e1b382;*/
+}
+#dash_medication_icon{
+    background-image: url('../icons/png/filled/medications/medicines.png');
+    background-size: contain;
+    /*background-color: #8076a3;*/
+}
+#dash_doctor_icon{
+    background-image: url('../icons/png/filled/people/doctor.png');
+    background-size: contain;
+    /*background-color: #2d545e;*/
+}
+#dash_disease_icon{
+    background-image: url('../icons/png/filled/conditions/pneumonia.png');
+    background-size: contain;
+    /*background-color: #ff5e6c;*/
+}
+#dash_payment_icon{
+    background-image: url('../icons/png/filled/objects/credit_card.png');
+    background-size: contain;
+    /*background-color: #7c677f;*/
+}
+#dash_order_icon{
+    background-image: url('../icons/png/filled/vehicles/bike.png');
+    background-size: contain;
+    /*background-color: #9bc400*/;
+}
+#dash_appointment_icon{
+    background-image: url('../icons/png/filled/symbols/calendar.png');
+    background-size: contain;
 }
 
 
 .cont_count{
-    border: solid 1px green;
+    /*border: solid 1px green;*/
     height: 7vh;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     text-align: center;
     align-content: center;
     font-size: 35px;
+    font-weight: 700;
+    color: #1a6860;
 }
 
 #left_chevron{
@@ -163,4 +238,363 @@
 }
 .chevrons{
     display: none;
+}
+
+/*REGIONS DASHBOARD DIV*/
+#regions_div{
+    background: white;
+    overflow: hidden;
+}
+
+#regions_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    /*left: 0;*/
+    width: 100%;
+    height: 100%;
+    background: #beef00; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#regions_div:hover:after{
+    top: 0;
+}
+
+/*HOSPITAL DASHBOARD DIV*/
+#hospitals_div{
+    background: white;
+    overflow: hidden;
+}
+#hospitals_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    /*left: 0;*/
+    width: 100%;
+    height: 100%;
+    background: #a28089; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#hospitals_div:hover:after{
+    top: 0;
+}
+
+/*DOCTORS DASHBOARD DIV*/
+#doctors_div{
+    background: white;
+    overflow: hidden;
+}
+#doctors_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    /*left: 0;*/
+    width: 100%;
+    height: 100%;
+    background: #2d545e; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+    color: white;
+    
+}
+#doctors_div:hover:after{
+    top: 0; 
+    
+}
+#doctors_div:hover * {
+    color: white;
+}
+
+/*PATIENTS DASHBOARD DIV*/
+#patients_div{
+    background: white;
+    overflow: hidden;
+}
+#patients_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    /*left: 0;*/
+    width: 100%;
+    height: 100%;
+    background: #e1b382; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#patients_div:hover:after{
+    top: 0;
+}
+
+/*DISEASES DASHBOARD DIV*/
+#diseases_div{
+    background: white;
+    overflow: hidden;
+}
+#diseases_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff5e6c; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#diseases_div:hover:after{
+    top: 0;
+}
+
+/*MEDICATIONS DASHBOARD DIV*/
+#medication_div{
+    background: white;
+    overflow: hidden;
+}
+#medication_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #8076a3; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#medication_div:hover:after{
+    top: 0;
+}
+
+/*APPOINTMENTS  DASHBOARD DIV*/
+#appointment_div{
+    background: white;
+    overflow: hidden;
+}
+#appointment_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #c89666; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#appointment_div:hover:after{
+    top: 0;
+}
+
+/*ORDERS  DASHBOARD DIV*/
+#orders_div{
+    background: white;
+    overflow: hidden;
+}
+#orders_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #9bc400; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#orders_div:hover:after{
+    top: 0;
+}
+#orders_div:hover * {
+    color: white;
+}
+
+/*PAYMENT  DASHBOARD DIV*/
+#payment_div{
+    background: white;
+    overflow: hidden;
+    margin-right: 1%;
+}
+#payment_div:after{
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #7c677f; 
+    transition: top 0.75s ease-in-out; 
+    z-index: -1;
+}
+#payment_div:hover:after{
+    top: 0;
+}
+#separator{
+    /*border: solid 1px red;*/
+    height: 6%;
+    margin-top: 1%;
+    display: flex;
+    gap: 1%;
+}
+#first_line{
+    /*border: solid 1px red;*/
+    width: 33%;
+    margin-left: 1%;
+    display: block;
+    align-content: center;
+}
+#inner_line_1{
+    border: solid 2px #1a6860;
+    margin-left: 3%;
+    
+}
+#inner_line_2{
+    border: solid 2px #1a6860;
+    margin: 1%;
+
+}
+#stars{
+    /*border: solid 1px red;*/
+    width: 32%;
+    display: flex;
+    color: #1a6860;
+}
+#first_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    display: flex;
+    font-size: 20px;
+}
+#inner_first_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 23px;
+    font-weight: 400;
+}
+#inner_second_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+}
+#inner_third_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+/*Middle*/
+#middle_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    display: flex;
+    align-content: center;
+    text-align: center;
+    font-size: 20px;
+}
+#middle_first_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+#middle_second_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 37px;
+    font-weight: 900;
+}
+#middle_third_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+#last_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    display: flex;
+    font-size: 20px;
+}
+#last_first_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 600;
+}
+#last_second_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+}
+#last_third_stars{
+    /*border: solid 1px red;*/
+    width: 33%;
+    align-content: center;
+    text-align: center;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+#last_line{
+    /*border: solid 1px red;*/
+    width: 30%;
+    display: block;
+    align-content: center;
+}
+
+
+
+
+#chat_bot_div{
+    margin: 1%;
+    height: 60px;
+    align-content: center;
+    margin-top: 52vh;
+    position: sticky;
+    bottom: 0;
+}
+
+#chat_bot{
+    border: solid 1px #1a6860;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    float: right;
+    align-content: center;
+    text-align: center;
+    font-size: 20px;
+    background-color: #aeafaf;
+    animation: glow 2s infinite alternate;
+}
+@keyframes glow {
+    from {
+        box-shadow: 1 0 0 1px #2d545e, 0 0 0 4px #835460, 0 0 0 8px #4caf50; 
+      }
+      to {
+        box-shadow: 0 0 0 1px #4caf50, 0 0 0 4px #866443, 0 0 0 8px #beef00;
+      }
+}
+#chat_bot:hover{
+    transform: scale(1.05);
 }
