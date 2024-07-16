@@ -20,6 +20,8 @@
 }
 #header{
     border-bottom: solid 1px #b4b4b4;
+    position: sticky;
+    top: 0;
 }
 #dashboard_div{
     margin-top: 55px;
@@ -247,11 +249,11 @@
 }
 
 #content_container{
-    border: 1px solid white;
-    /*margin-top: 10%;*/
+    /*border: 1px solid red;
+    margin-top: 10%;*/
     width: 95%;
     background-color: #f7f7f7;
-    height: auto;
+    height: 99.2vh;
     overflow-y: scroll;
     z-index: 4;
     position: relative;
@@ -259,41 +261,83 @@
 ::-webkit-scrollbar{
     display: none;
 }
+#whole_body{
+    /*border: solid 2px green;*/
+    max-height: 70vh;
+}
 #content{
-    border: 1px solid white;
-    width: 95%;
-    margin-left: 2.5%;
+    /*border: 2px solid yellowgreen;*/
+    margin: 1%;
+    margin-top: 0;
     background-color: white;
-    max-height: 71vh;
+    height: 66vh;
     z-index: 4;
-    box-shadow: 2px 1px 8px #8c8f91;
+    box-shadow: 1px 1px 4px #8c8f91;
     overflow-x: scroll;
+    border-radius: 8px;
+}
+
+/*TOP DIV*/
+#top_div{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    height: 6vh;
+    display: flex;
+}
+#page_name{
+    /*border: solid 1px red;*/
+    margin-left: 1%;
+    width: 50%;
+    height: 100%;
+    align-content: center;
+    font-size: 25px;
+    font-weight: 900;
+    font-family:'Courier New', Courier, monospace;
+}
+#create_new_item{
+    /*border: solid 1px red;*/
+    position: relative;
+    float: right;
+    width: 50%;
+    align-content: center;
+}
+#add_new{
+    border: 1px white solid;
+    width: 120px;
+    height: 45px;
+    float: right;
+    border-radius: 8px;
+    text-align: center;
+    align-content: center;
+    font-weight: 900;
+    background: #38baee;
+    color: white;
+}
+#add_new:hover{
+    transform: scale(1.002);
+    /*box-shadow: 1px 1px 2px #8c8f91;*/
+    color: #1a6860;
 }
 
 /* SEARCH DIV*/
 #search_div{
-    /*border: 1px solid black;*/
-    width: 95%;
+    border: 1px solid rgb(212, 212, 212);
+    margin: 1%;
     height: 10vh;
-    margin-left: 2.5%;
     position: center;
     align-content: center;
     justify-content: center;
-    margin-bottom: 2.5vh;
-    margin-top: 2.5vh;
     background: white;
-    box-shadow: 2px 1px 8px #8c8f91;
-    /*width: 80%;*/
     display: flex;
     align-items: center;
-    column-gap: 10%;
+    border-radius: 8px;
 }
 #search_bar{
     display: flex;
     width: 60%;
     /*border: 2px red solid;*/
-    height: 60%;
-    margin-left: 10%;
+    height: 55%;
+    margin-left: 8%;
     /*border: 1px;*/
     
 }
@@ -303,7 +347,7 @@
     border-bottom-left-radius: 10px;
     border: 1px solid black;
     background: aliceblue;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 #search_button{
@@ -320,37 +364,41 @@
     background-color: #38baee;
 }
 
-#add_new{
-    border: 1px white solid;
-    width: 10%;
-    height: 60%;
-    border-radius: 8px;
-    text-align: center;
-    align-content: center;
-    font-size: 54px;
-    font-weight: 900;
-    background: #38baee;
-    color: white;
-}
-#add_new:hover{
-    transform: scale(1.01);
-    box-shadow: 2px 1px 8px #8c8f91;
-}
+
 
 /* TABLES */
-#tables_content{
-    /*border: 1px red solid;*/
+#hospital_title{
+    /*border: solid 1px red;*/
     margin: 5px;
+    height: 5vh;
+    align-content: center;
+}
+#hospital_summary{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
+}
+#tables_content{
+    /*border: 2px #38baee solid;*/
+    border: 1px solid #afaeae;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin: 5px;
+    height: 80%;
     margin-top: 15px;
+    overflow: auto;
     
 }
 
+
 table {
     border-collapse: collapse; 
-    width: 95%;
+    width: 98%;
     border: 1px solid gray;
-    margin: 2px;
-    margin-left: 2.5%;
+    margin: 1%;
+    /*margin-left: 2.5%;*/
     background: white;    
     margin-top: 15px;
     font-size: 18px;
@@ -361,8 +409,8 @@ th, td {
     padding-left: 15px;
     width: 150px;
     margin: 0 auto;
-    height: 5vh;
-    border-left: solid 1px #808080a4;
+    height: 3.5vh;
+    border-left: solid 1px #c7c7c7a4;
     border-bottom: 1px solid #808080a4;
   }
   
@@ -374,6 +422,11 @@ tbody tr:hover {
     opacity: 0.7;
     transform: scale(1.001);
     box-shadow: 1px 2px 3px #8c8f91;
+}
+thead tr{
+    background: #c1c1c2;
+    color: #1a6860;
+    font-weight: 500;
 }
 
 #pagination{
