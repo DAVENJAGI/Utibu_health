@@ -24,8 +24,8 @@ class Disease(BaseModel, Base):
         name = Column(String(128), nullable=False)
         description = Column(String(256), nullable=False)
         medication_id = Column(String(60), ForeignKey('medication.id'), nullable=False)
-        medication = relationship("Medication", secondary="disease_medication", backref="diseases")
-        user = relationship("User", back_populates="diseases")
+        medication = relationship("Medication", secondary="disease_medication", backref="user_disease")
+#        user = relationship("User", backref="user_disease")
 
 
     else:
