@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    // Function to display docor for the current page
+    // Function to display doctor for the current page
     function displayCurrentPage() {
         const startIndex = (currentPage - 1) * pageSize;
         const endIndex = startIndex + pageSize;
@@ -178,79 +178,93 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-});
 
 
 /*A FUNCTION THAT CREATES NEW DOCTOR */
-function createNewDoctor() {
-  const firstName = document.getElementById("first_name").value;
-  const lastName = document.getElementById("last_name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const licenseNumber = document.getElementById("license_no").value;
-  
-  if (!firstName || !email || !password || !lastName || !licenseNumber) {
-    alert("Please fill out all required fields!");
-    return;
-  }
- 
-  const doctorData = {
-    first_name: firstName,
-    last_name: lastName,
-    email: email,
-    password: password,
-    license_no: licenseNumber,
-    hospital_id: hospitalId,
-  };
-  
-  const jsonData = JSON.stringify(doctorData);
+  function createNewDoctor() {
 
-  const request = new Request("http://0.0.0.0:5000/api/v1/doctors", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: jsonData,
-  });
+    // event.preventDefault();
+    const firstName = document.getElementById("first_name").value;
+    const lastName = document.getElementById("last_name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const licenseNumber = document.getElementById("license_no").value;
+    if (!validateForm(firstName, email, password, lastName, licenseNumber)) {
+      return;
+    }
+    
+    
+    const doctorData = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      license_no: licenseNumber,
+      hospital_id: hospitalId,
+    };
+    
+    const jsonData = JSON.stringify(doctorData);
+
+    const request = new Request("http://0.0.0.0:5000/api/v1/doctors", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: jsonData,
+    });
+    
+    fetch(request)
+      .then(response => {
+        if (response.ok) {
+          alert("New Doctor saved successfully!");
+          clearForm();
+          hideNewDoctor();
+        } else {
+          console.error("Error saving hospital:", response.statusText);
+          // Handle error message
+        }
+      })
+      .catch(error => alert("Error sending request:", error));
+  }
   
-  fetch(request)
-    .then(response => {
-      if (response.ok) {
-        alert("New Doctor saved successfully!");
-        clearForm();
-        hideNewDoctor();
-      } else {
-        console.error("Error saving hospital:", response.statusText);
-        // Handle error message
-      }
-    })
-    .catch(error => alert("Error sending request:", error));
-} createNewDoctor();
+  function validateForm(firstName, lastName, email, password, licenseNumber) {
+    if (!firstName || !lastName || !email || !password || !licenseNumber) {
+        alert("Please fill out all required fields!");
+        return false;
+    }
+    return true;
+  }
+
+  document.getElementById("newDoctorForm").addEventListener("submit", function(event) {
+    createNewDoctor(event);
+  });
+
+const saveButton = document.getElementById('save_button');
+
+  saveButton.addEventListener("click", function() {
+    createNewDoctor();
+  });
 
 // RESETS FORM 
 
-function clearForm() {
-const form = document.getElementById("newDoctorForm"); // Assuming the form has this ID
-form.reset(); // Resets all form elements to their default values
-}
-//HIIDES HOSPITAL FORM ONSUCCESS
-function hideNewDoctor() {
-const newDoctorForm = document.getElementById("new_doctor");
-newDoctorForm.style.display = "none"; // Hides the form element
-}
-
+  function clearForm() {
+  const form = document.getElementById("newDoctorForm");
+  form.reset();
+  }
+  //
+  function hideNewDoctor() {
+  const newDoctorForm = document.getElementById("new_doctor");
+  newDoctorForm.style.display = "none"; // Hides the form element
+  }
+});
 
 function showAddNewDoctor() {
-    const showAddNewForm = document.getElementById('new_doctor');
-  
+  const showAddNewForm = document.getElementById('new_doctor');
+ 
      
-    if (showAddNewForm.style.display === 'none') {
-      showAddNewForm.style.display = 'block';
-    } else {
-      showAddNewForm.style.display = 'none';
-    }
-  } window.onload = showAddNewDoctor();
-  
-document.addEventListener("DOMContentLoaded", function() {
-  showAddNewDoctor();
-});
+  if (showAddNewForm.style.display === 'none') {
+    showAddNewForm.style.display = 'block';
+  } else {
+    showAddNewForm.style.display = 'none';
+  }
+} window.onload = showAddNewDoctor();

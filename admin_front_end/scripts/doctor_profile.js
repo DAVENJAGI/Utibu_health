@@ -1,6 +1,8 @@
+const urlParams = new URLSearchParams(window.location.search);
+const doctorId = urlParams.get('doctorId');
+
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const doctorId = urlParams.get('doctorId');
+    
 
     const requestDoctor = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}`;
     const requestDoctorPatients = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/patients`;
@@ -150,3 +152,132 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const diseaseSelect = document.getElementById("disease_select");
+    let diseaseId;
+
+    // Function to fetch counties data from the API endpoint
+    function fetchDiseases() {
+    fetch("http://0.0.0.0:5000/api/v1/diseases")
+    .then(response => response.json())
+    .then(data => {
+        console.log('Diseases fetched:', data);
+        data.forEach(disease => {
+            const option = document.createElement("option");
+            option.value = disease.id; 
+            option.innerText = disease.name;
+            diseaseSelect.appendChild(option);
+        });
+        })
+        .catch(error => console.error("Error fetching diseases:", error));
+    }
+    console.log('finished fetching diseases')
+    fetchDiseases();
+
+    diseaseSelect.addEventListener("change", function() {
+        diseaseId = this.value;
+    });
+
+
+
+/*A FUNCTION THAT CREATES NEW DOCTOR */
+function createNewPatient() {
+    const firstName = document.getElementById("first_name").value;
+    const lastName = document.getElementById("last_name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const dateOfBirth = document.getElementById("date_of_birth").value;
+        if (!validateForm(firstName, email, password, lastName, dateOfBirth)) {
+      alert("Please fill out all required fields!");
+      return;
+    }
+   
+    const doctorData = {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      date_of_birth: dateOfBirth,
+      doctor_id: doctorId,
+      disease_id: diseaseId,
+    };
+    
+    const jsonData = JSON.stringify(doctorData);
+  
+    const request = new Request("http://0.0.0.0:5000/api/v1/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: jsonData,
+    });
+    
+    fetch(request)
+      .then(response => {
+        if (response.ok) {
+          alert("New Patient saved successfully!");
+          clearForm();
+          hideNewPatient();
+        } else {
+          console.error("Error saving patient:", response.statusText);
+          // Handle error message
+        }
+      })
+      .catch(error => alert("Error sending request:", error));
+  }
+  function validateForm(firstName, lastName, email, password, dateOfBirth) {
+    if (!firstName || !lastName || !email || !password || !dateOfBirth) {
+        alert("Please fill out all required fields!");
+        return false;
+    }
+    return true;
+  }
+
+  document.getElementById("newPatientForm").addEventListener("submit", function(event) {
+    createNewPatient(event);
+  });
+
+
+  const saveButton = document.getElementById('save_button');
+
+  saveButton.addEventListener("click", function() {
+    createNewPatient();
+    });
+
+
+  // RESETS FORM 
+  
+  function clearForm() {
+  const form = document.getElementById("newPatientForm"); // Assuming the form has this ID
+  form.reset(); // Resets all form elements to their default values
+  }
+  //HIIDES HOSPITAL FORM ONSUCCESS
+  function hideNewPatient() {
+  const newPatientForm = document.getElementById("new_patient");
+  newPatientForm.style.display = "none"; // Hides the form element
+  }
+
+
+});
+
+function showAddNewPatient() {
+  const showAddNewForm = document.getElementById('new_patient');
+     
+         
+  if (showAddNewForm.style.display === 'none') {
+    showAddNewForm.style.display = 'block';
+  } else {
+    showAddNewForm.style.display = 'none';
+  }
+}
+
+function hideAddNewPatient() {
+    const showAddNewForm = document.getElementById('new_patient');
+       
+           
+    if (showAddNewForm.style.display === 'block') {
+      showAddNewForm.style.display = 'none';
+    }
+}
+  

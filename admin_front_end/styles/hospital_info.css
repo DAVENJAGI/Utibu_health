@@ -301,7 +301,7 @@
     
 }
 
-/*DOCTORS DIV */
+/*NEW DOCTORS DIV */
 #hosp_doctors{
     /*border: solid 1px red;*/
     margin-top: 1%;
@@ -478,15 +478,4 @@
     color: white;
     box-shadow: 1px 1px 2px #464747;
 }
-#county_select{
-    background-color: white;
-}
-#constituency_select{
-    background-color: white;
-}
-#town_select{
-    background-color: white;
-}
-#hospital_select{
-    background-color: white;
-}
+

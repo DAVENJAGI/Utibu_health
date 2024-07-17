@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+
     // A FUNCTION TO ADD NEW HOSPITAL OBJECT TO IT.
 const countySelect = document.getElementById("county_select");
 const constituencySelect = document.getElementById("constituency_select");
