@@ -51,36 +51,36 @@
     align-content: center;
 }
 
+/*EXIT DIV*/
 #exit_div{
     /*border: solid 1px red;*/
     margin: 2%;
     margin-top: 1%;
     height: 10%;
-    border-top: 1px solid #1a6860;
+    /*border-top: 1px solid #1a6860;*/
     justify-content: center;
     align-content: center;
 }
 #form_div{
-    /*border: 1px solid black;*/
-    margin: 2%;
-    height:83vh;
-    margin-top: 3%;
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 86vh;
     background-color: white;
     overflow: auto;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     box-shadow: 1px 1px 3px #464747;
     
 }
 /*#1a6860*/*
 #newHospitalForm{
-    /*border: 1px solid red;*/
+    /*border-bottom: 1px solid #1a6860;*/
     margin: 2%;
     margin-top: 1%;
     margin-bottom: 2%;
     height: 64vh;
     overflow: auto;
-    border-radius: 8px;
+    border-radius: 5px;
     
 }
 .hosital_data_form{
@@ -112,10 +112,9 @@
 }
 
 .inner_exit_div_button{
-    height: 80%;
-    width: 45%;
-    font-size: 24px;
-
+    height: 40px;
+    width: 160px;
+    font-size: 18px;
 }
 
 .inner_button_div{
@@ -128,18 +127,25 @@
     color: white;
     background: red;
     border: 1px solid red;
-    border-radius: 5px;
+    border-radius: 8px;
     overflow:hidden;
 }
 #exit_hospital_form_button:hover{
-    transform: scale(1.01);
+    transform: scale(1.001);
+    color: #1a6860;
+    box-shadow: 1px 1px 2px #464747;
 }
 
 #save_button{
-    color: white;
+    color: black;
     background: #1a6860;
+    border-radius: 6px;
     border: 1px solid #1a6860;
-    border-radius: 5px;
+}
+#save_button:hover{
+    transform: scale(1.001);
+    color: white;
+    box-shadow: 1px 1px 2px #464747;
 }
 #save_button:hover{
     transform: scale(1.01);

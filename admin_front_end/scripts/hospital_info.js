@@ -1,6 +1,8 @@
+const urlParams = new URLSearchParams(window.location.search);
+const hospitalId = urlParams.get('hospitalId');
+
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const hospitalId = urlParams.get('hospitalId');
+    
 
 
     const requestUrl = `http://0.0.0.0:5000/api/v1/hospital/${hospitalId}/doctors`; // Replace with your actual API endpoint
@@ -161,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
 
-    // Add click event listeners for pagination buttons and increments them on clicking till there' no more data to append to table
     prevButton.addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
@@ -176,102 +177,67 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-// A FUNCTION TO SELECT COUNTY IN WHICH TO ADD HOSPITAL OBJECT TO IT.
-const countySelect = document.getElementById("county_select");
-const constituencySelect = document.getElementById("constituency_select");
-const townSelect = document.getElementById("town_select");
-const hospitalSelect = document.getElementById("hospital_select");
 
-// Function to fetch counties data from the API endpoint
-function fetchCounties() {
-  fetch("http://0.0.0.0:5000/api/v1/counties")
-    .then(response => response.json())
-    .then(data => {
-      data.forEach(county => {
-        const option = document.createElement("option");
-        option.value = county.id; 
-        option.innerText = county.name;
-        countySelect.appendChild(option);
-      });
-    })
-    .catch(error => console.error("Error fetching counties:", error));
-}
-console.log('finished fetching counties')
+});
 
-// Function to fetch towns data based on the selected county
-console.log('starting to fetch constituencies based on counties')
-function fetchConstituencies(countyId) {
-    fetch(`http://0.0.0.0:5000/api/v1/county/${countyId}/constituencies`)
-    .then(response => response.json())
-    .then(data => {
-      console.log('Fetched Consts', data);
-      constituencySelect.disabled = false; 
-      constituencySelect.innerHTML = "";
-      const defaultOption = document.createElement("option");
-      defaultOption.value = "";
-      defaultOption.innerText = "Select Constituency";
-      constituencySelect.appendChild(defaultOption);
-      data.forEach(constituency => {
-        const option = document.createElement("option");
-        option.value = constituency.id;
-        option.innerText = constituency.constituency_name;
-        constituencySelect.appendChild(option);
-      });
-    })
-    .catch(error => console.error("Error fetching constituencies:", error));
-}
-  console.log('Successfully fetched Constituencies');
 
-//FUNCTION TO FETCH WARD BASED ON CONSTITUENCY
-console.log('Starting to fetch Wards');
-function fetchTowns(constituencyId) {
-  fetch(`http://0.0.0.0:5000/api/v1/constituency/${constituencyId}/wards`)
-    .then(response => response.json())
-    .then(data => {
-      console.log('Fetched Wards', data);
-      townSelect.disabled = false;
-      townSelect.innerHTML = "";
-      const defaultOption = document.createElement("option");
-      defaultOption.value = "";
-      defaultOption.innerText = "Select Ward";
-      townSelect.appendChild(defaultOption);
-      data.forEach(town => {
-        const option = document.createElement("option");
-        option.value = town.id;
-        option.innerText = town.town_name;
-        townSelect.appendChild(option);
-      });
-    })
-    .catch(error => console.error("Error fetching towns:", error));
-}
-console.log("finished fetching Wards");
-fetchCounties();
-
-// Event listeners for county selection change and constituency selection change.
-countySelect.addEventListener("change", function() {
-  const countyId = this.value;
-  if (countyId) {
-    fetchConstituencies(countyId);
-  } else {
-    constituencySelect.disabled = true;
-    constituencySelect.innerHTML = ""; 
+/*A FUNCTION THAT CREATES NEW DOCTOR */
+function createNewDoctor() {
+  const firstName = document.getElementById("first_name").value;
+  const lastName = document.getElementById("last_name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const licenseNumber = document.getElementById("license_no").value;
+  
+  if (!firstName || !email || !password || !lastName || !licenseNumber) {
+    alert("Please fill out all required fields!");
+    return;
   }
-});
+ 
+  const doctorData = {
+    first_name: firstName,
+    last_name: lastName,
+    email: email,
+    password: password,
+    license_no: licenseNumber,
+    hospital_id: hospitalId,
+  };
+  
+  const jsonData = JSON.stringify(doctorData);
 
-constituencySelect.addEventListener("change", function() {
-    const constituencyId = this.value;
-    if (constituencyId) {
-      fetchTowns(constituencyId);
-    } else {
-      townSelect.disabled = true; 
-      townSelect.innerHTML = "";
-    }
+  const request = new Request("http://0.0.0.0:5000/api/v1/doctors", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
   });
+  
+  fetch(request)
+    .then(response => {
+      if (response.ok) {
+        alert("New Doctor saved successfully!");
+        clearForm();
+        hideNewDoctor();
+      } else {
+        console.error("Error saving hospital:", response.statusText);
+        // Handle error message
+      }
+    })
+    .catch(error => alert("Error sending request:", error));
+} createNewDoctor();
 
+// RESETS FORM 
 
-
-
-});
+function clearForm() {
+const form = document.getElementById("newDoctorForm"); // Assuming the form has this ID
+form.reset(); // Resets all form elements to their default values
+}
+//HIIDES HOSPITAL FORM ONSUCCESS
+function hideNewDoctor() {
+const newDoctorForm = document.getElementById("new_doctor");
+newDoctorForm.style.display = "none"; // Hides the form element
+}
 
 
 function showAddNewDoctor() {
@@ -283,8 +249,8 @@ function showAddNewDoctor() {
     } else {
       showAddNewForm.style.display = 'none';
     }
-  } window.onload = showAddNewHospital();
+  } window.onload = showAddNewDoctor();
   
-  document.addEventListener("DOMContentLoaded", function() {
-    showAddNewHospital();
+document.addEventListener("DOMContentLoaded", function() {
+  showAddNewDoctor();
 });

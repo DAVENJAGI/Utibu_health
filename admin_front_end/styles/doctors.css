@@ -9,17 +9,18 @@
     color: orange;
 }
 
+
+/*NEW DOCTOR DIV*/
 #new_doctor{
     background: white;
     /*border: 1px solid red;*/
     position: absolute;
-    height: 82vh;
-    margin-left: 1%;
-    margin-top: 2vh;
+    height: 86vh;
     width: 98%;
+    margin: 1%;
     display: none;
-    box-shadow: 1px 0px 15px #464747;
-    border-radius: 8px;
+    box-shadow: 1px 1px 4px #464747;
+    border-radius: 4px;
     z-index: 11;
 }
 #header_input{
@@ -29,35 +30,36 @@
     align-content: center;
     font-weight: 900;
     font-size: 24px;
-    color: #38baee;
+    color: #1a6860;
 }
 
 #exit_div{
-    /*border: solid 1px red;*/
+   /* border: solid 1px red;*/
     margin: 2%;
-    height: 10%;
+    height: 8%;
 }
 #form_div{
-    /*border: 1px solid red;*/
+    border: 1px solid gray;
     margin: 2%;
-    height: 80%;
+    margin-top: 1%;
+    height: 84%;
+    overflow: auto;
     
 }
 
 #newDoctorForm{
-    border: 1px dashed #38baee;
+    border-top: 1px solid #c5c3c3;
     margin: 2%;
     margin-top: 1%;
-    height: 90%;
+    height: 99%;
     overflow: auto;
-    border-radius: 8px;
     
 }
 .doctor_data_form{
     margin: 2%;
     padding-left: 1%;
-    /*border: 1px solid black;*/
-    box-shadow: 1px 1px 0px #464747;
+    border-bottom: 1px solid rgb(190, 189, 189);
+    /*box-shadow: 1px 1px 0px #464747;*/
 }
 
 .input{
@@ -81,15 +83,12 @@
 }
 
 .inner_exit_div_button{
-    height: 80%;
-    width: 45%;
-    font-size: 24px;
+    height: 40px;
+    width: 160px;
+    font-size: 18px;
 
 }
-.inner_exit_div_button:hover{
-    transform: scale(1.001);
-    box-shadow: 2px 1px 8px #8c8f91;
-}
+
 .inner_button_div{
     /*border: 1px solid red;*/
     width: 50%;
@@ -103,12 +102,22 @@
     border-radius: 8px;
     overflow:hidden;
 }
+#exit_hospital_form_button:hover{
+    transform: scale(1.001);
+    color: #1a6860;
+    box-shadow: 1px 1px 2px #464747;
+}
 
 #save_button{
     color: black;
-    background: #38baee;
-    border: 1px solid #38baee;
-    border-radius: 8px;
+    background: #1a6860;
+    border-radius: 6px;
+    border: 1px solid #1a6860;
+}
+#save_button:hover{
+    transform: scale(1.001);
+    color: white;
+    box-shadow: 1px 1px 2px #464747;
 }
 #county_select{
     background-color: white;
