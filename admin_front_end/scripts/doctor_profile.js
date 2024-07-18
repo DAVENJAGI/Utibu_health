@@ -1,15 +1,14 @@
-const urlParams = new URLSearchParams(window.location.search);
-const doctorId = urlParams.get('doctorId');
-
 document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const doctorId = urlParams.get('doctorId');
     
-
+  
     const requestDoctor = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}`;
     const requestDoctorPatients = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/patients`;
-    const pageSize = 10; // Number of items to display per page
+    const pageSize = 10;
     let currentPage = 1;
-    let doctorData = []; // Array to store all counties data
-
+    let doctorData = [];
+    
     // DOM elements
     const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
@@ -22,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log("Doctor API data:", data);
             
-            const firstName = document.getElementById('first_name');
-            const lastName = document.getElementById('last_name');
+            const firstName = document.getElementById('dkt_first_name');
+            const lastName = document.getElementById('dkt_last_name');
             const userEmail = document.getElementById('dkt_email');
             const dateOfBirth = document.getElementById('hospital_assigned');
             const licenseNumber = document.getElementById('license_no');
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Error fetching data:", error);
         });
     
-
+        
     // STARTING TO FETCH USERS
     function fetchAllUsers() {
         fetch(requestDoctorPatients)

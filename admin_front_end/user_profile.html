@@ -115,6 +115,93 @@
                    </div>
                 </div>
             </div>
+
+            <div id="new_disease">
+                <div id="form_div">
+                    <div id="header_input">***** ADD NEW PATIENT'S DISEASE *****</div>
+                    
+                    <form id="newPatientForm">
+                        <div id="feedback_info"></div>
+                        <!--
+                        <div class="disease_data_form">
+                            <label for="county_id" class="input_name">County:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="county_select" name="county_id" class="input" required>
+                                <option value="" id="option_select">Select County</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+                        <div class="disease_data_form">
+                            <label for="constituency_id" class="input_name">Constituency:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="constituency_select" name="constituency_id" class="input" required>
+                                <option value="">Select Constituency</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+
+                        <div class="disease_data_form">
+                            <label for="town_id" class="input_name">Ward:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="town_select" name="town_id" class="input" required>
+                                <option value="">Select Ward</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+                    <div class="disease_data_form">
+                        <label for="first_name" class="input_name">First Name:</label> <br>
+                        <input type="text" id="first_name" class="input" name="first_name" required><br><br>
+                    </div>
+
+                        <div class="disease_data_form">
+                            <label for="name" class="input_name">Last Name:</label> <br>
+                            <input type="text" id="last_name" class="input" name="name" required><br><br>
+                        </div>
+                        
+
+                        <div class="disease_data_form">
+                            <label for="email" class="input_name">Email:</label><br>
+                            <input type="email" id="email" name="email" class="input" required><br><br>
+                        </div>
+                        <div class="disease_data_form">
+                            <label for="dob" class="input_name">Date of Birth:</label><br>
+                            <input type="text" id="date_of_birth" name="dob" class="input" placeholder="YEAR-MM-DD" required><br><br>
+                        </div>
+                        <div class="disease_data_form">
+                            <label for="password" class="input_name">Password:</label><br>
+                            <input type="text" id="password" name="password" class="input" required><br><br>
+                        </div>
+                    -->
+
+                        <div class="disease_data_form">
+                            <label for="disease_id" class="input_name">Disease:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="disease_select" name="disease_id" class="input" required>
+                                <option value="" id="option_select">Select Disease</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+                        
+                    </form>
+                    
+                </div>
+                <div id="exit_div">
+                    <div id="inner_exit_div">
+                        <div class="inner_button_div" onclick="hideAddNewDisease()">
+                            <button id="exit_hospital_form_button" class="inner_exit_div_button" onclick="hideAddNewPatient()">Cancel</button>
+                        </div>
+                        <div class="inner_button_div">
+                            <button id="save_button" class="inner_exit_div_button" >ADD</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
         
             <div id="content_div">
                 <div id="profile_background">
@@ -185,7 +272,7 @@
                             <div id="head_text">
                                 <h3 id="txt_usr"> Diseases</h3>
                             </div>
-                            <div id="new_dkt">
+                            <div id="new_dkt" onclick="showAddNewDisease()">
                                 <div id="add_icon"><i class="fa fa-plus" aria-hidden="true"></i>
                                 </div>
                             </div>
