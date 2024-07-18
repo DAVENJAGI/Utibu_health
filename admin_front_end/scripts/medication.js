@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     nextButton.addEventListener('click', () => {
-        if (currentPage < Math.ceil(doctorData.length / pageSize)) {
+        if (currentPage < Math.ceil(medicationData.length / pageSize)) {
             currentPage++;
             displayCurrentPage();
         }

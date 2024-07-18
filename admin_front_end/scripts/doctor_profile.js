@@ -1,6 +1,8 @@
+const urlParams = new URLSearchParams(window.location.search);
+const doctorId = urlParams.get('doctorId');
+
 document.addEventListener('DOMContentLoaded', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const doctorId = urlParams.get('doctorId');
+  
     
   
     const requestDoctor = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}`;
