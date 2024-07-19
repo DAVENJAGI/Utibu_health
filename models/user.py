@@ -30,6 +30,7 @@ class User(BaseModel, Base):
         doctors = relationship("Doctor", backref="users")
         diseases = relationship("Disease", secondary="user_disease")
         disease_id = Column(String(64), ForeignKey("diseases.id"), nullable=True)
+        orders = relationship("Order", backref="users")
 
 
     else:

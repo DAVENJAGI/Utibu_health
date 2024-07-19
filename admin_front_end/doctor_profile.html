@@ -223,7 +223,8 @@
                     <div id="inner_nav_panel">
                         <a id="home_route" class="route" href=#profile_background>Home</a>
                         <a id="user_info_route" class="route" href=#about_div>Doctor's Information</a>
-                        <a id="doctors_route" class="route" href=#hosp_doctors>Patients Assigned</a>
+                        <a id="doctors_route" class="route" href=#doctors_patients>Patients Assigned</a>
+                        <a id="doctors_route" class="route" href=#doctors_orders>Doctor's Orders</a>
                     </div>
                 </div>
 
@@ -267,7 +268,7 @@
                     </div>
                 </div>
 
-                <div id="hosp_doctors">
+                <div id="doctors_patients">
                     <div id="doctor_div">
                         <div id="about_div_header_1">
                             <div id="head_text">
@@ -295,6 +296,56 @@
                                             <th>Email</th>
                                             <th>Date of Birth</th>
                                             
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+        
+                            </div>
+                            <div id="pagination">
+                                <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
+                                <span id="page-num"></span>
+                                <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div id="doctors_orders">
+                    <div id="doctor_div">
+                        <div id="about_div_header_1">
+                            <div id="head_text">
+                                <h3 id="txt_usr"> Patient's Orders </h3>
+                            </div>
+                            <!--
+                            <div id="new_dkt">
+                                <div id="add_icon"><i class="fa fa-plus" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        -->
+                        </div>
+                        <div id="search_div" style="height: 6vh;">
+                            <div id="search_bar">
+                                <input type="text" id="search_order_input" style="font-size: 18px;" placeholder="Search Order....">
+                                <button id="search_order_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                            </div>
+                        </div>
+
+                        <div id="content">
+                            <div id="order_tables_content">
+                                <table id="myOrderTable">
+                                  <thead id="table_head">
+                                        <tr id="">
+                                            <th>Order Id</th>
+                                            <th>Patient's name</th>
+                                            <th>Medication</th>
+                                            <th>Quantity</th>
+                                            <th>Order Status</th>
+                                            <th>Billing Cost</th>
                                         </tr>
                                     </thead>
                                     <tbody>

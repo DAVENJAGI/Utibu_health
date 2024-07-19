@@ -18,7 +18,7 @@ def return_meds():
         meds_list.append(med.to_dict())
     return jsonify(meds_list)
 
-@app_views.route("/meds/<string:medication_id>", methods=['GET'], strict_slashes=False)
+@app_views.route("/medication/<string:medication_id>", methods=['GET'], strict_slashes=False)
 def get_medication_by_id(medication_id):
     """get a specific medication by id"""
     med = storage.get(Medication, medication_id)

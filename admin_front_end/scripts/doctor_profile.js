@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     const requestDoctor = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}`;
     const requestDoctorPatients = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/patients`;
+    const requestDoctorOrders = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/orders`;
     const pageSize = 10;
     let currentPage = 1;
     let doctorData = [];
@@ -52,7 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error("Error fetching data:", error);
         });
     
+      
         
+
+
     // STARTING TO FETCH USERS
     function fetchAllUsers() {
         fetch(requestDoctorPatients)
@@ -71,15 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-
-    
-
     const searchInput = document.getElementById('search_input');
     const searchButton = document.getElementById('search_button');
 
-    
 
-    // Function to display docor for the current page
     function displayCurrentPage() {
         const startIndex = (currentPage - 1) * pageSize;
         const endIndex = startIndex + pageSize;
@@ -107,8 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         prevButton.disabled = currentPage === 1;
         nextButton.disabled = endIndex >= userData.length;
     }
-
-    // FETCHING ALL USERS WITH THAT NAME
     fetchAllUsers();
 
 
@@ -182,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/*A FUNCTION THAT CREATES NEW DOCTOR */
+/*A FUNCTION THAT CREATES NEW Patient */
 function createNewPatient() {
     const firstName = document.getElementById("first_name").value;
     const lastName = document.getElementById("last_name").value;
@@ -262,6 +259,178 @@ function createNewPatient() {
 
 });
 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  
+  const requestDoctorOrders = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/orders`;
+  const pageSize = 10;
+  let currentPage = 1;
+  
+  // DOM elements
+  const tableBody = document.getElementById('myOrderTable').getElementsByTagName('tbody')[0];
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
+  const pageNumSpan = document.getElementById('page-num');
+
+
+  
+
+  // STARTING TO FETCH DOCTOR ORDERS
+  function fetchDoctorOrders() {
+      fetch(requestDoctorOrders)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              orderData = data;
+              displayCurrentPage();
+          })
+          .catch(error => {
+              console.error("Error fetching data:", error);
+          });
+  }
+
+  const searchOrderInput = document.getElementById('search_order_input');
+  const searchOrderButton = document.getElementById('search_order_button');
+
+
+  function displayCurrentPage() {
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = startIndex + pageSize;
+      const currentPageOrders = orderData.slice(startIndex, endIndex);
+
+      tableBody.innerHTML = '';
+
+      currentPageOrders.forEach(order => {
+          const tableRow = document.createElement("tr");
+
+          let statusColor = '';
+          if (order.order_status === 'pending approval') {
+            statusColor = 'red';
+          } else if (order.order_status === 'approved') {
+            statusColor = 'green';
+          }
+
+          fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`)
+          .then(response => response.json())
+          .then(patientData => {
+            const patientName = `${patientData.first_name} ${patientData.last_name}`;
+      
+
+            fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`)
+            .then(response => response.json())
+            .then(medicationData => {
+              const medicationName = medicationData.name;
+
+
+              tableRow.innerHTML = `
+                  <td>${order.id}</td>
+                  <td>${patientName}</td>
+                  <td>${medicationName}</td>
+                  <td>${order.quantity}</td>
+                  <td style="color: ${statusColor};">${order.order_status}</td>
+                  <td>$${order.billing_cost}</td>                  
+              `;
+              tableBody.appendChild(tableRow);
+            })
+            .catch(error => console.error("Error fetching medication:", error));
+          })
+          .catch(error => console.error("Error fetching patient:", error));
+      });
+
+      pageNumSpan.textContent = currentPage;
+
+      prevButton.disabled = currentPage === 1;
+      nextButton.disabled = endIndex >= userData.length;
+  }
+  fetchDoctorOrders();
+
+
+  searchOrderButton.addEventListener('click', () => {
+      const searchTerm = searchOrderInput.value.trim().toLowerCase();
+
+      // Filter counties data based on search term
+      const filteredOrders = orderData.filter(order =>
+          order.order_status.toLowerCase().includes(searchTerm)
+      );
+
+      tableBody.innerHTML = '';
+      filteredOrders.forEach(order => {
+          const tableRow = document.createElement("tr");
+
+          let statusColor = '';
+          if (order.order_status === 'pending approval') {
+            statusColor = 'red';
+          } else if (order.order_status === 'approved') {
+            statusColor = 'green';
+          }
+
+
+          fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`)
+          .then(response => response.json())
+          .then(patientData => {
+            const patientName = `${patientData.first_name} ${patientData.last_name}`;
+      
+
+            fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`)
+            .then(response => response.json())
+            .then(medicationData => {
+              const medicationName = medicationData.name;
+
+
+              tableRow.innerHTML = `
+                  <td>${order.id}</td>
+                  <td>${patientName}</td>
+                  <td>${medicationName}</td>
+                  <td>${order.quantity}</td>
+                  <td style="color: ${statusColor};">${order.order_status}</td>
+                  <td>$${order.billing_cost}</td>                  
+              `;
+              tableBody.appendChild(tableRow);
+            })
+            .catch(error => console.error("Error fetching medication:", error));
+          })
+          .catch(error => console.error("Error fetching patient:", error));
+      });
+
+      // Clear search input
+      searchOrderInput.value = '';
+  });
+  
+
+  prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+          currentPage--;
+          displayCurrentPage();
+      }
+  });
+
+  nextButton.addEventListener('click', () => {
+      if (currentPage < Math.ceil(doctorData.length / pageSize)) {
+          currentPage++;
+          displayCurrentPage();
+      }
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function showAddNewPatient() {
   const showAddNewForm = document.getElementById('new_patient');
      
@@ -281,4 +450,3 @@ function hideAddNewPatient() {
       showAddNewForm.style.display = 'none';
     }
 }
-  

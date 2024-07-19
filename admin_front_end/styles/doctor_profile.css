@@ -20,7 +20,7 @@
     /*background: white;*/
     box-shadow: 1px 1px 4px #8c8f91;
     overflow: auto;
-    /*border: 1px solid red;*/
+    /*border: 1px solid #ff0000*/
 
 }
 
@@ -308,7 +308,7 @@
 }
 
 /*DOCTORS DIV */
-#hosp_doctors{
+#doctors_patients{
     /*border: solid 1px red;*/
     margin-top: 1%;
     height: 60%;
@@ -375,7 +375,7 @@
 }
 
 /*NEW DOCTORS DIV */
-#hosp_doctors{
+#doctors_patients{
     /*border: solid 1px red;*/
     margin-top: 1%;
     height: 60%;
@@ -561,3 +561,38 @@
     background-color: white;
 }
 
+#doctors_orders{
+    margin-top: 1%;
+    height: 60%;
+    overflow: auto;
+}
+#search_order_button{
+    width: 20%;
+    background: white;
+    border: 1px solid black;
+    border-left: 1px #eff3f7;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#search_order_button:hover{
+    opacity: 0.75;
+    color: white;
+    background-color: #38baee;
+}
+#order_tables_content{
+    border: 1px solid #afaeae;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin: 5px;
+    height: 80%;
+    margin-top: 15px;
+    overflow: auto;
+}
+#search_order_input{
+    width: 80%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid black;
+    background: aliceblue;
+    font-size: 22px;
+}

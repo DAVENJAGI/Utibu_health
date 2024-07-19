@@ -25,7 +25,7 @@ class Order(BaseModel, Base):
         quantity = Column(Integer, nullable=False)
  
 #        user = relationship("User", backref="appointment") 
-#         doctor = relationship("Doctor", backref="appointment")
+#        doctor = relationship("Doctor", backref="appointment")
     else:
         doctor_id = ""
         hospital_id = ""
