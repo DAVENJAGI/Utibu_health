@@ -12,7 +12,7 @@ import json
 
 # user_view = Blueprint("users", __name__)
 
-# GET ALL APPOINTMENTS AND GET APPOINTMENTS BY ID"""
+# GET ALL ORDERS AND GET APPOINTMENTS BY ID"""
 @app_views.route("/orders", strict_slashes=False, methods=["GET"])
 def get_all_orders():
     """get all orders"""
