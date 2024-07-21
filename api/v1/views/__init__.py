@@ -17,3 +17,4 @@ from api.v1.views.disease import *
 from api.v1.views.login import *
 from api.v1.views.location import *
 from api.v1.views.order import *
+from api.v1.views.appointment import *
