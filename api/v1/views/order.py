@@ -12,6 +12,7 @@ import json
 
 # user_view = Blueprint("users", __name__)
 
+
 # GET ALL ORDERS AND GET APPOINTMENTS BY ID"""
 @app_views.route("/orders", strict_slashes=False, methods=["GET"])
 def get_all_orders():
@@ -80,6 +81,45 @@ def create_a_new_user_order(user_id):
     return (jsonify(order.to_dict()), 201)
     return (jsonify({"Message": "Order placed successfully. Thank you"}), 201)
 
+
+
+
+'''
+# CREATE AN FOR THE PATIENT
+@app_views.route("/order", methods=['POST'], strict_slashes=False)
+def create_a_new_user_order():
+    """create an order for the user"""
+
+#    user = storage.get(User, user_id)
+
+    if not request.get_json():
+        return make_response(jsonify({"Error": "Not a JSON"}), 400)
+    if 'medication_id' not in request.get_json():
+        return make_response(jsonify({"Error": "Medication_id not found"}), 400)
+    if 'quantity' not in request.get_json():
+        return make_response(jsonify({"Error": "Quantity not selected"}), 400)
+    if 'user_id' not in request.get_json():
+        return make_response(jsonify({"Error": "User_id not selected"}), 400)
+    if 'doctor_id' not in request.get_json():
+        return make_response(jsonify({"Error": "Doctor not selected"}), 400)
+
+
+
+    medication_id = request.get_json()['medication_id']
+    medication = storage.get(Medication, medication_id)
+
+    if not medication:
+        return make_response(jsonify({"Error:" "Medication not found"}), 400)
+    medication_price = medication.medication_price
+    quantity = request.get_json()['quantity']
+    billing_cost = medication_price * quantity
+
+    obj = request.get_json()
+    order = Order(**obj, billing_cost=billing_cost)
+    order.save()
+    return (jsonify(order.to_dict()), 201)
+    return (jsonify({"Message": "Order placed successfully. Thank you"}), 201)
+'''
 
 
 # GET AN ORDER FOR DOCTOR AND APPROVE ORDER.

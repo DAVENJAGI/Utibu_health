@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pageNumSpan.textContent = currentPage;
 
       prevButton.disabled = currentPage === 1;
-      nextButton.disabled = endIndex >= userData.length;
+      nextButton.disabled = endIndex >= orderData.length;
   }
   fetchDoctorOrders();
 
@@ -416,14 +416,192 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 
+  
+
+
 });
 
+/*
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('appointment_calendar');
+  
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+      headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      }
+  });
+
+  calendar.render();
+});
+*/
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('side_calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    /* plugins: [ 'dayGrid', 'timeGrid' ],*/
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,dayGridWeek,dayGridDay'
+    },
+    // other options
+  });
+  calendar.render();
+
+  calendarEl.style.width = '50vh' ;
+  calendarEl.style.height = '37vh' ;
+
+  /*.fc-daygrid-day.fc-day-today .fc-daygrid-day-top {
+    background-color: blue; /* Your preferred background color 
+    color: white; /* Optional: Text color to make it more readable 
+  }*/
+
+  var dayToday = calendarEl.querySelector('.fc-daygrid-day.fc-day-today');
+
+  if (dayToday) {
+    dayToday.style.background = '#1a6860';
+    dayToday.style.color = "white";
+  }
+
+  var headerText = calendarEl.querySelector('.fc-col-header-cell');
+  if (headerText) {
+    headerText.style.background = '#1a6860';
+    headerText.style.borderBottom = '#1a6860';
+    headerText.style.color = "white";
+  }
+  
+  var viewHarness = calendarEl.querySelector('.fc-view-harness');
+
+  if (viewHarness) {
+    viewHarness.style.width = '50vh';
+    viewHarness.style.height = "30vh";
+  }
+
+  var headerCell = calendarEl.querySelectorAll('.fc-col-header-cell.fc-day');
+
+  headerCell.forEach(function(cell) {
+    cell.style.background = '#1a6860';
+    cell.style.borderBottom = '#1a6860';
+    cell.style.color = "white";
+    cell.style.width = "30px";
+    cell.style.border = "1px solid #1a6860";
+    cell.style.textAlign = "center";
+    cell.style.marginTop = "1px";
+  });
+
+  
+  var tableHarness = calendarEl.querySelector('.fc-scrollgrid');
+
+  if (tableHarness) {
+    tableHarness.style.margin = '1px';
+    tableHarness.style.width = '49.5vh';
+    tableHarness.style.height = "31.5vh";
+  }
+
+  var tableHeight = calendarEl.querySelector('.fc-daygrid-body.fc-daygrid-body-unbalanced');
+
+  if (tableHeight) {
+    tableHeight.style.borderTop = '1px solid #cfcfcf';
+    tableHeight.style.width = '49.5vh';
+    tableHeight.style.height = "25vh";
+    // tableHeight.style.overflow = "hidden";
+  }
+   
+  var syncTable = calendarEl.querySelector('.fc-scrollgrid-sync-table');
+
+  if (syncTable) {
+    // tableHeight.style.margin = '1px';
+    syncTable.style.maxWidth = '49vh';
+    syncTable.style.maxHeight = '24vh';
+    syncTable.style.marginLeft = '2px';
+  }
+  var tableDataCells = calendarEl.querySelectorAll('.fc-daygrid-day');
+
+  tableDataCells.forEach(function(cell) {
+    // cell.style.position = 'relative';
+    cell.style.maxWidth = '20px';
+    // cell.style.marginRight = '1%';
+    cell.style.maxHeight = '20px';
+  });
+
+  // After rendering, manipulate the buttons
+  var prevButton = calendarEl.querySelector('.fc-prev-button');
+  var nextButton = calendarEl.querySelector('.fc-next-button');
+  var todayButton = calendarEl.querySelector('.fc-today-button');
+
+  var titleText = calendarEl.querySelector('.fc-toolbar-title');
+
+  if (titleText) {
+    titleText.style.color = '#1a6860';
+    titleText.style.fontSize = "19px";
+  }
+
+  var titleTop = calendarEl.querySelector('.fc-toolbar');
+  if (titleTop) {
+    titleTop.style.boxShadow = '1px 1px 8px #cfcfcf';
+    titleTop.style.border = "1px solid #cfcfcf";
+    titleTop.style.marginBottom = "0px";
+  }
+
+  var wholeTable = calendarEl.querySelector('.fc-scroller-harness');
+  if (wholeTable) {
+    wholeTable.style.background = '#1a6860';
+  }
+  var wholeTable = calendarEl.querySelector('.fc-scroller');
+  if (wholeTable) {
+    wholeTable.style.background = '#1a6860';
+  }
 
 
+  if (prevButton) {
+    prevButton.style.backgroundColor = '#1a6860';
+    prevButton.style.margin = '3px';
+    prevButton.style.border = 'solid 1px #1a6860';
+    prevButton.style.borderRadius = '4px'; 
+  }
 
+  if (nextButton) {
+    nextButton.style.backgroundColor = '#1a6860';
+    nextButton.style.margin = '3px';
+    nextButton.style.border = 'solid 1px #1a6860';
+    nextButton.style.borderRadius = '4px'; 
+  }
 
+  if (todayButton) {
+    todayButton.style.backgroundColor = '#1a6860';
+    todayButton.style.margin = '3px';
+    todayButton.style.border = 'solid 1px #1a6860';
+    todayButton.style.borderRadius = '4px'; 
+  }
+  
+  var dayGridMonthButton = calendarEl.querySelector('.fc-dayGridMonth-button');
+    if (dayGridMonthButton) {
+        dayGridMonthButton.style.backgroundColor = '#1a6860';
+        dayGridMonthButton.style.marginRight = '3px';
+        dayGridMonthButton.style.border = 'solid 1px #1a6860'; 
+        dayGridMonthButton.style.borderRadius = '4px'; 
+    }
 
+    var dayGridWeekButton = calendarEl.querySelector('.fc-dayGridWeek-button');
+    if (dayGridWeekButton ) {
+        dayGridWeekButton.style.backgroundColor = '#1a6860';
+        dayGridWeekButton.style.marginRight = '3px';
+        dayGridWeekButton.style.border = 'solid 1px #1a6860'; 
+        dayGridWeekButton.style.borderRadius = '4px'; 
+    }
 
+    var dayGridDayButton = calendarEl.querySelector('.fc-dayGridDay-button');
+    if (dayGridDayButton) {
+        dayGridDayButton.style.backgroundColor = '#1a6860';
+        dayGridDayButton.style.marginRight = '3px';
+        dayGridDayButton.style.border = 'solid 1px #1a6860'; 
+        dayGridDayButton.style.borderRadius = '4px'; 
+    }
+
+});
 
 
 

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/web-component@6.1.15/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/index.global.min.js'></script>
+    <link rel="stylesheet" href="path/to/fullcalendar/main.min.css">
+
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/doctor_profile.css">
     <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
@@ -223,47 +228,73 @@
                     <div id="inner_nav_panel">
                         <a id="home_route" class="route" href=#profile_background>Home</a>
                         <a id="user_info_route" class="route" href=#about_div>Doctor's Information</a>
+                        <a id="user_info_route" class="route" href=#calendar>Doctor's Calendar</a>
                         <a id="doctors_route" class="route" href=#doctors_patients>Patients Assigned</a>
                         <a id="doctors_route" class="route" href=#doctors_orders>Doctor's Orders</a>
                     </div>
                 </div>
 
                 <div id="about_div">
-                    <div id="about_div_header">
-                        <div id="head_text">
-                            <h3 id="txt_usr"> About Doctor</h2>
+                    <div id="inner_about_div">
+                        <div id="about_div_header">
+                            <div id="head_text">
+                                <h3 id="txt_usr"> About Doctor</h2>
+                            </div>
+                            <div id="edit_text">
+                                <button id="edit_button" class="button_text"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            </div>
                         </div>
-                        <div id="edit_text">
-                            <button id="edit_button" class="button_text"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <div id="about_content">
+                            <div class="about_content_inner">
+                                <div class="about_content_data">
+                                    <div id="user_name" class="data_name">First Name:</div>
+                                    <div id="dkt_first_name" class="data_data"> </div>
+                                </div>
+                                <div class="about_content_data">
+                                    <div id="" class="data_name"> Last Name:</div>
+                                    <div id="dkt_last_name" class="data_data"></div>
+                                </div>
+                                <div class="about_content_data">
+                                    <div id="" class="data_name">Doctor Email:</div>
+                                    <div id="dkt_email" class="data_data"></div>
+                                </div>
+                                
+                            </div>
+                            <div class="about_content_inner">
+                                <div class="about_content_data">
+                                    <div id="" class="data_name">Hospital Assigned:</div>
+                                    <div id="hospital_assigned" class="data_data"></div>
+                                </div>
+
+                                <div class="about_content_data">
+                                    <div id="" class="data_name">License Number:</div>
+                                    <div id="license_no" class="data_data"></div>
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
-                    <div id="about_content">
-                        <div class="about_content_inner">
-                            <div class="about_content_data">
-                                <div id="user_name" class="data_name">First Name:</div>
-                                <div id="dkt_first_name" class="data_data"> </div>
-                            </div>
-                            <div class="about_content_data">
-                                <div id="" class="data_name"> Last Name:</div>
-                                <div id="dkt_last_name" class="data_data"></div>
-                            </div>
-                            <div class="about_content_data">
-                                <div id="" class="data_name">Doctor Email:</div>
-                                <div id="dkt_email" class="data_data"></div>
-                            </div>
-                            
-                        </div>
-                        <div class="about_content_inner">
-                            <div class="about_content_data">
-                                <div id="" class="data_name">Hospital Assigned:</div>
-                                <div id="hospital_assigned" class="data_data"></div>
-                            </div>
+                </div>
 
-                            <div class="about_content_data">
-                                <div id="" class="data_name">License Number:</div>
-                                <div id="license_no" class="data_data"></div>
+                <div id="calendar">
+                    <div id="appointment_div">
+                        <div id="about_div_header_1">
+                            <div id="head_text">
+                                <h3 id="txt_usr"> Doctor Schedule </h3>
                             </div>
-                            
+                        </div>
+
+                        <div id="appointment_calendar">
+                            <div id="side_calendar">
+                                <!--
+                                <full-calendar shadow options='{
+                                    "headerToolbar": {
+                                    "left": "prev,next, today",
+                                    "center": "title",
+                                    "right": "dayGridMonth, dayGridWeek ,dayGridDay"
+                                    }
+                                }' />-->
+                            </div>
                         </div>
                     </div>
                 </div>
