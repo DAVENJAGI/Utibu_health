@@ -4,28 +4,37 @@ import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy import Column, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from models.doctor import Doctor
 from models.hospital import Hospital
 from models.user import User
+
+if models.storage_type == 'db':
+    all_appointments = Table('all_appointments', Base.metadata,
+                          Column('user_id', String(60),
+                                 ForeignKey('users.id'), nullable=False),
+                          Column('doctor_id', String(60),
+                                 ForeignKey('doctors.id'), nullable=False),                         
+                         )
 
 
 class Appointment(BaseModel, Base):
     """Represents user details"""
     if models.storage_type == "db":
         __tablename__ = 'appointment'
-        description = Column(String(256), nullable=False)
-        time = Column(String(128), nullable=False)
+        description = Column(String(256), nullable=False, default="There is currently no set appointment. Kindly set one with your doctor")
+        time = Column(String(128), nullable=False, default="There is currently no set appointment")
         date = Column(String(128), nullable=False)
         doctor_id = Column(String(60), ForeignKey('doctors.id'), nullable=False)
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
-        hospital_id = Column(String(60), ForeignKey('hospitals.id'), nullable=False)
-
-        user = relationship("User", backref="appointment") 
-        doctor = relationship("Doctor", backref="appointment")
-        hospital = relationship("Hospital", backref="appointment")
-
+        doctor_id = Column(String(60), ForeignKey('doctors.id'), nullable=False)
+        appointments = relationship("User", secondary=all_appointments, backref="appointment",
+                                    primaryjoin="all_appointments.c.user_id == Appointment.user_id",
+                                    secondaryjoin="all_appointments.c.doctor_id == User.id")
+     
+#        user = relationship("User", backref="appointment") 
+#         doctor = relationship("Doctor", backref="appointment")
     else:
         doctor_id = ""
         hospital_id = ""

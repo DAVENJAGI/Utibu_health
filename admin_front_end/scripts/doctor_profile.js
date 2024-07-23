@@ -421,58 +421,94 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-/*
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('appointment_calendar');
-  
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-      headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,dayGridWeek,dayGridDay'
-      }
-  });
-
-  calendar.render();
-});
-*/
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('side_calendar');
+  const requestDoctorAppointments = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/appointments`;
+
+  // var events = [];
+  /*
+  fetch(requestDoctorAppointments)
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(appointment => {
+      console.log("Appoinment data", data);
+      events.push({
+        title: appointment.description,
+        start: appointment.time,
+        description: appointment.date,
+        location: 'Zoom Call'
+      });
+    });
+  });
+  
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
-    /* plugins: [ 'dayGrid', 'timeGrid' ],*/
+    /* plugins: [ 'dayGrid', 'timeGrid' ],
     initialView: 'dayGridMonth',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,dayGridWeek,dayGridDay'
     },
-    // other options
+    events: events,
   });
   calendar.render();
+  */
+fetch(requestDoctorAppointments)
+  .then(response => response.json())
+  .then(data => {
+    
+    console.log("Appoinment data", data);
+    const events = data.map(appointment => ({
+      title: appointment.description,
+      start:  appointment.date + 'T' + appointment.time,
+      location: 'Zoom Call'
+    }));
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,dayGridWeek,dayGridDay'
+      },
+      events: events,
+    });
+    calendar.render();
+  
+
 
   calendarEl.style.width = '50vh' ;
   calendarEl.style.height = '37vh' ;
 
-  /*.fc-daygrid-day.fc-day-today .fc-daygrid-day-top {
-    background-color: blue; /* Your preferred background color 
-    color: white; /* Optional: Text color to make it more readable 
-  }*/
+ 
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+    // var dateOnly = today.toLocaleDateString();
+  // console.log(dateOnly);
+
+  
+  var dayEvent = calendarEl.querySelectorAll('.fc-daygrid-event-harness');
+  
+  dayEvent.forEach(function(cell) {
+    cell.style.background = '#FFA500';
+    cell.style.color = "white";
+/*
+    if (futureDate) {
+      cell.style.background = '#00D9FF';
+      cell.style.color = "white";
+    }*/
+  })
+  
 
   var dayToday = calendarEl.querySelector('.fc-daygrid-day.fc-day-today');
 
   if (dayToday) {
-    dayToday.style.background = '#1a6860';
+    dayToday.style.background = '#00D9FF';
     dayToday.style.color = "white";
   }
-
-  var headerText = calendarEl.querySelector('.fc-col-header-cell');
-  if (headerText) {
-    headerText.style.background = '#1a6860';
-    headerText.style.borderBottom = '#1a6860';
-    headerText.style.color = "white";
-  }
   
+
   var viewHarness = calendarEl.querySelector('.fc-view-harness');
 
   if (viewHarness) {
@@ -486,10 +522,10 @@ document.addEventListener('DOMContentLoaded', function() {
     cell.style.background = '#1a6860';
     cell.style.borderBottom = '#1a6860';
     cell.style.color = "white";
-    cell.style.width = "30px";
+    cell.style.width = "70px";
     cell.style.border = "1px solid #1a6860";
     cell.style.textAlign = "center";
-    cell.style.marginTop = "1px";
+    cell.style.left = "0px";
   });
 
   
@@ -522,8 +558,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   tableDataCells.forEach(function(cell) {
     // cell.style.position = 'relative';
-    cell.style.maxWidth = '20px';
-    // cell.style.marginRight = '1%';
+    cell.style.width = '68px';
+    cell.style.marginRight = '1%';
     cell.style.maxHeight = '20px';
   });
 
@@ -600,6 +636,9 @@ document.addEventListener('DOMContentLoaded', function() {
         dayGridDayButton.style.border = 'solid 1px #1a6860'; 
         dayGridDayButton.style.borderRadius = '4px'; 
     }
+
+    
+  });
 
 });
 

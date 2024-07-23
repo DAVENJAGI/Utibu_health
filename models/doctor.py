@@ -19,6 +19,7 @@ class Doctor(BaseModel, Base):
         license_no = Column(String(128), unique=True, nullable=False)
         availability_time = Column(String(128), nullable=True)
         hospital_id = Column(String(60), ForeignKey('hospitals.id', ondelete="CASCADE"), nullable=False)
+        appointments = relationship("Appointment", backref="doctors")
         orders = relationship("Order", backref="doctors")
         patients =  relationship("User", back_populates="doctors", overlaps="users")
   
