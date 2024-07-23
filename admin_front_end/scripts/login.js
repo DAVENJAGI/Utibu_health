@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(request)
         .then(response => response.json())
         .then(data => {
-            console.log('cheers');
+            console.log('cheers, here is the data:', data.last_name);
             if (data.message === 'Login sucessful') {
                 window.location.href = 'home.html'; 
             } else {
@@ -51,9 +51,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-/*
-export function storeUserData(userData) {
-    console.log("Storing user data", userData);
-
-}
-window.storeUserData = storeUserData;*/

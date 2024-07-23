@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             patientCount.textContent = data.Users;
             diseaseCount.textContent = data.Diseases;
             medicationCount.textContent = data.Medications;
-            appointmentCount.textContent = data.Appointmets;
+            appointmentCount.textContent = data.Appointments;
+            orderCount.textContent = data.Orders;
+            paymentCount.textContent = "0";
 
         })
         .catch(error => {
