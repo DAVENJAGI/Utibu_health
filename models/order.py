@@ -24,8 +24,8 @@ class Order(BaseModel, Base):
         billing_cost = Column(Integer, nullable=False)
         order_status = Column(String(60), nullable=False, default="pending approval")
         quantity = Column(Integer, nullable=False)
-        __table__args__ = (PrimaryKeyConstraint(doctor_id, medication_id, user_id),)
- 
+
+#        __table__args__ = (PrimaryKeyConstraint(doctor_id, medication_id, user_id),)
 #        user = relationship("User", backref="appointment") 
 #        doctor = relationship("Doctor", backref="appointment")
     else:

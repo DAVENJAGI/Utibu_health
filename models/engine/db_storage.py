@@ -13,6 +13,8 @@ from models.county import County
 from models.disease import Disease
 from models.medication import Medication
 from models.user import User
+from models.order import Order
+from models.request import Request
 from models.constituency import Constituency
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -23,7 +25,7 @@ from os import getenv
 """Maps the names eg, "Amenity", to classes, egw class Amenity"""
 
 classes = {"Appointment": Appointment, "BaseModel": BaseModel, "County": County, "Town": Town,
-           "Hospital": Hospital, "Doctor": Doctor, "User": User, "Constituency": Constituency, "Disease": Disease, "Medication": Medication}
+           "Hospital": Hospital, "Order": Order, "Request": Request, "Doctor": Doctor, "User": User, "Constituency": Constituency, "Disease": Disease, "Medication": Medication}
 
 class DBStorage:
     """class storage"""
