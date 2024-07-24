@@ -14,6 +14,7 @@ from models.county import County
 from models.constituency import Constituency
 from models.order import Order
 from models.appointment import Appointment
+from models.request import Request
 import json
 
 @app_views.route("/status")
@@ -34,6 +35,7 @@ def count_objects():
             "Counties": storage.count(County),
             "Constituencies": storage.count(Constituency),
             "Orders": storage.count(Order),
-            "Appointments": storage.count(Appointment)
+            "Appointments": storage.count(Appointment),
+            "Requests": storage.count(Request)
             }
     return jsonify(data)

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/orders.css">
-    <script type="text/javascript" src="../admin_front_end/scripts/regions.js"></script>
+    <script type="text/javascript" src="../admin_front_end/scripts/orders.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
     <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
     <title>Orders</title>
@@ -116,50 +116,61 @@
             </div>
 
             <div id="top_div">
-                <div id="page_name">Orders</div>
+                <div id="orders_page_name">All Orders</div>
                 <div id="create_new_item">
                     <div id="add_new">Create new</div>
                 </div>
             </div>
 
-            <div id="search_div">
-                <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Order by patient's name....">
-                    <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
-                </div>
-            </div>
-            
-            <div id="whole_body">
-                <div id="content">
-                    <div id="hospital_title">
-                        <div id="hospital_summary">Order Summary</div>
-                    </div>
-                    <div id="tables_content">
-                        <table id="myTable">
-                          <thead id="table_head">
-                                <tr id="">
-                                    <th>ID</th>
-                                    <th>County Code</th>
-                                    <th>County Name</th>
-                                    <!--
-                                    <th>No. of Constituencies</th>
-                                    <th>Number of Wards</th>
-                                    -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div id="orders_div">
+                <div id="order_div_inner">
+                    <div id="search">
+                        <div id="search_div_home">
+                            <div id="search_bar_home">
+                                <input type="text" id="search_input_home" placeholder="Search Order by Id....">
+                                <button id="search_button_home"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                            </div>
+                        </div>
 
+                        <div id="filter_div">
+                            <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>
+                            <div id="filter_txt">Filter By</div>
+                        </div>
+                        
                     </div>
-                    <div id="pagination">
-                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
-                        <span id="page-num"></span>
-                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
+                </div>
+                <div id="order_table_div">
+                    <div id="all_orders_table">
+                        <div id="order_tables_content">
+                            <table id="myOrderTable">
+                              <thead id="table_head">
+                                    <tr id="">
+                                        <th><input type="checkbox" class=checkboxes></th>
+                                        <th>Order Id</th>
+                                        <th>Patient's Name</th>
+                                        <th>Doctor's Name</th>
+                                        <th>Medication</th>
+                                        <th>Quantity</th>
+                                        <th>Order Date</th>
+                                        <th>Order Status</th>
+                                        <th>Billing Cost</th>
+                                        <th>Pickup Mode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+    
+                        </div>
+                        <div id="pagination">
+                            <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
+                            <span id="page-num"></span>
+                            <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
+                        </div>
                     </div>
-                   
+                    
                 </div>
             </div>
         </div>

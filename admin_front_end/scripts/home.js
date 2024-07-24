@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
+    orderData = [];
 
     fetch(requestUrl)
         .then(response => response.json())
@@ -40,9 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log("Payment API data:", paymentData);
           const paymentCount = document.getElementById('payments_count');
 
-          paymentCount.textContent = "0";
-
-        })
+          paymentCount.textContent = '$' + paymentData.total_money_transacted;
 
         })
         .catch(error => {
@@ -205,9 +204,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayCurrentPage();
             }
         });
-      
+    
         nextButton.addEventListener('click', () => {
-            if (currentPage < Math.ceil(doctorData.length / pageSize)) {
+            if (currentPage < Math.ceil(orderData.length / pageSize)) {
                 currentPage++;
                 displayCurrentPage();
             }

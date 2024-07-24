@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    // Function to display counties for the current page
     function displayCurrentPage() {
         const startIndex = (currentPage - 1) * pageSize;
         const endIndex = startIndex + pageSize;
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.disabled = endIndex >= countiesData.length;
     }
 
-    // Fetch all counties data when DOM is loaded
     fetchAllCounties();
 
 
