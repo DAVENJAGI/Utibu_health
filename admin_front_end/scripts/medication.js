@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let medicationData = []; // Array to store all counties data
 
     // DOM elements
-    const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('myMedicationTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    const searchInput = document.getElementById('search_input');
-    const searchButton = document.getElementById('search_button');
+    const searchInput = document.getElementById('search_input_home');
+    const searchButton = document.getElementById('search_button_home');
 
     
 
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageMedication.forEach(medication => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>    
                 <td>${medication.id}</td>
                 <td>${medication.name}</td>
                 <td>${medication.description}</td>
@@ -75,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Filter counties data based on search term
         const filteredMedications = medicationData.filter(medication =>
-            medication.name.toLowerCase().includes(searchTerm)
+            medication.name.toLowerCase().includes(searchTerm) ||
+            medication.id.toLowerCase().includes(searchTerm)
         );
 
         // Update table with filtered data
@@ -83,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredMedications.forEach(medication => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+            <td><input type="checkbox"></td>
             <td>${medication.id}</td>
             <td>${medication.name}</td>
             <td>${medication.description}</td>

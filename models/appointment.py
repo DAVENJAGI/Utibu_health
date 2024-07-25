@@ -32,6 +32,7 @@ class Appointment(BaseModel, Base):
         appointments = relationship("User", secondary=all_appointments, backref="appointment",
                                     primaryjoin="all_appointments.c.user_id == Appointment.user_id",
                                     secondaryjoin="all_appointments.c.doctor_id == User.id")
+        appointment_status = Column(String(60), default="Pending Confirmation") 
      
 #        user = relationship("User", backref="appointment") 
 #         doctor = relationship("Doctor", backref="appointment")

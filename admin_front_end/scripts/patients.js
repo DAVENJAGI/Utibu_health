@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let userData = []; // Array to store all counties data
 
     // DOM elements
-    const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('myPatientTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    const searchInput = document.getElementById('search_input');
-    const searchButton = document.getElementById('search_button');
+    const searchInput = document.getElementById('search_input_home');
+    const searchButton = document.getElementById('search_button_home');
 
     
 
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageUser.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
@@ -73,9 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
     searchButton.addEventListener('click', () => {
         const searchTerm = searchInput.value.trim().toLowerCase();
 
-        // Filter counties data based on search term
         const filteredUsers = userData.filter(user =>
-            user.first_name.toLowerCase().includes(searchTerm)
+            user.first_name.toLowerCase().includes(searchTerm) ||
+            user.last_name.toLowerCase().includes(searchTerm) ||
+            user.email.toLowerCase().includes(searchTerm) ||
+            user.id.toLowerCase().includes(searchTerm)
         );
 
         // Update table with filtered data
@@ -83,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredUsers.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
@@ -115,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.tagName !== 'TD') return;
 
         const clickedRow = event.target.parentNode;
-        const userId = clickedRow.cells[0].textContent;
+        const userId = clickedRow.cells[1].textContent;
 
         window.location.href = `user_profile.html?userId=${userId}`;
     });

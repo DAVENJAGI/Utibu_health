@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let doctorData = []; // Array to store all counties data
 
     // DOM elements
-    const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('myDoctorTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    const searchInput = document.getElementById('search_input');
-    const searchButton = document.getElementById('search_button');
+    const searchInput = document.getElementById('search_input_home');
+    const searchButton = document.getElementById('search_button_home');
 
     
 
@@ -42,13 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const endIndex = startIndex + pageSize;
         const currentPageDoctor = doctorData.slice(startIndex, endIndex);
 
-        // Clear existing table rows before adding new ones
         tableBody.innerHTML = '';
 
-        // Loop through counties for the current page and populate table rows
         currentPageDoctor.forEach(doctor => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${doctor.id}</td>
                 <td>${doctor.first_name}</td>
                 <td>${doctor.last_name}</td>
@@ -73,7 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Filter counties data based on search term
         const filteredDoctors = doctorData.filter(doctor =>
-            doctor.first_name.toLowerCase().includes(searchTerm)
+            doctor.first_name.toLowerCase().includes(searchTerm) ||
+            doctor.last_name.toLowerCase().includes(searchTerm) ||
+            doctor.email.toLowerCase().includes(searchTerm) ||
+            doctor.id.toLowerCase().includes(searchTerm)
         );
 
         // Update table with filtered data
@@ -81,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredDoctors.forEach(doctor => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${doctor.id}</td>
                 <td>${doctor.first_name}</td>
                 <td>${doctor.last_name}</td>
@@ -114,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.target.tagName !== 'TD') return;
 
       const clickedRow = event.target.parentNode;
-      const doctorId = clickedRow.cells[0].textContent;
+      const doctorId = clickedRow.cells[1].textContent;
 
       window.location.href = `doctor_profile.html?doctorId=${doctorId}`;
   });

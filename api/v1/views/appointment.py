@@ -113,19 +113,20 @@ def create_a_new_doctor_appointment(doctor_id):
 
 # UPDATE AN APPOINMENT, ie, POSTPONE ETC.
 
-@app_views.route("/doctor/<string:doctor_id>/appointment", methods=['PUT'], strict_slashes=False)
+@app_views.route("/doctor/<string:doctor_id>/appointment/", methods=['PUT'], strict_slashes=False)
 def update_doctor_appointment(doctor_id):
     """create anew user appointment"""
 
     app_id = request.get_json().get('id')
     if not app_id:
-        return make_response(jsonify({"Error": "Invalid appoiintment id"}), 400)
+        return make_response(jsonify({"Error": "Invalid appointment id"}), 400)
     
-    appointment = storage.get(Appointment, appointment_id)
+    appointment = storage.get(Appointment, app_id)
     if not appointment:
         return make_response(jsonify({"Error": "Appointment unavailable"}), 400)
 
     appointment.description = request.get_json().get('description', appointment.description)
+    appointment.appointment_status = request.get_json().get('appointment_status', appointment.appointment_status)
     appointment.time = request.get_json().get('time', appointment.time)
     appointment.date = request.get_json().get('date', appointment.date)
      

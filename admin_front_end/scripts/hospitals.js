@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let hospitalData = []; // Array to store all counties data
 
     // DOM elements
-    const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('myHospitalTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    const searchInput = document.getElementById('search_input');
-    const searchButton = document.getElementById('search_button');
+    const searchInput = document.getElementById('search_input_home');
+    const searchButton = document.getElementById('search_button_home');
 
     
 
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageHospital.forEach(hospital => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${hospital.id}</td>
                 <td>${hospital.name}</td>
                 <td>${hospital.email}</td>
@@ -73,16 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
     searchButton.addEventListener('click', () => {
         const searchTerm = searchInput.value.trim().toLowerCase();
 
-        // Filter counties data based on search term
         const filteredHospitals = hospitalData.filter(hospital =>
-            hospital.name.toLowerCase().includes(searchTerm)
+            hospital.name.toLowerCase().includes(searchTerm) ||
+            hospital.id.toLowerCase().includes(searchTerm) ||
+            hospital.email.toLowerCase().includes(searchTerm)
         );
 
-        // Update table with filtered data
         tableBody.innerHTML = '';
         filteredHospitals.forEach(hospital => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${hospital.id}</td>
                 <td>${hospital.name}</td>
                 <td>${hospital.email}</td>
@@ -111,13 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // const tableBody = document.querySelector('#myTable tbody');
+    // const tableBody = document.querySelector('#myHospitalTable tbody');
 
     tableBody.addEventListener('click', (event) => {
         if (event.target.tagName !== 'TD') return;
 
         const clickedRow = event.target.parentNode;
-        const hospitalId = clickedRow.cells[0].textContent;
+        const hospitalId = clickedRow.cells[1].textContent;
 
         window.location.href = `hospital_info.html?hospitalId=${hospitalId}`;
     });
@@ -170,7 +172,7 @@ function fetchConstituencies(countyId) {
 }
   console.log('Successfully fetched Constituencies');
 
-//FUNCTION TO FETCH WARD BASED ON CONSTITUENCY
+
 console.log('Starting to fetch Wards');
 function fetchTowns(constituencyId) {
   fetch(`http://0.0.0.0:5000/api/v1/constituency/${constituencyId}/wards`)
@@ -195,7 +197,7 @@ function fetchTowns(constituencyId) {
 console.log("finished fetching Wards");
 fetchCounties();
 
-// Event listeners for county selection change and constituency selection change.
+
 countySelect.addEventListener("change", function() {
   const countyId = this.value;
   if (countyId) {
@@ -265,13 +267,13 @@ function createNewHospital() {
       .catch(error => alert("Error sending request:", error));
 } createNewHospital();
 
-// RESETS FORM 
+
 
 function clearForm() {
-  const form = document.getElementById("newHospitalForm"); // Assuming the form has this ID
-  form.reset(); // Resets all form elements to their default values
+  const form = document.getElementById("newHospitalForm");
+  form.reset(); 
 }
-//HIIDES HOSPITAL FORM ONSUCCESS
+
 function hideNewHospital() {
   const newHospitalForm = document.getElementById("new_hospital");
   newHospitalForm.style.display = "none"; // Hides the form element
