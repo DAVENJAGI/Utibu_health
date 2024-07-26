@@ -20,6 +20,7 @@
     height: 8%;
     display: flex;
 }
+
 #search{
     /*border: solid 1px red;*/
     width: 50%;
@@ -144,4 +145,284 @@
     width: 150px;
     margin: 0 auto;
     height: 1vh;
+}
+
+#new_disease{
+    background: #f7f7f7;
+    /*border: 1px solid red;*/
+    position: absolute;
+    height: 90vh;
+    width: 100%;
+    top: 9%;
+    /*margin: 1%;*/
+    /*display: none;*/
+    /*box-shadow: 1px 1px 4px #464747;*/
+    border-radius: 4px;
+    z-index: 11;
+}
+#form_div{
+    border-left: 1px solid #9b9a9a;
+    border-right: 1px solid #9b9a9a;
+    border-bottom: 1px solid #9b9a9a;
+    margin: 1%;
+    height: 88vh;
+    background-color: white;
+    overflow: auto;
+    border-radius: 8px;
+    /*box-shadow: 1px 1px 3px #464747;*/
+    
+}
+#header_input{
+    /*border: solid 1px red;*/
+    height: 8%;
+    text-align: center;
+    align-content: center;
+    font-weight: 900;
+    font-size: 24px;
+    color: #1a6860;
+    display: flex;
+    border-top: 2px solid #1a6860;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: solid 1px #b4b4b4;
+} 
+#back_arrow{
+    /*border: 1px solid red;*/
+    width: 8%;
+    align-content: center;
+}
+#back_arrow:hover{
+    color: #38baee;
+    transform: scale(1.05);
+}
+#new_hosp_header{
+    /*border: solid 1px red;*/
+    width: 100%;
+    align-content: center;
+}
+#newDiseaseForm{
+    margin: 2%;
+    margin-top: 3%;
+    overflow: auto;
+    height: 60vh;
+    border-bottom: 1px #9b9a9a solid;
+    
+}
+#exit_div{
+    /*border: solid 1px red;*/
+    margin: 2%;
+    margin-top: 1%;
+    height: 6%;
+    /*border-top: 1px solid #1a6860;*/
+    justify-content: center;
+    align-content: center;
+}
+#inner_exit_div {
+    /*border: 1px solid red;*/
+    margin: 1%;
+    /*margin-top: 1%;*/
+    height: 70%;
+    align-content: center;
+    justify-items: center;
+    display: flex;
+}
+
+.inner_exit_div_button{
+    height: 35px;
+    width: 140px;
+    font-size: 18px;
+
+}
+
+.inner_button_div{
+    width: 50%;
+    align-content: center;
+    text-align: center;
+}
+#exit_disease_form_button{
+    color: white;
+    background: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    overflow:hidden;
+    font-weight: 700;
+    font-size: 18px;
+}
+#exit_disease_form_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+
+#save_button{
+    background: #1a6860;
+    border-radius: 4px;
+    border: 1px solid #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+#save_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#new_disease_header{
+    /*border: solid 1px red;*/
+    width: 100%;
+    align-content: center;
+}
+#back_arrow{
+    /*border: 1px solid red;*/
+    width: 8%;
+    align-content: center;
+}
+#back_arrow:hover{
+    color: #38baee;
+    transform: scale(1.05);
+}
+.hosital_data_form{
+    margin: 2%;
+    padding-left: 1%;
+    border: 0.5px solid #b4b4b4;
+    /*box-shadow: 1px 1px 0px #464747;*/
+}
+
+.input{
+    width: 80%;
+    height: 35px;
+    font-size: 20px;
+    border: 1px solid;
+}
+.input_name{
+    font-size: 24px;
+    color: #1a6860;
+}
+#disease_name{
+    margin-bottom: 5%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#description{
+    height: 300px;
+    border-radius: 5px;
+    align-self: flex-start;
+    text-align: start;
+}
+
+
+#confirmation_div{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#confirmation_text{
+    /*border: solid 1px red;*/
+    height: 50%;
+    margin: 1%;
+    align-content: center;
+    margin-bottom: 3%;
+}
+#confirmation_text_text{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
+}
+#confirmation_buttons{
+    /*border: solid 1px red;*/
+    height: 30%;
+    margin: 1%;
+    align-content: center;
+}
+#confirmation_buttons_inner{
+    /*border: 1px solid red;*/
+    align-content: center;
+    height: 80%;
+    margin: 1%;
+    text-align: center;
+}
+#no_button{
+    border: 1px solid red;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px; 
+    background-color: #FF2C2C;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 3%;
+    
+}
+#yes_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+#no_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#yes_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+
+#returned_info{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#ok_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+#ok_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#saved_confirmation_text_text{
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
 }

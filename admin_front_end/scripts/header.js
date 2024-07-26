@@ -45,4 +45,8 @@ function showDropdownDiv() {
   } else {
     dropdownInfo.style.display = 'none';
   }
-} window.onload = showDropdownDiv();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  showDropdownDiv();
+})

@@ -109,4 +109,128 @@ document.addEventListener('DOMContentLoaded', () => {
             displayCurrentPage();
         }
     });
+
+    function createNewDisease() {
+
+        // event.preventDefault();
+        const diseaseName = document.getElementById("disease_name").value;
+        const description = document.getElementById("description").value;
+        
+        if (!validateForm(diseaseName, description)) {
+          return;
+        }
+        
+        
+        const diseaseData = {
+          name: diseaseName,
+          description: description,
+        };
+        
+        const jsonData = JSON.stringify(diseaseData);
+    
+        const request = new Request("http://0.0.0.0:5000/api/v1/diseases", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: jsonData,
+        });
+        
+        fetch(request)
+          .then(response => {
+            if (response.ok) {
+              hideConfirmationDiv();
+              return response.json();
+            } else {
+              console.error("Error saving hospital:", response.statusText);
+              // Handle error message
+            }
+          })
+          .then(jsonData => {
+            showFeedbackDiv();
+            console.log(jsonData);
+            const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+            confirmationTextDiv.textContent = jsonData.Message;
+          })
+          .catch(error => alert("Error sending request:", error));
+      }
+      
+      function validateForm(diseaseName, description) {
+        if (!diseaseName || !description) {
+            alert("Please fill out all required fields!");
+            return false;
+        }
+        return true;
+      }
+    
+      document.getElementById("newDiseaseForm").addEventListener("submit", function(event) {
+        createNewDisease(event);
+      });
+    
+    const saveButton = document.getElementById('yes_button');
+    
+      saveButton.addEventListener("click", function() {
+        createNewDisease();
+      });
+
+
+
 });
+
+
+
+function clearForm() {
+  const form = document.getElementById("newDiseaseForm");
+  form.reset();
+  }
+    //
+function hideNewDisease() {
+  const newDoctorForm = document.getElementById("new_disease");
+  newDoctorForm.style.display = "none";
+}
+  
+function showAddNewDisease() {
+  const showAddNewForm = document.getElementById('new_disease');
+       
+  if (showAddNewForm.style.display === 'none') {
+    showAddNewForm.style.display = 'block';
+  } else {
+    showAddNewForm.style.display = 'none';
+  }
+} // window.onload = showAddNewDisease();
+  
+  // SHOWS CONFIRMATION DIV
+function showConfirmationDiv() {
+  const confirmationDiv = document.getElementById('confirmation_div');
+  
+     
+  if (confirmationDiv.style.display === 'none') {
+    confirmationDiv.style.display = 'block';
+  } else {
+    confirmationDiv.style.display = 'none';
+  }
+} // window.onload = showConfirmationDiv();
+  
+function hideConfirmationDiv() {
+  const confirmationDiv = document.getElementById("confirmation_div");
+  confirmationDiv.style.display = "none";
+}
+  
+  // FUNCTION TO DISPLAY THE DIV
+function showFeedbackDiv() {
+  const feedbackDiv = document.getElementById("returned_info");
+  feedbackDiv.style.display = "block";
+}
+  //HIDES THE RETURNED MESSAGE FROM THE SERVER DIV ON ADDING A NEW HOSPITAL
+function hideFeedbackDiv() {
+  const feedbackDiv = document.getElementById("returned_info");
+  feedbackDiv.style.display = "none";
+  clearForm();
+}
+  
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    showAddNewDisease();
+    hideNewDisease();
+    showConfirmationDiv();
+  });

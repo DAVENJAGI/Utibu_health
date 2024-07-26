@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const requestUrl = 'http://0.0.0.0:5000/api/v1/hospitals'; // Replace with your actual API endpoint
-    const pageSize = 10; // Number of items to display per page
+    const requestUrl = 'http://0.0.0.0:5000/api/v1/hospitals';
+    const pageSize = 10;
     let currentPage = 1;
-    let hospitalData = []; // Array to store all counties data
+    let hospitalData = [];
 
-    // DOM elements
     const tableBody = document.getElementById('myHospitalTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
@@ -221,7 +220,7 @@ constituencySelect.addEventListener("change", function() {
 
 });
 
-// A FUNCTION TO ADD A NEW HOSPITAL AFTER CLICKING ADD NEW
+
 function createNewHospital() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -256,13 +255,18 @@ function createNewHospital() {
     fetch(request)
       .then(response => {
         if (response.ok) {
-          alert("Hospital saved successfully!");
-          clearForm();
-          hideNewHospital();
+          hideConfirmationDiv();
+          return response.json();
         } else {
           console.error("Error saving hospital:", response.statusText);
           // Handle error message
         }
+      })
+      .then(jsonData => {
+        showFeedbackDiv();
+        console.log(jsonData);
+        const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+        confirmationTextDiv.textContent = jsonData.Message;
       })
       .catch(error => alert("Error sending request:", error));
 } createNewHospital();
@@ -276,7 +280,7 @@ function clearForm() {
 
 function hideNewHospital() {
   const newHospitalForm = document.getElementById("new_hospital");
-  newHospitalForm.style.display = "none"; // Hides the form element
+  newHospitalForm.style.display = "none";
 }
 
 
@@ -287,7 +291,7 @@ saveHospitalData()
   .catch(error => console.error("Error saving hospital:", error));
 
 
-// FUNCTION TO HIDE AND SHOW THE ADD NEW HOSPITAL FORM..
+// FUNCTION TO HIDE AND SHOW THE ADD NEW HOSPITAL 
 function showAddNewHospital() {
     const showAddNewForm = document.getElementById('new_hospital');
   
@@ -299,9 +303,72 @@ function showAddNewHospital() {
     }
   } window.onload = showAddNewHospital();
   
-  document.addEventListener("DOMContentLoaded", function() {
-    showAddNewHospital();
+
+// FUNCTION THAT HIDES AND SHOWS CONFIRMATION DIV
+function showConfirmationDiv() {
+  const confirmationDiv = document.getElementById('confirmation_div');
+
+   
+  if (confirmationDiv.style.display === 'none') {
+    confirmationDiv.style.display = 'block';
+  } else {
+    confirmationDiv.style.display = 'none';
+  }
+} window.onload = showConfirmationDiv();
+
+//HIDES THE CONFIRMATION DIV ON BEING CALLED
+function hideConfirmationDiv() {
+  const confirmationDiv = document.getElementById("confirmation_div");
+  confirmationDiv.style.display = "none";
+}
+// FUNCTION TO DISPLAY THE DIV
+function showFeedbackDiv() {
+  const feedbackDiv = document.getElementById("returned_info");
+  feedbackDiv.style.display = "block";
+}
+//HIDES THE RETURNED MESSAGE FROM THE SERVER DIV ON ADDING A NEW HOSPITAL
+function hideFeedbackDiv() {
+  const feedbackDiv = document.getElementById("returned_info");
+  feedbackDiv.style.display = "none";
+  clearForm();
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  showAddNewHospital();
+  showConfirmationDiv();
 });
-  
 
 
+/*
+
+const confirmationDiv = document.getElementById('confirmation_div');
+const button1 = document.getElementById('exit_hospital_form_button');
+const button2 = document.getElementById('save_button');
+
+const disableButtons = () => {
+  button1.disabled = true;
+  button2.disabled = true;
+};
+
+const enableButtons = () => {
+  button1.disabled = false;
+  button2.disabled = false;
+};
+
+confirmationDiv.addEventListener('load', () => {
+
+  if (confirmationDiv.style.display !== 'none') {
+    disableButtons();
+  }
+});
+
+const showConfirmationDiv = () => {
+  confirmationDiv.style.display = 'block';
+  disableButtons();
+};
+const hideConfirmationDiv = () => {
+  confirmationDiv.style.display = 'none';
+  enableButtons();
+};
+*/

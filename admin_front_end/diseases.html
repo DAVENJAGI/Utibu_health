@@ -116,10 +116,67 @@
             </div>
 
             <div id="top_div">
-                <div id="page_name">Hospitals</div>
+                <div id="page_name">Diseases</div>
                 <div id="create_new_item">
-                    <div id="add_new">Create new</div>
+                    <div id="add_new" onclick="showAddNewDisease()">Create new</div>
                 </div>
+            </div>
+
+            <div id="new_disease">
+                <div id="confirmation_div">
+                    <div id="confirmation_text">
+                        <div id="confirmation_text_text">Are you sure you want to add a new disease?</div>
+                    </div>
+                    <div id="confirmation_buttons">
+                        <div id="confirmation_buttons_inner">
+                            <button id="no_button" onclick="hideConfirmationDiv()">No</button>
+                            <button id="yes_button">Yes</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="returned_info">
+                    <div id="confirmation_text">
+                        <div id="saved_confirmation_text_text"></div>
+                    </div>
+                    <div id="confirmation_buttons">
+                        <div id="confirmation_buttons_inner">
+                            <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="form_div">
+                    <div id="header_input">
+                        <div id="new_disease_header">***** NEW DISEASE DETAILS *****</div>
+                        <div id="back_arrow" onclick="hideNewDisease()"><i class="fa fa-times" aria-hidden="true" style="font-size: 45px;"></i></div>
+                    </div>
+                    
+                    <form id="newDiseaseForm">
+                        <div id="feedback_info"></div>
+                    
+                        <div class="disease_data_form">
+                            <label for="disease_name" class="input_name">Disease Name:</label><br>
+                            <input type="text" id="disease_name" name="disease_name" class="input" required><br><br>
+                        </div>
+                        <div class="disease_data_form">
+                            <label for="description" class="input_name">Disease Description:</label><br>
+                            <input type="text" id="description" name="description" class="input" required><br><br>
+                        </div>
+                    </form>
+                    
+                    <div id="exit_div">
+                        <div id="inner_exit_div">
+                            <div class="inner_button_div">
+                                <button id="exit_disease_form_button" class="inner_exit_div_button" onclick="showAddNewDisease()">Cancel</button>
+                            </div>
+                            <div class="inner_button_div">
+                                <button id="save_button" class="inner_exit_div_button" onclick="showConfirmationDiv()">ADD</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
             </div>
 <!--
             <div id="search_div">

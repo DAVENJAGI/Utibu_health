@@ -2,7 +2,7 @@
 """Creates the doctors routing"""
 
 from api.v1.views import app_views
-from flask import jsonify, Blueprint, abort, request
+from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
 from models.doctor import Doctor
 from models.hospital import Hospital
@@ -73,7 +73,10 @@ def create_doctor():
     obj = request.get_json()
     dkt = Doctor(**obj)
     dkt.save()
-    return (jsonify(dkt.to_dict()), 201)
+#    return (jsonify(dkt.to_dict()), 201)
+    message =  {"Message": "New Doctor created successfully. Thank you"}
+    return make_response(jsonify(message), 201)
+
 
 @app_views.route("/doctor/<string:doctor_id>", methods=['PUT'], strict_slashes=False)
 def update_doctor(doctor_id):

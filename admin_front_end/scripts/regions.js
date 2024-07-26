@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let countiesData = []; // Array to store all counties data
 
     // DOM elements
-    const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('myRegionTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    const searchInput = document.getElementById('search_input');
-    const searchButton = document.getElementById('search_button');
+    const searchInput = document.getElementById('search_input_home');
+    const searchButton = document.getElementById('search_button_home');
 
     
 
@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageCounties.forEach(county => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${county.id}</td>
                 <td>${county.county_code}</td>
                 <td>${county.name}</td>
@@ -79,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredCounties.forEach(county => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${county.id}</td>
                 <td>${county.county_code}</td>
                 <td>${county.name}</td>

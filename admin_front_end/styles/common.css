@@ -17,6 +17,7 @@
     z-index: 9;
     overflow: hidden;
     background-color: #38baee;
+    /*background: #1a6860;*/
 }
 
 #dashboard_div{
@@ -200,7 +201,7 @@
     justify-content: center;
     background-color: #f0f4f8;
     border: 1px gray solid;
-    color: #38baee;
+    color: #1a6860;
     display: flex;
     float: right;
     margin-right: 20px;
@@ -282,7 +283,7 @@
     display: flex;
 }
 #page_name{
-    /*border: solid 1px red;*/
+    color: #1a6860;
     margin-left: 1%;
     width: 50%;
     height: 100%;
@@ -299,7 +300,7 @@
     align-content: center;
 }
 #add_new{
-    border: 1px white solid;
+    border: 1px #1a6860 solid;
     width: 120px;
     height: 45px;
     float: right;
@@ -311,9 +312,9 @@
     color: white;
 }
 #add_new:hover{
+    color: wheat;
     transform: scale(1.002);
-    /*box-shadow: 1px 1px 2px #8c8f91;*/
-    background: black;
+    box-shadow: 1px 1px 4px #9b9a9a;
 }
 
 /* SEARCH DIV*/

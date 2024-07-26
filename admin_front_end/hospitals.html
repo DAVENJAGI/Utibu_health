@@ -119,15 +119,37 @@
                 </div>
             </div>
 
+            
             <div id="new_hospital">
+                <div id="confirmation_div">
+                    <div id="confirmation_text">
+                        <div id="confirmation_text_text">Are you sure you want to add a new hospital??</div>
+                    </div>
+                    <div id="confirmation_buttons">
+                        <div id="confirmation_buttons_inner">
+                            <button id="no_button" onclick="hideConfirmationDiv()">No</button>
+                            <button id="yes_button" onclick="createNewHospital()">Yes</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="returned_info">
+                    <div id="confirmation_text">
+                        <div id="saved_confirmation_text_text"></div>
+                    </div>
+                    <div id="confirmation_buttons">
+                        <div id="confirmation_buttons_inner">
+                            <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="form_div">
                     <div id="header_input">
-                        <div id="back_arrow" onclick="goBackToHospitals()"><i class="fa fa-arrow-left" aria-hidden="true" style="font-size: 30px;"></i></div>
                         <div id="new_hosp_header">***** NEW HOSPITAL DETAILS *****</div>
+                        <div id="back_arrow" onclick="goBackToHospitals()"><i class="fa fa-times" aria-hidden="true" style="font-size: 45px;"></i></div>
                     </div>
                     
                     <form id="newHospitalForm">
-                        <div id="feedback_info"></div>
                         <div class="hosital_data_form">
                             <label for="county_id" class="input_name">County:</label>
                             <br>
@@ -184,7 +206,7 @@
                                 <button id="exit_hospital_form_button" class="inner_exit_div_button" onclick="showAddNewHospital()">Cancel</button>
                             </div>
                             <div class="inner_button_div">
-                                <button id="save_button" class="inner_exit_div_button" onclick="createNewHospital()">ADD</button>
+                                <button id="save_button" class="inner_exit_div_button" onclick="showConfirmationDiv()">ADD</button>
                             </div>
                         </div>
                     </div>

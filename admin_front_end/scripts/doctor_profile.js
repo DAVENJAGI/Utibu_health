@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let doctorData = [];
     
     // DOM elements
-    const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('myPatientTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageUser.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
                 <td>${user.email}</td>
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredUsers.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
+                <td><input type="checkbox"></td> 
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
                 <td>${user.email}</td>
@@ -326,14 +328,22 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(medicationData => {
               const medicationName = medicationData.name;
 
+              const formattedDate = new Date(order.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+              })
 
               tableRow.innerHTML = `
+                  <td><input type="checkbox"></td>
                   <td>${order.id}</td>
                   <td>${patientName}</td>
                   <td>${medicationName}</td>
                   <td>${order.quantity}</td>
                   <td style="color: ${statusColor};">${order.order_status}</td>
-                  <td>$${order.billing_cost}</td>                  
+                  <td>$${order.billing_cost}</td> 
+                  <td>${formattedDate}</td>     
+                  <td>${order.delivery_mode}</td>             
               `;
               tableBody.appendChild(tableRow);
             })
@@ -383,6 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
               tableRow.innerHTML = `
+                  <td><input type="checkbox"></td>
                   <td>${order.id}</td>
                   <td>${patientName}</td>
                   <td>${medicationName}</td>

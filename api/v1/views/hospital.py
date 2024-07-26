@@ -2,7 +2,7 @@
 """Creates the endpoint route for /users"""
 
 from api.v1.views import app_views
-from flask import jsonify, Blueprint, abort, request
+from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
 from models.hospital import Hospital 
 from models.doctor import Doctor
@@ -37,7 +37,7 @@ def delete_hospital(hospital_id):
         abort(404)
     hospital.delete()
     storage.save()
-    return jsonify({})
+    return make_response(jsonify({"message": "Hospital deleted successfully"}), 201)
 
 
 @app_views.route("/hospital/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
@@ -71,7 +71,9 @@ def create_hospital():
     obj = request.get_json()
     hosp = Hospital(**obj)
     hosp.save()
-    return (jsonify(hosp.to_dict()), 201)
+    message =  {"Message": "Hospital created successfully. Thank you"}
+#    return (jsonify(hosp.to_dict(message)), 201)
+    return make_response(jsonify(message), 201)
 
 @app_views.route("/hospital/<string:hospital_id>", methods=['PUT'], strict_slashes=False)
 def update_hospital(hospital_id):

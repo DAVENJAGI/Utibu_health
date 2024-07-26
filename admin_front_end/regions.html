@@ -122,13 +122,8 @@
                 </div>
             </div>
 
-            <div id="search_div">
-                <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Region by name....">
-                    <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
-                </div>
-            </div>
             
+<!--
             <div id="whole_body">
                 <div id="content">
                     <div id="hospital_title">
@@ -141,10 +136,10 @@
                                     <th>ID</th>
                                     <th>County Code</th>
                                     <th>County Name</th>
-                                    <!--
+                                    
                                     <th>No. of Constituencies</th>
                                     <th>Number of Wards</th>
-                                    -->
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -162,6 +157,52 @@
                    
                 </div>
             </div>
+        -->
+        <div id="region_div">
+            <div id="regions_div_inner">
+                <div id="search">
+                    <div id="search_div_home">
+                        <div id="search_bar_home">
+                            <input type="text" id="search_input_home" placeholder="Search regions....">
+                            <button id="search_button_home"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                        </div>
+                    </div>
+
+                    <div id="filter_div">
+                        <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>
+                        <div id="filter_txt">Filter By</div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="regions_table_div">
+                <div id="all_regions_table">
+                    <div id="regions_tables_content">
+                        <table id="myRegionTable">
+                          <thead id="table_head">
+                                <tr id="">
+                                    <th><input type="checkbox" class=checkboxes></th>
+                                    <th>ID</th>
+                                    <th>County Code</th>
+                                    <th>County Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div id="pagination">
+                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
+                        <span id="page-num"></span>
+                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
         </div>
     </div>
     

@@ -2,7 +2,7 @@
 """Creates the first route, /users"""
 
 from api.v1.views import app_views
-from flask import jsonify, Blueprint, abort, request
+from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
 from models.disease import Disease
 from models.medication import Medication
@@ -77,7 +77,7 @@ def delete_disease(disease_id):
     return jsonify({})
 
 
-@app_views.route("/disease/", methods=["POST"], strict_slashes=False)
+@app_views.route("/diseases/", methods=["POST"], strict_slashes=False)
 def create_disease():
     """Creates a new user"""
     if not request.get_json():
@@ -86,13 +86,14 @@ def create_disease():
         return make_response(jsonify({"error": "Missing disease name"}), 400)
     if 'description' not in request.get_json():
         return make_response(jsonify({"error": "Missing user descrption"}), 400)
-    if 'medication_id' not in request.get_json():
-        return make_response(jsonify({"error": "Missing medication id"}), 400)
       
     obj = request.get_json()
     dis = Disease(**obj)
     dis.save()
-    return (jsonify(dis.to_dict()), 201)
+#    return (jsonify(dis.to_dict()), 201)
+    message =  {"Message": "New Disease created successfully. Thank you"}
+    return make_response(jsonify(message), 201)
+
 
 @app_views.route("/disease/<string:disease_id>", methods=['PUT'], strict_slashes=False)
 def update_disease(disease_id):

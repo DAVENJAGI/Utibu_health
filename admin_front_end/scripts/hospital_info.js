@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let doctorData = []; // Array to store all counties data
 
     // DOM elements
-    const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('myDoctorTable').getElementsByTagName('tbody')[0];
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchAllDoctors();
 
 
-    const searchInput = document.getElementById('search_input');
-    const searchButton = document.getElementById('search_button');
+    const searchInput = document.getElementById('search_input_home');
+    const searchButton = document.getElementById('search_button_home');
 
 
 
@@ -142,7 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Filter counties data based on search term
         const filteredDoctors = doctorData.filter(doctor =>
-            doctor.first_name.toLowerCase().includes(searchTerm)
+            doctor.first_name.toLowerCase().includes(searchTerm) ||
+            doctor.last_name.toLowerCase().includes(searchTerm) ||
+            doctor.license_no.toLowerCase().includes(searchTerm)
         );
 
         // Update table with filtered data
@@ -216,13 +218,18 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(request)
       .then(response => {
         if (response.ok) {
-          alert("New Doctor saved successfully!");
-          clearForm();
-          hideNewDoctor();
+          hideConfirmationDiv();
+          return response.json();
         } else {
           console.error("Error saving hospital:", response.statusText);
           // Handle error message
         }
+      })
+      .then(jsonData => {
+        showFeedbackDiv();
+        console.log(jsonData);
+        const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+        confirmationTextDiv.textContent = jsonData.Message;
       })
       .catch(error => alert("Error sending request:", error));
   }
@@ -239,15 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
     createNewDoctor(event);
   });
 
-const saveButton = document.getElementById('save_button');
+const saveButton = document.getElementById('yes_button');
 
   saveButton.addEventListener("click", function() {
     createNewDoctor();
   });
 
-// RESETS FORM 
+});
 
-  function clearForm() {
+function clearForm() {
   const form = document.getElementById("newDoctorForm");
   form.reset();
   }
@@ -256,7 +263,6 @@ const saveButton = document.getElementById('save_button');
   const newDoctorForm = document.getElementById("new_doctor");
   newDoctorForm.style.display = "none"; // Hides the form element
   }
-});
 
 function showAddNewDoctor() {
   const showAddNewForm = document.getElementById('new_doctor');
@@ -268,3 +274,39 @@ function showAddNewDoctor() {
     showAddNewForm.style.display = 'none';
   }
 } window.onload = showAddNewDoctor();
+
+// SHOWS CONFIRMATION DIV
+function showConfirmationDiv() {
+  const confirmationDiv = document.getElementById('confirmation_div');
+
+   
+  if (confirmationDiv.style.display === 'none') {
+    confirmationDiv.style.display = 'block';
+  } else {
+    confirmationDiv.style.display = 'none';
+  }
+} window.onload = showConfirmationDiv();
+
+function hideConfirmationDiv() {
+  const confirmationDiv = document.getElementById("confirmation_div");
+  confirmationDiv.style.display = "none";
+}
+
+// FUNCTION TO DISPLAY THE DIV
+function showFeedbackDiv() {
+  const feedbackDiv = document.getElementById("returned_info");
+  feedbackDiv.style.display = "block";
+}
+//HIDES THE RETURNED MESSAGE FROM THE SERVER DIV ON ADDING A NEW HOSPITAL
+function hideFeedbackDiv() {
+  const feedbackDiv = document.getElementById("returned_info");
+  feedbackDiv.style.display = "none";
+  clearForm();
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  showAddNewDoctor();
+  hideNewDoctor();
+  showConfirmationDiv();
+});

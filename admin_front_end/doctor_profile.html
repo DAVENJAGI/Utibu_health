@@ -127,41 +127,11 @@
                     
                     <form id="newPatientForm">
                         <div id="feedback_info"></div>
-                        <!--
+                        
                         <div class="patient_data_form">
-                            <label for="county_id" class="input_name">County:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="county_select" name="county_id" class="input" required>
-                                <option value="" id="option_select">Select County</option> </select>
-                            </div>
-                            <br><br>
+                            <label for="first_name" class="input_name">First Name:</label> <br>
+                            <input type="text" id="first_name" class="input" name="first_name" required><br><br>
                         </div>
-
-                        <div class="patient_data_form">
-                            <label for="constituency_id" class="input_name">Constituency:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="constituency_select" name="constituency_id" class="input" required>
-                                <option value="">Select Constituency</option> </select>
-                            </div>
-                            <br><br>
-                        </div>
-
-                        <div class="patient_data_form">
-                            <label for="town_id" class="input_name">Ward:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="town_select" name="town_id" class="input" required>
-                                <option value="">Select Ward</option> </select>
-                            </div>
-                            <br><br>
-                        </div>
-                    -->
-                    <div class="patient_data_form">
-                        <label for="first_name" class="input_name">First Name:</label> <br>
-                        <input type="text" id="first_name" class="input" name="first_name" required><br><br>
-                    </div>
 
                         <div class="patient_data_form">
                             <label for="name" class="input_name">Last Name:</label> <br>
@@ -317,23 +287,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="search_div" style="height: 6vh;">
-                            <div id="search_bar">
-                                <input type="text" id="search_input" style="font-size: 18px;" placeholder="Search Disease....">
-                                <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                        <div id="doctor_div_inner">
+                            <div id="search">
+                                <div id="search_div_home">
+                                    <div id="search_bar_home">
+                                        <input type="text" id="search_input_home" placeholder="Search ....">
+                                        <button id="search_button_home"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
 
-                        <div id="content">
-                            <div id="tables_content">
-                                <table id="myTable">
+                        <div id="patients_tables_div">
+                            <div id="all_patients_tables">
+                                <table id="myPatientTable">
                                   <thead id="table_head">
                                         <tr id="">
+                                            <th><input type="checkbox" class=checkboxes></th>
                                             <th>first Name</th>
                                             <th>Last Name</th>
                                             <th>Email</th>
-                                            <th>Date of Birth</th>
-                                            
+                                            <th>Date of Birth</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -366,24 +341,32 @@
                             </div>
                         -->
                         </div>
-                        <div id="search_div" style="height: 6vh;">
-                            <div id="search_bar">
-                                <input type="text" id="search_order_input" style="font-size: 18px;" placeholder="Search Order....">
-                                <button id="search_order_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                        <div id="doctor_div_inner">
+                            <div id="search">
+                                <div id="search_div_home">
+                                    <div id="search_bar_home">
+                                        <input type="text" id="search_input_home" placeholder="Search ....">
+                                        <button id="search_button_home"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
 
-                        <div id="content">
-                            <div id="order_tables_content">
+                        <div id="patients_tables_div">
+                            <div id="all_patients_tables">
                                 <table id="myOrderTable">
                                   <thead id="table_head">
                                         <tr id="">
+                                            <th><input type="checkbox" class=checkboxes></th>                                    
                                             <th>Order Id</th>
                                             <th>Patient's name</th>
                                             <th>Medication</th>
                                             <th>Quantity</th>
                                             <th>Order Status</th>
                                             <th>Billing Cost</th>
+                                            <th>Order Date</th>
+                                            <th>Pickup Mode</th>
                                         </tr>
                                     </thead>
                                     <tbody>

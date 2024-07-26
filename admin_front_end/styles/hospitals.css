@@ -11,10 +11,10 @@
 
 
 #new_hospital{
-    background: aliceblue;
+    background: #f7f7f7;
     /*border: 1px solid red;*/
     position: absolute;
-    height: 87.725vh;
+    height: 89;
     /*margin-left: 1%;*/
     /*margin-top: 2vh;*/
     width: 100%;
@@ -56,31 +56,32 @@
     /*border: solid 1px red;*/
     margin: 2%;
     margin-top: 1%;
-    height: 10%;
+    height: 6%;
     /*border-top: 1px solid #1a6860;*/
     justify-content: center;
     align-content: center;
 }
 #form_div{
-    /*border: 1px solid red;*/
+    border-left: 1px solid #9b9a9a;
+    border-right: 1px solid #9b9a9a;
+    border-bottom: 1px solid #9b9a9a;
     margin: 1%;
-    height: 86vh;
+    height: 88vh;
     background-color: white;
     overflow: auto;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    box-shadow: 1px 1px 3px #464747;
+    border-radius: 8px;
+    /*box-shadow: 1px 1px 3px #464747;*/
     
 }
 /*#1a6860*/*
 #newHospitalForm{
-    /*border-bottom: 1px solid #1a6860;*/
+    border-bottom: 1px solid #1a6860;
     margin: 2%;
     margin-top: 1%;
     margin-bottom: 2%;
-    height: 64vh;
+    height: 69vh;
     overflow: auto;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     
 }
 .hosital_data_form{
@@ -103,8 +104,8 @@
 
 #inner_exit_div {
     /*border: 1px solid red;*/
-    margin: 2%;
-    margin-top: 1%;
+    margin: 1%;
+    /*margin-top: 1%;*/
     height: 70%;
     align-content: center;
     justify-items: center;
@@ -112,8 +113,8 @@
 }
 
 .inner_exit_div_button{
-    height: 40px;
-    width: 160px;
+    height: 35px;
+    width: 140px;
     font-size: 18px;
 }
 
@@ -127,30 +128,31 @@
     color: white;
     background: red;
     border: 1px solid red;
-    border-radius: 8px;
+    border-radius: 4px;
     overflow:hidden;
+    font-weight: 700;
+    font-size: 18px;
 }
 #exit_hospital_form_button:hover{
-    transform: scale(1.001);
-    color: #1a6860;
-    box-shadow: 1px 1px 2px #464747;
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
 }
 
 #save_button{
-    color: black;
     background: #1a6860;
-    border-radius: 6px;
+    border-radius: 4px;
     border: 1px solid #1a6860;
-}
-#save_button:hover{
-    transform: scale(1.001);
     color: white;
-    box-shadow: 1px 1px 2px #464747;
+    font-weight: 700;
+    font-size: 18px;
 }
 #save_button:hover{
-    transform: scale(1.01);
-    background-color: black;
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
 }
+
 #county_select{
     background-color: white;
 }
@@ -162,23 +164,6 @@
 }
 .select_input_div{
 
-}
-
-#feedback_info{
-    border: 1px solid red;
-    /*/position: absolute;*/
-    height: 30px;
-    width: 95%;
-    margin-left: 2%;
-    text-align: center;
-    align-content: center;
-    font-size: 20px;
-    margin-top: 2%;
-    background-image: linear-gradient(to right, #7af155 0%, #1dd126 100%);
-    color: black;
-    font-weight: 900;
-    backface-visibility: visible;
-    display: none;
 }
 #hospital_div{
     /*border: solid 1px green;*/
@@ -316,4 +301,119 @@
     width: 150px;
     margin: 0 auto;
     height: 1vh;
+}
+
+
+#confirmation_div{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#confirmation_text{
+    /*border: solid 1px red;*/
+    height: 50%;
+    margin: 1%;
+    align-content: center;
+    margin-bottom: 3%;
+}
+#confirmation_text_text{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
+}
+#confirmation_buttons{
+    /*border: solid 1px red;*/
+    height: 30%;
+    margin: 1%;
+    align-content: center;
+}
+#confirmation_buttons_inner{
+    /*border: 1px solid red;*/
+    align-content: center;
+    height: 80%;
+    margin: 1%;
+    text-align: center;
+}
+#no_button{
+    border: 1px solid red;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px; 
+    background-color: #FF2C2C;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 3%;
+    
+}
+#yes_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+#no_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#yes_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+
+#returned_info{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#ok_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+#ok_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#saved_confirmation_text_text{
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
 }

@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         }
       
-        const searchOrderInput = document.getElementById('search_order_input');
-        const searchOrderButton = document.getElementById('search_order_button');
+        const searchOrder = document.getElementById('search_input_home');
+        const searchButton = document.getElementById('search_button_home');
       
       
         function displayCurrentPage() {
@@ -143,12 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchOrders();
       
       
-        searchOrderButton.addEventListener('click', () => {
-            const searchTerm = searchOrderInput.value.trim().toLowerCase();
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchOrder.value.trim().toLowerCase();
       
             // Filter counties data based on search term
             const filteredOrders = orderData.filter(order =>
-                order.order_status.toLowerCase().includes(searchTerm)
+                order.order_status.toLowerCase().includes(searchTerm) ||
+                order.id.toLowerCase().includes(searchTerm)
             );
       
             tableBody.innerHTML = '';
@@ -177,12 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
                         tableRow.innerHTML = `
+                            <td><input type="checkbox"></td>                        
                             <td>${order.id}</td>
                             <td>${patientName}</td>
+                            <td>${doctorName}</td>
                             <td>${medicationName}</td>
                             <td>${order.quantity}</td>
+                            <td>${formattedDate}</td>
                             <td style="color: ${statusColor};">${order.order_status}</td>
-                            <td>$${order.billing_cost}</td>                  
+                            <td>$${order.billing_cost}</td>  
+                            <td>${order.delivery_mode}</td>                 
                         `;
                         tableBody.appendChild(tableRow);
                     
@@ -193,8 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
       
-            // Clear search input
-            searchOrderInput.value = '';
+            searchOrder.value = '';
         });
         
       
