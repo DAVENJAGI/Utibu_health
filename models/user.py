@@ -31,7 +31,7 @@ class User(BaseModel, Base):
         diseases = relationship("Disease", secondary="user_disease")
         disease_id = Column(String(64), ForeignKey("diseases.id"), nullable=True)
         appointments = relationship("Appointment", backref="users")
-        orders = relationship("Order", backref="users")
+        orders = relationship("Order", backref="users", cascade="delete")
 
 
     else:

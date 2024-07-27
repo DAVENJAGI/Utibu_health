@@ -35,7 +35,8 @@ def delete_user(user_id):
         abort(404)
     user.delete()
     storage.save()
-    return jsonify({})
+#    return jsonify({})
+    return (jsonify({"Message": "User deleted successfully. Thank you"}), 201)
 
 @app_views.route("/user/<string:user_id>/disease/", methods=['GET'], strict_slashes=False)
 def get_disease_by_user_id(user_id):

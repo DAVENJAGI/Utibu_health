@@ -27,6 +27,44 @@
     display: flex;
     align-items: center;
 }
+#delete_div{
+    /*border: solid 1px red;*/
+    width: 50%;
+    align-content: center;
+}
+#delete_button{
+    border: 1px solid red;
+    display: flex;
+    float: right;
+    color: white;
+    background: red;
+    /*border: 1px solid black;*/
+    height: 37px;
+    border-radius: 4px;
+    overflow:hidden;
+    font-weight: 700;
+    font-size: 18px;
+}
+#delete_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#delete_icon{
+    /*border: 1px solid black;*/
+    height: 35px;
+    align-content: center;
+    margin-left: 0%;
+    font-size: 16px;
+    width: 20px;
+}
+#delete_txt{
+    /*border: 1px solid black;*/
+    height: 35px;
+    align-content: center;
+    margin-left: 4px;
+}
+
 #filter_div{
     /*border: solid 1px red;*/
     margin-left: 5%;
@@ -145,4 +183,118 @@
     width: 150px;
     margin: 0 auto;
     height: 1vh;
+}
+
+#confirmation_div{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#confirmation_text{
+    /*border: solid 1px red;*/
+    height: 50%;
+    margin: 1%;
+    align-content: center;
+    margin-bottom: 3%;
+}
+#confirmation_text_text{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: red;
+}
+#confirmation_buttons{
+    /*border: solid 1px red;*/
+    height: 30%;
+    margin: 1%;
+    align-content: center;
+}
+#confirmation_buttons_inner{
+    /*border: 1px solid red;*/
+    align-content: center;
+    height: 80%;
+    margin: 1%;
+    text-align: center;
+}
+#no_button{
+    border: 1px solid red;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px; 
+    background-color: #FF2C2C;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 3%;
+    
+}
+#yes_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+#no_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#yes_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+
+#returned_info{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#ok_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+#ok_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#saved_confirmation_text_text{
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
 }

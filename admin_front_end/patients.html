@@ -159,6 +159,28 @@
                 </div>
             </div>
         -->
+        <div id="confirmation_div">
+            <div id="confirmation_text">
+                <div id="confirmation_text_text">Are you sure you want to delete the selected user?</div>
+            </div>
+            <div id="confirmation_buttons">
+                <div id="confirmation_buttons_inner">
+                    <button id="no_button" onclick="hideConfirmationDiv()">No</button>
+                    <button id="yes_button">Yes</button>
+                </div>
+            </div>
+        </div>
+        <div id="returned_info">
+            <div id="confirmation_text">
+                <div id="saved_confirmation_text_text"></div>
+            </div>
+            <div id="confirmation_buttons">
+                <div id="confirmation_buttons_inner">
+                    <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                </div>
+            </div>
+        </div>
+
         <div id="patient_div">
             <div id="patient_div_inner">
                 <div id="search">
@@ -174,6 +196,12 @@
                         <div id="filter_txt">Filter By</div>
                     </div>
                     
+                </div>
+                <div id="delete_div">
+                    <button id="delete_button">
+                        <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                        <div id="delete_txt" onclick="showConfirmationDiv()">Delete</div>
+                    </button>
                 </div>
             </div>
             <div id="patient_table_div">

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageSize = 10; // Number of items to display per page
     let currentPage = 1;
     let userData = []; // Array to store all counties data
+    let columnUserId;
 
     // DOM elements
     const tableBody = document.getElementById('myPatientTable').getElementsByTagName('tbody')[0];
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageUser.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" id="checkbox-${user.id}"></td>
                 <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredUsers.forEach(user => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" id="checkbox-${user.id}"></td>
                 <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
@@ -123,4 +124,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.location.href = `user_profile.html?userId=${userId}`;
     });
+
+    //EVENT LISTENER TO CHANGE THE COLOR OF THE TEXT ON CLICKING THE CHECKBOX
+    tableBody.addEventListener('click', (event) => {
+        if (event.target.type === 'checkbox') {
+            const checkbox = event.target;
+            checkbox.parentElement.style.color = 'red';
+            const checkboxId = checkbox.id;
+            console.log('Clicked checkbox ID:', checkboxId);
+            
+            const userId = checkbox.id.split('checkbox-')[1]; 
+            const saveButton = document.getElementById('yes_button');
+            saveButton.addEventListener("click", function() {
+                deleteUser(userId);
+            });   
+            
+            const clickedRow = checkbox.closest('tr');
+            clickedRow.style.color = checkbox.checked ? '#1a6860' : '';
+            clickedRow.style.backgroundColor = checkbox.checked ? '#E2F3E6' : '';
+        }
+    });
+
+    //FUNCTION THAT DELETES A USER
+    function deleteUser(userId) {
+        const deleteRequest = `http://0.0.0.0:5000/api/v1/user/${userId}`;
+    
+        fetch(deleteRequest, {
+            method: "DELETE",
+        })
+        .then(response => {
+            if (response.ok) {
+                hideConfirmationDiv();
+                return response.json();
+            } else {
+            console.error("Error deleting user:", response.statusText);
+        }
+      })
+      .then(jsonData => {
+        showFeedbackDiv();
+        console.log(jsonData);
+        const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+        confirmationTextDiv.textContent = jsonData.Message;
+      })
+      .catch(error => alert("Error sending request:", error));
+    }
+
+  
+
 });
+
+// SHOWS CONFIRMATION DIV
+function showConfirmationDiv() {
+  const confirmationDiv = document.getElementById('confirmation_div');
+     
+  if (confirmationDiv.style.display === 'none') {
+    confirmationDiv.style.display = 'block';
+  }
+}
+
+function hideConfirmationDiv() {
+    const confirmationDiv = document.getElementById("confirmation_div");
+    confirmationDiv.style.display = "none";
+}
+// FUNCTION TO DISPLAY THE DIV
+function showFeedbackDiv() {
+    const feedbackDiv = document.getElementById("returned_info");
+    feedbackDiv.style.display = "block";
+}
+function hideFeedbackDiv() {
+    const feedbackDiv = document.getElementById("returned_info");
+    feedbackDiv.style.display = "none";
+
+}
+document.addEventListener('DOMContentLoaded', () => {
+    showConfirmationDiv();
+    hideConfirmationDiv();
+    showFeedbackDiv();
+    hideFeedbackDiv();
+})

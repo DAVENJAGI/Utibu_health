@@ -34,7 +34,9 @@ def delete_medication(medication_id):
         abort(404)
     med.delete()
     storage.save()
-    return jsonify({})
+#    return jsonify({})
+    return (jsonify({"Message": "Medication deleted successfully. Thank you"}), 201)
+
 
 
 @app_views.route("/medications/", methods=["POST"], strict_slashes=False)
