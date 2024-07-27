@@ -1,0 +1,327 @@
+#appointments{
+    background-color: aliceblue;
+    color: black;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    transform: scale(1.04);
+}
+#appointment_text{
+    color: orange;
+}
+#content_div{
+    position: relative;
+    margin-top: 0;
+    width: 100%;
+    display: block;
+    height: 92vh;
+    /*margin-left: 1.25%;*/
+    /*margin-bottom: 2.5vh;
+    background: aliceblue;
+    /*background: white;*/
+    /*box-shadow: 1px 1px 4px #8c8f91;*/
+    overflow: auto;
+    /*border: 1px solid #ff0000;*/
+
+}
+#profile_background{
+    /*border: solid 1px red;*/
+    height: 8%;
+    display: block;
+}
+#hosp_title{
+    /*border: 1px solid red;*/
+    display: flex;
+    height: 12%;
+    align-content: center;
+    margin: 1%;
+    font-size: 20px;
+    font-weight: 900;
+    color: #1a6860;
+}
+#nav_arrow{
+    height: 100%;
+    margin-top: 0;
+    margin-left: 1px;
+    width: 4%;
+    /*border: 1px solid red;*/
+    /*border-right: solid 1px #d8d8d8;*/
+    align-content: center;
+}
+#nav_arrow:hover{
+    color: #38baae;
+    transform: scale(1.05);
+}
+
+#title_header{
+    /*border: solid red 1px;*/
+    align-content: center;
+    margin-left: 30%;
+}
+
+#appointment_div{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    margin-top: 2%;
+    height: 78vh;
+    background: white;
+    border-radius: 5px;
+    overflow: auto;
+}
+#appointment_div_inner{
+    border-bottom: 1px solid #cfcfcf;
+    margin: 1%;
+    height: 65vh;
+    overflow: auto;
+}
+.appointment_profile_div{
+    border: 1px solid #cfcfcf;
+    margin: 1%;
+    height: 35%;
+    display: block;
+    overflow: auto;
+}
+#appointment_date{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    display: block;
+    overflow: auto;
+}
+.innerdiv_title{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    width: 25%;
+    text-align: center;
+    align-content: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.innerdiv_txt{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    width: 600px;
+    height: 70%;
+    text-align: center;
+    /*align-content: center;*/
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 15%;
+}
+.input{
+    font-size: 6px;
+}
+.innerdiv_time_txt{
+    /*border: solid 2px red;*/
+    margin: 1%;
+    height: 100%;
+    text-align: center;
+    /*align-content: center;*/
+    font-size: 18px;
+    font-weight: 600;
+}
+.patient_data{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    margin-left: 2%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+.header_txt{
+    /*border: 1px solid red;*/
+    margin-left: 1%;
+    width: 20%;
+    font-size: 16px;
+    text-align: end;
+
+}
+.data_txt{
+    /*border: 1px solid red;*/
+    margin-left: 2%;
+    width: 40%;
+    height: 60%;
+    font-size: 16px;
+    text-align: start;
+    align-content: center;
+}
+
+#appointment_select{
+    border: solid 1px #cfcfcf;
+    /*width: 100%;
+    height: 60%;*/
+    font-size: 20px;
+    background: white;
+    border-radius: 7px;
+}
+#exit_div{
+    /*border: solid 1px red;*/
+    margin: 2%;
+    /*margin-top: 4%;*/
+    height: 9%;
+    /*border-top: 1px solid #1a6860;*/
+    justify-content: center;
+    align-content: center;
+}
+#inner_exit_div {
+    /*border: 1px solid red;*/
+    margin: 1%;
+    /*margin-top: 1%;*/
+    height: 70%;
+    align-content: center;
+    justify-items: center;
+    display: flex;
+}
+
+.inner_exit_div_button{
+    height: 35px;
+    width: 140px;
+    font-size: 18px;
+
+}
+
+
+.inner_button_div{
+    width: 50%;
+    align-content: center;
+    text-align: center;
+}
+
+#exit_appointment_profile_button{
+    color: white;
+    background: red;
+    border: 1px solid red;
+    border-radius: 4px;
+    overflow:hidden;
+    font-weight: 600;
+    font-size: 18px;
+}
+#exit_appointment_profile_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+
+#save_button{
+    background: #1a6860;
+    border-radius: 4px;
+    border: 1px solid #1a6860;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+#save_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#confirmation_div{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#confirmation_text{
+    /*border: solid 1px red;*/
+    height: 50%;
+    margin: 1%;
+    align-content: center;
+    margin-bottom: 3%;
+}
+#confirmation_text_text{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a6860;
+}
+#confirmation_buttons{
+    /*border: solid 1px red;*/
+    height: 30%;
+    margin: 1%;
+    align-content: center;
+}
+#confirmation_buttons_inner{
+    /*border: 1px solid red;*/
+    align-content: center;
+    height: 80%;
+    margin: 1%;
+    text-align: center;
+}
+#returned_info{
+    border: solid 1px #9b9a9a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#ok_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+#ok_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#saved_confirmation_text_text{
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a6860;
+}
+#no_button{
+    border: 1px solid red;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px; 
+    background-color: #FF2C2C;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 3%;
+    
+}
+#yes_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+#no_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#yes_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}

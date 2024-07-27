@@ -133,3 +133,25 @@ def update_doctor_appointment(doctor_id):
     storage.save()
     return (jsonify(appointment.to_dict()), 201)
     return (jsonify({"Message": "Appointment updated successfully. Thank you"}), 201)
+
+@app_views.route("/appointment/<string:appointment_id>/", methods=['PUT'], strict_slashes=False)
+def update_appointment_with_id(appointment_id):
+    """create anew user appointment"""
+
+#    app_id = request.get_json().get('id')
+#    if not app_id:
+#        return make_response(jsonify({"Error": "Invalid appointment id"}), 400)
+
+    appointment = storage.get(Appointment, appointment_id)
+    if not appointment:
+        return make_response(jsonify({"Error": "Appointment unavailable"}), 400)
+
+    appointment.description = request.get_json().get('description', appointment.description)
+    appointment.appointment_status = request.get_json().get('appointment_status', appointment.appointment_status)
+    appointment.time = request.get_json().get('time', appointment.time)
+    appointment.date = request.get_json().get('date', appointment.date)
+
+    storage.save()
+#    return (jsonify(appointment.to_dict()), 201)
+    return (jsonify({"Message": "Appointment updated successfully. Thank you"}), 201)
+

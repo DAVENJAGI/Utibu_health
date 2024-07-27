@@ -62,6 +62,9 @@ function goBackToUser() {
 function goBackToDoctor() {
   window.location.href = "doctors.html";
 }
+function goBackToAppoinment() {
+  window.location.href = "appointments.html";
+}
 
 
 console.log('Functions running succesfuly!!');

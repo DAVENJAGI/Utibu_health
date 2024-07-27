@@ -173,4 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
             displayCurrentPage();
         }
     });
+
+    tableBody.addEventListener('click', (event) => {
+        if (event.target.tagName !== 'TD') return;
+
+        const clickedRow = event.target.parentNode;
+        const appointmentsId = clickedRow.cells[1].textContent;
+
+        window.location.href = `appointment_profile.html?appointmentId=${appointmentsId}`;
+    });
 });
