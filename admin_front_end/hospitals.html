@@ -257,6 +257,28 @@
                 </div>
             </div>
         -->
+            <div id="delete_confirmation_div">
+                <div id="delete_confirmation_text">
+                    <div id="delete_confirmation_text_text">Are you sure you want to delete the selected Hospital?</div>
+                </div>
+                <div id="delete_confirmation_buttons">
+                    <div id="delete_confirmation_buttons_inner">
+                        <button id="delete_no_button" onclick="hideDeleteConfirmationDiv()">No</button>
+                        <button id="delete_yes_button">Yes</button>
+                    </div>
+                </div>
+            </div>
+            <div id="delete_returned_info">
+                <div id="delete_confirmation_text">
+                    <div id="delete_saved_confirmation_text_text"></div>
+                </div>
+                <div id="delete_confirmation_buttons">
+                    <div id="delete_confirmation_buttons_inner">
+                        <button id="ok_button" onclick="hideDeleteFeedbackDiv()">OK</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="hospital_div">
                 <div id="hospital_div_inner">
                     <div id="search">
@@ -270,8 +292,13 @@
                         <div id="filter_div">
                             <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>
                             <div id="filter_txt">Filter By</div>
-                        </div>
-                        
+                        </div>                        
+                    </div>
+                    <div id="delete_div">
+                        <button id="delete_button" onclick="showDeleteConfirmationDiv()">
+                            <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                            <div id="delete_txt">Delete</div>
+                        </button>
                     </div>
                 </div>
                 <div id="hospital_table_div">

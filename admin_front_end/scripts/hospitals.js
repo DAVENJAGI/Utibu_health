@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPageHospital.forEach(hospital => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" id="checkbox-${hospital.id}"></td>
                 <td>${hospital.id}</td>
                 <td>${hospital.name}</td>
                 <td>${hospital.email}</td>
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredHospitals.forEach(hospital => {
             const tableRow = document.createElement("tr");
             tableRow.innerHTML = `
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" id="checkbox-${hospital.id}"></td>
                 <td>${hospital.id}</td>
                 <td>${hospital.name}</td>
                 <td>${hospital.email}</td>
@@ -112,8 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // const tableBody = document.querySelector('#myHospitalTable tbody');
-
     tableBody.addEventListener('click', (event) => {
         if (event.target.tagName !== 'TD') return;
 
@@ -122,6 +120,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.location.href = `hospital_info.html?hospitalId=${hospitalId}`;
     });
+
+    //EVENT LISTENER TO CHANGE THE COLOR OF THE TEXT ON CLICKING THE CHECKBOX
+    tableBody.addEventListener('click', (event) => {
+      if (event.target.type === 'checkbox') {
+          const checkbox = event.target;
+          checkbox.parentElement.style.color = 'red';
+          const checkboxId = checkbox.id;
+          console.log('Clicked checkbox ID:', checkboxId);
+          
+          const hospitalId = checkbox.id.split('checkbox-')[1]; 
+          const saveButton = document.getElementById('delete_yes_button');
+          saveButton.addEventListener("click", function() {
+              deleteHospital(hospitalId);
+          });   
+          
+          const clickedRow = checkbox.closest('tr');
+          clickedRow.style.color = checkbox.checked ? '#1a6860' : '';
+          clickedRow.style.backgroundColor = checkbox.checked ? '#E2F3E6' : '';
+      }
+  });
+
+  //FUNCTION THAT DELETES A USER
+  function deleteHospital(hospitalId) {
+      const deleteRequest = `http://0.0.0.0:5000/api/v1/hospital/${hospitalId}`;
+  
+      fetch(deleteRequest, {
+          method: "DELETE",
+      })
+      .then(response => {
+          if (response.ok) {
+              hideDeleteConfirmationDiv();
+              return response.json();
+          } else {
+          console.error("Error deleting Hospital:", response.statusText);
+      }
+    })
+    .then(jsonData => {
+      showDeleteFeedbackDiv();
+      console.log(jsonData);
+      const deleteConfirmationTextDiv = document.getElementById('delete_saved_confirmation_text_text');
+      deleteConfirmationTextDiv.textContent = jsonData.Message;
+    })
+    .catch(error => alert("Error sending request:", error));
+  }
 
 
 
@@ -224,7 +266,7 @@ constituencySelect.addEventListener("change", function() {
 function createNewHospital() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
-    const townId = document.getElementById("town_select").value; // Assuming the ward is selected from town_select
+    const townId = document.getElementById("town_select").value;
     const latitude = document.getElementById("latitude").value;
     const longitude = document.getElementById("longitude").value;
     
@@ -269,7 +311,7 @@ function createNewHospital() {
         confirmationTextDiv.textContent = jsonData.Message;
       })
       .catch(error => alert("Error sending request:", error));
-} createNewHospital();
+}// createNewHospital();
 
 
 
@@ -283,14 +325,6 @@ function hideNewHospital() {
   newHospitalForm.style.display = "none";
 }
 
-
-  
-// Call your code that saves hospital data and passes the response to the function
-saveHospitalData()
-  .then(response => handleHospitalCreationResponse(response))
-  .catch(error => console.error("Error saving hospital:", error));
-
-
 // FUNCTION TO HIDE AND SHOW THE ADD NEW HOSPITAL 
 function showAddNewHospital() {
     const showAddNewForm = document.getElementById('new_hospital');
@@ -301,10 +335,10 @@ function showAddNewHospital() {
     } else {
       showAddNewForm.style.display = 'none';
     }
-  } window.onload = showAddNewHospital();
+}  window.onload = showAddNewHospital();
   
 
-// FUNCTION THAT HIDES AND SHOWS CONFIRMATION DIV
+// FUNCTION THAT HIDES AND SHOWS CONFIRMATION DIV FOR CREATING NEW HOSPITAL
 function showConfirmationDiv() {
   const confirmationDiv = document.getElementById('confirmation_div');
 
@@ -314,7 +348,7 @@ function showConfirmationDiv() {
   } else {
     confirmationDiv.style.display = 'none';
   }
-} window.onload = showConfirmationDiv();
+} //window.onload = showConfirmationDiv();
 
 //HIDES THE CONFIRMATION DIV ON BEING CALLED
 function hideConfirmationDiv() {
@@ -331,12 +365,14 @@ function hideFeedbackDiv() {
   const feedbackDiv = document.getElementById("returned_info");
   feedbackDiv.style.display = "none";
   clearForm();
+  window.location.reload();
 }
 
 
 document.addEventListener("DOMContentLoaded", function() {
   showAddNewHospital();
   showConfirmationDiv();
+  createNewHospital();
 });
 
 
@@ -372,3 +408,36 @@ const hideConfirmationDiv = () => {
   enableButtons();
 };
 */
+
+function showDeleteConfirmationDiv() {
+  const deleteConfirmationDiv = document.getElementById('delete_confirmation_div');
+     
+  if (deleteConfirmationDiv.style.display === 'none') {
+    deleteConfirmationDiv.style.display = 'block';
+  } else {
+    deleteConfirmationDiv.style.display = 'block';
+  }
+}
+
+function hideDeleteConfirmationDiv() {
+  const deleteConfirmationDi = document.getElementById("delete_confirmation_div");
+  deleteConfirmationDi.style.display = "none";
+}
+
+//FUNCTION TO SHOW THE DELETE FEEDBACK INFO DIV
+function showDeleteFeedbackDiv() {
+  const feedbackDiv = document.getElementById("delete_returned_info");
+  feedbackDiv.style.display = "block";
+}
+//HIDES THE RETURNED MESSAGE FROM THE SERVER DIV ON ADDING A NEW HOSPITAL
+function hideDeleteFeedbackDiv() {
+  const feedbackDiv = document.getElementById("delete_returned_info");
+  feedbackDiv.style.display = "none";
+  window.location.reload();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  showDeleteConfirmationDiv();
+  showDeleteFeedbackDiv();
+  showDeleteConfirmationDiv();
+});

@@ -37,7 +37,7 @@ def delete_hospital(hospital_id):
         abort(404)
     hospital.delete()
     storage.save()
-    return make_response(jsonify({"message": "Hospital deleted successfully"}), 201)
+    return make_response(jsonify({"Message": "Hospital deleted successfully"}), 201)
 
 
 @app_views.route("/hospital/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
