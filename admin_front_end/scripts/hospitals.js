@@ -330,11 +330,11 @@ function showAddNewHospital() {
     const showAddNewForm = document.getElementById('new_hospital');
   
      
-    if (showAddNewForm.style.display === 'none') {
-      showAddNewForm.style.display = 'block';
-    } else {
-      showAddNewForm.style.display = 'none';
-    }
+  if (showAddNewForm.style.display === 'none') {
+    showAddNewForm.style.display = 'block';
+  } else {
+    showAddNewForm.style.display = 'none';
+  }
 }  window.onload = showAddNewHospital();
   
 

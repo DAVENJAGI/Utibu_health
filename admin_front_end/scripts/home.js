@@ -154,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
       
             tableBody.innerHTML = '';
             filteredOrders.forEach(order => {
-                if (order.order_status === 'pending approval'){
                     const tableRow = document.createElement("tr");
         
                     let statusColor = '';
@@ -175,27 +174,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     .then(response => response.json())
                     .then(medicationData => {
                         const medicationName = medicationData.name;
+
+                        fetch(`http://0.0.0.0:5000/api/v1/doctor/${order.doctor_id}`)
+                        .then(response => response.json())
+                        .then(doctorData => {
+                            const doctorName = `${doctorData.first_name} ${doctorData.last_name}`;
+
+                            const formattedDate = new Date(order.created_at).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: '2-digit',
+                                day: '2-digit'
+                            });
         
         
-                        tableRow.innerHTML = `
-                            <td><input type="checkbox"></td>                        
-                            <td>${order.id}</td>
-                            <td>${patientName}</td>
-                            <td>${doctorName}</td>
-                            <td>${medicationName}</td>
-                            <td>${order.quantity}</td>
-                            <td>${formattedDate}</td>
-                            <td style="color: ${statusColor};">${order.order_status}</td>
-                            <td>$${order.billing_cost}</td>  
-                            <td>${order.delivery_mode}</td>                 
-                        `;
-                        tableBody.appendChild(tableRow);
+                            tableRow.innerHTML = `
+                                <td><input type="checkbox"></td>                        
+                                <td>${order.id}</td>
+                                <td>${patientName}</td>
+                                <td>${doctorName}</td>
+                                <td>${medicationName}</td>
+                                <td>${order.quantity}</td>
+                                <td>${formattedDate}</td>
+                                <td style="color: ${statusColor};">${order.order_status}</td>
+                                <td>$${order.billing_cost}</td>  
+                                <td>${order.delivery_mode}</td>                 
+                            `;
+                            tableBody.appendChild(tableRow);
+                        })
+                        .catch(error => console.error("Error fetching doctor:", error));
                     
                     })
                     .catch(error => console.error("Error fetching medication:", error));
                     })
                     .catch(error => console.error("Error fetching patient:", error));
-                }
             });
       
             searchOrder.value = '';
@@ -213,6 +224,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentPage < Math.ceil(orderData.length / pageSize)) {
                 currentPage++;
                 displayCurrentPage();
+            }
+        });
+
+
+        tableBody.addEventListener('click', (event) => {
+            if (event.target.type === 'checkbox') {
+                const checkbox = event.target;
+                checkbox.parentElement.style.color = 'red';
+                const checkboxId = checkbox.id;
+                console.log('Clicked checkbox ID:', checkboxId);
+                /*
+                const userId = checkbox.id.split('checkbox-')[1]; 
+                const saveButton = document.getElementById('yes_button');
+                saveButton.addEventListener("click", function() {
+                    deleteUser(userId);
+                });  */
+                
+                const clickedRow = checkbox.closest('tr');
+                clickedRow.style.color = checkbox.checked ? '#1a6860' : '';
+                clickedRow.style.backgroundColor = checkbox.checked ? '#E2F3E6' : '';
             }
         });
         

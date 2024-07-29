@@ -182,4 +182,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.location.href = `appointment_profile.html?appointmentId=${appointmentsId}`;
     });
+
+    tableBody.addEventListener('click', (event) => {
+        if (event.target.type === 'checkbox') {
+            const checkbox = event.target;
+            checkbox.parentElement.style.color = 'red';
+            const checkboxId = checkbox.id;
+            console.log('Clicked checkbox ID:', checkboxId);
+            /*
+            const userId = checkbox.id.split('checkbox-')[1]; 
+            const saveButton = document.getElementById('yes_button');
+            saveButton.addEventListener("click", function() {
+                deleteUser(userId);
+            });  */
+            
+            const clickedRow = checkbox.closest('tr');
+            clickedRow.style.color = checkbox.checked ? '#1a6860' : '';
+            clickedRow.style.backgroundColor = checkbox.checked ? '#E2F3E6' : '';
+        }
+    });
 });

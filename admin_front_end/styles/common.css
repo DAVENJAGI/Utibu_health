@@ -40,6 +40,8 @@
     background-size: contain;
     background-repeat: no-repeat;
     width: 60px;
+    width: 25%;
+    margin: 2%;
     /*border-radius: 50%;*/
 }
 #inner_side_bar{
@@ -91,6 +93,7 @@
     width: 100%;
     margin-left: 2.5%;
     height: 8vh;
+    min-height: 10vh;
     margin-bottom: 4%;
     display: flex;
     border-radius: 8px;
@@ -109,24 +112,31 @@
 }
 .items_in_sidebar_text{
     width: 70%;
-    margin: 2%;
-    /*border: solid 1px red;*/
+    /*margin: 2%;
+    border: solid 1px blue;*/
+    text-align: center;
+    align-items: center;
 }
 
 .sidebar_text_text{
-    text-align: center;
     color: white;
-    font-weight: bolder;
-    align-content: center;
+    font-weight: 700;
+    /*align-content: center;*/
 }
-
+#region_icon{
+    background-image: url('../icons/png/filled/places/village.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 #hospitals{
 
 }
 #hospitals_icon{
-    background-image: url();
+    background-image: url('../icons/png/filled/places/hospital.png');
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 #payment_icon{
     background-image: url("../icons/png/filled/objects/credit_card.png");
@@ -143,11 +153,15 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-#doctors{
-
+#doctor_icon{
+    background-image: url('../icons/png/filled/people/doctor.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
-#patients{
-
+#patient_icon{
+    background-image: url('../icons/png/filled/people/person.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #disease_icon{
     background-image: url("../icons/png/filled/conditions/pneumonia.png");
