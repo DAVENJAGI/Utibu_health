@@ -72,34 +72,29 @@ fetch(requestAppointment)
 
         
     function updateNewAppointment() {
-        console.log("UserData doctor ID is:", userData.doctor_id);
         const selectedOption = document.getElementById("appointment_select").value;
         let appointmentStatus;
 
-        switch (selectedOption) {
-            case "Confirm":
-            appointmentStatus = "Confirmed";
-            break;
-            case "Cancel":
-            appointmentStatus = "Cancelled";
-            break;
-            case "No Show":
-            appointmentStatus = "No-show";
-            break;
-            default:
-            appointmentStatus = "Pending Confirmation";
+        if (selectedOption === "Confirm") {
+        appointmentStatus = "Confirmed";
+        } else if (selectedOption === "Cancel") {
+        appointmentStatus = "Cancelled";
+        } else if (selectedOption === "No Show") {
+        appointmentStatus = "No-show";
+        } else {
+        appointmentStatus = "Pending Confirmation";
         }
 
     
         const appointmentData = {
-        appointment_status: appointmentStatus,
-        id: appointmentId,
+            appointment_status: appointmentStatus,
         };
         
         
         const jsonData = JSON.stringify(appointmentData);
+        
     
-        const request = new Request(`http://0.0.0.0:5000/api/v1/doctor/${userData.doctor_id}/appointment`, {
+        const request = new Request(`http://0.0.0.0:5000/api/v1/appointment/${appointmentId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -110,10 +105,10 @@ fetch(requestAppointment)
         fetch(request)
         .then(response => {
             if (response.ok) {
+                hideConfirmationDiv()
                 return response.json();
             } else {
-            console.error("Error updating appointment:", response.statusText);
-            // Handle error message
+                throw new Error(`Error updating appointment: ${response.statusText}`);
             }
         })
         .then(jsonData => {
@@ -122,7 +117,7 @@ fetch(requestAppointment)
             const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
             confirmationTextDiv.textContent = jsonData.Message;
         })
-        .catch(error => alert("Error sending request:", error));
+        .catch(error => alert(error));
     }
 
     const saveButton = document.getElementById('yes_button');
@@ -141,11 +136,22 @@ function showConfirmationDiv() {
   } else {
     confirmationDiv.style.display = 'none';
   }
-} // window.onload = showConfirmationDiv();
+}
 
 
 
-
+// FUNCTION TO DISPLAY THE DIV
+function showFeedbackDiv() {
+  const feedbackDiv = document.getElementById("returned_info");
+  feedbackDiv.style.display = "block";
+}
+//HIDES THE RETURNED MESSAGE FROM THE SERVER DIV ON ADDING A NEW HOSPITAL
+function hideFeedbackDiv() {
+    const feedbackDiv = document.getElementById("returned_info");
+    feedbackDiv.style.display = "none";
+    window.location.reload();
+  }
+  
 
 //HIDES THE CONFIRMATION DIV ON BEING CALLED
 function hideConfirmationDiv() {

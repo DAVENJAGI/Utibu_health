@@ -116,14 +116,15 @@
             </div>
 
             <div id="content_div">
-                <div id="profile_background">
-                    <div id="hosp_title">
-                        <div id="nav_arrow" onclick="goBackToAppoinment()"><i class="fa fa-arrow-left" aria-hidden="true" style="font-size: 30px;"></i></div>
-                        <div id="title_header">***** Appoitment Details ***** </div>
-                    </div>
-                </div>
+                
 
                 <div id="appointment_div">
+                    <div id="profile_background">
+                        <div id="hosp_title">
+                            <div id="title_header"> Appoitment </div>
+                            <div id="nav_arrow" onclick="goBackToAppoinment()"><i class="fa fa-x" aria-hidden="true" style="font-size: 30px;"></i></div>
+                        </div>
+                    </div>
                     <div id="confirmation_div">
                         <div id="confirmation_text">
                             <div id="confirmation_text_text">Are you sure you want to update the appointment?</div>
@@ -147,75 +148,86 @@
                     </div>
 
                     <div id="appointment_div_inner">
-                        <div class="appointment_profile_div" id="patient_name">
-                            <div class="innerdiv_title" id="title">Patient:</div>
-                            <div class="innerdiv_txt">
-                                <div class="patient_data" id="patient_first_name">
-                                    <div class="header_txt">First Name</div>
-                                    <div class="data_txt" id="patient_first_name_txt"></div>
+                        <div id="details">
+                            <div class="appointment_profile_div" id="patient_name">
+                                <div class="innerdiv_title" id="title">Patient</div>
+                                <div class="innerdiv_txt">
+                                    <div class="patient_data" id="patient_first_name">
+                                        <div class="header_txt">First Name:</div>
+                                        <div class="data_txt" id="patient_first_name_txt"></div>
+                                    </div>
+                                    <div class="patient_data" id="patient_last_name">
+                                        <div class="header_txt">Last Name:</div>
+                                        <div class="data_txt" id="patient_last_name_txt"></div>
+                                    </div>
+                                    <div class="patient_data" id="patient_dob">
+                                        <div class="header_txt">Date of Birth:</div>
+                                        <div class="data_txt" id="patient_date_of_birth"></div>
+                                    </div>
+                                    <div class="patient_data">
+                                        <div class="header_txt">Email:</div>
+                                        <div class="data_txt" id="patient_email"></div>                                    
+                                    </div>
                                 </div>
-                                <div class="patient_data" id="patient_last_name">
-                                    <div class="header_txt">Last Name</div>
-                                    <div class="data_txt" id="patient_last_name_txt"></div>
-                                </div>
-                                <div class="patient_data" id="patient_dob">
-                                    <div class="header_txt">Date of Birth</div>
-                                    <div class="data_txt" id="patient_date_of_birth"></div>
-                                </div>
-                                <div class="patient_data">
-                                    <div class="header_txt">Email</div>
-                                    <div class="data_txt" id="patient_email"></div>                                    
+                            </div>
+                            <div class="appointment_profile_div" id="doctor_name">
+                                <div class="innerdiv_title" id="title"> Doctor</div>
+                                <div class="innerdiv_txt">
+                                    <div class="patient_data" id="doctor_first_name">
+                                        <div class="header_txt">First Name:</div>
+                                        <div class="data_txt" id="doctor_first_name_txt"></div>
+                                    </div>
+                                    <div class="patient_data" id="patient_last_name">
+                                        <div class="header_txt">Last Name:</div>
+                                        <div class="data_txt" id="doctor_last_name_txt"></div>
+                                    </div>
+                                    <div class="patient_data" id="patient_dob">
+                                        <div class="header_txt">License Number:</div>
+                                        <div class="data_txt" id="doctor_license_number"></div>
+                                    </div>
+                                    <div class="patient_data">
+                                        <div class="header_txt">Email:</div>
+                                        <div class="data_txt" id="doctor_email"></div>                                    
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="appointment_profile_div" id="doctor_name">
-                            <div class="innerdiv_title" id="title"> Doctor:</div>
-                            <div class="innerdiv_txt">
-                                <div class="patient_data" id="doctor_first_name">
-                                    <div class="header_txt">First Name</div>
-                                    <div class="data_txt" id="doctor_first_name_txt"></div>
-                                </div>
-                                <div class="patient_data" id="patient_last_name">
-                                    <div class="header_txt">Last Name</div>
-                                    <div class="data_txt" id="doctor_last_name_txt"></div>
-                                </div>
-                                <div class="patient_data" id="patient_dob">
-                                    <div class="header_txt">License Number</div>
-                                    <div class="data_txt" id="doctor_license_number"></div>
-                                </div>
-                                <div class="patient_data">
-                                    <div class="header_txt">Email</div>
-                                    <div class="data_txt" id="doctor_email"></div>                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="appointment_profile_div">
-                            <div class="innerdiv_title" id="title">Appoitment Details:</div>
-                            <div class="innerdiv_txt">
-                                <div class="patient_data">
-                                    <div class="header_txt">Day</div>
-                                    <div class="data_txt" id="date_div_txt"></div>                                    
-                                </div>
-                                <div class="patient_data">
-                                    <div class="header_txt">Time</div>
-                                    <div class="data_txt" id="time_div_txt"></div>                                    
+                        
+                        <div class="appointment_info_div">
+                            <div class="innerdiv_title" id="title">Appoitment Details</div>
+                            <div class="innerdiv_txt" id="appoinment_details_div">
+                                <div id="details_app">
+                                    <div class="day_data">
+                                        <div class="header_txt">Appointment Day</div>
+                                        <div>:</div>
+                                        <div class="data_txt" id="date_div_txt"></div>                                    
+                                    </div>
+                                    <div class="day_data">
+                                        <div class="header_txt">Time</div>
+                                        <div>:</div>
+                                        <div class="data_txt" id="time_div_txt"></div>                                    
+                                    </div>
                                 </div>
 
-                                <div class="patient_data">
-                                    <div class="header_txt">Description</div>
-                                    <div class="data_txt" id="description_div_txt"></div>                                    
-                                </div>
+                                <div id="status_app">
+                                    <div class="day_data">
+                                        <div class="header_txt">Description</div>
+                                        <div>:</div>
+                                        <div class="data_txt" id="description_div_txt"></div>                                    
+                                    </div>
 
-                                <div class="patient_data">
-                                    <div class="header_txt">Status</div>
-                                    <div class="data_txt" id="description_div_txt">
-                                        <select id="appointment_select" name="county_id" class="input" required>
-                                            <option value="" id="option_select_1">Pending Confirmation</option>
-                                            <option value="" id="option_select_2">Confirm</option>
-                                            <option value="" id="option_select_3">Cancel</option>
-                                            <option value="" id="option_select_4">No Show</option>
-                                        </select>
-                                    </div>                                    
+                                    <div class="day_data">
+                                        <div class="header_txt">Status</div>
+                                        <div>:</div>
+                                        <div class="data_txt">
+                                            <select id="appointment_select" name="appointment" class="input" required>
+                                                <option value="" id="option_select_1"></option>
+                                                <option value="" id="option_select_2">Confirm</option>
+                                                <option value="" id="option_select_3">Cancel</option>
+                                                <option value="" id="option_select_4">No Show</option>
+                                            </select>
+                                        </div>                                    
+                                    </div>
                                 </div>
                                 
                             </div>

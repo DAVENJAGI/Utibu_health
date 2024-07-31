@@ -131,27 +131,28 @@ def update_doctor_appointment(doctor_id):
     appointment.date = request.get_json().get('date', appointment.date)
      
     storage.save()
-    return (jsonify(appointment.to_dict()), 201)
+#    return (jsonify(appointment.to_dict()), 201)
     return (jsonify({"Message": "Appointment updated successfully. Thank you"}), 201)
+
 
 @app_views.route("/appointment/<string:appointment_id>/", methods=['PUT'], strict_slashes=False)
 def update_appointment_with_id(appointment_id):
-    """create anew user appointment"""
-
-#    app_id = request.get_json().get('id')
-#    if not app_id:
-#        return make_response(jsonify({"Error": "Invalid appointment id"}), 400)
-
+    if not request.get_json():
+        return make_response(jsonify({"error": "Not a JSON"}), 400)
+    
     appointment = storage.get(Appointment, appointment_id)
-    if not appointment:
-        return make_response(jsonify({"Error": "Appointment unavailable"}), 400)
+        
+    if appointment is None:
+        abort(404)
 
-    appointment.description = request.get_json().get('description', appointment.description)
-    appointment.appointment_status = request.get_json().get('appointment_status', appointment.appointment_status)
-    appointment.time = request.get_json().get('time', appointment.time)
-    appointment.date = request.get_json().get('date', appointment.date)
+    data = request.get_json()
 
+    appointment_columns = Appointment.__table__.columns.keys()
+
+    for key, value in data.items():
+        if key in appointment_columns and key not in ["id", "created_at", "doctor_id", "updated_at"]:
+            setattr(appointment, key, value)
     storage.save()
-#    return (jsonify(appointment.to_dict()), 201)
-    return (jsonify({"Message": "Appointment updated successfully. Thank you"}), 201)
+#    return jsonify(appointment.to_dict())
+    return (jsonify({"Message": "Appointment Updated successfully. Thank You"}), 201)
 
