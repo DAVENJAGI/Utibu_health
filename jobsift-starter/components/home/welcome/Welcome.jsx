@@ -12,7 +12,7 @@ const Welcome = () => {
   const router = useRouter();
   
   const [greeting, setGreeting] = useState('');
-
+  
   useEffect(() => {
     const now = new Date();
     const hours = now.getHours();
@@ -27,11 +27,13 @@ const Welcome = () => {
   }, []);
 
 
+  
+
   return (
     <View>
       <View style={styles.container}>
-        <Text style={{fontSize: 40, fontWeight: "600", marginBottom: SIZES.medium}}>{greeting} David,</Text>
-        <Text style={{fontSize: 25, fontWeight: "600", }}>How is your health today???</Text>
+        <Text style={{fontSize: 35, fontWeight:900, color:"#1a6860", marginBottom: SIZES.medium}}>{greeting} David,</Text>
+        <Text style={{fontSize: 20, fontWeight: 700, color:"#1a6860" }}>How is your health today???</Text>
       </View>
 
       
