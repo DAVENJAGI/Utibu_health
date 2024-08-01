@@ -32,8 +32,8 @@ const Welcome = () => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={{fontSize: 35, fontWeight:900, color:"#1a6860", marginBottom: SIZES.medium}}>{greeting} David,</Text>
-        <Text style={{fontSize: 20, fontWeight: 700, color:"#1a6860" }}>How is your health today???</Text>
+        <Text style={{fontSize: 35, fontWeight:900, color:"#1a6860", marginBottom: SIZES.xSmall}}>{greeting},</Text>
+        <Text style={{fontSize: 33, fontWeight:800, color:"#1a6860", marginBottom: SIZES.medium}}>David!</Text>
       </View>
 
       

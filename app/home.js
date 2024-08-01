@@ -14,24 +14,26 @@ import { LinearGradient } from 'expo-linear-gradient';
 import places from "../icons/icons/png/filled/places/home_alt.png";
 import medicine from "../icons/icons/png/filled/medications/medicines.png";
 import calendar from "../icons/icons/png/filled/symbols/calendar.png";
+import smallcalendar from "../icons/icons/png/filled/symbols/calendar.png"
+import clock from "../icons/icons/png/filled/symbols/clock.png"
 import lady from "../icons/profilephotos/lady.jpg"
 import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
-import menu from "../icons/icons/png/filled/symbols/ui_menu.png";
+import settings from "../icons/icons/png/filled/symbols/ui_settings.png";
 import { useRouter } from "expo-router";
 
 const Home = () => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: "white" }}>
       {/* Removed incorrect options prop */}
-      <ScrollView style={{borderColor:"red", borderWidth:1}} showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
       {/* HEADER OF THE HOME PAGE*/ }
-        <View style={{width: "100%", height: 70, justifyContent:"center", borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
+        <View style={{width: "100%", height: 60, justifyContent:"center", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
           <View style={{height: "100%", flexDirection:"row", alignItems: "center", borderBottom:"solid 2px #cfcfcf"}}>
             <View style={{width: "50%"}}>
-              <TouchableOpacity style={{width:60, height:60, borderRadius:30, borderWidth:1, borderColor: '#cfcfcf', margin:"1%", overflow:"hidden"}}>
-                <ImageBackground source={require('../icons/profilephotos/lady.jpg')} style={{width: 60, height: 60, position:"relative", bottom:0, top:0, left:0, width:60, height:60}}></ImageBackground>
+              <TouchableOpacity style={{width:50, height:50, borderRadius:25, borderWidth:1, borderColor: '#cfcfcf', margin:"1%", overflow:"hidden"}}>
+                <ImageBackground source={require('../icons/profilephotos/lady.jpg')} style={{width: 50, height: 50, position:"relative", bottom:0, top:0, left:0, width:60, height:60}}></ImageBackground>
               </TouchableOpacity>
             </View>
             <View style={{width: "50%", height:"100%", justifyContent:"center"}}>
@@ -43,13 +45,13 @@ const Home = () => {
         </View>
         
         {/*GREETING DIV*/}
-          <View style={{ flex: 1, padding: SIZES.medium, borderColor:"red", borderWidth:1, margin:"1%" }}>
+          <View style={{ flex: 1, padding: SIZES.medium, backgroundColor:"#F2F2F2" }}>
             <Welcome />
           </View>
 
         {/*THE APPOINTMENTS DIV */}
 
-          <View style={{borderColor:"red", borderWidth:1, margin:"1%", height:275}}>
+          <View style={{borderTopColor:"#E3E3E3", borderTopWidth:1, borderTopLeftRadius:8, borderTopRightRadius:6, marginBottom:"1%", height:285}}>
             <View style={{margin:"1%", height:50, flexDirection:"row"}}>
               <View style={{ height:"100%", width: "50%", justifyContent:"center", fontWeight:"600", fontSize: "18px"}}>
                 <Text style={{fontSize:14, marginLeft:5, fontWeight:700, textAlign:"left"}}>Upcoming Appointments</Text>
@@ -62,8 +64,8 @@ const Home = () => {
             </View >
             
             <View style={{margin:"1%", height:200}}>
-              <TouchableOpacity style={{height:"95%", borderRadius:9, display: "block", backgroundColor:"#1a6860"}}>
-              <LinearGradient colors={['#26A6D9', '#18A9E7', '#8FD9FB', '#8FFBF9', '#99DCFB']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, x: 0.5, y: 0 }}end={{ x: 0, y: 1 }}>
+              <TouchableOpacity style={{height:210, borderRadius:9, display: "block", backgroundColor:"#1a6860"}}>
+              <LinearGradient colors={['#49681A', '#681A22', '#391A68', '#1A6860', '#1A6860']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, x: 0.5, y: 0 }}end={{ x: 0, y: 1 }}>
                   <View style={{borderTopEndRadius:9, height:"65%", flexDirection:"row"}}>
                     <View style={{margin:"1%", alignItems:"center", flexDirection:"row", marginLeft: "5%", width:"90%"}}>
                       <View style={{height: 70, borderColor:"#cfcfcf", borderWidth:1, width: 70, marginLeft:3, overflow: "hidden", borderRadius:35}}>
@@ -75,11 +77,21 @@ const Home = () => {
                           <Text style={{color:"white", fontWeight:600, marginLeft:3,fontSize: 18}}>Dr. Susan Wahome</Text>
                         </View>
                         <View style={{height:'45%', flexDirection:'row', margin:"1%"}}>
-                          <View style={{justifyContent:"center", height:"100%", width:"50%", color:"white", textAlign:"center", alignContent:'center'}}>
-                            <Text style={{textAlign:"left", fontSize:12, color:"white"}}> Day: 07/08/2024</Text>
+                          <View style={{justifyContent:"center", flexDirection:"row", height:"100%", width:"48%", color:"white", textAlign:"center", alignContent:'center'}}>
+                            <View style={{width:"30%", justifyContent:"center", alignItems:"center", left:0}}>
+                              <Image source={smallcalendar} style={{width:25}} resizeMode="contain" />
+                            </View>
+                            <View style={{width:"70%", justifyContent:"center"}}>
+                              <Text style={{textAlign:"left", fontSize:12, color:"white"}}> 07/08/2024</Text>
+                            </View>
                           </View>
-                          <View style={{justifyContent:"center", height:"100%", width:"50%", marginRight:"1%", color:"white", textAlign:"center", alignContent:'center'}}>
-                            <Text style={{textAlign:"center", fontSize:12, color:"white"}}> Time: 08:00 AM</Text>
+                          <View style={{justifyContent:"center", flexDirection:"row", height:"100%", width:"48%", marginLeft:"2%", color:"white", textAlign:"center", alignContent:'center'}}>
+                            <View style={{width:"30%", justifyContent:"center",  alignItems:"center"}}>
+                              <Image source={clock} style={{width:23}} resizeMode="contain" />
+                            </View>
+                            <View style={{width:"70%", justifyContent:"center"}}>
+                              <Text style={{textAlign:"left", fontSize:13, color:"white"}}> 08:00AM</Text>
+                            </View>
                           </View>
                         </View>
                       </View>
@@ -99,37 +111,76 @@ const Home = () => {
             </View>
         </View>
 
+      {/*HIGHLIGHTS*/}
+        <View style={{borderColor:"red", height:250}}>
+            <View style={{margin:"1%", height:50, flexDirection:"row"}}>
+              <View style={{ height:"100%", width: "100%", justifyContent:"center"}}>
+                <Text style={{fontSize:15, marginLeft:5, fontWeight:800, textAlign:"left"}}>My Summary</Text>
+              </View>
+            </View >
+
+              <View style={{shadowColor: 'black', shadowOpacity: 0.9, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:60, margin:"1%", borderColor:"gray", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
+                <View style={{borderRadius:15, borderColor:"#cfcfcf", alignItems:"center", backgroundColor:"#fff1e7", width:30, marginLeft: "2%", justifyContent:"center", alignItems:"center", marginRight:"2%", height:30}}>
+                  <Text style={{fontSize:16, fontWeight:700}}>15</Text>
+                </View>
+                <View style={{justifyContent:"center", width:"70%", height:30}}>
+                  <Text style={{fontSize:18, color:"#1a6860", fontWeight:700}}>Orders awaiting approval</Text>
+                </View>
+              </View>
+              <View style={{shadowColor: 'black', shadowOpacity: 0.1, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:60, margin:"1%", borderColor:"gray", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
+                <View style={{borderRadius:15, borderColor:"#cfcfcf", alignItems:"center", backgroundColor:"#fff1e7", width:30, marginLeft: "2%", justifyContent:"center", alignItems:"center", marginRight:"2%", height:30}}>
+                    <Text style={{fontSize:16, fontWeight:700}}>2</Text>
+                  </View>
+                  <View style={{justifyContent:"center", width:"70%", height:50}}>
+                    <Text style={{fontSize:18, color:"#1a6860", fontWeight:700}}>Appointments awaiting confirmaton</Text>
+                </View>
+              </View> 
+  
+        </View>
+
+
       </ScrollView>
 
 
 
       
-      
+      {/*NAVIGATION MENU*/}
       <View
         style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}
       >
         <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#E2F8F6", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {}}>
-          <Image source={places} resizeMode="contain" />
+          <Image source={places} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Home</Text>
         </TouchableOpacity>
 
-        <TouchableHighlight onPress={() => {
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('prescriptions')  
         }}
         activeOpacity={0.8}
         underlayColor="gray"
         >
-          <Image source={medicine} resizeMode="contain" />
-        </TouchableHighlight>
-        <TouchableOpacity onPress={() => {
+          <Image source={medicine} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Meds</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('myAppointments')
         }}>
-          <Image source={calendar} resizeMode="contain" />
+          <Image source={calendar} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Apps</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('myAppointments')
+        }}>
+          <Image source={orders} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Orders</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
           navigation.navigate('profile')
         }}>
-          <Image source={menu} resizeMode="cover" />
+          <Image source={settings} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Settings</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
