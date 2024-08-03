@@ -22,7 +22,7 @@ import call from "../icons/icons/png/filled/objects/phone.png";
 import card from "../icons/icons/png/filled/objects/credit_card.png";
 import { useRouter } from "expo-router";
 
-const placedOrders = () => {
+const completedOrders = () => {
   const navigation = useNavigation();
 /*  const route = useRouter();*/
 
@@ -39,65 +39,50 @@ const placedOrders = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
        <View style={{borderBottomColor:"#DBD0C8", borderBottomWidth:1, height:40}}>
         <View style={{borderColor:"red", height:30, flexDirection:"row", justifyContent:"space-between"}}>
-          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}}>
-            <Text style={{textAlign:"center", fontWeight:700, color:"#30B3DE", fontSize:14}}>Placed</Text>
+          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('previousOrders')}}>
+            <Text style={{textAlign:"center", fontWeight:700, color:"#747C8B", fontSize:14}}>Placed</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
             <Text style={{textAlign:"center", fontWeight:600,  color:"#747C8B", fontSize:14}}>Approved</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelledOrders')}}>
-            <Text style={{textAlign:"center", fontWeight:600, color:"#747C8B", fontSize:14}}>Cancelled</Text>
+            <Text style={{textAlign:"center", fontWeight:600, color:"#30B3DE", fontSize:14}}>Cancelled</Text>
           </TouchableOpacity>          
         </View>
-        <View style={{borderColor:"black", height:8, flexDirection:"row", justifyContent:"space-between"}}>
-          <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
+        <View style={{borderColor:"red", width:"91%", marginLeft:"5%", height:8, flexDirection:"row", justifyContent:"space-between"}}>
+            <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"22%"}}></View>
+            <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"23%"}}></View>
+            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"22%"}}></View>
         </View>
        </View>
 
        <View style={{borderColor:"red", margin:"1%", height:250}}>
         <View style={{borderColor:"#898989", borderWidth:1, margin:"1%", height:240, borderRadius:9}}>
           <View style={{borderBottomColor:"#898989", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
-                < View style={{width:"20%", height:"80%", justifyContent:"center"}}>
-                  <Text style={{fontWeight:700, color:"#898989", fontSize:16}}>Order Id:</Text>
-                </View>
-                <View style={{width:"80%", justifyContent:"center", height:"80%", borderColor:"red"}}>
-                  <Text style={{fontWeight:500,  color:"#898989", fontSize:15}}>145bd-685gd41-2231155.</Text>
-                </View>
+            <Text style={{borderColor:"red", fontSize:18, fontWeight:700, width:"100%"}}>July 21, 2024 - 08:00AM</Text>
           </View>
           <View style={{flexDirection:"row", margin:"1%", height:120}}>
-            <View  style={{borderColor:"#898989", alignItems:"center", borderWidth:1, borderRadius:9, width:"33%", flexDirection:"row"}}>
-              <ImageBackground source={require('../icons/profilephotos/insulin.jpeg')} style={{borderRadius:9, height:"90%", width:"90%"}}></ImageBackground>
+            <View  style={{borderColor:"blue", width:"33%", flexDirection:"row"}}>
+              <ImageBackground source={require('../icons/profilephotos/doctor.jpg')} style={{width:"100%"}}></ImageBackground>
             </View>
             <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:17, fontWeight:500, width:"30%"}}>Name:</Text>
-                <Text style={{borderColor:"red", fontSize:16, fontWeight:400, width:"70%"}}> Insulin shot</Text>
+              <Text style={{borderColor:"red", fontSize:16, fontWeight:700, height:"30%"}}>Dr. Susan Wahome</Text>
+              <Text style={{borderColor:"red", fontSize:14, height:"30%"}}>General Consultation</Text>
+              <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"30%"}}>
+                <View style={{width:"10%", borderColor:"red"}}>
+                  <Text style={{fontWeight:700}}>Id:</Text>
+                </View>
+                <View style={{width:"90%", borderColor:"red"}}>
+                  <Text>145bd-685gd41-2231155.</Text>
+                </View>
               </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Quantity:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> 2</Text>
-              </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Status:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> Pending Approval</Text>
-              </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Price:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> $100.00</Text>
-              </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:13, fontWeight:500, width:"40%"}}>Placed on:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"60%"}}>2/08/2024</Text>
-              </View>
+
             </View>
           </View>
           <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Edit order</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#681A22", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Cancel</Text>
-            </TouchableOpacity>
+            <View style={{borderColor:"blue", backgroundColor:"#FE9EA3", borderRadius:24, justifyContent:"center", height:"80%", width:"60%"}}>
+              <Text style={{textAlign:"center", fontSize:14, color:"black", fontWeight:700}}>Cancelled</Text>
+            </View>
           </View>         
         </View>
        </View>
@@ -150,4 +135,4 @@ const placedOrders = () => {
   );
 };
 
-export default placedOrders;
+export default completedOrders;

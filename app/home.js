@@ -176,7 +176,7 @@ const Home = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
-          navigation.navigate('myAppointments')
+          navigation.navigate('previousOrders')
         }}>
           <Image source={orders} style={{height:30}}  resizeMode="contain" />
           <Text style={{fontSize:9, textAlign:"center"}}>Orders</Text>
