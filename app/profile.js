@@ -3,6 +3,8 @@ import { useNavigation } from "expo-router"; // Correct import
 /*import { ProfileScreen } from '../screens/profile'*/
 /*import Navigator from '../routes/drawer'*/
 
+
+import settings from "../icons/icons/png/filled/symbols/ui_settings.png"
 import { COLORS, icons, SIZES } from "../jobsift-starter/constants";
 import { ScreenHeaderBtn, Welcome } from "../jobsift-starter/components";
 import { useState } from "react";
@@ -122,30 +124,46 @@ const Profile = () => {
         </View>
       </ScrollView>
 
-      <View>
+      {/*NAVIGATION MENU*/}
       <View
-        style={{
-          position: "absolute",
-          flex: 1,
-          backgroundColor: "#faf8f8",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 50,
-          borderTopColor: "#CCCCCC",
-          borderTopWidth: 1,
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-        }}
+        style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}
       >
-        <TouchableOpacity onPress={() => {
+        <TouchableOpacity style={{height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
             navigation.navigate('home')
         }}>
-          <Image source={places} resizeMode="contain" />
+          <Image source={places} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, color:"black", textAlign:"center"}}>Home</Text>
         </TouchableOpacity>
-      </View>
+
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('prescriptions')  
+        }}
+        activeOpacity={0.8}
+        underlayColor="gray"
+        >
+          <Image source={medicine} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Meds</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('myAppointments')
+        }}>
+          <Image source={calendar} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, color:"black", textAlign:"center"}}>Apps</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('previousOrders')
+        }}>
+          <Image source={orders} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Orders</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
+          navigation.navigate('profile')
+        }}>
+          <Image source={settings} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9,color:"white", textAlign:"center"}}>Settings</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

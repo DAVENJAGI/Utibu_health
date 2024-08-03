@@ -14,13 +14,12 @@ import { myAppointments } from "./myAppointments";
 // import { unavailable } from "../app/unavailable";
 
 import places from "../icons/icons/png/filled/places/home_alt.png";
-import medicine from "../icons/icons/png/filled/medications/medicines.png";
 import calendar from "../icons/icons/png/filled/symbols/calendar.png";
-import medicine1 from "../icons/icons/png/filled/medications/pills_3.png";
-import medicine2 from "../icons/icons/png/filled/devices/syringe.png";
-import medicine4 from "../icons/icons/png/filled/devices/medicine_bottle.png";
-import medicine3 from "../icons/icons/png/filled/medications/blister_pills_oval_x14.png";
+import medicine from "../icons/icons/png/filled/medications/pills_4.png";
+
 import menu from "../icons/icons/png/filled/symbols/ui_menu.png";
+import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
+import settings from "../icons/icons/png/filled/symbols/ui_settings.png";
 import call from "../icons/icons/png/filled/objects/phone.png";
 import card from "../icons/icons/png/filled/objects/credit_card.png";
 import { useRouter } from "expo-router";
@@ -31,133 +30,98 @@ const Prescription = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-      {/* Removed incorrect options prop */}
-      <View style={{width: "100%", height: 60, justifyContent:"center", backgroundColor: "#081b29"}}>
-            <TouchableOpacity style={{marginLeft: 10, width: "50%"}} onPress={() => {
-                navigation.navigate('home')}}>
-                <Text style={{fontFamily: "Roboto",fontStyle: "italic", color: COLORS.lightWhite, fontWeight: "900", fontSize: 30}}>Utibu Health</Text>
-            </TouchableOpacity>
+      {/* HEADER */}
+      <View style={{width: "100%", height: 60, justifyContent:"center", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
+          <View style={{height: "100%", flexDirection:"row", alignItems: "center", borderBottom:"solid 2px #cfcfcf"}}>
+            <View style={{borderColor:"red", width:"100%", height:"100%", justifyContent:"center"}}>
+              <Text style={{textAlign:"center", fontSize:25, fontWeight:700}}>My medication</Text>
+            </View>
+          </View>
         </View>
-      <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: "#DDDDDD"}}>
-        <TouchableOpacity style={{position: "relative", flex: 1, justifyContent: "space-between", flexDirection: "row", height: 100, marginTop: 5, borderRadius: 8, width: "99%", left: "0.5%", backgroundColor: "#CCCCCC"}} onPress={() => {
-                navigation.navigate('payment')}}>
-            <View style={{padding: SIZES.large}}>
-                <Image
-                    source={medicine1}
-                    resizeMode="contain"
-                />
-            </View>
-            <View style={{paddingLef: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Sulfonyrea</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Diabetes</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Available</Text>
-            </View>
-        </TouchableOpacity>
 
-        <TouchableOpacity style={{position: "relative", justifyContent: "space-between", flex: 1, flexDirection: "row", height: 100, marginTop: SIZES.medium, borderRadius: 8, width: "99%",left: "0.5%", backgroundColor: "#CCCCCC"}} onPress={() => {
-                navigation.navigate('payment')}}>
-            <View style={{padding: SIZES.large}}>
-                <Image
-                    source={medicine2}
-                    resizeMode="contain"
-                />
-            </View>
-            <View style={{paddingLef: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Insulin</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Diabetes</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Available</Text>
-            </View>
-        </TouchableOpacity>
+      {/*SCROLLABLE SECTION */}
+      <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: "white"}}>
+        
+          <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:100, margin:"1%", borderColor:"#c9c8c7", borderRadius:9, borderWidth:1}} onPress={() => {navigation.navigate('medicationDetails')}}>
+                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
+                  <View style={{borderColor:"red", borderRadius:15, width:50, marginLeft:0, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1}}>
+                    <Image source={medicine} resizeMode="contain" />
+                  </View>
+                  
+                  <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
+                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Inhaler</Text>
+                  </View>
 
-        <TouchableOpacity style={{position: "relative", justifyContent: "space-between", flex: 1, flexDirection: "row", height: 100, marginTop: SIZES.medium, borderRadius: 8, width: "99%",left: "0.5%", backgroundColor: "#CCCCCC"}} onPress={() => {
-                navigation.navigate('unavailable')}}>
-            <View style={{padding: SIZES.large}}>
-                <Image
-                    source={medicine3}
-                    resizeMode="contain"
-                />
-            </View>
-            <View style={{paddingLeft: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Felodipine</Text>
-            </View>
-            <View style={{paddingLeft: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Hypertension</Text>
-            </View>
-            <View style={{padding: SIZES.large, justifyContent: "center"}}>
-                <Text style={{fontSize: 13, color: "red"}}>Unavailable</Text>
-            </View>
-        </TouchableOpacity>
+                  <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
+                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Asthma</Text>
+                  </View>
 
-        <TouchableOpacity style={{position: "relative", justifyContent: "space-between", flex: 1, flexDirection: "row", height: 100, marginTop: SIZES.medium, borderRadius: 8, width: "99%",left: "0.5%", backgroundColor: "#CCCCCC"}} onPress={() => {
-                navigation.navigate('payment')}}>
-            <View style={{padding: SIZES.large}}>
-                <Image
-                    source={medicine4}
-                    resizeMode="contain"
-                />
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>ARVs</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>HIV</Text>
-            </View>
-            <View style={{padding: SIZES.small, justifyContent: "center"}}>
-                <Text style={{fontSize: 13}}>Available</Text>
-            </View>
-        </TouchableOpacity>
+                  <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
+                    <Text style={{fontSize:14, color:"#38baee", fontWeight:700}}>Available</Text>
+                  </View>
+                </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:100, margin:"1%", borderColor:"#c9c8c7", borderWidth:1, borderRadius:9}} onPress={() => {navigation.navigate('medicationDetails')}}>
+                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
+                  <View style={{borderColor:"red", borderRadius:15, width:50, marginLeft:0, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1}}>
+                    <Image source={medicine} resizeMode="contain" />
+                  </View>
+                  
+                  <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
+                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Inhaler</Text>
+                  </View>
+
+                  <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
+                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Asthma</Text>
+                  </View>
+
+                  <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
+                    <Text style={{fontSize:14, color:"red", fontWeight:700}}>Unavailable</Text>
+                  </View>
+                </View>
+          </TouchableOpacity>
       </ScrollView>
 
-      <View>
+      {/*NAVIGATION MENU*/}
       <View
-        style={{
-          position: "absolute",
-          flex: 1,
-          backgroundColor: "#faf8f8",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 50,
-          borderTopColor: "#CCCCCC",
-          borderTopWidth: 1,
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-        }}
+        style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}
       >
-        <TouchableOpacity onPress={() => {
-            navigation.navigate('home')
+        <TouchableOpacity style={{height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
+          navigation.navigate('home')
         }}>
-          <Image source={places} resizeMode="contain" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('prescriptions')  
-        }}
-        underlayColor="gray"
-        >
-          <Image source={medicine} resizeMode="contain" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('myAppointments')
-        }}>
-          <Image source={calendar} resizeMode="contain" />
+          <Image source={places} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, color:"black", textAlign:"center"}}>Home</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => {
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('prescriptions')  
+        }}
+        activeOpacity={0.8}
+        underlayColor="gray"
+        >
+          <Image source={medicine} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center", color:"white"}}>Meds</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('myAppointments')
+        }}>
+          <Image source={calendar} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Apps</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('myAppointments')
+        }}>
+          <Image source={orders} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Orders</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
           navigation.navigate('profile')
         }}>
-          <Image source={menu} resizeMode="cover" />
+          <Image source={settings} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Settings</Text>
         </TouchableOpacity>
-      </View>
       </View>
     </SafeAreaView>
   );

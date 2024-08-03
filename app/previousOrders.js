@@ -11,12 +11,13 @@ import { TouchableOpacity } from "react-native"; // Might need replacement
 import places from "../icons/icons/png/filled/places/home_alt.png";
 import medicine from "../icons/icons/png/filled/medications/medicines.png";
 import calendar from "../icons/icons/png/filled/symbols/calendar.png";
+import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
+import settings from "../icons/icons/png/filled/symbols/ui_settings.png"
 import medicine1 from "../icons/icons/png/filled/medications/pills_3.png";
 import medicine2 from "../icons/icons/png/filled/devices/syringe.png";
 import medicine4 from "../icons/icons/png/filled/devices/medicine_bottle.png";
 import medicine3 from "../icons/icons/png/filled/medications/blister_pills_oval_x14.png";
 import profile from "../icons/icons/png/filled/symbols/ui_user_profile.png";
-import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
 import menu from "../icons/icons/png/filled/symbols/ui_menu.png";
 import completed from "../icons/icons/png/filled/symbols/yes.png";
 import call from "../icons/icons/png/filled/objects/phone.png";
@@ -29,12 +30,13 @@ const Orders = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-      {/* Removed incorrect options prop */}
-      <View style={{width: "100%", height: 60, justifyContent:"center", backgroundColor: "#081b29"}}>
-            <TouchableOpacity style={{marginLeft: 10, width: "50%"}} onPress={() => {
-                navigation.navigate('home')}}>
-                <Text style={{fontFamily: "Roboto",fontStyle: "italic", color: COLORS.lightWhite, fontWeight: "900", fontSize: 30}}>Utibu Health</Text>
-            </TouchableOpacity>
+      {/* HEADER */}
+      <View style={{width: "100%", height: 60, justifyContent:"center", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
+          <View style={{height: "100%", flexDirection:"row", alignItems: "center", borderBottom:"solid 2px #cfcfcf"}}>
+            <View style={{borderColor:"red", width:"100%", height:"100%", justifyContent:"center"}}>
+              <Text style={{textAlign:"center", fontSize:25, fontWeight:700}}>My Orders</Text>
+            </View>
+          </View>
         </View>
         <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: "#DDDDDD"}}>
         
@@ -112,31 +114,46 @@ const Orders = () => {
       
         </ScrollView>
 
-      <View>
+      {/*NAVIGATION MENU*/}
       <View
-        style={{
-          position: "absolute",
-          flex: 1,
-          backgroundColor: "#faf8f8",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: 50,
-          borderTopColor: "#CCCCCC",
-          borderTopWidth: 1,
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-        }}
+        style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}
       >
-        <TouchableOpacity onPress={() => {
-          navigation.navigate('home')
+        <TouchableOpacity style={{height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
+            navigation.navigate('home')
         }}>
-          <Image source={places} resizeMode="contain"/>
+          <Image source={places} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, color:"black", textAlign:"center"}}>Home</Text>
         </TouchableOpacity>
-        
-      </View>
+
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('prescriptions')  
+        }}
+        activeOpacity={0.8}
+        underlayColor="gray"
+        >
+          <Image source={medicine} style={{height:30}} resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Meds</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('myAppointments')
+        }}>
+          <Image source={calendar} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, color:"black", textAlign:"center"}}>Apps</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+          navigation.navigate('previousOrders')
+        }}>
+          <Image source={orders} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, color:"white", textAlign:"center"}}>Orders</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
+          navigation.navigate('profile')
+        }}>
+          <Image source={settings} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>Settings</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

@@ -22,7 +22,7 @@ import call from "../icons/icons/png/filled/objects/phone.png";
 import card from "../icons/icons/png/filled/objects/credit_card.png";
 import { useRouter } from "expo-router";
 
-const Appointment = () => {
+const completedAppointment = () => {
   const navigation = useNavigation();
 /*  const route = useRouter();*/
 
@@ -39,25 +39,27 @@ const Appointment = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
        <View style={{borderBottomColor:"#DBD0C8", borderBottomWidth:1, height:40}}>
         <View style={{borderColor:"red", height:30, flexDirection:"row", justifyContent:"space-between"}}>
-          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}}>
-            <Text style={{textAlign:"center", fontWeight:700, color:"#30B3DE", fontSize:14}}>Upcoming</Text>
+          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('myAppointments')}}>
+            <Text style={{textAlign:"center", fontWeight:700, color:"#747C8B", fontSize:14}}>Upcoming</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('completedAppointments')}}>
             <Text style={{textAlign:"center", fontWeight:600,  color:"#747C8B", fontSize:14}}>Completed</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelledAppointments')}}>
-            <Text style={{textAlign:"center", fontWeight:600, color:"#747C8B", fontSize:14}}>Cancelled</Text>
+            <Text style={{textAlign:"center", fontWeight:600, color:"#30B3DE", fontSize:14}}>Cancelled</Text>
           </TouchableOpacity>          
         </View>
-        <View style={{borderColor:"black", height:8, flexDirection:"row", justifyContent:"space-between"}}>
-          <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
+        <View style={{borderColor:"red", width:"91%", marginLeft:"5%", height:8, flexDirection:"row", justifyContent:"space-between"}}>
+            <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"22%"}}></View>
+            <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"23%"}}></View>
+            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"22%"}}></View>
         </View>
        </View>
 
        <View style={{borderColor:"red", margin:"1%", height:250}}>
         <View style={{borderColor:"#898989", borderWidth:1, margin:"1%", height:240, borderRadius:9}}>
           <View style={{borderBottomColor:"#898989", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
-            <Text style={{borderColor:"red", fontSize:18, fontWeight:700, width:"100%"}}>August 10, 2024 - 10:00AM</Text>
+            <Text style={{borderColor:"red", fontSize:18, fontWeight:700, width:"100%"}}>July 21, 2024 - 08:00AM</Text>
           </View>
           <View style={{flexDirection:"row", margin:"1%", height:120}}>
             <View  style={{borderColor:"blue", width:"33%", flexDirection:"row"}}>
@@ -78,12 +80,9 @@ const Appointment = () => {
             </View>
           </View>
           <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Reschedule</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#681A22", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Cancel</Text>
-            </TouchableOpacity>
+            <View style={{borderColor:"blue", backgroundColor:"#FE9EA3", borderRadius:24, justifyContent:"center", height:"80%", width:"60%"}}>
+              <Text style={{textAlign:"center", fontSize:14, color:"black", fontWeight:700}}>Cancelled</Text>
+            </View>
           </View>         
         </View>
        </View>
@@ -136,4 +135,4 @@ const Appointment = () => {
   );
 };
 
-export default Appointment;
+export default completedAppointment;

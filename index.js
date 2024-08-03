@@ -7,6 +7,8 @@ import { profile } from "./app/profile";
 import { home } from "./app/home";
 import { prescriptions } from "./app/previousOrders";
 import { notMember } from "./app/notMember";
+import { medicationDetails } from "./app/medicationDetails";
+import { completedAppointments } from "./app/completedAppointments";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +24,9 @@ const App = () => {
         <Stack.Screen name="Prescriptions" component={prescriptions}/>
         <Stack.Screen name="PreviousOrders" component={previousOrders}/>
         <Stack.Screen name="notMember" component={notMember} />
+        <Stack.Screen name="medicationDetails" component={medicationDetails} />
+        <Stack.Screen name="completedAppointments" component={completedAppointment}/>
+        <Stack.Screen name="cancelledAppointments" component={cancelledAppointments}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

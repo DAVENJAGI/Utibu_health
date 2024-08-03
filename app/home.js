@@ -45,18 +45,23 @@ const Home = () => {
         </View>
         
         {/*GREETING DIV*/}
-          <View style={{ flex: 1, padding: SIZES.medium, backgroundColor:"#F2F2F2" }}>
+          <View style={{ flex: 1, padding: SIZES.medium, backgroundColor:"rgba(255, 255, 255, 0.2)" }}>
             <Welcome />
           </View>
 
         {/*THE APPOINTMENTS DIV */}
 
-          <View style={{borderTopColor:"#E3E3E3", borderTopWidth:1, borderTopLeftRadius:8, borderTopRightRadius:6, marginBottom:"1%", height:285}}>
+          <View style={{borderTopColor:"rgba(237, 232, 208, 0.6)", borderTopWidth:1, borderTopLeftRadius:8, borderTopRightRadius:6, marginBottom:"1%", height:285}}>
             <View style={{margin:"1%", height:50, flexDirection:"row"}}>
-              <View style={{ height:"100%", width: "50%", justifyContent:"center", fontWeight:"600", fontSize: "18px"}}>
-                <Text style={{fontSize:14, marginLeft:5, fontWeight:700, textAlign:"left"}}>Upcoming Appointments</Text>
+              <View style={{borderColor:"red", flexDirection:"row", height:"100%", width: "60%", alignItems:"center", justifyContent:"center", fontWeight:"600", fontSize: "18px"}}>
+                <View style={{borderColor:"red", width:"85%", height:"100%", justifyContent:"center",}}>
+                  <Text style={{fontSize:15, fontWeight:800, textAlign:"left"}}>Upcoming Appointments</Text>
+                </View>
+                <View style={{marginLeft:0, backgroundColor:"#575799", alignItems:"center", borderRadius:11, width:22, height:22}}>
+                  <Text style={{fontSize:16, color:"white", fontWeight:600, }}>3</Text>
+                </View>
               </View>
-              <View style={{height:"100%", width:"50%"}}>
+              <View style={{borderColor:"red", height:"100%", width:"40%"}}>
                 <TouchableOpacity style={{justifyContent:"center", height:"100%", fontSize: "18px"}}>
                   <Text style={{color:"#750137", fontSize:15, fontWeight:800, textAlign:"right", marginRight:5}}>View all</Text>
                 </TouchableOpacity>
@@ -65,7 +70,7 @@ const Home = () => {
             
             <View style={{margin:"1%", height:200}}>
               <TouchableOpacity style={{height:210, borderRadius:9, display: "block", backgroundColor:"#1a6860"}}>
-              <LinearGradient colors={['#49681A', '#681A22', '#391A68', '#1A6860', '#1A6860']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, x: 0.5, y: 0 }}end={{ x: 0, y: 1 }}>
+              <LinearGradient colors={['#575799', '#681A22']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, y: 0 }}end={{ x: 0, y: 1 }}>
                   <View style={{borderTopEndRadius:9, height:"65%", flexDirection:"row"}}>
                     <View style={{margin:"1%", alignItems:"center", flexDirection:"row", marginLeft: "5%", width:"90%"}}>
                       <View style={{height: 70, borderColor:"#cfcfcf", borderWidth:1, width: 70, marginLeft:3, overflow: "hidden", borderRadius:35}}>
@@ -78,13 +83,14 @@ const Home = () => {
                         </View>
                         <View style={{height:'45%', flexDirection:'row', margin:"1%"}}>
                           <View style={{justifyContent:"center", flexDirection:"row", height:"100%", width:"48%", color:"white", textAlign:"center", alignContent:'center'}}>
-                            <View style={{width:"30%", justifyContent:"center", alignItems:"center", left:0}}>
+                            <View style={{width:"30%", justifyContent:"center",  alignItems:"center", left:0}}>
                               <Image source={smallcalendar} style={{width:25}} resizeMode="contain" />
                             </View>
                             <View style={{width:"70%", justifyContent:"center"}}>
                               <Text style={{textAlign:"left", fontSize:12, color:"white"}}> 07/08/2024</Text>
                             </View>
                           </View>
+                          <View style={{borderRightColor:"rgba(255, 255, 255, 0.5)", borderRightWidth:1, alignSelf:"center", height:20}}></View>
                           <View style={{justifyContent:"center", flexDirection:"row", height:"100%", width:"48%", marginLeft:"2%", color:"white", textAlign:"center", alignContent:'center'}}>
                             <View style={{width:"30%", justifyContent:"center",  alignItems:"center"}}>
                               <Image source={clock} style={{width:23}} resizeMode="contain" />
@@ -112,24 +118,24 @@ const Home = () => {
         </View>
 
       {/*HIGHLIGHTS*/}
-        <View style={{borderColor:"red", height:250}}>
+        <View style={{borderColor:"red", height:260}}>
             <View style={{margin:"1%", height:50, flexDirection:"row"}}>
               <View style={{ height:"100%", width: "100%", justifyContent:"center"}}>
                 <Text style={{fontSize:15, marginLeft:5, fontWeight:800, textAlign:"left"}}>My Summary</Text>
               </View>
             </View >
 
-              <View style={{shadowColor: 'black', shadowOpacity: 0.9, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:60, margin:"1%", borderColor:"gray", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
-                <View style={{borderRadius:15, borderColor:"#cfcfcf", alignItems:"center", backgroundColor:"#fff1e7", width:30, marginLeft: "2%", justifyContent:"center", alignItems:"center", marginRight:"2%", height:30}}>
+              <View style={{shadowColor: 'black', backgroundColor:"#F2F2F2", shadowOpacity: 0.9, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:70, margin:"1%", borderColor:"#E3E3E3", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
+                <View style={{borderRadius:15, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1, alignItems:"center", backgroundColor:"#fff1e7", width:30, marginLeft: "2%", justifyContent:"center", alignItems:"center", marginRight:"2%", height:30}}>
                   <Text style={{fontSize:16, fontWeight:700}}>15</Text>
                 </View>
                 <View style={{justifyContent:"center", width:"70%", height:30}}>
                   <Text style={{fontSize:18, color:"#1a6860", fontWeight:700}}>Orders awaiting approval</Text>
                 </View>
               </View>
-              <View style={{shadowColor: 'black', shadowOpacity: 0.1, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:60, margin:"1%", borderColor:"gray", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
-                <View style={{borderRadius:15, borderColor:"#cfcfcf", alignItems:"center", backgroundColor:"#fff1e7", width:30, marginLeft: "2%", justifyContent:"center", alignItems:"center", marginRight:"2%", height:30}}>
-                    <Text style={{fontSize:16, fontWeight:700}}>2</Text>
+              <View style={{shadowColor: 'black', backgroundColor:"#F2F2F2", shadowOpacity: 0.1, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:70, margin:"1%", borderColor:"#E3E3E3", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
+                <View style={{borderRadius:15, borderColor:"#cfcfcf", borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1, alignItems:"center", backgroundColor:"#fff1e7", width:30, marginLeft: "2%", justifyContent:"center", alignItems:"center", marginRight:"2%", height:30}}>
+                    <Text style={{fontSize:16, fontWeight:700}}>3</Text>
                   </View>
                   <View style={{justifyContent:"center", width:"70%", height:50}}>
                     <Text style={{fontSize:18, color:"#1a6860", fontWeight:700}}>Appointments awaiting confirmaton</Text>
@@ -148,9 +154,9 @@ const Home = () => {
       <View
         style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}
       >
-        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#E2F8F6", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {}}>
+        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {}}>
           <Image source={places} style={{height:30}} resizeMode="contain" />
-          <Text style={{fontSize:9, textAlign:"center"}}>Home</Text>
+          <Text style={{fontSize:9, color:"white", textAlign:"center"}}>Home</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
