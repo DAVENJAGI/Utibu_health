@@ -45,7 +45,7 @@ const completedOrders = () => {
           <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
             <Text style={{textAlign:"center", fontWeight:600,  color:"#747C8B", fontSize:14}}>Approved</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelledOrders')}}>
+          <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelled')}}>
             <Text style={{textAlign:"center", fontWeight:600, color:"#30B3DE", fontSize:14}}>Cancelled</Text>
           </TouchableOpacity>          
         </View>
@@ -58,27 +58,42 @@ const completedOrders = () => {
 
        <View style={{borderColor:"red", margin:"1%", height:250}}>
         <View style={{borderColor:"#898989", borderWidth:1, margin:"1%", height:240, borderRadius:9}}>
-          <View style={{borderBottomColor:"#898989", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
-            <Text style={{borderColor:"red", fontSize:18, fontWeight:700, width:"100%"}}>July 21, 2024 - 08:00AM</Text>
+        <View style={{borderBottomColor:"#898989", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
+            < View style={{width:"20%", height:"80%", justifyContent:"center"}}>
+                  <Text style={{fontWeight:700, color:"#898989", fontSize:16}}>Order Id:</Text>
+                </View>
+                <View style={{width:"80%", justifyContent:"center", height:"80%", borderColor:"red"}}>
+                  <Text style={{fontWeight:500,  color:"#898989", fontSize:15}}>755bd-9968hc-2231155.</Text>
+                </View>
           </View>
           <View style={{flexDirection:"row", margin:"1%", height:120}}>
-            <View  style={{borderColor:"blue", width:"33%", flexDirection:"row"}}>
-              <ImageBackground source={require('../icons/profilephotos/doctor.jpg')} style={{width:"100%"}}></ImageBackground>
+            <View  style={{borderColor:"#898989", alignItems:"center", borderWidth:1, borderRadius:9, width:"33%", flexDirection:"row"}}>
+              <ImageBackground source={require('../icons/profilephotos/metformin.jpeg')} style={{orderRadius:9, height:"90%", width:"100%"}}></ImageBackground>
             </View>
             <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
-              <Text style={{borderColor:"red", fontSize:16, fontWeight:700, height:"30%"}}>Dr. Susan Wahome</Text>
-              <Text style={{borderColor:"red", fontSize:14, height:"30%"}}>General Consultation</Text>
-              <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"30%"}}>
-                <View style={{width:"10%", borderColor:"red"}}>
-                  <Text style={{fontWeight:700}}>Id:</Text>
-                </View>
-                <View style={{width:"90%", borderColor:"red"}}>
-                  <Text>145bd-685gd41-2231155.</Text>
-                </View>
+              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                <Text style={{borderColor:"red", color:"#898989", fontSize:17, fontWeight:500, width:"30%"}}>Name:</Text>
+                <Text style={{borderColor:"red", fontSize:16, fontWeight:400, width:"70%"}}> Metfotmin</Text>
               </View>
-
+              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Quantity:</Text>
+                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> 1</Text>
+              </View>
+              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Status:</Text>
+                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}>Cancelled</Text>
+              </View>
+              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Price:</Text>
+                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> $90.00</Text>
+              </View>
+              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                <Text style={{borderColor:"red", color:"#898989", fontSize:12, fontWeight:500, width:"40%"}}>Cancelled on:</Text>
+                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"60%"}}>03/08/2024</Text>
+              </View>
             </View>
           </View>
+
           <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
             <View style={{borderColor:"blue", backgroundColor:"#FE9EA3", borderRadius:24, justifyContent:"center", height:"80%", width:"60%"}}>
               <Text style={{textAlign:"center", fontSize:14, color:"black", fontWeight:700}}>Cancelled</Text>
