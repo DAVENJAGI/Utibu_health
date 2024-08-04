@@ -43,8 +43,9 @@ const completedAppointment = () => {
           <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('myAppointments')}}>
             <Text style={{textAlign:"center", fontWeight:700, color:"#747C8B", fontSize:14}}>Upcoming</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('completedAppointments')}}>
-            <Text style={{textAlign:"center", fontWeight:600, color:"#30B3DE", fontSize:14}}>Completed</Text>
+          <TouchableOpacity style={{borderColor:"blue", flexDirection:"row", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('completedAppointments')}}>
+            <Text style={{textAlign:"center", alignSelf:"center", fontWeight:600, color:"#30B3DE", fontSize:15}}>Completed</Text>
+            <Text style={{borderColor:"blue", marginTop:"6%", fontWeight:700, color:"white", position:"relative", textAlign:"center", backgroundColor:"#30B3DE", marginLeft:"2%", height:18, fontSize:12, borderRadius:11, width:18}}>1</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelledAppointments')}}>
             <Text style={{textAlign:"center", fontWeight:600, color:"#747C8B", fontSize:14}}>Cancelled</Text>
@@ -52,7 +53,7 @@ const completedAppointment = () => {
         </View>
         <View style={{borderColor:"black", height:8, flexDirection:"row", justifyContent:"space-between"}}>
             <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
-            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
+            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"27%"}}></View>
             <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
         </View>
        </View>

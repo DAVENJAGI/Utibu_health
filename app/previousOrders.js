@@ -40,8 +40,9 @@ const placedOrders = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
        <View style={{borderBottomColor:"#DBD0C8", borderBottomWidth:1, height:40}}>
         <View style={{borderColor:"red", height:30, flexDirection:"row", justifyContent:"space-between"}}>
-          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}}>
-            <Text style={{textAlign:"center", fontWeight:700, color:"#30B3DE", fontSize:14}}>Placed</Text>
+          <TouchableOpacity style={{borderColor:"blue", flexDirection:"row", justifyContent:"center", width:"30%"}}>
+            <Text style={{textAlign:"center", fontWeight:700, alignSelf:"center", color:"#30B3DE", fontSize:14}}>Placed</Text>
+            <Text style={{borderColor:"blue", marginTop:"6%", fontWeight:700, color:"white", position:"relative", textAlign:"center", backgroundColor:"#30B3DE", marginLeft:"5%", height:18, fontSize:12, borderRadius:11, width:18}}>1</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
             <Text style={{textAlign:"center", fontWeight:600,  color:"#747C8B", fontSize:14}}>Approved</Text>

@@ -28,9 +28,8 @@ const Home = () => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: "white" }}>
       {/* Removed incorrect options prop */}
-      <ScrollView showsVerticalScrollIndicator={false}>
       {/* HEADER OF THE HOME PAGE*/ }
-        <View style={{width: "100%", height: 60, justifyContent:"center", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
+      <View style={{width: "100%", height: 60, justifyContent:"center", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
           <View style={{height: "100%", flexDirection:"row", alignItems: "center", borderBottom:"solid 2px #cfcfcf"}}>
             <View style={{width: "50%"}}>
               <TouchableOpacity style={{width:50, height:50, borderRadius:25, borderWidth:1, borderColor: '#cfcfcf', marginLeft:"3%", overflow:"hidden"}} onPress={() => {navigation.navigate('myProfile')}}>
@@ -44,7 +43,8 @@ const Home = () => {
             </View>
           </View>
         </View>
-        
+      <ScrollView showsVerticalScrollIndicator={false}>
+      
         {/*GREETING DIV*/}
           <View style={{ flex: 1, padding: SIZES.medium, backgroundColor:"rgba(255, 255, 255, 0.2)" }}>
             <Welcome />

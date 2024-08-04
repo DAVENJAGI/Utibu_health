@@ -46,14 +46,15 @@ const completedOrders = () => {
           <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
             <Text style={{textAlign:"center", fontWeight:600,  color:"#747C8B", fontSize:14}}>Approved</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelled')}}>
-            <Text style={{textAlign:"center", fontWeight:600, color:"#30B3DE", fontSize:14}}>Cancelled</Text>
+          <TouchableOpacity style={{borderColor:"blue", flexDirection:"row", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelled')}}>
+            <Text style={{textAlign:"center", alignSelf:"center", fontWeight:600, color:"#30B3DE", fontSize:14}}>Cancelled</Text>
+            <Text style={{borderColor:"blue", marginTop:"6%", fontWeight:700, color:"white", position:"relative", textAlign:"center", backgroundColor:"#30B3DE", marginLeft:"5%", height:18, fontSize:12, borderRadius:11, width:18}}>1</Text>
           </TouchableOpacity>          
         </View>
         <View style={{borderColor:"red", width:"91%", marginLeft:"5%", height:8, flexDirection:"row", justifyContent:"space-between"}}>
             <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"22%"}}></View>
             <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"23%"}}></View>
-            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"22%"}}></View>
+            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"26%"}}></View>
         </View>
        </View>
 

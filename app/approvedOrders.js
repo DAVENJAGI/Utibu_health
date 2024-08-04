@@ -44,8 +44,9 @@ const approvedOrders = () => {
           <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('previousOrders')}}>
             <Text style={{textAlign:"center", fontWeight:700, color:"#747C8B", fontSize:14}}>Placed</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
-            <Text style={{textAlign:"center", fontWeight:600, color:"#30B3DE", fontSize:14}}>Approved</Text>
+          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", flexDirection:"row", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
+            <Text style={{textAlign:"center", fontWeight:600, alignSelf:"center", color:"#30B3DE", fontSize:14}}>Approved</Text>
+            <Text style={{borderColor:"blue", marginTop:"6%", fontWeight:700, color:"white", position:"relative", textAlign:"center", backgroundColor:"#30B3DE", marginLeft:"5%", height:18, fontSize:12, borderRadius:11, width:18}}>1</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelledOrders')}}>
             
@@ -54,7 +55,7 @@ const approvedOrders = () => {
         </View>
         <View style={{borderColor:"black", height:8, flexDirection:"row", justifyContent:"space-between"}}>
             <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
-            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
+            <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"26%"}}></View>
             <View style={{borderColor:"blue", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
         </View>
        </View>
@@ -76,7 +77,7 @@ const approvedOrders = () => {
             <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
               <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
                 <Text style={{borderColor:"red", color:"#898989", fontSize:17, fontWeight:500, width:"30%"}}>Name:</Text>
-                <Text style={{borderColor:"red", fontSize:16, fontWeight:400, width:"70%"}}> Insulin shot</Text>
+                <Text style={{borderColor:"red", fontSize:16, fontWeight:400, width:"70%"}}>Metformin</Text>
               </View>
               <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
                 <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Quantity:</Text>
@@ -88,7 +89,7 @@ const approvedOrders = () => {
               </View>
               <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
                 <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Price:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> $100.00</Text>
+                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> $180.00</Text>
               </View>
               <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
                 <Text style={{borderColor:"red", color:"#898989", fontSize:13, fontWeight:500, width:"40%"}}>Approved on:</Text>
