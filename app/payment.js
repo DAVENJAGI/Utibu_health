@@ -11,7 +11,8 @@ import { home } from "./home";
 import { myAppointments } from "./myAppointments";
 // import { prescriptions } from "../app/prescriptions";
 
-import places from "../icons/icons/png/filled/places/home_alt.png";
+import places from "../icons/icons/png/outline/places/home_alt.png";
+import doctor from "../icons/icons/png/outline/people/doctor.png"
 import medicine from "../icons/icons/png/filled/medications/medicines.png";
 import calendar from "../icons/icons/png/filled/symbols/calendar.png";
 import emotion from "../icons/icons/png/filled/emotions/neutral.png";

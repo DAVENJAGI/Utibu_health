@@ -7,7 +7,7 @@ import { COLORS, icons, SIZES } from "../jobsift-starter/constants";
 import { ScreenHeaderBtn, Welcome } from "../jobsift-starter/components";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { profile } from "../app/profile";
+import { myDoctor } from "../app/myDoctor";
 import { home } from "../app/home";
 import { prescriptions } from "../app/prescriptions";
 

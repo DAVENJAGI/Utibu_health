@@ -11,11 +11,12 @@ import { TouchableOpacity } from "react-native";
 // import { home } from "../app/home";
 // import { prescriptions } from "../app/prescriptions";
 
-import places from "../icons/icons/png/filled/places/home_alt.png";
-import medicine from "../icons/icons/png/filled/medications/medicines.png";
-import calendar from "../icons/icons/png/filled/symbols/calendar.png";
+import places from "../icons/icons/png/outline/places/home_alt.png";
+import medicine from "../icons/icons/png/outline/medications/medicines.png";
+import calendar from "../icons/icons/png/outline/symbols/calendar.png";
+import doctor from "../icons/icons/png/outline/people/doctor.png"
 import emotion from "../icons/icons/png/filled/emotions/neutral.png";
-import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
+import orders from "../icons/icons/png/outline/symbols/i_documents_accepted.png";
 import settings from "../icons/icons/png/filled/symbols/ui_settings.png"
 import menu from "../icons/icons/png/filled/symbols/ui_menu.png";
 import call from "../icons/icons/png/filled/objects/phone.png";
@@ -126,10 +127,10 @@ const Appointment = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
-          navigation.navigate('profile')
+          navigation.navigate('myDoctor')
         }}>
-          <Image source={settings} style={{height:30}}  resizeMode="contain" />
-          <Text style={{fontSize:9, textAlign:"center"}}>Settings</Text>
+          <Image source={doctor} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>My Doctor</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

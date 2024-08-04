@@ -11,13 +11,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
-import places from "../icons/icons/png/filled/places/home_alt.png";
-import medicine from "../icons/icons/png/filled/medications/medicines.png";
-import calendar from "../icons/icons/png/filled/symbols/calendar.png";
-import smallcalendar from "../icons/icons/png/filled/symbols/calendar.png"
+import places from "../icons/icons/png/outline/places/home_alt.png";
+import medicine from "../icons/icons/png/outline/medications/medicines.png";
+import calendar from "../icons/icons/png/outline/symbols/calendar.png";
+import smallcalendar from "../icons/icons/png/outline/symbols/calendar.png"
 import clock from "../icons/icons/png/filled/symbols/clock.png"
+import doctor from "../icons/icons/png/outline/people/doctor.png"
 import lady from "../icons/profilephotos/lady.jpg"
-import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
+import orders from "../icons/icons/png/outline/symbols/i_documents_accepted.png";
 import settings from "../icons/icons/png/filled/symbols/ui_settings.png";
 import { useRouter } from "expo-router";
 
@@ -32,7 +33,7 @@ const Home = () => {
         <View style={{width: "100%", height: 60, justifyContent:"center", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
           <View style={{height: "100%", flexDirection:"row", alignItems: "center", borderBottom:"solid 2px #cfcfcf"}}>
             <View style={{width: "50%"}}>
-              <TouchableOpacity style={{width:50, height:50, borderRadius:25, borderWidth:1, borderColor: '#cfcfcf', margin:"1%", overflow:"hidden"}}>
+              <TouchableOpacity style={{width:50, height:50, borderRadius:25, borderWidth:1, borderColor: '#cfcfcf', marginLeft:"3%", overflow:"hidden"}} onPress={() => {navigation.navigate('myProfile')}}>
                 <ImageBackground source={require('../icons/profilephotos/lady.jpg')} style={{width: 50, height: 50, position:"relative", bottom:0, top:0, left:0, width:60, height:60}}></ImageBackground>
               </TouchableOpacity>
             </View>
@@ -127,10 +128,10 @@ const Home = () => {
 
               <View style={{shadowColor: 'black', backgroundColor:"#F2F2F2", shadowOpacity: 0.9, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:70, margin:"1%", borderColor:"#E3E3E3", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
                 <View style={{borderRadius:15, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1, alignItems:"center", backgroundColor:"#fff1e7", width:30, marginLeft: "2%", justifyContent:"center", alignItems:"center", marginRight:"2%", height:30}}>
-                  <Text style={{fontSize:16, fontWeight:700}}>15</Text>
+                  <Text style={{fontSize:16, fontWeight:700}}>4</Text>
                 </View>
                 <View style={{justifyContent:"center", width:"70%", height:30}}>
-                  <Text style={{fontSize:18, color:"#1a6860", fontWeight:700}}>Orders awaiting approval</Text>
+                  <Text style={{fontSize:18, color:"#750137", fontWeight:700}}>Orders awaiting approval</Text>
                 </View>
               </View>
               <View style={{shadowColor: 'black', backgroundColor:"#F2F2F2", shadowOpacity: 0.1, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:70, margin:"1%", borderColor:"#E3E3E3", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
@@ -138,7 +139,7 @@ const Home = () => {
                     <Text style={{fontSize:16, fontWeight:700}}>3</Text>
                   </View>
                   <View style={{justifyContent:"center", width:"70%", height:50}}>
-                    <Text style={{fontSize:18, color:"#1a6860", fontWeight:700}}>Appointments awaiting confirmaton</Text>
+                    <Text style={{fontSize:18, color:"#750137", fontWeight:700}}>Appointments awaiting confirmation</Text>
                 </View>
               </View> 
   
@@ -183,10 +184,10 @@ const Home = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
-          navigation.navigate('profile')
+          navigation.navigate('myDoctor')
         }}>
-          <Image source={settings} style={{height:30}}  resizeMode="contain" />
-          <Text style={{fontSize:9, textAlign:"center"}}>Settings</Text>
+          <Image source={doctor} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>My Doctor</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

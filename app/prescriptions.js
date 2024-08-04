@@ -8,18 +8,17 @@ import { ScreenHeaderBtn, Welcome } from "../jobsift-starter/components";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 // import { home } from "../app/home"
-import { profile } from "./profile";
+import { myDoctor } from "./myDoctor";
 import { myAppointments } from "./myAppointments";
 // import { payment } from "../app/payment";
 // import { unavailable } from "../app/unavailable";
 
-import places from "../icons/icons/png/filled/places/home_alt.png";
-import calendar from "../icons/icons/png/filled/symbols/calendar.png";
-import medicine from "../icons/icons/png/filled/medications/pills_4.png";
-
+import places from "../icons/icons/png/outline/places/home_alt.png";
+import calendar from "../icons/icons/png/outline/symbols/calendar.png";
+import medicine from "../icons/icons/png/outline/medications/pills_4.png";
+import doctor from "../icons/icons/png/outline/people/doctor.png"
 import menu from "../icons/icons/png/filled/symbols/ui_menu.png";
-import orders from "../icons/icons/png/filled/symbols/i_documents_accepted.png";
-import settings from "../icons/icons/png/filled/symbols/ui_settings.png";
+import orders from "../icons/icons/png/outline/symbols/i_documents_accepted.png";
 import call from "../icons/icons/png/filled/objects/phone.png";
 import card from "../icons/icons/png/filled/objects/credit_card.png";
 import { useRouter } from "expo-router";
@@ -110,17 +109,17 @@ const Prescription = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
-          navigation.navigate('myAppointments')
+          navigation.navigate('previousOrders')
         }}>
           <Image source={orders} style={{height:30}}  resizeMode="contain" />
           <Text style={{fontSize:9, textAlign:"center"}}>Orders</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
-          navigation.navigate('profile')
+          navigation.navigate('myDoctor')
         }}>
-          <Image source={settings} style={{height:30}}  resizeMode="contain" />
-          <Text style={{fontSize:9, textAlign:"center"}}>Settings</Text>
+          <Image source={doctor} style={{height:30}}  resizeMode="contain" />
+          <Text style={{fontSize:9, textAlign:"center"}}>My Doctor</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
