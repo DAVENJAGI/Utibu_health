@@ -13,6 +13,7 @@ import { cancelledOrders } from "./app/cancelledOrders";
 import { approvedOrders } from "./app/approvedOrders";
 import { myProfile } from "./app/myProfile";
 import { appointmentBooking } from "./app/appointmentBooking";
+import { orderPlacing } from "./app/orderPlacing";
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,7 @@ const App = () => {
         <Stack.Screen name="cancelledOrders" component={cancelledOrders}/>
         <Stack.Screen name="approvedOrders" component={approvedOrders}/>
         <Stack.Screen name="myProfile" component={myProfile}/>
+        <Stack.Screen name="orderPlacing" component={orderPlacing}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -92,7 +92,7 @@ const medicationDetails = () => {
 
         {/**Order medication */}
         <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"10%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"80%", width:"70%"}}>
+            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"80%", width:"70%"}} onPress={() => {navigation.navigate('orderPlacing')}}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Place Order</Text>
             </TouchableOpacity>
         </View>
