@@ -12,6 +12,7 @@ import { completedAppointments } from "./app/completedAppointments";
 import { cancelledOrders } from "./app/cancelledOrders";
 import { approvedOrders } from "./app/approvedOrders";
 import { myProfile } from "./app/myProfile";
+import { appointmentBooking } from "./app/appointmentBooking";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ const App = () => {
         <Stack.Screen name="medicationDetails" component={medicationDetails} />
         <Stack.Screen name="completedAppointments" component={completedAppointments}/>
         <Stack.Screen name="cancelledAppointments" component={cancelledAppointments}/>
+        <Stack.Screen name="appointmentBooking" component={appointmentBooking}/>
         <Stack.Screen name="cancelledOrders" component={cancelledOrders}/>
         <Stack.Screen name="approvedOrders" component={approvedOrders}/>
         <Stack.Screen name="myProfile" component={myProfile}/>

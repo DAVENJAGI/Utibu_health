@@ -64,7 +64,7 @@ const medicationDetails = () => {
               </View>
               <View style={{borderColor:"red", marginBottom:"1%", alignItems:"center", flexDirection:"row", fontSize:18, borderWidthheight:"18%"}}>
                 <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Hospital Assigned</Text>
-                <Text style={{borderWidthborderColor:"red", fontSize:12, fontWeight:400, width:"66%"}}> Kenyatta National Hospital</Text>
+                <Text style={{borderColor:"red", fontSize:12, fontWeight:400, width:"66%"}}> Kenyatta National Hospital</Text>
               </View>
             </View>
           </View>
@@ -80,7 +80,7 @@ const medicationDetails = () => {
         
         {/**Book Appointment */}
         <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"30%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}}>
+            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={() => {navigation.navigate('appointmentBooking')}}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Book Appointment</Text>
             </TouchableOpacity>
         </View>
