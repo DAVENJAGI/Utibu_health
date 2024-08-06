@@ -112,7 +112,7 @@ const completedAppointment = () => {
           <Image source={medicine} style={{height:30}} resizeMode="contain" />
           <Text style={{fontSize:9, textAlign:"center"}}>Meds</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('myAppointments')
         }}>
           <Image source={calendar} style={{height:30}}  resizeMode="contain" />

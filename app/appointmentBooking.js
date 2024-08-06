@@ -74,12 +74,12 @@ const appointmentBooking = () => {
                     </View>
                     <View style={{flexDirection:"row", borderColor:"red", height:"40%"}}>
                         <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
-                            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#FE9EA3", borderRadius:24, justifyContent:"center", height:"60%", width:"60%"}} onPress={(handleButtonPressNo)}>
-                                <Text style={{textAlign:"center", color:"white", fontSize:14, color:"black", fontWeight:700}}>No</Text>
+                            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#0077b6", borderRadius:24, justifyContent:"center", height:"60%", width:"60%"}} onPress={(handleButtonPressNo)}>
+                                <Text style={{textAlign:"center", color:"white", fontSize:14, color:"white", fontWeight:700}}>No</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ borderColor:"red",justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
-                            <TouchableOpacity style={{borderColor:"blue", alignItems:"center", backgroundColor:"#2e6f40", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"70%", width:"60%"}}>
+                            <TouchableOpacity style={{borderColor:"blue", alignItems:"center", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"70%", width:"60%"}}>
                                 <Text style={{textAlign:"center", width:"40%", borderColor:"red", fontSize:17, color:"white", fontWeight:700}}>Yes</Text>
                             </TouchableOpacity>
                         </View>
@@ -95,23 +95,23 @@ const appointmentBooking = () => {
         <View style={{marginTop:"1%", height:100}}>
             <ScrollView horizontal={true} style={{flexDirection:"row", borderBottomWidth:1, borderColor:"#AAAAAA", width:400}}>
                 <View style={{overflow:"scroll", alignItems:"center", flexDirection:"row", justifyContent:"space-between", borderRadius:9, width:800, height:100}}>
-                    <TouchableOpacity style={{borderColor:"blue", margin:"1%", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"blue", margin:"1%", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Today</Text>
                         <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Aug 4</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"#575799", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%", width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%", width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Mon</Text>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Aug 5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"#575799", margin:"1%", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", margin:"1%", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Tue</Text>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Aug 6</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"#575799", margin:"1%", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", margin:"1%", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Wed</Text>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Aug 7</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"#575799", margin:"1%", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", margin:"1%", borderWidth:1, borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Thur</Text>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>Aug 8</Text>
                     </TouchableOpacity>
@@ -127,25 +127,25 @@ const appointmentBooking = () => {
         <View style={{marginTop:"1%", height:80}}>
             <ScrollView horizontal={true} style={{flexDirection:"row", borderBottomWidth:1, borderColor:"#AAAAAA", width:400}}>
                 <View style={{overflow:"scroll", alignItems:"center", flexDirection:"row", justifyContent:"space-between", borderRadius:9, width:1500, height:80}}>
-                    <TouchableOpacity style={{margin:"1%", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{margin:"1%", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>00:00AM</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"575799", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>01:00AM</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"575799", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>02:00AM</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"575799", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>03:00AM</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"575799", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>04:00AM</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"575799", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>05:00AM</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{borderColor:"575799", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
+                    <TouchableOpacity style={{borderColor:"#30B3DE", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
                         <Text style={{textAlign:"center", fontSize:14, fontWeight:700}}>06:00AM</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{borderColor:"575799", borderWidth:1, margin:"1%", borderRadius:24, justifyContent:"center", height:"55%",  width:120}}>
@@ -161,8 +161,8 @@ const appointmentBooking = () => {
         
         
         {/**NEXT BUTTON*/}
-        <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"20%", height:55}}>
-            <TouchableOpacity  style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={(handleButtonPressNext)}>
+        <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"30%", height:60}}>
+            <TouchableOpacity  style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={(handleButtonPressNext)}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Next</Text>
             </TouchableOpacity>
         </View>

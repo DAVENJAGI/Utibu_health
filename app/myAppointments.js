@@ -80,10 +80,10 @@ const Appointment = () => {
             </View>
           </View>
           <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
+            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Reschedule</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#681A22", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
+            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#0077B6", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Cancel</Text>
             </TouchableOpacity>
           </View>         
@@ -113,7 +113,7 @@ const Appointment = () => {
           <Image source={medicine} style={{height:30}} resizeMode="contain" />
           <Text style={{fontSize:9, textAlign:"center"}}>Meds</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('myAppointments')
         }}>
           <Image source={calendar} style={{height:30}}  resizeMode="contain" />

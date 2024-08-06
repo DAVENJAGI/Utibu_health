@@ -98,10 +98,13 @@ const approvedOrders = () => {
             </View>
           </View>
           <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
-            <View style={{borderColor:"blue", alignItems:"center", backgroundColor:"#2e6f40", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"80%", width:"60%"}}>
-                <Image source={yes} style={{height:30, borderColor:"red"}} resizeMode="contain" />
-              <Text style={{textAlign:"center", width:"40%", borderColor:"red", fontSize:17, color:"white", fontWeight:700}}>Approved</Text>
+            <View style={{borderColor:"blue", alignItems:"center", backgroundColor:"#B4E4F3", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"80%", width:"40%"}}>
+                <Image source={yes} style={{height:25, width:25, borderColor:"red"}} resizeMode="contain" />
+              <Text style={{textAlign:"center", width:"60%", borderColor:"red", fontSize:17, color:"black", fontWeight:700}}>Approved</Text>
             </View>
+            <TouchableOpacity style={{borderColor:"blue", alignItems:"center", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"80%", width:"40%"}} onPress={() => {navigation.navigate('paymentPage')}}>
+              <Text style={{textAlign:"center", width:"40%", borderColor:"red", fontSize:17, color:"white", fontWeight:700}}>Pay</Text>
+            </TouchableOpacity>
           </View>         
         </View>
        </View>
@@ -136,7 +139,7 @@ const approvedOrders = () => {
           <Text style={{fontSize:9, textAlign:"center"}}>Apps</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6",  height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3",  height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('previousOrders')
         }}>
           <Image source={orders} style={{height:30}}  resizeMode="contain" />

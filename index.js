@@ -14,6 +14,7 @@ import { approvedOrders } from "./app/approvedOrders";
 import { myProfile } from "./app/myProfile";
 import { appointmentBooking } from "./app/appointmentBooking";
 import { orderPlacing } from "./app/orderPlacing";
+import { payment } from"./app/payment";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ const App = () => {
         <Stack.Screen name="approvedOrders" component={approvedOrders}/>
         <Stack.Screen name="myProfile" component={myProfile}/>
         <Stack.Screen name="orderPlacing" component={orderPlacing}/>
+        <Stack.Screen name="payment" component={payment}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

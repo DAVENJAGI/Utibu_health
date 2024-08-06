@@ -94,11 +94,11 @@ const placedOrders = () => {
             </View>
           </View>
           <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
+            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Edit order</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#681A22", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Cancel</Text>
+            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#0077B6", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
+              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Cancel order</Text>
             </TouchableOpacity>
           </View>         
         </View>
@@ -134,7 +134,7 @@ const placedOrders = () => {
           <Text style={{fontSize:9, textAlign:"center"}}>Apps</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6",  height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3",  height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('previousOrders')
         }}>
           <Image source={orders} style={{height:30}}  resizeMode="contain" />

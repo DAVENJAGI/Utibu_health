@@ -58,20 +58,20 @@ const Home = () => {
                 <View style={{borderColor:"red", width:"85%", height:"100%", justifyContent:"center",}}>
                   <Text style={{fontSize:15, fontWeight:800, textAlign:"left"}}>Upcoming Appointments</Text>
                 </View>
-                <View style={{marginLeft:0, backgroundColor:"#575799", alignItems:"center", borderRadius:11, width:22, height:22}}>
+                <View style={{marginLeft:0, backgroundColor:"#30B3DE", alignItems:"center", borderRadius:11, width:22, height:22}}>
                   <Text style={{fontSize:16, color:"white", fontWeight:600, }}>3</Text>
                 </View>
               </View>
               <View style={{borderColor:"red", height:"100%", width:"40%"}}>
                 <TouchableOpacity style={{justifyContent:"center", height:"100%", fontSize: "18px"}}>
-                  <Text style={{color:"#750137", fontSize:15, fontWeight:800, textAlign:"right", marginRight:5}}>View all</Text>
+                  <Text style={{color:"#30B3DE", fontSize:15, fontWeight:800, textAlign:"right", marginRight:5}}>View all</Text>
                 </TouchableOpacity>
               </View>
             </View >
             
             <View style={{margin:"1%", height:200}}>
-              <TouchableOpacity style={{height:210, borderRadius:9, display: "block", backgroundColor:"#1a6860"}}>
-              <LinearGradient colors={['#575799', '#681A22']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, y: 0 }}end={{ x: 0, y: 1 }}>
+              <TouchableOpacity style={{height:210, shadowOpacity: 0.25,  shadowOffset: { width: 0,  height: 2,}, shadowColor: 'black', shadowRadius: 3.84, elevation: 15, borderRadius:9, display: "block", backgroundColor:"#1a6860"}}>
+              <LinearGradient colors={['#30B3DE', '#0077B6']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, y: 0 }}end={{ x: 0, y: 1 }}>
                   <View style={{borderTopEndRadius:9, height:"65%", flexDirection:"row"}}>
                     <View style={{margin:"1%", alignItems:"center", flexDirection:"row", marginLeft: "5%", width:"90%"}}>
                       <View style={{height: 70, borderColor:"#cfcfcf", borderWidth:1, width: 70, marginLeft:3, overflow: "hidden", borderRadius:35}}>
@@ -131,7 +131,7 @@ const Home = () => {
                   <Text style={{fontSize:16, fontWeight:700}}>4</Text>
                 </View>
                 <View style={{justifyContent:"center", width:"70%", height:30}}>
-                  <Text style={{fontSize:18, color:"#750137", fontWeight:700}}>Orders awaiting approval</Text>
+                  <Text style={{fontSize:18, fontWeight:700}}>Orders awaiting approval</Text>
                 </View>
               </View>
               <View style={{shadowColor: 'black', backgroundColor:"#F2F2F2", shadowOpacity: 0.1, shadowRadius: 10, shadowOffset: { width: 0, height: 1 }, height:70, margin:"1%", borderColor:"#E3E3E3", borderRadius:9, flexDirection:"row", borderWidth:1, justifyContent:"center", alignItems:"center"}}>
@@ -139,7 +139,7 @@ const Home = () => {
                     <Text style={{fontSize:16, fontWeight:700}}>3</Text>
                   </View>
                   <View style={{justifyContent:"center", width:"70%", height:50}}>
-                    <Text style={{fontSize:18, color:"#750137", fontWeight:700}}>Appointments awaiting confirmation</Text>
+                    <Text style={{fontSize:18, color:"black", fontWeight:700}}>Appointments awaiting confirmation</Text>
                 </View>
               </View> 
   
@@ -155,7 +155,7 @@ const Home = () => {
       <View
         style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}
       >
-        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {}}>
+        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {}}>
           <Image source={places} style={{height:30}} resizeMode="contain" />
           <Text style={{fontSize:9, color:"white", textAlign:"center"}}>Home</Text>
         </TouchableOpacity>

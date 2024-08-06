@@ -48,11 +48,11 @@ const Prescription = () => {
                   </View>
                   
                   <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
-                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Inhaler</Text>
+                    <Text style={{fontSize:15, fontWeight:700}}>Inhaler</Text>
                   </View>
 
                   <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
-                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Asthma</Text>
+                    <Text style={{fontSize:15, fontWeight:700}}>Asthma</Text>
                   </View>
 
                   <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
@@ -67,11 +67,11 @@ const Prescription = () => {
                   </View>
                   
                   <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
-                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Inhaler</Text>
+                    <Text style={{fontSize:15, fontWeight:700}}>Inhaler</Text>
                   </View>
 
                   <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
-                    <Text style={{fontSize:15, color:"#1a6860", fontWeight:700}}>Asthma</Text>
+                    <Text style={{fontSize:15, fontWeight:700}}>Asthma</Text>
                   </View>
 
                   <View style={{justifyContent:"center", borderColor:"red", width:80, height:70}}>
@@ -92,7 +92,7 @@ const Prescription = () => {
           <Text style={{fontSize:9, color:"black", textAlign:"center"}}>Home</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('prescriptions')  
         }}
         activeOpacity={0.8}

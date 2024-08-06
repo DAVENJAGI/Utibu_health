@@ -134,7 +134,7 @@ const completedOrders = () => {
           <Text style={{fontSize:9, textAlign:"center"}}>Apps</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6",  height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3",  height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
           navigation.navigate('previousOrders')
         }}>
           <Image source={orders} style={{height:30}}  resizeMode="contain" />

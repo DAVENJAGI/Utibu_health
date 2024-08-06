@@ -79,8 +79,8 @@ const medicationDetails = () => {
         </View>
         
         {/**Book Appointment */}
-        <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"30%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={() => {navigation.navigate('appointmentBooking')}}>
+        <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"35%", height:55}}>
+            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={() => {navigation.navigate('appointmentBooking')}}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Book Appointment</Text>
             </TouchableOpacity>
         </View>
@@ -122,7 +122,7 @@ const medicationDetails = () => {
           <Text style={{fontSize:9, textAlign:"center"}}>Orders</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6",  height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
+        <TouchableOpacity style={{borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B4E4F3",  height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
           navigation.navigate('myDoctor')
         }}>
           <Image source={doctor} style={{height:30}}  resizeMode="contain" />

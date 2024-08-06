@@ -116,12 +116,12 @@ const orderPlacing = () => {
                     </View>
                     <View style={{flexDirection:"row", borderColor:"red", height:"40%"}}>
                         <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
-                            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#FE9EA3", borderRadius:24, justifyContent:"center", height:"60%", width:"60%"}} onPress={(handleButtonPressNo)}>
-                                <Text style={{textAlign:"center", color:"white", fontSize:14, color:"black", fontWeight:700}}>No</Text>
+                            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#0077B6", borderRadius:24, justifyContent:"center", height:"60%", width:"60%"}} onPress={(handleButtonPressNo)}>
+                                <Text style={{textAlign:"center", color:"white", fontSize:14, color:"white", fontWeight:700}}>No</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={{ borderColor:"red",justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
-                            <TouchableOpacity style={{borderColor:"blue", alignItems:"center", backgroundColor:"#2e6f40", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"70%", width:"60%"}}>
+                            <TouchableOpacity style={{borderColor:"blue", alignItems:"center", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"70%", width:"60%"}}>
                                 <Text style={{textAlign:"center", width:"40%", borderColor:"red", fontSize:17, color:"white", fontWeight:700}}>Yes</Text>
                             </TouchableOpacity>
                         </View>
@@ -170,7 +170,7 @@ const orderPlacing = () => {
         
         {/**NEXT BUTTON*/}
         <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"55%", height:55}}>
-            <TouchableOpacity  style={{borderColor:"blue", backgroundColor:"#575799", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={(handleButtonPressNext)}>
+            <TouchableOpacity  style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={(handleButtonPressNext)}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Next</Text>
             </TouchableOpacity>
         </View>
