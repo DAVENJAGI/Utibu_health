@@ -12,7 +12,7 @@ import { notMember } from "./notMember"
 import { home } from "./home"
 
 
-import places from "../icons/icons/png/filled/places/home_alt.png";
+import places from "../icons/icons/png/filled/blood/blood_a_n.png";
 import medicine from "../icons/icons/png/filled/medications/medicines.png";
 import calendar from "../icons/icons/png/filled/symbols/calendar.png";
 import emotion from "../icons/icons/png/filled/emotions/neutral.png";
@@ -28,8 +28,8 @@ const Login = () => {
     const [typedTextHello, setTypedTextHello] = useState('');
     const [typedTextWelcome, setTypedTextWelcome] = useState('');
     const [typingComplete, setTypingComplete] = useState(false);
-    const targetTextHello = 'Hello there.';
-    const targetTextWelcome = 'Welcome Back to Utibu Health.';
+    const targetTextHello = 'UTIBU HEALTH';
+    const targetTextWelcome = 'WITH YOU IN EVERY STEP.';
     const typingSpeed = 50;
 
     useEffect(() => {
@@ -83,22 +83,31 @@ const Login = () => {
       {/* Removed incorrect options prop */}
            
         <View style={{borderColor:"red", height: "100%"}}>
-        <LinearGradient colors={['#48D1CC', '#D6F0F7', '#009FAE']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, y: 0 }}end={{ x: 0, y: 1 }}>
-          <View style={{justifyContent:"center",borderColor:"red", height:"30%", margin:"2%"}}>
+        <LinearGradient colors={['#30B3DE', '#30B3DE']} style={{height: '100%'}} start={{ x: 0, y: 0 }}end={{ x: 0, y: 1 }}>
+          <View style={{justifyContent:"center", alignItems:"center", borderColor:"red", height:"30%", margin:"2%"}}>
+            <View style={{borderColor:"red", width:300 ,  borderColor:"red", height:90, overflow:"hidden", justifyContent:"center"}}>
+              <View style={{flexDirection:"row", margin:"1%", height:"60%"}}>
+                <Text style={{color:"white", letterSpacing:4, fontSize:33, textAlign:"center", fontWeight:800, width:"100%"}}>{typedTextHello}</Text>
+                
+              </View>
+              <Text style={{color:"white", fontWeight:800, letterSpacing:4, textAlign:"center",  marginLeft:"3%", marginRight:"3%", height:"30%"}}>{typedTextWelcome}</Text>
+            </View>
+            {/*
             <View style={{height:"60%", margin:"2%"}}>
               <Text style={{alignSelf:"center", fontSize: 22, color:"white", textAlign:"center", fontWeight: "700"}}>{typedTextHello}</Text>
               <Text style={{fontSize: 25, alignSelf:"center", color:"white", marginTop:"2%", textAlign:"center", fontWeight: "800"}}>{typedTextWelcome}</Text>
             </View>
+  */}
 
           </View>
 
-          <View style={{margin:"1%", zIndex:21, backgroundColor:"white", borderColor:"#D6F0F7", borderWidth:1, height:425, borderRadius: 8}}>
+          <View style={{margin:"1%", zIndex:21, backgroundColor:"white", borderColor:"#30B3DE", borderWidth:1, height:425, borderRadius: 8}}>
             <View style={{flexDirection:"row", height:"15%", borderColor:"red"}}>
               <TouchableOpacity style={{ margin:"1%", flexDirection:"row", alignItems:"center", width:"48%", borderColor:"red"}}>
                 <Text style={{fontSize:20, fontWeight:700,textAlign:"center", color:"#30B3DE", flexDirection:"row", width:"100%", borderColor:"red"}}>Login</Text>
               </TouchableOpacity>
-              <View style={{marginLeft:"1%", backgroundColor:"#30B3DE", borderTopRightRadius:8, flexDirection:"row", width:"49%", borderColor:"blue"}}>
-                <TouchableOpacity style={{margin:"1%", flexDirection:"row", alignItems:"center", width:"100%", borderColor:"red"}} onPress={() => {navigation.navigate('signUp')}}>
+              <View style={{backgroundColor:"#10B3DE", borderTopRightRadius:6, flexDirection:"row", height:"100%", width:"50%", borderColor:"red"}}>
+                <TouchableOpacity style={{flexDirection:"row", alignItems:"center", width:"100%", borderColor:"red"}} onPress={() => {navigation.navigate('signUp')}}>
                   <Text style={{fontSize:18, fontWeight:700, color:"white",textAlign:"center", flexDirection:"row", width:"100%", borderColor:"red"}}>SignUp</Text>
                 </TouchableOpacity>
               </View>

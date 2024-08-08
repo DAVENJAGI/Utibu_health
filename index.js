@@ -18,13 +18,11 @@ import { payment } from"./app/payment";
 
 const Stack = createStackNavigator();
 
-console.log("enter")
-
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator  initialRouteName= "home">
-        <Stack.Screen name="LogIn" component={login}/>
+      <Stack.Navigator  initialRouteName= "Login">
+        <Stack.Screen name="Login" component={login}/>
         <Stack.Screen name="Home" component={home} />
         <Stack.Screen name="myDoctor" component={myDoctor}/>
         <Stack.Screen name="Prescriptions" component={prescriptions}/>
