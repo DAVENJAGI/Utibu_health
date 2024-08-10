@@ -26,6 +26,15 @@ import { useRouter } from "expo-router";
 const placedOrders = () => {
   const navigation = useNavigation();
 /*  const route = useRouter();*/
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleButtonPressNext = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
+  const handleButtonPressNo = () => {
+    setIsModalVisible(false);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -37,76 +46,105 @@ const placedOrders = () => {
             </View>
           </View>
         </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-       <View style={{borderBottomColor:"#DBD0C8", borderBottomWidth:1, height:40}}>
-        <View style={{borderColor:"red", height:30, flexDirection:"row", justifyContent:"space-between"}}>
-          <TouchableOpacity style={{borderColor:"blue", flexDirection:"row", justifyContent:"center", width:"30%"}}>
-            <Text style={{textAlign:"center", fontWeight:700, alignSelf:"center", color:"#30B3DE", fontSize:14}}>Placed</Text>
-            <Text style={{borderColor:"blue", marginTop:"6%", fontWeight:700, color:"white", position:"relative", textAlign:"center", backgroundColor:"#30B3DE", marginLeft:"5%", height:18, fontSize:12, borderRadius:11, width:18}}>1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
-            <Text style={{textAlign:"center", fontWeight:600,  color:"#747C8B", fontSize:14}}>Approved</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelledOrders')}}>
-            <Text style={{textAlign:"center", fontWeight:600, color:"#747C8B", fontSize:14}}>Cancelled</Text>
-          </TouchableOpacity>          
-        </View>
-        <View style={{borderColor:"black", height:8, flexDirection:"row", justifyContent:"space-between"}}>
-          <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
-        </View>
-       </View>
+      <ScrollView style={{ borderColor:"red"}} showsVerticalScrollIndicator={false}>
+        <View style={{borderColor:"red", height:700}} >
+          <View style={{borderBottomColor:"#DBD0C8", borderBottomWidth:1, height:40}}>
+            <View style={{borderColor:"red", height:30, flexDirection:"row", justifyContent:"space-between"}}>
+              <TouchableOpacity style={{borderColor:"blue", flexDirection:"row", justifyContent:"center", width:"30%"}}>
+                <Text style={{textAlign:"center", fontWeight:700, alignSelf:"center", color:"#30B3DE", fontSize:14}}>Placed</Text>
+                <Text style={{borderColor:"blue", marginTop:"6%", fontWeight:700, color:"white", position:"relative", textAlign:"center", backgroundColor:"#30B3DE", marginLeft:"5%", height:18, fontSize:12, borderRadius:11, width:18}}>1</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{borderColor:"blue", justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('approvedOrders')}}>
+                <Text style={{textAlign:"center", fontWeight:600,  color:"#747C8B", fontSize:14}}>Approved</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{borderColor:"blue",  justifyContent:"center", width:"30%"}} onPress={() => {navigation.navigate('cancelledOrders')}}>
+                <Text style={{textAlign:"center", fontWeight:600, color:"#747C8B", fontSize:14}}>Cancelled</Text>
+              </TouchableOpacity>          
+            </View>
+            <View style={{borderColor:"black", height:8, flexDirection:"row", justifyContent:"space-between"}}>
+              <View style={{borderColor:"blue", backgroundColor:"#30B3DE", borderTopLeftRadius:4, borderTopRightRadius:4, borderBottomRightRadius:4, borderBottomLeftRadius:4, justifyContent:"center", height:"60%", width:"25%", marginLeft:"2.5%"}}></View>
+            </View>
+          </View>
 
-       <View style={{borderColor:"red", margin:"1%", height:250}}>
-        <View style={{borderColor:"#898989", borderWidth:1, margin:"1%", height:240, borderRadius:9}}>
-          <View style={{borderBottomColor:"#898989", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
-                < View style={{width:"20%", height:"80%", justifyContent:"center"}}>
-                  <Text style={{fontWeight:700, color:"#898989", fontSize:16}}>Order Id:</Text>
+          {/*Order Item */}
+
+          <View style={{borderColor:"black", margin:"1%", height:250}}>
+            <View style={{borderColor:"#898989", borderWidth:1, margin:"1%", height:240, borderRadius:9}}>
+              <View style={{borderBottomColor:"#898989", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
+                    < View style={{width:"20%", height:"80%", justifyContent:"center"}}>
+                      <Text style={{fontWeight:700, color:"#898989", fontSize:16}}>Order Id:</Text>
+                    </View>
+                    <View style={{width:"80%", justifyContent:"center", height:"80%", borderColor:"red"}}>
+                      <Text style={{fontWeight:500,  color:"#898989", fontSize:15}}>145bd-685gd41-2231155.</Text>
+                    </View>
+              </View>
+              <View style={{flexDirection:"row", margin:"1%", height:120}}>
+                <View  style={{borderColor:"#898989", alignItems:"center", borderWidth:1, borderRadius:9, width:"33%", flexDirection:"row"}}>
+                  <ImageBackground source={require('../icons/profilephotos/insulin.jpeg')} style={{borderRadius:9, height:"90%", width:"90%"}}></ImageBackground>
                 </View>
-                <View style={{width:"80%", justifyContent:"center", height:"80%", borderColor:"red"}}>
-                  <Text style={{fontWeight:500,  color:"#898989", fontSize:15}}>145bd-685gd41-2231155.</Text>
+                <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
+                  <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                    <Text style={{borderColor:"red", color:"#898989", fontSize:17, fontWeight:500, width:"30%"}}>Name:</Text>
+                    <Text style={{borderColor:"red", fontSize:16, fontWeight:400, width:"70%"}}> Insulin shot</Text>
+                  </View>
+                  <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                    <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Quantity:</Text>
+                    <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> 2</Text>
+                  </View>
+                  <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                    <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Status:</Text>
+                    <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> Pending Approval</Text>
+                  </View>
+                  <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                    <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Price:</Text>
+                    <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> $100.00</Text>
+                  </View>
+                  <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
+                    <Text style={{borderColor:"red", color:"#898989", fontSize:13, fontWeight:500, width:"40%"}}>Placed on:</Text>
+                    <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"60%"}}>2/08/2024</Text>
+                  </View>
                 </View>
-          </View>
-          <View style={{flexDirection:"row", margin:"1%", height:120}}>
-            <View  style={{borderColor:"#898989", alignItems:"center", borderWidth:1, borderRadius:9, width:"33%", flexDirection:"row"}}>
-              <ImageBackground source={require('../icons/profilephotos/insulin.jpeg')} style={{borderRadius:9, height:"90%", width:"90%"}}></ImageBackground>
+              </View>
+              <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
+                <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#B4E4F3", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}} >
+                  <Text style={{textAlign:"center", fontSize:14, color:"black", fontWeight:700}}>Edit order</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}} onPress={(handleButtonPressNext)}>
+                  <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Cancel order</Text>
+                </TouchableOpacity>
+              </View>
+              {/*DISPLAY YES DIV*/}
+              {isModalVisible && (
+                <View style={{flex:1, borderWidth:1, borderColor:"#AAAAAA", bottom:0, shadowOpacity: 0.25,  shadowOffset: { width: 0,  height: 2,}, shadowColor: 'black', shadowRadius: 3.84, elevation: 15, borderRadius:8,  backgroundColor:"white", zIndex:22, top:"50%", bottom:0, position:"absolute",   height:180, margin:"3%"}}>
+                  <View style={{orderColor:"red", height:"70%", justifyContent:"center"}}>
+                    <Text style={{textAlign:"center",alignItems:"center", fontSize:18, fontWeight:600}}>Are you sure you want to cancel the order?</Text>
+                  </View>
+                  
+                  <View style={{flexDirection:"row", borderColor:"red", flexDirection:"row",  height:"25%"}}>
+                    <View style={{width:"40%", borderColor:"red"}}></View>
+                    <View style={{width:"60%", flexDirection:"row", borderColor:"red"}}>
+                      <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
+                        <TouchableOpacity style={{borderColor:"blue", borderRadius:24, justifyContent:"center", height:"60%", width:"80%"}} onPress={(handleButtonPressNo)}>
+                          <Text style={{textAlign:"center",  fontSize:18, color:"red", fontWeight:700, textAlign:"right"}}>No</Text>
+                        </TouchableOpacity>
+                      </View>
+                      <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
+                        <TouchableOpacity style={{borderColor:"blue", alignItems:"center",  borderRadius:24, justifyContent:"center", flexDirection:"row", height:"70%", width:"98%"}}>
+                          <Text style={{textAlign:"left", width:"40%", borderColor:"red", fontSize:17, color:"#1a6860", fontWeight:700}}>Yes</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                  
+              )}      
             </View>
-            <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:17, fontWeight:500, width:"30%"}}>Name:</Text>
-                <Text style={{borderColor:"red", fontSize:16, fontWeight:400, width:"70%"}}> Insulin shot</Text>
-              </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Quantity:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> 2</Text>
-              </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Status:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> Pending Approval</Text>
-              </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Price:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}> $100.00</Text>
-              </View>
-              <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:13, fontWeight:500, width:"40%"}}>Placed on:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"60%"}}>2/08/2024</Text>
-              </View>
-            </View>
           </View>
-          <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Edit order</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#0077B6", borderRadius:24, justifyContent:"center", height:"80%", width:"40%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Cancel order</Text>
-            </TouchableOpacity>
-          </View>         
-        </View>
+          
        </View>
-       
 
       </ScrollView>
-
+      
       {/*NAVIGATION MENU*/}
       <View
         style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}

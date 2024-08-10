@@ -90,7 +90,7 @@ const Login = () => {
                 <Text style={{color:"white", letterSpacing:4, fontSize:33, textAlign:"center", fontWeight:800, width:"100%"}}>{typedTextHello}</Text>
                 
               </View>
-              <Text style={{color:"white", fontWeight:800, letterSpacing:4, textAlign:"center",  marginLeft:"3%", marginRight:"3%", height:"30%"}}>{typedTextWelcome}</Text>
+              <Text style={{color:"white", fontWeight:800, borderColor:"red", fontSize:10, letterSpacing:4, textAlign:"center",  marginLeft:"4%", marginRight:"4%", height:"30%"}}>{typedTextWelcome}</Text>
             </View>
             {/*
             <View style={{height:"60%", margin:"2%"}}>

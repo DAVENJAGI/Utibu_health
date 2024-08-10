@@ -30,7 +30,7 @@ const medicationDetails = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       {/* HEADER */}
-      <View style={{width: "100%", height: 60, justifyContent:"center", flexDirection:"row", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
+      <View style={{width: "100%", height: 60, justifyContent:"center", flexDirection:"row", top:0, position:"sticky", borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
             <View style={{width: "20%", borderColor:"red", justifyContent:"center", alignItems:"center"}}>
               
             </View>
@@ -75,7 +75,7 @@ const medicationDetails = () => {
           <Text style={{borderColor:"red", marginLeft:"1%", height:"100%", fontSize:16, fontWeight:600}}>About</Text>
         </View>
         <View style={{marginTop:"1%", height:170}}>
-          <Text style={{color:"#898989", borderColor:"#898989", margin:"1%", borderRadius:9, height:"93%"}}>Dr. Susan Wahome, a specialist in chronic diseases at Kenyatta National Hospital, excels in managing complex health conditions with a patient-centered approach, combining expert care with innovative treatment strategies.</Text>
+          <Text style={{color:"#898989", borderColor:"#898989", padding:"1%", margin:"1%", borderRadius:9, height:"93%"}}>Dr. Susan Wahome, a specialist in chronic diseases at Kenyatta National Hospital, excels in managing complex health conditions with a patient-centered approach, combining expert care with innovative treatment strategies.</Text>
         </View>
         
         {/**Book Appointment */}

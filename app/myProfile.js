@@ -28,7 +28,7 @@ const myProfile = () => {
 /*  const route = useRouter();*/
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaView style={{ flex: 1, width:"100%", backgroundColor: COLORS.lightWhite }}>
       {/* HEADER */}
         <View style={{width: "100%", height: 60, justifyContent:"center", flexDirection:"row", top:0, position:"sticky",borderBottomColor:"#cfcfcf", borderBottomWidth:1}}>
             <View style={{width: "20%", borderColor:"red", justifyContent:"center", alignItems:"center"}}>
@@ -46,8 +46,8 @@ const myProfile = () => {
         </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{borderBottomColor:"#AAAAAA", justifyContent:"center", alignItems:"center", borderBottomWidth:1, height:220}}>
-          <View style={{borderColor:"#681A22", alignItems:"center", justifyContent:"center", height:120, width:120, borderRadius:60}}>
-            <View style={{borderColor:"#6395ee", borderRadius:9, justifyContent:"center", alignItems:"center", borderWidth:2, height:120, width:120, borderRadius:60, overflow:'hidden'}}>
+          <View style={{borderColor:"#30B3DE", alignItems:"center", justifyContent:"center", height:120, width:120, borderRadius:60}}>
+            <View style={{borderColor:"#30B3DE", borderRadius:9, justifyContent:"center", alignItems:"center", borderWidth:2, height:120, width:120, borderRadius:60, overflow:'hidden'}}>
               <ImageBackground source={require('../icons/profilephotos/lady.jpg')} style={{width: 120, height: 120, position:"relative", bottom:0, top:0, left:0}}></ImageBackground>
             </View>
           </View>
@@ -65,7 +65,7 @@ const myProfile = () => {
                   </View>
                   
                   <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, color:"#681A22", fontWeight:700}}>Edit Profile Info</Text>
+                    <Text style={{fontSize:16, fontWeight:700}}>Edit Profile Info</Text>
                   </View>
 
                 </View>
@@ -78,7 +78,7 @@ const myProfile = () => {
                   </View>
                   
                   <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, color:"#681A22", fontWeight:700}}>Payment Method</Text>
+                    <Text style={{fontSize:16, fontWeight:700}}>Payment Method</Text>
                   </View>
 
                 </View>
@@ -91,7 +91,7 @@ const myProfile = () => {
                   </View>
                   
                   <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, color:"#681A22", fontWeight:700}}>Settings</Text>
+                    <Text style={{fontSize:16, fontWeight:700}}>Settings</Text>
                   </View>
 
                 </View>
@@ -104,7 +104,7 @@ const myProfile = () => {
                   </View>
                   
                   <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, color:"#681A22", fontWeight:700}}>Help Center</Text>
+                    <Text style={{fontSize:16, fontWeight:700}}>Help Center</Text>
                   </View>
 
                 </View>
@@ -113,58 +113,12 @@ const myProfile = () => {
           <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:80, margin:"1%", borderColor:"#c9c8c7", borderRadius:9, borderWidth:1}} onPress={() => {navigation.navigate('login')}}>
                 <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
                   <View style={{justifyContent:"center", borderColor:"red", width:"96%"}}>
-                    <Text style={{fontSize:20, textAlign:"center", color:"#681A22", fontWeight:800}}>Log Out</Text>
+                    <Text style={{fontSize:20, textAlign:"center", fontWeight:800}}>Log Out</Text>
                   </View>
-
                 </View>
           </TouchableOpacity>
         </View>
-
-
       </ScrollView>
-
-      {/*NAVIGATION MENU*/}
-      {/*
-      <View
-        style={{position: "absolute", flex: 1, backgroundColor: "#faf8f8", bottom: 0,left: 0, right: 0, height: 50, borderTopColor: "#CCCCCC", borderTopWidth: 1, flexDirection: "row", justifyContent: "space-evenly"}}
-      >
-        <TouchableOpacity style={{height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
-          navigation.navigate('home')
-        }}>
-          <Image source={places} style={{height:30}} resizeMode="contain" />
-          <Text style={{fontSize:9, color:"black", textAlign:"center"}}>Home</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
-          navigation.navigate('prescriptions')  
-        }}
-        activeOpacity={0.8}
-        underlayColor="gray"
-        >
-          <Image source={medicine} style={{height:30}} resizeMode="contain" />
-          <Text style={{fontSize:9, textAlign:"center"}}>Meds</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={{borderColor:"red", borderRadius:10, borderColor: '#B9EEE9', borderWidth:1, backgroundColor:"#B7B7D6", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
-          navigation.navigate('myAppointments')
-        }}>
-          <Image source={calendar} style={{height:30}}  resizeMode="contain" />
-          <Text style={{fontSize:9, color:"white", textAlign:"center"}}>Apps</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}}  onPress={() => {
-          navigation.navigate('previousOrders')
-        }}>
-          <Image source={orders} style={{height:30}}  resizeMode="contain" />
-          <Text style={{fontSize:9, textAlign:"center"}}>Orders</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{borderColor:"red", height:"90%", marginTop:2, justifyContent:"center"}} onPress={() => {
-          navigation.navigate('profile')
-        }}>
-          <Image source={settings} style={{height:30}}  resizeMode="contain" />
-          <Text style={{fontSize:9, textAlign:"center"}}>Settings</Text>
-        </TouchableOpacity>
-      </View> */}
     </SafeAreaView>
   );
 };

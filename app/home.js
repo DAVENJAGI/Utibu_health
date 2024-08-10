@@ -59,11 +59,11 @@ const Home = () => {
                   <Text style={{fontSize:15, fontWeight:800, textAlign:"left"}}>Upcoming Appointments</Text>
                 </View>
                 <View style={{marginLeft:0, backgroundColor:"#30B3DE", alignItems:"center", borderRadius:11, width:22, height:22}}>
-                  <Text style={{fontSize:16, color:"white", fontWeight:600, }}>3</Text>
+                  <Text style={{fontSize:16, color:"white", fontWeight:600, }}>2</Text>
                 </View>
               </View>
               <View style={{borderColor:"red", height:"100%", width:"40%"}}>
-                <TouchableOpacity style={{justifyContent:"center", height:"100%", fontSize: "18px"}}>
+                <TouchableOpacity style={{justifyContent:"center", height:"100%", fontSize: "18px"}} onPress={() => {navigation.navigate('upcomingAppointments')}}>
                   <Text style={{color:"#30B3DE", fontSize:15, fontWeight:800, textAlign:"right", marginRight:5}}>View all</Text>
                 </TouchableOpacity>
               </View>
@@ -88,7 +88,7 @@ const Home = () => {
                               <Image source={smallcalendar} style={{width:25}} resizeMode="contain" />
                             </View>
                             <View style={{width:"70%", justifyContent:"center"}}>
-                              <Text style={{textAlign:"left", fontSize:12, color:"white"}}> 07/08/2024</Text>
+                              <Text style={{textAlign:"left", fontSize:12, color:"white"}}> 12/08/2024</Text>
                             </View>
                           </View>
                           <View style={{borderRightColor:"rgba(255, 255, 255, 0.5)", borderRightWidth:1, alignSelf:"center", height:20}}></View>

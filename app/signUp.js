@@ -23,66 +23,16 @@ import { useRouter } from "expo-router";
 
 /*import About from "../jobsift-starter/components/jobdetails/about/About";*/
 
-const Login = () => {
-    const [typedTextHello, setTypedTextHello] = useState('');
-    const [typedTextWelcome, setTypedTextWelcome] = useState('');
-    const [typingComplete, setTypingComplete] = useState(false); // Track typing completion
-    const targetTextHello = 'Hello there.';
-    const targetTextWelcome = 'Kindly contact your doctor to be signed up with utibu health';
-    const typingSpeed = 10;
-
-    useEffect(() => {
-        if (!typingComplete) {
-        const typeWriterHello = async () => {
-            for (let i = 0; i < targetTextHello.length; i++) {
-            await new Promise(resolve => setTimeout(resolve, typingSpeed));
-            setTypedTextHello(prevText => prevText + targetTextHello[i]);
-            }
-            
-            await new Promise(resolve => setTimeout(resolve, typingSpeed * 2));
-            typeWriterWelcome();
-            setTypingComplete(true);
-        };
-
-        typeWriterHello();
-        }
-    }, [typingComplete]);
-
-    const typeWriterWelcome = async () => {
-        for (let i = 0; i < targetTextWelcome.length; i++) {
-        await new Promise(resolve => setTimeout(resolve, typingSpeed));
-        setTypedTextWelcome(prevText => prevText + targetTextWelcome[i]);
-        }
-    };
-
-
-    const navigation = useNavigation();
-
-    const [useremail, setUserEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    console.log(useremail);
-    console.log(password);
-
-    const handleLogin = () => {
-    const correctEmail = 'njagidave@gmail.com';
-    const correctPassword = '12345';
-
-    if (useremail === correctEmail && password === correctPassword) {
-      // Login successful, navigate to home screen
-      navigation.navigate('home');
-    } else {
-      Alert.alert('Login Error', 'Invalid email or password');
-    }
-    };
-    
+const signUp = () => {
+  
+  const navigation = useNavigation();
   
   return (
     <SafeAreaView style={{ flex: 1}}>
-      {/* Removed incorrect options prop */}
       
-        <View style={{borderColor:"red", borderWidth:1, height: "100%"}}>
-        <LinearGradient colors={['#48D1CC', '#D6F0F7', '#009FAE']} style={{height: '100%',  borderRadius:9}} start={{ x: 0, y: 0 }}end={{ x: 0, y: 1 }}>
+      
+        <View style={{borderColor:"red", height: "100%"}}>
+        <LinearGradient colors={['#30B3DE', '#30B3DE']} style={{height: '100%'}} start={{ x: 0, y: 0 }}end={{ x: 0, y: 1 }}>
           <View style={{margin:"1%", marginTop:"50%", backgroundColor:"white",  borderColor:"#30B3DE", borderWidth:1, height:"60%", borderRadius: 8}}>
             <View style={{flexDirection:"row", height:"15%", borderColor:"red", borderRadius:8}}>
             
@@ -99,8 +49,8 @@ const Login = () => {
             <View style={{alignItems: "center", borderColor:"#30B3DE", borderRadius:8, justifyContent: "center", flex: 1, flexDirection: "column"}}>
             <View style={{justifyContent:"center", height:"60%", margin:"2%"}}>
                 <View style={{height:"100%", margin:"2%"}}>
-                    <Text style={{alignSelf:"center", color:"black",  fontSize: 22, textAlign:"center", fontWeight: "600"}}>{typedTextHello}</Text>
-                    <Text style={{fontSize: 25, color:"black", alignSelf:"center", marginTop:"2%", textAlign:"center", fontWeight: "700"}}>{typedTextWelcome}</Text>
+                    <Text style={{alignSelf:"center", color:"black",  fontSize: 22, textAlign:"center", fontWeight: "600"}}>Hello There</Text>
+                    <Text style={{fontSize: 25, color:"black", alignSelf:"center", marginTop:"2%", textAlign:"center", fontWeight: "700"}}>For security purposes, kindly visit your doctor to get started with utibu health</Text>
                 </View>
                 </View>
             </View>
@@ -112,4 +62,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default signUp;
