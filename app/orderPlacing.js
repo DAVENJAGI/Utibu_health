@@ -110,21 +110,21 @@ const orderPlacing = () => {
         {/*DISPLAY YES DIV*/}
         {isModalVisible && (
             <View sytyle={{ borderRadius:9, width:"100%"}}>
-                <View style={{borderWidth:2, shadowOpacity: 0.25,  shadowOffset: { width: 0,  height: 2,}, shadowColor: 'black', shadowRadius: 3.84, elevation: 15, borderRadius:8,  backgroundColor:"white", zIndex:22, top:0, bottom:0, borderColor:"red", position:"absolute", borderWidth:1, borderColor:"gray", height:180, margin:"5%", width:"90%"}}>
+                <View style={{shadowOpacity: 0.25, borderWidth:1, borderColor:"#E3E3E3", shadowOffset: { width: 0,  height: 2,}, shadowColor: 'black', shadowRadius: 3.84, elevation: 15, borderRadius:8,  backgroundColor:"white", zIndex:22, top:0, bottom:0, position:"absolute", height:180, margin:"5%", width:"90%"}}>
                     <View style={{orderColor:"red", height:"60%", justifyContent:"center"}}>
-                        <Text style={{textAlign:"center",alignItems:"center", fontSize:18, fontWeight:700}}>Are you sure you want to place an order?</Text>
+                        <Text style={{textAlign:"center",alignItems:"center", fontSize:18, fontWeight:600}}>Are you sure you want to place an order?</Text>
                     </View>
                     <View style={{flexDirection:"row", borderColor:"red", flexDirection:"row",  height:"25%"}}>
                       <View style={{width:"40%", borderColor:"red"}}></View>
                         <View style={{width:"60%", flexDirection:"row", borderColor:"red"}}>
                           <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
                             <TouchableOpacity style={{borderColor:"blue", borderRadius:24, justifyContent:"center", height:"60%", width:"80%"}} onPress={(handleButtonPressNo)}>
-                              <Text style={{textAlign:"center",  fontSize:18, color:"red", fontWeight:700, textAlign:"right"}}>No</Text>
+                              <Text style={{textAlign:"center",  fontSize:18, color:"#30B3DE", fontWeight:700, textAlign:"right"}}>No</Text>
                             </TouchableOpacity>
                           </View>
                           <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
                             <TouchableOpacity style={{borderColor:"blue", alignItems:"center",  borderRadius:24, justifyContent:"center", flexDirection:"row", height:"70%", width:"98%"}}>
-                              <Text style={{textAlign:"left", width:"40%", borderColor:"red", fontSize:17, color:"#1a6860", fontWeight:700}}>Yes</Text>
+                              <Text style={{textAlign:"left", width:"40%", borderColor:"red", fontSize:17, color:"#30B3DE", fontWeight:700}}>Yes</Text>
                             </TouchableOpacity>
                           </View>
                         </View>

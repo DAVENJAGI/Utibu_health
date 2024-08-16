@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { login } from "./app/login";
 import { signUp } from "./app/signUp";
-import { profile } from "./app/profile";
+import { editProfile } from "./app/editProfile";
 import { home } from "./app/home";
 import { prescriptions } from "./app/previousOrders";
 import { notMember } from "./app/notMember";
@@ -17,6 +17,7 @@ import { appointmentBooking } from "./app/appointmentBooking";
 import { orderPlacing } from "./app/orderPlacing";
 import { payment } from"./app/payment";
 import { upcomingAppointments } from"./app/upcomingAppointments";
+i
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,7 @@ const App = () => {
         <Stack.Screen name="cancelledOrders" component={cancelledOrders}/>
         <Stack.Screen name="approvedOrders" component={approvedOrders}/>
         <Stack.Screen name="myProfile" component={myProfile}/>
+        <Stack.Screen name="editProfile" component={editProfile}/>
         <Stack.Screen name="orderPlacing" component={orderPlacing}/>
         <Stack.Screen name="payment" component={payment}/>
       </Stack.Navigator>

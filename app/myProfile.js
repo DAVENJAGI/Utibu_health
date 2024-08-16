@@ -45,9 +45,9 @@ const myProfile = () => {
             </View>
         </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{borderBottomColor:"#AAAAAA", justifyContent:"center", alignItems:"center", borderBottomWidth:1, height:220}}>
+        <View style={{borderBottomColor:"#EBEBEB", justifyContent:"center", alignItems:"center", borderBottomWidth:1, height:220}}>
           <View style={{borderColor:"#30B3DE", alignItems:"center", justifyContent:"center", height:120, width:120, borderRadius:60}}>
-            <View style={{borderColor:"#30B3DE", borderRadius:9, justifyContent:"center", alignItems:"center", borderWidth:2, height:120, width:120, borderRadius:60, overflow:'hidden'}}>
+            <View style={{borderRadius:9, justifyContent:"center", alignItems:"center", height:120, width:120, borderRadius:60, overflow:'hidden'}}>
               <ImageBackground source={require('../icons/profilephotos/lady.jpg')} style={{width: 120, height: 120, position:"relative", bottom:0, top:0, left:0}}></ImageBackground>
             </View>
           </View>
@@ -57,68 +57,80 @@ const myProfile = () => {
         </View>
         <View style={{borderRadius:1, height:1, width:"98%", margin:"1%"}}></View>
         {/*Description*/}
-        <View style={{borderColor:"red", height:500}}>
-            <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:80, margin:"1%", borderColor:"#c9c8c7", borderRadius:9, borderWidth:1}} onPress={() => {navigation.navigate('')}}>
-                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
-                  <View style={{borderColor:"red", borderRadius:15, alignItems:"center", justifyContent:"center",height:50, width:50, marginLeft:0, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1}}>
-                    <Image source={medicine} style={{height:40}} resizeMode="contain" />
+        <View style={{borderColor:"red", height:360}}>
+            <TouchableOpacity style={{height:60, margin:"1%", borderColor:"#c9c8c7", borderRadius:9}} onPress={() => {navigation.navigate('editProfile')}}>
+                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
+                  <View style={{width:"20%"}}>
+                    <View style={{borderColor:"red", borderRadius:25, alignItems:"center", justifyContent:"center",height:40, width:40, borderColor:"rgba(181, 199, 235, 0.6)"}}>
+                      <Image source={medicine} style={{height:30}} resizeMode="contain" />
+                    </View>
                   </View>
-                  
-                  <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, fontWeight:700}}>Edit Profile Info</Text>
+                  <View style={{width:"80%", marginRight:"1%"}}>
+                    <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
+                      <Text style={{fontSize:16, fontWeight:700}}>Edit Profile Info</Text>
+                    </View>
+                  </View>
+
+                </View>
+            </TouchableOpacity>
+            <View style={{borderRadius:1, height:1, width:"82%", backgroundColor:"#EFEFEF", margin:"1%", marginLeft:"15%"}}></View>
+          <TouchableOpacity style={{height:60, margin:"1%", borderColor:"#c9c8c7", borderRadius:9,}}>
+                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
+                  <View style={{ width:"20%"}}>
+                    <View style={{borderColor:"red", borderRadius:25, alignItems:"center", justifyContent:"center",height:40, width:40, borderColor:"rgba(181, 199, 235, 0.6)"}}>
+                      <Image source={card} style={{height:30}} resizeMode="contain" />
+                    </View>
+                  </View>
+                  <View style={{width:"80%", marginRight:"1%"}}>
+                    <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
+                      <Text style={{fontSize:16, fontWeight:700}}>Payment Method</Text>
+                    </View>
                   </View>
 
                 </View>
           </TouchableOpacity>
-          <View style={{borderRadius:1, height:1, width:"96%", backgroundColor:"#AAAAAA", margin:"2%"}}></View>
-          <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:80, margin:"1%", borderColor:"#c9c8c7", borderRadius:9, borderWidth:1}} onPress={() => {navigation.navigate('')}}>
+          <View style={{borderRadius:1, height:1, width:"82%", backgroundColor:"#EFEFEF", margin:"1%", marginLeft:"15%"}}></View>
+          <TouchableOpacity style={{height:60, margin:"1%", borderColor:"#c9c8c7", borderRadius:9}}>
                 <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
-                  <View style={{borderColor:"red", borderRadius:15, alignItems:"center", justifyContent:"center",height:50, width:50, marginLeft:0, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1}}>
-                    <Image source={card} style={{height:40}} resizeMode="contain" />
+                  <View style={{width:"20%"}}>
+                    <View style={{borderColor:"red", borderRadius:25, alignItems:"center", justifyContent:"center",height:40, width:40, borderColor:"rgba(181, 199, 235, 0.6)"}}>
+                      <Image source={settings} style={{height:30}} resizeMode="contain" />
+                    </View>
+                  </View>
+                  <View style={{width:"80%", marginRight:"1%"}}>
+                    <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
+                      <Text style={{fontSize:16, fontWeight:700}}>Settings</Text>
+                    </View>
+                  </View>
+                </View>
+          </TouchableOpacity>
+          <View style={{borderRadius:1, height:1, width:"82%", backgroundColor:"#EFEFEF", margin:"1%", marginLeft:"15%"}}></View>
+          <TouchableOpacity style={{height:60, margin:"1%", borderColor:"#c9c8c7", borderRadius:9}} onPress={() => {navigation.navigate('about')}}>
+                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
+                  <View style={{width:"20%"}}>
+                    <View style={{borderColor:"red", borderRadius:25, alignItems:"center", justifyContent:"center",height:40, width:40, borderColor:"rgba(181, 199, 235, 0.6)"}}>
+                      <Image source={info} style={{height:30}} resizeMode="contain" />
+                    </View>
                   </View>
                   
-                  <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, fontWeight:700}}>Payment Method</Text>
+                  <View style={{width:"80%", marginRight:"1%"}}>
+                    <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
+                      <Text style={{fontSize:16, fontWeight:700}}>About Us</Text>
+                    </View>
                   </View>
 
                 </View>
           </TouchableOpacity>
-          <View style={{borderRadius:1, height:1, width:"96%", backgroundColor:"#AAAAAA", margin:"2%"}}></View>
-          <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:80, margin:"1%", borderColor:"#c9c8c7", borderRadius:9, borderWidth:1}} onPress={() => {navigation.navigate('')}}>
-                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
-                  <View style={{borderColor:"red", borderRadius:15, alignItems:"center", justifyContent:"center",height:50, width:50, marginLeft:0, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1}}>
-                    <Image source={settings} style={{height:40}} resizeMode="contain" />
-                  </View>
-                  
-                  <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, fontWeight:700}}>Settings</Text>
-                  </View>
-
-                </View>
-          </TouchableOpacity>
-          <View style={{borderRadius:1, height:1, width:"96%", backgroundColor:"#AAAAAA", margin:"2%"}}></View>
-          <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:80, margin:"1%", borderColor:"#c9c8c7", borderRadius:9, borderWidth:1}} onPress={() => {navigation.navigate('')}}>
-                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
-                  <View style={{borderColor:"red", borderRadius:15, alignItems:"center", justifyContent:"center",height:50, width:50, marginLeft:0, borderColor:"rgba(181, 199, 235, 0.6)", borderWidth:1}}>
-                    <Image source={info} style={{height:40}} resizeMode="contain" />
-                  </View>
-                  
-                  <View style={{justifyContent:"center", borderColor:"red", width:"55%"}}>
-                    <Text style={{fontSize:16, fontWeight:700}}>Help Center</Text>
-                  </View>
-
-                </View>
-          </TouchableOpacity>
-          <View style={{borderRadius:1, height:1, width:"96%", backgroundColor:"#AAAAAA", margin:"2%"}}></View>
-          <TouchableOpacity style={{backgroundColor:"#F2F2F2", height:80, margin:"1%", borderColor:"#c9c8c7", borderRadius:9, borderWidth:1}} onPress={() => {navigation.navigate('login')}}>
-                <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
-                  <View style={{justifyContent:"center", borderColor:"red", width:"96%"}}>
-                    <Text style={{fontSize:20, textAlign:"center", fontWeight:800}}>Log Out</Text>
-                  </View>
-                </View>
-          </TouchableOpacity>
+          <View style={{borderRadius:1, height:1, width:"82%", backgroundColor:"#EBEBEB", margin:"1%", marginLeft:"15%"}}></View>
         </View>
       </ScrollView>
+      <TouchableOpacity style={{height:70, borderTopColor:"#c9c8c7", borderTopWidth:1}} onPress={() => {navigation.navigate('login')}}>
+        <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
+          <View style={{justifyContent:"center", borderColor:"red", width:"96%"}}>
+            <Text style={{fontSize:20, textAlign:"center", color:"red", fontWeight:800}}>Log Out</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

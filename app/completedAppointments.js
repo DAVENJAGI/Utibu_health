@@ -14,6 +14,7 @@ import { TouchableOpacity } from "react-native";
 import places from "../icons/icons/png/outline/places/home_alt.png";
 import medicine from "../icons/icons/png/outline/medications/medicines.png";
 import calendar from "../icons/icons/png/outline/symbols/calendar.png";
+import yes from "../icons/icons/png/outline/symbols/yes.png"
 import emotion from "../icons/icons/png/outline/emotions/neutral.png";
 import doctor from "../icons/icons/png/outline/people/doctor.png"
 import orders from "../icons/icons/png/outline/symbols/i_documents_accepted.png";
@@ -68,23 +69,47 @@ const completedAppointment = () => {
               <ImageBackground source={require('../icons/profilephotos/doctor.jpg')} style={{width:"100%"}}></ImageBackground>
             </View>
             <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
-              <Text style={{borderColor:"red", fontSize:16, fontWeight:700, height:"30%"}}>Dr. Susan Wahome</Text>
-              <Text style={{borderColor:"red", fontSize:14, height:"30%"}}>General Consultation</Text>
-              <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"30%"}}>
-                <View style={{width:"10%", borderColor:"red"}}>
-                  <Text style={{fontWeight:700}}>Id:</Text>
+                
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>Doctor:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{fontSize:15, fontWeight:700}}>Susan Wahome</Text>
+                  </View>
                 </View>
-                <View style={{width:"90%", borderColor:"red"}}>
-                  <Text>145bd-685gd41-2231155.</Text>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>Type:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{}}>General Consultation</Text>
+                  </View>
                 </View>
-              </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>Status:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{color:"#30B3DE"}}>Completed</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>App Id:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text numberOfLines={1} ellipsizeMode="tail">145bd-685gd41-2231155.</Text>
+                  </View>
+                </View>
 
-            </View>
+              </View>
           </View>
           <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
-            <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#B4E4F3", borderRadius:24, justifyContent:"center", height:"80%", width:"60%"}}>
-              <Text style={{textAlign:"center", fontSize:14, color:"black", fontWeight:700}}>Add Comment</Text>
-            </TouchableOpacity>
+            <View style={{borderColor:"blue", alignItems:"center", backgroundColor:"#B4E4F3", borderRadius:24, justifyContent:"center", flexDirection:"row", height:"80%", width:"60%"}}>
+                <Image source={yes} style={{height:25, width:25, borderColor:"red"}} resizeMode="contain" />
+              <Text style={{textAlign:"center", width:"60%", borderColor:"red", fontSize:17, color:"black", fontWeight:700}}>Completed</Text>
+            </View>
           </View>         
         </View>
        </View>

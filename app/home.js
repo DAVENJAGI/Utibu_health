@@ -33,13 +33,14 @@ const Home = () => {
           <View style={{height: "100%", flexDirection:"row", alignItems: "center", borderBottom:"solid 2px #cfcfcf"}}>
             <View style={{width: "50%"}}>
               <TouchableOpacity style={{width:50, height:50, borderRadius:25, borderWidth:1, borderColor: '#cfcfcf', marginLeft:"3%", overflow:"hidden"}} onPress={() => {navigation.navigate('myProfile')}}>
-                <ImageBackground source={require('../icons/profilephotos/lady.jpg')} style={{width: 50, height: 50, position:"relative", bottom:0, top:0, left:0, width:60, height:60}}></ImageBackground>
+                <ImageBackground source={require('../icons/profilephotos/lady.jpg')} style={{width: 50, height: 50, position:"relative", bottom:0, top:0, left:0, width:50, height:60}}></ImageBackground>
               </TouchableOpacity>
             </View>
             <View style={{width: "50%", height:"100%", justifyContent:"center"}}>
-              <TouchableOpacity style={{borderColor: '#cfcfcf', borderWidth:1, position:"absolute", right:0, height:30, width:30, borderRadius: 15, marginRight:10, backgroundColor:"#fff1e7"}}>
-                <ImageBackground source={require('../icons/profilephotos/notification.png')} style={{position:"relative", bottom:"0", top:"0", left:"0", width:30, height:30}}></ImageBackground>
+              <TouchableOpacity style={{borderColor: '#cfcfcf', borderWidth:1, position:"absolute", right:0, height:33, width:33, borderRadius: 19, marginRight:10, backgroundColor:"#fff1e7"}}>
+                <ImageBackground source={require('../icons/profilephotos/notification.png')} style={{position:"relative", bottom:"0", top:"0", left:"0", width:33, height:33}}></ImageBackground>
               </TouchableOpacity>
+              <View style={{borderWidth:1, borderColor:"red", position:"absolute", height:9, backgroundColor:"red", width:9, right:15, top:22, borderRadius:10}}></View>
             </View>
           </View>
         </View>

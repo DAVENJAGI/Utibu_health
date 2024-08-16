@@ -76,14 +76,37 @@ const Appointment = () => {
                 <ImageBackground source={require('../icons/profilephotos/doctor.jpg')} style={{width:"100%"}}></ImageBackground>
               </View>
               <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
-                <Text style={{borderColor:"red", fontSize:16, fontWeight:700, height:"30%"}}>Dr. Susan Wahome</Text>
-                <Text style={{borderColor:"red", fontSize:14, height:"30%"}}>General Consultation</Text>
-                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"30%"}}>
-                  <View style={{width:"10%", borderColor:"red"}}>
-                    <Text style={{fontWeight:700}}>Id:</Text>
+                
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>Doctor:</Text>
                   </View>
-                  <View style={{width:"90%", borderColor:"red"}}>
-                    <Text>145bd-685gd41-2231155.</Text>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{fontSize:15, fontWeight:700}}>Susan Wahome</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>Type:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{}}>General Consultation</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>Status:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{color:"#30B3DE"}}>Confirmed</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"25%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700}}>App Id:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text numberOfLines={1} ellipsizeMode="tail">145bd-685gd41-2231155.</Text>
                   </View>
                 </View>
 
@@ -100,7 +123,7 @@ const Appointment = () => {
           </View>
           {/*DISPLAY YES DIV*/}
           {isModalVisible && (
-            <View style={{flex:1, borderWidth:1, borderColor:"#AAAAAA", bottom:0, shadowOpacity: 0.25,  shadowOffset: { width: 0,  height: 2,}, shadowColor: 'black', shadowRadius: 3.84, elevation: 15, borderRadius:8,  backgroundColor:"white", zIndex:22, top:"50%", bottom:0, position:"absolute",  height:175, margin:"1%"}}>
+            <View style={{flex:1, borderWidth:1, borderColor:"#E3E3E3", bottom:0, shadowOpacity: 0.25,  shadowOffset: { width: 0,  height: 2,}, shadowColor: 'black', shadowRadius: 3.84, elevation: 15, borderRadius:8,  backgroundColor:"white", zIndex:22, top:"50%", bottom:0, position:"absolute",  height:180, margin:"3%"}}>
               <View style={{orderColor:"red", height:"70%", justifyContent:"center"}}>
                   <Text style={{textAlign:"center",alignItems:"center", fontSize:18, fontWeight:600}}>Are you sure you want to cancel the appointment?</Text>
               </View>
@@ -110,12 +133,12 @@ const Appointment = () => {
                   <View style={{width:"60%", flexDirection:"row", borderColor:"red"}}>
                     <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
                       <TouchableOpacity style={{borderColor:"blue", borderRadius:24, justifyContent:"center", height:"60%", width:"80%"}} onPress={(handleButtonPressNo)}>
-                        <Text style={{textAlign:"center",  fontSize:18, color:"red", fontWeight:700, textAlign:"right"}}>No</Text>
+                        <Text style={{textAlign:"center",  fontSize:18, color:"#30B3DE", fontWeight:700, textAlign:"right"}}>No</Text>
                       </TouchableOpacity>
                     </View>
                     <View style={{ borderColor:"red", justifyContent:"center", alignItems:"center", height:"100%", width:"50%"}}>
                       <TouchableOpacity style={{borderColor:"blue", alignItems:"center",  borderRadius:24, justifyContent:"center", flexDirection:"row", height:"70%", width:"98%"}}>
-                        <Text style={{textAlign:"left", width:"40%", borderColor:"red", fontSize:17, color:"#1a6860", fontWeight:700}}>Yes</Text>
+                        <Text style={{textAlign:"left", width:"40%", borderColor:"red", fontSize:17, color:"#30B3DE", fontWeight:700}}>Yes</Text>
                       </TouchableOpacity>
                     </View>
                   </View>

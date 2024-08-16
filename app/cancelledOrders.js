@@ -59,8 +59,8 @@ const completedOrders = () => {
        </View>
 
        <View style={{borderColor:"red", margin:"1%", height:250}}>
-        <View style={{borderColor:"#898989", borderWidth:1, margin:"1%", height:240, borderRadius:9}}>
-        <View style={{borderBottomColor:"#898989", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
+        <View style={{borderColor:"#c9c8c7", borderWidth:1, margin:"1%", height:240, borderRadius:9}}>
+        <View style={{borderBottomColor:"#c9c8c7", borderBottomWidth:1, margin:"1%", height:40, alignItems:"center", flexDirection:"row"}}>
             < View style={{width:"20%", height:"80%", justifyContent:"center"}}>
                   <Text style={{fontWeight:700, color:"#898989", fontSize:16}}>Order Id:</Text>
                 </View>
@@ -69,7 +69,7 @@ const completedOrders = () => {
                 </View>
           </View>
           <View style={{flexDirection:"row", margin:"1%", height:120}}>
-            <View  style={{borderColor:"#898989", alignItems:"center", borderWidth:1, borderRadius:9, width:"33%", flexDirection:"row"}}>
+            <View  style={{borderColor:"#c9c8c7", alignItems:"center", borderWidth:1, borderRadius:9, width:"33%", flexDirection:"row"}}>
               <ImageBackground source={require('../icons/profilephotos/metformin.jpeg')} style={{orderRadius:9, height:"90%", width:"100%"}}></ImageBackground>
             </View>
             <View style={{borderColor:"red", width:"60%", marginLeft:"4%"}}>
@@ -83,7 +83,7 @@ const completedOrders = () => {
               </View>
               <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
                 <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Status:</Text>
-                <Text style={{borderColor:"red", fontSize:14, fontWeight:400, width:"70%"}}>Cancelled</Text>
+                <Text style={{borderColor:"red", fontSize:14, color:"red", fontWeight:400, width:"70%"}}>Cancelled</Text>
               </View>
               <View style={{borderColor:"red", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
                 <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Price:</Text>
@@ -96,7 +96,7 @@ const completedOrders = () => {
             </View>
           </View>
 
-          <View style={{borderTopColor:"#898989", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
+          <View style={{borderTopColor:"#c9c8c7", borderTopWidth:1, justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", margin:"1%", height:55}}>
             <View style={{borderColor:"blue", backgroundColor:"#FE9EA3", borderRadius:24, justifyContent:"center", height:"80%", width:"60%"}}>
               <Text style={{textAlign:"center", fontSize:14, color:"black", fontWeight:700}}>Cancelled</Text>
             </View>

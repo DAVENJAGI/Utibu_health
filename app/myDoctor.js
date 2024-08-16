@@ -23,7 +23,7 @@ import call from "../icons/icons/png/filled/objects/phone.png";
 import card from "../icons/icons/png/filled/objects/credit_card.png";
 import { useRouter } from "expo-router";
 
-const medicationDetails = () => {
+const myDoctor = () => {
   const navigation = useNavigation();
 /*  const route = useRouter();*/
 
@@ -43,49 +43,75 @@ const medicationDetails = () => {
             </View>
         </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{borderBottomColor:"#898989", borderBottomWidth:1, flexDirection:"row", height:200}}>
+        <View style={{borderBottomColor:"#c9c8c7",alignItems:"center", borderBottomWidth:1, flexDirection:"row", height:200}}>
           <View style={{borderColor:"red", justifyContent:"center", width:"30%"}}>
             <View style={{borderColor:"#898989", borderRadius:60,  justifyContent:"center", alignItems:"center", borderWidth:1, overflow:"hidden", height:100, margin:"3%"}}>
               <ImageBackground source={require('../icons/profilephotos/doctor.jpg')} style={{width: 100, height: 100, position:"relative", bottom:0, top:0, left:0}}></ImageBackground>
             </View>
           </View>
-          <View style={{borderColor:"red", width:"70%"}}>
-            <View style={{borderColor:"red", height:"94%", margin:"2%"}}>
-              <View style={{borderColor:"red", marginTop:"5%", alignItems:"center", flexDirection:"row", fontSize:18, height:"25%"}}>
-                <Text style={{borderColor:"red", fontSize:16, fontWeight:600, width:"70%"}}> Dr Susan Wahome</Text>
+          <View style={{height:170, width:"65%", marginLeft:"4%"}}>
+                
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"20%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700, color:"#898989"}}>Name:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{fontSize:15, fontWeight:700}}>Dr. Susan Wahome</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"20%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700, color:"#898989"}}>Licence:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{}}>zk2365dc</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"20%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700, color:"#898989"}}>Email:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{}} numberOfLines={1} ellipsizeMode="tail">wahomesuzy39@gmail.com</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"20%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700, color:"#898989"}}>Tel No:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text style={{}} numberOfLines={1} ellipsizeMode="tail">+254 796894542</Text>
+                  </View>
+                </View>
+                <View style={{borderColor:"red", flexDirection:"row", fontSize:12, height:"20%"}}>
+                  <View style={{width:"30%", borderColor:"red"}}>
+                    <Text style={{fontWeight:700, color:"#898989"}} numberOfLines={1} ellipsizeMode="tail">Hospital:</Text>
+                  </View>
+                  <View style={{width:"70%", borderColor:"red"}}>
+                    <Text numberOfLines={1} ellipsizeMode="tail">Kenyatta National Hospital</Text>
+                  </View>
+                </View>
+
               </View>
-              <View style={{borderColor:"red", marginBottom:"1%", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red",color:"#898989", fontSize:14, fontWeight:500, width:"33%"}}>License no:</Text>
-                <Text style={{borderColor:"red", fontSize:12, fontWeight:400, width:"70%"}}> zk2365dc</Text>
-              </View>
-              <View style={{borderColor:"red",  marginBottom:"1%", alignItems:"center", flexDirection:"row", fontSize:18, height:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>email:</Text>
-                <Text style={{borderColor:"red", fontSize:12, fontWeight:400, width:"70%"}}>wahomesuzy39@gmail.com</Text>
-              </View>
-              <View style={{borderColor:"red", marginBottom:"1%", alignItems:"center", flexDirection:"row", fontSize:18, borderWidthheight:"18%"}}>
-                <Text style={{borderColor:"red", color:"#898989", fontSize:14, fontWeight:500, width:"30%"}}>Hospital Assigned</Text>
-                <Text style={{borderColor:"red", fontSize:12, fontWeight:400, width:"66%"}}> Kenyatta National Hospital</Text>
-              </View>
-            </View>
-          </View>
           
         </View>
         {/*Description*/}
-        <View style={{borderColor:"red", marginTop:"3%", height:30}}>
-          <Text style={{borderColor:"red", marginLeft:"1%", height:"100%", fontSize:16, fontWeight:600}}>About</Text>
+        <View style={{marginBottom:"1%", height:200}}>
+          <View style={{borderColor:"red", backgroundColor:"white", marginLeft:"2%", zIndex:11, width:45, position:"absolute", top:3, height:30}}>
+            <Text style={{borderColor:"red", color:"#898989", textAlign:"center", marginLeft:"1%", height:"100%", fontSize:16, fontWeight:600}}>About</Text>
+          </View>
+          <View style={{borderColor:"#c9c8c7", borderWidth:1, borderRadius:9, justifyContent:"center", margin:"1%", marginTop:15, height:"90%"}}>
+            <View style={{marginTop:"1%", borderRadius:9, borderColor:"red", justifyContent:"center", height:"100%"}}>
+              <Text style={{margin:"1%", paddingLeft:"1%", color:"#898989", borderRadius:9}}>Dr. Susan Wahome, a specialist in chronic diseases at Kenyatta National Hospital, excels in managing complex health conditions with a patient-centered approach, combining expert care with innovative treatment strategies. With over 20 years experiene, she has tremedous experience dealing with diseases such as kidney failure.</Text>
+            </View>
+          </View>
         </View>
-        <View style={{marginTop:"1%", height:170}}>
-          <Text style={{color:"#898989", borderColor:"#898989", padding:"1%", margin:"1%", borderRadius:9, height:"93%"}}>Dr. Susan Wahome, a specialist in chronic diseases at Kenyatta National Hospital, excels in managing complex health conditions with a patient-centered approach, combining expert care with innovative treatment strategies.</Text>
-        </View>
-        
         {/**Book Appointment */}
-        <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", flexDirection:"row", marginTop:"35%", height:55}}>
+       <View style={{borderColor:"red", justifyContent:"space-evenly", alignItems:"center", marginTop:"35%", flexDirection:"row",  height:55}}>
             <TouchableOpacity style={{borderColor:"blue", backgroundColor:"#30B3DE", borderRadius:24, justifyContent:"center", height:"90%", width:"90%"}} onPress={() => {navigation.navigate('appointmentBooking')}}>
               <Text style={{textAlign:"center", fontSize:14, color:"white", fontWeight:700}}>Book Appointment</Text>
             </TouchableOpacity>
         </View>
-
-
       </ScrollView>
 
       {/*NAVIGATION MENU*/}
@@ -133,4 +159,4 @@ const medicationDetails = () => {
   );
 };
 
-export default medicationDetails;
+export default myDoctor;
