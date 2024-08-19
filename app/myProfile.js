@@ -90,7 +90,7 @@ const myProfile = () => {
                 </View>
           </TouchableOpacity>
           <View style={{borderRadius:1, height:1, width:"82%", backgroundColor:"#EFEFEF", margin:"1%", marginLeft:"15%"}}></View>
-          <TouchableOpacity style={{height:60, margin:"1%", borderColor:"#c9c8c7", borderRadius:9}}>
+          <TouchableOpacity style={{height:60, margin:"1%", borderColor:"#c9c8c7", borderRadius:9}} onPress={() => {navigation.navigate('settings')}}>
                 <View style={{borderColor:"red", alignItems:"center", justifyContent:"center", justifyContent: "space-around", alignItems:"center", margin:"1%", flexDirection:"row", height:"99%", width:"100%"}}>
                   <View style={{width:"20%"}}>
                     <View style={{borderColor:"red", borderRadius:25, alignItems:"center", justifyContent:"center",height:40, width:40, borderColor:"rgba(181, 199, 235, 0.6)"}}>
