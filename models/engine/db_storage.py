@@ -16,6 +16,9 @@ from models.user import User
 from models.order import Order
 from models.request import Request
 from models.constituency import Constituency
+from models.user_session import userSession
+from models.admin_session import adminSession
+from models.doctor_session import doctorSession
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -24,7 +27,7 @@ from os import getenv
 
 """Maps the names eg, "Amenity", to classes, egw class Amenity"""
 
-classes = {"Appointment": Appointment, "BaseModel": BaseModel, "County": County, "Town": Town,
+classes = {"Appointment": Appointment, "userSession": userSession, "doctorSession": doctorSession, "adminSession": adminSession, "BaseModel": BaseModel, "County": County, "Town": Town,
            "Hospital": Hospital, "Order": Order, "Request": Request, "Doctor": Doctor, "User": User, "Constituency": Constituency, "Disease": Disease, "Medication": Medication}
 
 class DBStorage:
@@ -96,4 +99,8 @@ class DBStorage:
         query = self.__session.query(cls).filter(cls.email == email)
         return query.first()
 
+    def get_session(self, cls, session_token):
+        """A method to retrieve session data based on session_id"""
+        query = self.__session.query(cls).filter(cls.session_token == session_token)
+        return query.first()
 

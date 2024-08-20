@@ -7,6 +7,9 @@ from models import storage
 from models.admin import Admin
 from models.user import User
 from models.doctor import Doctor
+from models.user_session import userSession
+from models.doctor_session import doctorSession
+from models.admin_session import adminSession
 import json
 import secrets
 # user_view = Blueprint("users", __name__)
@@ -47,6 +50,13 @@ def admin_login():
     custom_token = secrets.token_hex(24)
     response.headers['X-Custom-Token'] = custom_token
 
+#Saving the user sessions to database to track sessions
+    new_session = adminSession(admin_id=admin.id)
+    new_session.session_token = session_id #secrets.token_hex(32)
+    new_session.authorization_token = custom_token
+    storage.new(new_session)
+    storage.save()
+
 
     return response
 
@@ -84,6 +94,14 @@ def user_login():
     custom_token = secrets.token_hex(24)
     response.headers['X-Custom-Token'] = custom_token
 
+#Saving the user sessions to database to track sessions
+    new_session = userSession(user_id=user.id)
+    new_session.session_token = session_id #secrets.token_hex(32)
+    new_session.authorization_token = custom_token
+    storage.new(new_session)
+    storage.save()
+
+
     return response
 
 
@@ -120,6 +138,13 @@ def doctor_login():
 #Auth header
     custom_token = secrets.token_hex(24)
     response.headers['X-Custom-Token'] = custom_token
+
+#Saving dkt sessions to database to track sessions
+    new_session = doctorSession(doctor_id=dkt.id)
+    new_session.session_token = session_id #secrets.token_hex(32)
+    new_session.authorization_token = custom_token
+    storage.new(new_session)
+    storage.save()
 
     return response
 

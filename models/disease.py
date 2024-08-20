@@ -7,6 +7,7 @@ from sqlalchemy import Column, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
 import models
 
+
 if models.storage_type == 'db':
     disease_meds = Table('disease_medication', Base.metadata,
                           Column('disease_id', String(60),
