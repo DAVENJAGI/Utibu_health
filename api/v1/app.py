@@ -10,10 +10,12 @@ import os
 from flask import jsonify
 from flask_cors import CORS
 from models.request import Request
+import secrets
 
 app = Flask(__name__)
 CORS(app)
 app.register_blueprint(app_views)
+app.secret_key = secrets.token_hex(32)
 
 
 @app.teardown_appcontext
