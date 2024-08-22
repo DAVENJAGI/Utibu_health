@@ -7,6 +7,8 @@ from models import storage
 from models.user import User
 from models.disease import Disease
 from models.user_session import userSession
+from models.authorization import require_user_auth, require_admin_auth, require_doctor_auth
+from models.authorization import require_user_or_admin_auth
 import json
 from datetime import datetime
 
@@ -14,35 +16,9 @@ from functools import wraps
 import secrets
 # user_view = Blueprint("users", __name__)
 
-#decorator to protect the endpoints
-
-def require_auth(f):
-    '''ensure's the endpoint  is authorized by auth_header and has a valid session_id'''
-    @wraps(f)
-    def dec_func(*args, **kwargs):
-        '''auth header checking'''
-        auth_token = request.headers.get('X-Custom-Token')
-        print(f"received auth_token: {auth_token}")
-        if not auth_token or len(auth_token) != 48:
-            return make_response(jsonify({"Message": "Sorry, you do not have the valid authorization to perform the operation"}), 403)
-
-        session_id = request.cookies.get('session_id')
-        if not session_id:
-            return make_response(jsonify({"Message": "Session id missing."}), 403)
-
-        user_session = storage.get_session(userSession, session_id)
-        if not user_session:
-            return make_response(jsonify({"message": "Invalid session"}), 401)
-#       print(user_session)
-        if user_session.expires_at <= datetime.utcnow():
-            return make_response(jsonify({"message": "Expired session. Log in to continue"}), 401)
-
-        return f(*args, **kwargs)
-    return dec_func
-
 
 @app_views.route("/users", strict_slashes=False, methods=["GET"])
-@require_auth
+@require_admin_auth
 def return_users():
     """get all users"""
     all_users = storage.all(User).values()
@@ -52,14 +28,17 @@ def return_users():
     return jsonify(user_list)
 
 @app_views.route("/user/<string:user_id>", methods=['GET'], strict_slashes=False)
+@require_user_or_admin_auth
 def get_user_by_id(user_id):
     """get user by id"""
     user = storage.get(User, user_id)
     if user is None:
-        abort(400) 
+        error_message = f"User with id {user_id} not fouund"
+        return make_response(jsonify({"Message": error_message}), 401) 
     return jsonify(user.to_dict())
 
 @app_views.route("user/<string:user_id>", methods=["DELETE"], strict_slashes=False)
+@require_user_auth
 def delete_user(user_id):
     """deletes  user with  specific id"""
     user = storage.get(User, user_id)
@@ -71,6 +50,7 @@ def delete_user(user_id):
     return (jsonify({"Message": "User deleted successfully. Thank you"}), 201)
 
 @app_views.route("/user/<string:user_id>/disease/", methods=['GET'], strict_slashes=False)
+@require_user_auth
 def get_disease_by_user_id(user_id):
     """get disease associated with a specific user"""
     user = storage.get(User, user_id)
@@ -81,6 +61,7 @@ def get_disease_by_user_id(user_id):
     return jsonify(disease_dict)
 
 @app_views.route("/user/<string:user_id>/disease/", methods=['POST'], strict_slashes=False)
+# @require_doctor_auth
 def add_disease_to_user_profile(user_id):
     """add disease to a specific user"""
     if not request.get_json():
@@ -104,6 +85,7 @@ def add_disease_to_user_profile(user_id):
 
 
 @app_views.route("/users/", methods=["POST"], strict_slashes=False)
+# @require_doctor_auth
 def create_user():
     """Creates a new user"""
     if not request.get_json():
@@ -127,6 +109,7 @@ def create_user():
     return (jsonify(usr.to_dict()), 201)
 
 @app_views.route("/user/<string:user_id>", methods=['PUT'], strict_slashes=False)
+@require_user_auth
 def update_user(user_id):
     """updates user's properties except the created, updated, email, and id"""
     if not request.get_json():

@@ -47,7 +47,7 @@ def admin_login():
     response.set_cookie('session_id', session_id, httponly=True, max_age=3600)
 
 #Auth header
-    custom_token = secrets.token_hex(24)
+    custom_token = secrets.token_hex(32)
     response.headers['X-Custom-Token'] = custom_token
 
 #Saving the user sessions to database to track sessions
