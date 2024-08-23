@@ -5,11 +5,13 @@ from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request
 from models import storage
 from models.medication import Medication
+from models.authorization import require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
 
 # user_view = Blueprint("users", __name__)
 
 @app_views.route("/medications", strict_slashes=False, methods=["GET"])
+@require_doctor_or_admin_or_user_auth
 def return_meds():
     """get all medications"""
     all_meds = storage.all(Medication).values()
@@ -19,6 +21,7 @@ def return_meds():
     return jsonify(meds_list)
 
 @app_views.route("/medication/<string:medication_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_medication_by_id(medication_id):
     """get a specific medication by id"""
     med = storage.get(Medication, medication_id)
@@ -27,6 +30,7 @@ def get_medication_by_id(medication_id):
     return jsonify(med.to_dict())
 
 @app_views.route("/medication/<string:medication_id>", methods=["DELETE"], strict_slashes=False)
+@require_admin_auth
 def delete_medication(medication_id):
     """deletes a specific medication by use of medication_id"""
     med = storage.get(Medication, medication_id)
@@ -40,6 +44,7 @@ def delete_medication(medication_id):
 
 
 @app_views.route("/medications/", methods=["POST"], strict_slashes=False)
+@require_admin_auth
 def create_medication():
     """Creates a new medication"""
     if not request.get_json():
@@ -59,6 +64,7 @@ def create_medication():
     return (jsonify(med.to_dict()), 201)
 
 @app_views.route("/medication/<string:medication_id>", methods=['PUT'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def update_medication(medication_id):
     """updates specific medication properties except the created_at, updated_at, and id"""
     if not request.get_json():

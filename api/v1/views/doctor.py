@@ -6,11 +6,13 @@ from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
 from models.doctor import Doctor
 from models.hospital import Hospital
+from models.authorization import require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
 
 # user_view = Blueprint("users", __name__)
 
 @app_views.route("/doctors", strict_slashes=False, methods=["GET"])
+@require_admin_auth
 def return_doctors():
     """gets all doctors"""
     all_doctors = storage.all(Doctor).values()
@@ -21,6 +23,7 @@ def return_doctors():
 
 
 @app_views.route("/doctor/<string:doctor_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_doctor_by_id(doctor_id):
     """get doctor by doctor_id"""
     doctor = storage.get(Doctor, doctor_id)
@@ -28,6 +31,7 @@ def get_doctor_by_id(doctor_id):
         abort(400) 
     return jsonify(doctor.to_dict())
 @app_views.route("/doctor/<string:doctor_id>/patients", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def get_all_patients_to_a_doctor(doctor_id):
     """get doctor by id"""
     doctor = storage.get(Doctor, doctor_id)
@@ -42,6 +46,7 @@ def get_all_patients_to_a_doctor(doctor_id):
     return jsonify(patients)
 
 @app_views.route("/doctor/<string:doctor_id>", methods=["DELETE"], strict_slashes=False)
+@require_doctor_or_admin_auth
 def delete_doctor(doctor_id):
     """deletes doctor with  specific id"""
     doctor = storage.get(Doctor, doctor_id)
@@ -54,6 +59,7 @@ def delete_doctor(doctor_id):
 
 
 @app_views.route("/doctors/", methods=["POST"], strict_slashes=False)
+@require_admin_auth
 def create_doctor():
     """Creates a new doctor"""
     if not request.get_json():
@@ -80,6 +86,7 @@ def create_doctor():
 
 
 @app_views.route("/doctor/<string:doctor_id>", methods=['PUT'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def update_doctor(doctor_id):
     """updates doctor's properties except the created_at, updated_at, email, and id"""
     if not request.get_json():

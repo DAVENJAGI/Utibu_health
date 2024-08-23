@@ -6,6 +6,7 @@ from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
 from models.county import County
 from models.constituency import Constituency
+from models.authorization import require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth 
 from models.town import Town
 import json
 from sqlalchemy.orm import joinedload, session 
@@ -14,6 +15,7 @@ from sqlalchemy.orm import joinedload, session
 
 # GETS ALL LOCATIONS AVAILABLE, ie, COUNTIES, AND COUNTY BY ID
 @app_views.route("/counties", strict_slashes=False, methods=["GET"])
+@require_doctor_or_admin_or_user_auth
 def return_counties():
     """get all counties"""
     all_counties = storage.all(County).values()
@@ -23,6 +25,7 @@ def return_counties():
     return jsonify(county_list)
 
 @app_views.route("/county/<string:county_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_county_by_id(county_id):
     """get a specific county by county_id"""
     county = storage.get(County, county_id)
@@ -31,6 +34,7 @@ def get_county_by_id(county_id):
     return jsonify(county.to_dict())
 
 @app_views.route("/ward/<string:ward_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_ward_by_id(ward_id):
     """get a specific town by town_id"""
     town = storage.get(Town, ward_id)
@@ -38,6 +42,7 @@ def get_ward_by_id(ward_id):
         abort(400) 
     return jsonify(town.to_dict())
 @app_views.route("/constituency/<string:constituency_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_constituency_by_id(constituency_id):
     """get a specific constituency by id"""
     const = storage.get(Constituency, constituency_id)
@@ -48,6 +53,7 @@ def get_constituency_by_id(constituency_id):
 
 # GETS ALL WARDS AND CONSTITUENCIES PRESENT IN A CERTAIN COUNTY
 @app_views.route("/county/<string:county_id>/wards", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_wards_by_county_id(county_id):
     """gets all constituencies in a county"""
     county = storage.get(County, county_id)
@@ -64,6 +70,7 @@ def get_wards_by_county_id(county_id):
         return jsonify(ward)
 
 @app_views.route("/county/<string:county_id>/constituencies", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_consitituencies_by_county_id(county_id):
     """gets all wards in a county"""
     county = storage.get(County, county_id)
@@ -83,6 +90,7 @@ def get_consitituencies_by_county_id(county_id):
 
 # GETS ALL WARDS IN A CONSTITUENCY AND A WARD PRESENT IN A CERTAIN CONSTITUENCY BY ID
 @app_views.route("/constituency/<string:constituency_id>/wards", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_wards_in_constituency(constituency_id):
     """gets all wards in a specific constituency"""
     constituency = storage.get(Constituency, constituency_id)
@@ -99,6 +107,7 @@ def get_wards_in_constituency(constituency_id):
         return jsonify(wards)
 
 @app_views.route("/constituency/<string:constituency_id>/ward/<string:ward_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_ward_by_constituency_id(constituency_id, ward_id):
     """gets a specific ward in a specific constituency and filter by id"""
     constituency = storage.get(Constituency, constituency_id)
@@ -123,6 +132,7 @@ def get_ward_by_constituency_id(constituency_id, ward_id):
 
 #GETS A SPECIFIC CONSTITUENCY BY FILTERING IT WITH CONSTITUENCY ID
 @app_views.route("/county/<string:county_id>/constituency/<string:constituency_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_constictuencites_by_county_id(county_id, constituency_id):
     """gets a constituency in a county and filter a specific one by id"""
     county = storage.get(County, county_id)

@@ -14,15 +14,18 @@ from models.county import County
 from models.constituency import Constituency
 from models.order import Order
 from models.appointment import Appointment
+from models.authorization import require_admin_auth
 from models.request import Request
 import json
 
 @app_views.route("/status")
+@require_admin_auth
 def api_status():
     """returns a json file with api status"""
     return jsonify({"status": "OK"})
 
 @app_views.route("/stats")
+@require_admin_auth
 def count_objects():
     """returns the number of objects"""
     data = {

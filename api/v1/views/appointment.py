@@ -7,12 +7,14 @@ from models import storage
 from models.user import User
 from models.doctor import Doctor
 from models.appointment import Appointment
+from models.authorization import require_user_auth, require_doctor_auth, require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
 
 # user_view = Blueprint("users", __name__)
 
 # GET ALL APPOINTMENTS AND GET APPOINTMENTS BY ID
 @app_views.route("/appointments", strict_slashes=False, methods=["GET"])
+@require_doctor_or_admin_or_user_auth
 def return_appointments():
     """get all appointments"""
     all_apps = storage.all(Appointment).values()
@@ -22,6 +24,7 @@ def return_appointments():
     return jsonify(apps_list)
 
 @app_views.route("/appointment/<string:appointment_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_appointment_by_id(appointment_id):
     """get app by id"""
     app = storage.get(Appointment, appointment_id)
@@ -32,6 +35,7 @@ def get_appointment_by_id(appointment_id):
 
 # GET APPOINTMENT ASSOCIATED TO A CERTAIN USER OR DOCTOR BY RETRIVING USING THEIR IDS
 @app_views.route("/user/<string:user_id>/appointments", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_appointment_by_user_id(user_id):
     """gets appointment by user id"""
     user = storage.get(User, user_id)
@@ -46,6 +50,7 @@ def get_appointment_by_user_id(user_id):
     return jsonify(appointment)
 
 @app_views.route("/doctor/<string:doctor_id>/appointments", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def get_appointment_by_doctor_id(doctor_id):
     """gets appointment by doctor's id"""
     dkt = storage.get(Doctor, doctor_id)
@@ -62,6 +67,7 @@ def get_appointment_by_doctor_id(doctor_id):
 
 # CREATE AN APPOINTMENT.BY DOCTOR AND PATIENT
 @app_views.route("/user/<string:user_id>/appointment", methods=['POST'], strict_slashes=False)
+@require_user_auth
 def create_a_new_user_appointment(user_id):
     """create anew user appointment"""
 
@@ -87,6 +93,7 @@ def create_a_new_user_appointment(user_id):
     return (jsonify({"Message": "Appointment created successfully. Thank you"}), 201)
 
 @app_views.route("/doctor/<string:doctor_id>/appointment", methods=['POST'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def create_a_new_doctor_appointment(doctor_id):
     """create anew user appointment"""
 
@@ -114,6 +121,7 @@ def create_a_new_doctor_appointment(doctor_id):
 # UPDATE AN APPOINMENT, ie, POSTPONE ETC.
 
 @app_views.route("/doctor/<string:doctor_id>/appointment/", methods=['PUT'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def update_doctor_appointment(doctor_id):
     """create anew user appointment"""
 
@@ -136,6 +144,7 @@ def update_doctor_appointment(doctor_id):
 
 
 @app_views.route("/appointment/<string:appointment_id>/", methods=['PUT'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def update_appointment_with_id(appointment_id):
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)

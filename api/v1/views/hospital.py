@@ -6,12 +6,14 @@ from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
 from models.hospital import Hospital 
 from models.doctor import Doctor
+from models.authorization import require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
 from sqlalchemy.orm import joinedload, session 
 
 # user_view = Blueprint("users", __name__)
 
 @app_views.route("/hospitals", strict_slashes=False, methods=["GET"])
+@require_doctor_or_admin_or_user_auth
 def return_hospitals():
     """get all hospitals"""
     all_hospitals = storage.all(Hospital).values()
@@ -21,6 +23,7 @@ def return_hospitals():
     return jsonify(hospital_list)
 
 @app_views.route("/hospital/<string:hospital_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_hospital_by_id(hospital_id):
     """get a specific hospital by hospital_id"""
     hospital = storage.get(Hospital, hospital_id)
@@ -30,6 +33,7 @@ def get_hospital_by_id(hospital_id):
 
 
 @app_views.route("/hospital/<string:hospital_id>", methods=["DELETE"], strict_slashes=False)
+@require_admin_auth
 def delete_hospital(hospital_id):
     """deletes specific hospital using specific hospital_id"""
     hospital = storage.get(Hospital, hospital_id)
@@ -41,6 +45,7 @@ def delete_hospital(hospital_id):
 
 
 @app_views.route("/hospital/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def get_doctor_by_hospital_id(hospital_id):
     """get doctor related to a specific hospital"""
     hospital = storage.get(Hospital, hospital_id)
@@ -57,6 +62,7 @@ def get_doctor_by_hospital_id(hospital_id):
 
 
 @app_views.route("/hospitals/", methods=["POST"], strict_slashes=False)
+@require_admin_auth
 def create_hospital():
     """Creates a new hospital"""
     if not request.get_json():
@@ -76,6 +82,7 @@ def create_hospital():
     return make_response(jsonify(message), 201)
 
 @app_views.route("/hospital/<string:hospital_id>", methods=['PUT'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def update_hospital(hospital_id):
     """updates hospital properties except the created_at, updated, email, and id"""
     if not request.get_json():

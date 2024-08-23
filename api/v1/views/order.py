@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/biin/python3
 """Creates the first route, /users"""
 
 from api.v1.views import app_views
@@ -8,6 +8,7 @@ from models.user import User
 from models.doctor import Doctor
 from models.order import Order
 from models.medication import Medication
+from models.authorization import require_user_auth, require_doctor_auth, require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
 
 # user_view = Blueprint("users", __name__)
@@ -15,6 +16,7 @@ import json
 
 # GET ALL ORDERS AND GET APPOINTMENTS BY ID"""
 @app_views.route("/orders", strict_slashes=False, methods=["GET"])
+@require_doctor_or_admin_or_user_auth
 def get_all_orders():
     """get all orders"""
     all_orders = storage.all(Order).values()
@@ -25,6 +27,7 @@ def get_all_orders():
 
 
 @app_views.route("/order/<string:order_id>", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_order_by_id(order_id):
     """get order by id"""
     order = storage.get(Order, order_id)
@@ -35,6 +38,7 @@ def get_order_by_id(order_id):
 
 # GET AN ORDER ASSOCIATED TO A CERTAIN USER BY THEIR IDS
 @app_views.route("/user/<string:user_id>/orders", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
 def get_order_by_user_id(user_id):
     """gets orders by user id"""
     user = storage.get(User, user_id)
@@ -51,6 +55,7 @@ def get_order_by_user_id(user_id):
 
 # CREATE AN FOR THE PATIENT
 @app_views.route("/user/<string:user_id>/order", methods=['POST'], strict_slashes=False)
+@require_user_auth
 def create_a_new_user_order(user_id):
     """create an order for the user"""
 
@@ -125,6 +130,7 @@ def create_a_new_user_order():
 # GET AN ORDER FOR DOCTOR AND APPROVE ORDER.
 
 @app_views.route("/doctor/<string:doctor_id>/orders", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_auth
 def get_order_by_doctor_id(doctor_id):
     """gets orders linked to a certain doctor"""
     doctor = storage.get(Doctor, doctor_id)
@@ -140,6 +146,7 @@ def get_order_by_doctor_id(doctor_id):
 
 
 @app_views.route("/doctor/<string:doctor_id>/order/<string:order_id>", methods=['PUT'], strict_slashes=False)
+@require_doctor_auth
 def approve_orders(doctor_id, order_id):
     """Approve patient's orders """
     if not request.get_json():
