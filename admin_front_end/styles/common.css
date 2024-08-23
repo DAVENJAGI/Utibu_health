@@ -12,14 +12,18 @@
     /*display: flexbox;*/
     position: relative;
     /*border: 2px solid red;*/
-    width: 400px; 
+    width: 350px; 
     height: 100vh;
     z-index: 9;
     overflow: hidden;
-    background-color: #38baee;
+    background-color: #30B3DE;
     /*background: #1a6860;*/
 }
 
+#separation{
+    border: 1px solid white;
+    width: 100%;
+}
 #dashboard_div{
     margin-top: 55px;
     border: 1px solid rgb(37, 32, 32);
@@ -36,13 +40,9 @@
     font-stretch:ultra-expanded;
 }
 #dashboard_icon{
-    background-image: url("../icons/png/filled/graphs/chart_bar.png");
-    background-size: contain;
+    background-image: url("../icons/png/outline/graphs/chart_bar.png");
     background-repeat: no-repeat;
-    width: 60px;
-    width: 25%;
-    margin: 2%;
-    /*border-radius: 50%;*/
+    background-position: center
 }
 #inner_side_bar{
     /*border: 2px solid black;*/
@@ -55,7 +55,7 @@
 #title_name{
     width:100%;
     text-align: center;
-    border-bottom: 2px solid #a3d3d6;
+    /*border-bottom: 2px solid #a3d3d6;*/
     width: 90%;
     margin-left: 5%;
 }
@@ -68,36 +68,38 @@
 
 #items_in_sidebar{
     /*border: 1px solid red;*/
-    border-top: solid white 2px;
+    /*border-top: solid white 2px;*/
     border-bottom: solid white 2px;
     margin-top: 8%;
     height: 86.5vh;
-    overflow-y: scroll;
     z-index: 7;
     width: 100%;
     /*direction: rtl;*/
 
 }
-#items_in_sidebar::-webkit-scrollbar{
-    width: 10px;
+::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
     background-color: #f5f5f5;
 }
-#items_in_sidebar::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb{
     background-color: rgb(99, 96, 96);
     border-radius: 8px;
 }
-
+::-webkit-scrollbar{
+    display: flexbox;
+}
 .items{
-    border: 1px solid rgb(37, 32, 32);
-    margin-top: 5%;
+    /*border: 1px solid #AAAAAA;*/
+    border-bottom: solid 1px #A7DFF1;
     width: 100%;
     margin-left: 2.5%;
-    height: 8vh;
-    min-height: 10vh;
-    margin-bottom: 4%;
+    height: 7vh;
+    /*min-height: 10vh;*/
+    margin: 1%;
     display: flex;
     border-radius: 8px;
-    box-shadow: 2px 5px 8px #4697c9;
+    /*box-shadow: 2px 5px 8px #4697c9;*/
 }
 .items:hover{
     opacity: 0.65;
@@ -112,7 +114,7 @@
 }
 .items_in_sidebar_text{
     width: 70%;
-    margin: 2%;
+    height: 100%;
     /*border: solid 1px blue;*/
     text-align: center;
     align-content: center;
@@ -124,8 +126,7 @@
     /*align-content: center;*/
 }
 #region_icon{
-    background-image: url('../icons/png/filled/places/village.png'); 
-    background-size: contain;
+    background-image: url('../icons/png/outline/symbols/globe.png'); 
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -133,44 +134,43 @@
 
 }
 #hospitals_icon{
-    background-image: url('../icons/png/filled/places/hospital.png');
-    background-size: contain;
+    background-image: url('../icons/png/outline/places/hospital.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 #payment_icon{
-    background-image: url("../icons/png/filled/objects/credit_card.png");
+    background-image: url("../icons/png/outline/objects/credit_card.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 #order_icon{
-    background-image: url("../icons/png/filled/symbols/excel_logo.png");
+    background-image: url("../icons/png/outline/symbols/excel_logo.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 #appointment_icon{
-    background-image: url("../icons/png/filled/symbols/calendar.png");
+    background-image: url("../icons/png/outline/symbols/calendar.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 #doctor_icon{
-    background-image: url('../icons/png/filled/people/doctor.png');
+    background-image: url('../icons/png/outline/people/doctor.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 #patient_icon{
-    background-image: url('../icons/png/filled/people/person.png');
+    background-image: url('../icons/png/outline/people/person.png');
     background-repeat: no-repeat;
     background-position: center;
 }
 #disease_icon{
-    background-image: url("../icons/png/filled/conditions/pneumonia.png");
+    background-image: url("../icons/png/outline/conditions/pneumonia.png");
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #medication_icon{
-    background-image: url("../icons/png/filled/medications/medicines.png");
+    background-image: url("../icons/png/outline/medications/medicines.png");
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -184,7 +184,7 @@
     display: flex;
     column-gap: 25px;
     background: white;
-    box-shadow: 2px 1px 8px #8f9091;
+    box-shadow: 1px 1px 4px #8f9091;
     z-index: 100;
 }
 #greetings{
@@ -270,9 +270,7 @@
     z-index: 4;
     position: relative;
 }
-::-webkit-scrollbar{
-    display: none;
-}
+
 #whole_body{
     /*border: solid 2px green;*/
     height: 90vh;

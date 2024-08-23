@@ -7,10 +7,10 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="./styles/common.css">
-    <script type="text/javascript" src="../admin_front_end/scripts/home.js"></script>
-    <script type="text/javascript" src="../admin_front_end/scripts/header.js"></script>
-    <script type="text/javascript" src="../admin_front_end/scripts/common.js"></script>
-    <script type="text/javascript" src="../admin_front_end/scripts/charts.js"></script>
+    <script type="text/javascript" src="../scripts/home.js"></script>
+    <script type="text/javascript" src="../scripts/header.js"></script>
+    <script type="text/javascript" src="../scripts/common.js"></script>
+    <script type="text/javascript" src="../scripts/charts.js"></script>
     <title>Home</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
                 <div id="title_name"> 
                     <h1 id="title_text">Utibu Health</h1>
                 </div>
-                
+                <div id="separation"></div>
                 <div id="items_in_sidebar">
                     <div id="overview_div" class="items" onclick="routeHome()">
                         <div id="dashboard_icon" class="icons"></div>
@@ -31,8 +31,8 @@
                             <h2 id="overview_text" class="sidebar_text_text">Overview</h2>
                         </div>
                     </div>
-
-                    <div id="regions" class="items" onclick="routeRegions()">
+                    
+                    <div id="regions" class="items">
                         <div id="region_icon" class="icons">
                             
                         </div>
@@ -40,6 +40,7 @@
                             <h2 class="sidebar_text_text">Regions</h2>
                         </div>
                     </div>
+                    
                     <div id="hospitals" class="items" onclick="routeHospitals()">
                         <div id="hospitals_icon" class="icons">
                             
@@ -48,6 +49,7 @@
                             <h2 class="sidebar_text_text">Hospitals</h2>
                         </div>
                     </div>
+                    
                     <div id="doctors" class="items" onclick="routeDoctors()">
                         <div id="doctor_icon" class="icons">
                             
@@ -56,6 +58,7 @@
                             <h2 class="sidebar_text_text">Doctors</h2>
                         </div>
                     </div>
+                    
                     <div id="patients" class="items" onclick="routePatients()">
                         <div id="patient_icon" class="icons">
                             
@@ -64,30 +67,35 @@
                             <h2 class="sidebar_text_text">Patients</h2>
                         </div>
                     </div>
+                   
                     <div id="diseases" class="items" onclick="routeDiseases()">
                         <div id="disease_icon" class="icons"></div>
                         <div id="disease_text" class="items_in_sidebar_text">
                             <h2 class="sidebar_text_text">Diseases</h2>
                         </div>
                     </div>
+                    
                     <div id="medication" class="items" onclick="routeMedications()">
                         <div id="medication_icon" class="icons"></div>
                         <div id="medication_text" class="items_in_sidebar_text">
                             <h2 class="sidebar_text_text">Medication</h2>
                         </div>
                     </div>
+                    
                     <div id="appointments" class="items" onclick="routeAppointments()">
                         <div id="appointment_icon" class="icons"></div>
                         <div id="appointment_text" class="items_in_sidebar_text">
                             <h2 class="sidebar_text_text">Appointments</h2>
                         </div>
                     </div>
+                    
                     <div id="orders" class="items" onclick="routeOrders()">
                         <div id="order_icon" class="icons"></div>
                         <div id="order_text" class="items_in_sidebar_text">
                             <h2 class="sidebar_text_text">Orders</h2>
                         </div>
                     </div>
+                    
                     <div id="payment" class="items" onclick="routePayments()">
                         <div id="payment_icon" class="icons"></div>
                         <div id="payment_text" class="items_in_sidebar_text">
@@ -122,15 +130,12 @@
             <div id="whole_body">
                 <!--OVERVIEW DIVS-->
                 <div id="inner_content_container">
-                    <div id="overview_txt">***** OVERVIEW *****</div>
+                    
                     <div id="dash_disp">
-                        <div id="left_chevron" class="chevrons">
-                            <div id="round_icon"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-                        </div>
                         <div id="inner_content_container2">
                             <div id="regions_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="regions_icons">
                                         <div class="dash_overview_icons" id="dash_region_icon"></div>
                                     </div>
                                     <div class="dash_txt">All Regions</div>
@@ -140,7 +145,7 @@
 
                             <div id="hospitals_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="hospital_icons">
                                         <div class="dash_overview_icons" id="dash_hosp_icon"></div>
                                     </div>
                                     <div class="dash_txt">Available Hospitals</div>
@@ -150,7 +155,7 @@
 
                             <div id="doctors_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="doctor_icons">
                                         <div class="dash_overview_icons" id="dash_doctor_icon"></div>
                                     </div>
                                     <div id="dash_doctor_txt" class="dash_txt">Available Doctors</div>
@@ -160,7 +165,7 @@
 
                             <div id="patients_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="patient_icons">
                                         <div class="dash_overview_icons" id="dash_patient_icon"></div>
                                     </div>
                                     <div class="dash_txt">Active Patients</div>
@@ -170,7 +175,7 @@
 
                             <div id="diseases_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="disease_icons">
                                         <div class="dash_overview_icons" id="dash_disease_icon"></div>
                                     </div>
                                     <div class="dash_txt">Diseases Handled</div>
@@ -180,7 +185,7 @@
 
                             <div id="medication_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="medication_icons">
                                         <div class="dash_overview_icons" id="dash_medication_icon"></div>
                                     </div>
                                     <div class="dash_txt">InStock Meds</div>
@@ -190,7 +195,7 @@
 
                             <div id="appointment_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="appointment_icons">
                                         <div class="dash_overview_icons" id="dash_appointment_icon"></div>
                                     </div>
                                     <div class="dash_txt">No of Set Appointments</div>
@@ -200,7 +205,7 @@
 
                             <div id="orders_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="order_icons">
                                         <div class="dash_overview_icons" id="dash_order_icon"></div>
                                     </div>
                                     <div class="dash_txt">Number of Total Orders Placed</div>
@@ -210,7 +215,7 @@
 
                             <div id="payment_div" class="content_div">
                                 <div class="cont_name">
-                                    <div class="dash_icons">
+                                    <div class="dash_icons" id="payment_icons">
                                         <div class="dash_overview_icons" id="dash_payment_icon"></div>
                                     </div>
                                     <div class="dash_txt">No of Payments Completed</div>
@@ -218,9 +223,6 @@
                                 <div class="cont_count" id="payments_count"></div>
                             </div>
                         
-                        </div>
-                        <div id="right_chevron" class="chevrons">
-                            <div id="round_icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
                         </div>
                     </div>
                 </div>
@@ -267,7 +269,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="upcoming_appointments">
+                    <div id="placed_orders">
                         <div id="unapproved_orders_table">
                             <div id="order_tables_content">
                                 <table id="myOrderTable">

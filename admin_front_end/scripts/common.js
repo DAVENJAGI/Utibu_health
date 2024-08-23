@@ -9,7 +9,11 @@ function routeHome() {
 }
 
 function routeRegions() {
-  window.location.href = "regions.html";
+  regionRoute = document.getElementById('regions');
+  console.log('hello');
+  regionRoute.document.addEventListener('click', () => {
+    window.location.href = "regions.html";
+  })
 }
 
 function routeHospitals() {
@@ -65,6 +69,12 @@ function goBackToDoctor() {
 function goBackToAppoinment() {
   window.location.href = "appointments.html";
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+  routeRegions();
+  goBackToAppoinment();
+  goBackToDoctor();
+  routeOrders();
+  routeHospitals();
+})
 
 console.log('Functions running succesfuly!!');

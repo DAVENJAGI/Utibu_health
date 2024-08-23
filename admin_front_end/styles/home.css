@@ -46,25 +46,20 @@
     height: 24vh;
     width: 100%;
     /*align-content: center;*/
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
 #inner_content_container2{
-    /*border: solid 3px green;*/
-    /*border-top: 1px solid red;*/
-    /*border-bottom: 1px solid #1a6860;
-    margin: 1%;*/
     height: 24vh;
     display: inline-flex;
-    overflow-x: auto;
-    /*align-items: center;
-    align-content: center;*/
-    overflow-x: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     animation: scroll-animation 30s linear infinite; 
 }
-  
+
 @keyframes scroll-animation {
   0% {
     transform: translateX(0);
@@ -91,7 +86,7 @@
 
 
 .content_div{
-    border: solid #cacaca 1px;
+    border: solid #EFEFEFEF 1px;
     /*border: solid 1px red;*/
     height: 21vh;
     margin: auto;
@@ -101,12 +96,14 @@
     position: relative;
     border-radius: 6px;
     background: white;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
     
 }
 .content_div:hover{
     transform: scale(1.08);
-    border: solid 1px black;
-    box-shadow: 3px 5px 8px #9d9fa0;
+    /*border: solid 1px black;*/
+    box-shadow: 1px 1px 4px #9d9fa0;
 }
 
 .cont_name{
@@ -130,9 +127,9 @@
     height: 6vh;
     width: 6vh;
     margin: 2%;
-    border-radius: 50%;
+    border-radius: 18px;
     align-content: center;
-    background-color: #aeafaf;
+    /*background-color: #aeafaf;*/
 }
 .dash_txt{
     /*border: solid 1px red;*/
@@ -144,58 +141,58 @@
     font-weight: 900;
 }
 .dash_overview_icons{
-    /*border: solid red 1px;*/
-    background-size: cover;
-    height: 6vh;
-    width: 6vh;
-    align-content: center;
+    /*border: solid BLUE 1px;*/
+    background-size: contain;
+    height: 90%;
+    width: 90%;
+    align-items: center;
     margin: auto;
+    background-repeat: no-repeat;
     border-radius: 50%;
-    /*background-color: #aeafaf;
-    box-shadow: 1px 1px 8px #9d9fa0;*/
 }
 #dash_region_icon{
-    background-image: url('../icons/png/filled/places/village.png');
-    background-size: contain;
-    /*background-color: #beef00;*/
+    background-image: url('../icons/png/outline/symbols/globe.png'); 
+    background-repeat: no-repeat;
+    background-position: center;
+    
 }
 #dash_hosp_icon{
-    background-image: url('../icons/png/filled/places/hospital.png');
-    background-size: contain;
-    /*background-color: #a28089;*/
+    background-image: url('../icons/png/outline/places/hospital.png');
+    background-repeat: no-repeat;
+    background-position: center
 }
 #dash_patient_icon{
-    background-image: url('../icons/png/filled/people/person.png');
+    background-image: url('../icons/png/outline/people/person.png');
     background-size: contain;
     /*background-color: #e1b382;*/
 }
 #dash_medication_icon{
-    background-image: url('../icons/png/filled/medications/medicines.png');
+    background-image: url('../icons/png/outline/medications/medicines.png');
     background-size: contain;
     /*background-color: #8076a3;*/
 }
 #dash_doctor_icon{
-    background-image: url('../icons/png/filled/people/doctor.png');
+    background-image: url('../icons/png/outline/people/doctor.png');
     background-size: contain;
     /*background-color: #2d545e;*/
 }
 #dash_disease_icon{
-    background-image: url('../icons/png/filled/conditions/pneumonia.png');
+    background-image: url('../icons/png/outline/conditions/pneumonia.png');
     background-size: contain;
     /*background-color: #ff5e6c;*/
 }
 #dash_payment_icon{
-    background-image: url('../icons/png/filled/objects/credit_card.png');
+    background-image: url('../icons/png/outline/objects/credit_card.png');
     background-size: contain;
     /*background-color: #7c677f;*/
 }
 #dash_order_icon{
-    background-image: url('../icons/png/filled/vehicles/bike.png');
+    background-image: url('../icons/png/outline/vehicles/bike.png');
     background-size: contain;
     /*background-color: #9bc400*/;
 }
 #dash_appointment_icon{
-    background-image: url('../icons/png/filled/symbols/calendar.png');
+    background-image: url('../icons/png/outline/symbols/calendar.png');
     background-size: contain;
 }
 
@@ -212,44 +209,19 @@
     color: #1a6860;
 }
 
-#left_chevron{
-    border: solid 1px blue;
-    position: absolute;
-    height: 16vh;
-    margin-top: 10px;
-    width: 65px;
-    /*display: block;*/
-    align-content: center;
-    text-align: center;
-    font-size: 44px;
-}
-#right_chevron{
-    border: solid 1px blue;
-    position: absolute;
-    right: 2%;
-    height: 16vh;
-    margin-right: 1%;
-    width: 65px;
-    /*display: block;*/
-    top: 20vh;
-    align-content: center;
-    text-align: center;
-    font-size: 44px;
-}
-#round_icon{
-    border: solid 1px red;
-    border-radius: 50%;
-}
-.chevrons{
-    display: none;
-}
 
 /*REGIONS DASHBOARD DIV*/
 #regions_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #99DBD4;
+    border-left: 3px solid #3fb3a7;
+    
 }
-
+#regions_icons{
+    background-color: #C6EBE7;
+    border: 1px solid #99DBD4;
+}
 #regions_div:after{
     content: "";
     position: absolute;
@@ -272,6 +244,12 @@
 #hospitals_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #a28089;
+    border-left: solid 3px #a28089;
+}
+#hospital_icons{
+    background-color: #E7DFE1;
+    border: 1px solid #C5B0B5;
 }
 #hospitals_div:after{
     content: "";
@@ -292,6 +270,12 @@
 #doctors_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #2d545e;
+    border-left: 3px solid #2d545e;
+}
+#doctor_icons{
+    background-color: #D9E9ED;
+    border: 1px solid #A2C9D2;
 }
 #doctors_div:after{
     content: "";
@@ -318,6 +302,13 @@
 #patients_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #e1b382;
+    border-left: solid 3px #e1b382;
+    
+}
+#patient_icons{
+    background-color: #F4E3D2;
+    border: 1px solid #E5BE94;
 }
 #patients_div:after{
     content: "";
@@ -338,6 +329,12 @@
 #diseases_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #ff5e6c;
+    border-left: solid 3px #ff5e6c;
+}
+#disease_icons{
+    background-color: #FFC7CC;
+    border: 1px solid #FF707D;
 }
 #diseases_div:after{
     content: "";
@@ -358,6 +355,12 @@
 #medication_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #8076a3;
+    border-left: solid 3px #8076a3;
+}
+#medication_icons{
+    background-color: #E0DDE8;
+    border: 1px solid #ADA7C4;
 }
 #medication_div:after{
     content: "";
@@ -378,6 +381,12 @@
 #appointment_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #c89666;
+    border-left: solid 3px #c89666;
+}
+#appointment_icons{
+    background-color: #F0E2D6;
+    border: 1px solid #D8B492;
 }
 #appointment_div:after{
     content: "";
@@ -398,6 +407,12 @@
 #orders_div{
     background: white;
     overflow: hidden;
+    border: solid 1px #9bc400;
+    border-left: solid 3px #9bc400;
+}
+#order_icons{
+    background-color: #E7FF8F;
+    border: 1px solid #D6FF3D;
 }
 #orders_div:after{
     content: "";
@@ -422,6 +437,12 @@
     background: white;
     overflow: hidden;
     margin-right: 1%;
+    border: solid 1px #7c677f;
+    border-left: solid 3px #7c677f;
+}
+#payment_icons{
+    background-color: #E0DAE1;
+    border: 1px solid #C7BBC8;
 }
 #payment_div:after{
     content: "";
@@ -590,6 +611,7 @@
     border-bottom: solid 1px #cfcfcf;
     height: 90%;
     overflow: auto;
+    overflow-x: hidden;
 }
 #server_stats_1{
     /*border: 1px red solid;*/
@@ -605,7 +627,7 @@
     background-color: inherit;
     width: 100%;
     margin-left: 0;
-
+    overflow-y: hidden;
 }
 #myOrderTable th {
     background-color: white;
@@ -615,18 +637,19 @@
     border-bottom: solid 2px #d4d4d4;
 }
 
-
 #myOrderTable tbody tr:hover {
     font-weight: 500;
     opacity: 0.98;
     transform: scale(1.0001);
     box-shadow: 1px 1px 3px #b3b3b3;
+    
 }
 #myOrderTable td {
     text-align: center;
     width: 150px;
     margin: 0 auto;
     height: 1vh;
+    
 }
 
 
@@ -634,7 +657,7 @@
 
 
 
-#upcoming_appointments{
+#placed_orders {
     /*border: solid 1px red;*/
     margin: 1%;
     margin-top: 0px;
@@ -642,6 +665,8 @@
     background: white;
     border-radius: 8px;
     box-shadow: 1px 1px 3px #b3b3b3;
+    overflow-y: hidden;
+   
 }
 #server_stats{
     /*border: 1px red solid;*/
@@ -807,6 +832,7 @@
     border-radius: 8px;
     box-shadow: 1px 1px 3px #b3b3b3;
     overflow: auto;
+    
 }
 
 #line_graph{
@@ -816,4 +842,5 @@
     height: 600px;
     width: 1480px;
     overflow: auto;
+    overflow-y: hidden;
 }
