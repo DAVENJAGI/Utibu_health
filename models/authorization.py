@@ -110,6 +110,13 @@ def verify_admin_session(auth_token, session_id):
         return False
     return True
 
+def verify_doctor_session(auth_token, session_id):
+    dkt_session = storage.get_session(doctorSession, session_id)
+    if not dkt_session or dkt_session.expires_at <= datetime.utcnow() or dkt_session.authorization_token != auth_token:
+        return False
+    return True
+
+
 def require_user_or_admin_auth(f):
     @wraps(f)
     def wrapper(*args, **kwargs):
@@ -124,3 +131,36 @@ def require_user_or_admin_auth(f):
 
         return make_response(jsonify({"Message": "Sorry, you do not have valid authorization to access this data"}), 401)
     return wrapper
+
+
+def require_doctor_or_admin_auth(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        auth_token = request.headers.get('X-Custom-Token')
+        session_id = request.cookies.get('session_id')
+
+        if not auth_token or not session_id:
+            return make_response(jsonify({"Message": "Missing credentials"}), 403)
+
+        if verify_doctor_session(auth_token, session_id) or verify_admin_session(auth_token, session_id):
+            return f(*args, **kwargs)
+
+        return make_response(jsonify({"Message": "Sorry, you do not have valid authorization to access this data"}), 401)
+    return wrapper
+
+
+def require_doctor_or_admin_or_user_auth(f):
+    @wraps(f)
+    def wrapper(*args, **kwargs):
+        auth_token = request.headers.get('X-Custom-Token')
+        session_id = request.cookies.get('session_id')
+
+        if not auth_token or not session_id:
+            return make_response(jsonify({"Message": "Missing credentials"}), 403)
+
+        if verify_doctor_session(auth_token, session_id) or verify_user_session(auth_token, session_id) or verify_admin_session(auth_token, session_id):
+            return f(*args, **kwargs)
+
+        return make_response(jsonify({"Message": "Sorry, you do not have valid authorization to access this data"}), 401)
+    return wrapper
+
