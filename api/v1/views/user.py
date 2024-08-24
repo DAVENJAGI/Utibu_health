@@ -14,7 +14,6 @@ from datetime import datetime
 
 from functools import wraps
 import secrets
-# user_view = Blueprint("users", __name__)
 
 
 @app_views.route("/users", strict_slashes=False, methods=["GET"])

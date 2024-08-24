@@ -12,7 +12,7 @@ from models.doctor_session import doctorSession
 from models.admin_session import adminSession
 import json
 import secrets
-# user_view = Blueprint("users", __name__)
+import hashlib
 
 # app = Flask(__name__)
 #app_views.secret_key = secrets.token_hex(32)
@@ -40,7 +40,8 @@ def admin_login():
 
 #cookie
     session_id = secrets.token_hex(32)
-    session[session_id] = admin.id
+    hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+    session[hashed_session_id] = admin.id
 
 # returns the object in dictionary format, associated with the email.
     response = make_response(jsonify({"Message": "Login sucessful", "admin": admin.to_dict()}), 200)
@@ -52,7 +53,7 @@ def admin_login():
 
 #Saving the user sessions to database to track sessions
     new_session = adminSession(admin_id=admin.id)
-    new_session.session_token = session_id #secrets.token_hex(32)
+    new_session.session_token = hashed_session_id #secrets.token_hex(32)
     new_session.authorization_token = custom_token
     storage.new(new_session)
     storage.save()
@@ -84,7 +85,8 @@ def user_login():
 
 #cookie
     session_id = secrets.token_hex(32)
-    session[session_id] = user.id
+    hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+    session[hashed_session_id] = user.id
 
 # returns the object in dictionary format, associated with the email.
     response = make_response(jsonify({"Message": "Login sucessful", "user": user.to_dict()}), 200)
@@ -96,7 +98,7 @@ def user_login():
 
 #Saving the user sessions to database to track sessions
     new_session = userSession(user_id=user.id)
-    new_session.session_token = session_id #secrets.token_hex(32)
+    new_session.session_token = hashed_session_id #secrets.token_hex(32)
     new_session.authorization_token = custom_token
     storage.new(new_session)
     storage.save()
@@ -129,7 +131,8 @@ def doctor_login():
 
 #cookie
     session_id = secrets.token_hex(32)
-    session[session_id] = dkt.id
+    hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+    session[hashed_session_id] = dkt.id
 
 # returns the object in dictionary format, associated with the email.
     response = make_response(jsonify({"Message": "Login sucessful", "dkt": dkt.to_dict()}), 200)
@@ -141,7 +144,7 @@ def doctor_login():
 
 #Saving dkt sessions to database to track sessions
     new_session = doctorSession(doctor_id=dkt.id)
-    new_session.session_token = session_id #secrets.token_hex(32)
+    new_session.session_token = hashed_session_id #secrets.token_hex(32)
     new_session.authorization_token = custom_token
     storage.new(new_session)
     storage.save()
