@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Creates the authentication functions.
-They act as authenticatiors for the function. They incude cookie session token and authorization token. Cookie session token expires after one hour"""
+They act as authenticatiors for the function. They incude cookie session token and authorization token. Cookie session token expires after one hour. The hashlib hashes the session token to store it in the server"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response, session
@@ -15,8 +15,7 @@ from datetime import datetime
 
 from functools import wraps
 import secrets
-# user_view = Blueprint("users", __name__)
-
+import hashlib
 #decorator to protect the endpoints
 
 def require_user_auth(f):
@@ -33,7 +32,8 @@ def require_user_auth(f):
         if not session_id:
             return make_response(jsonify({"Message": "Session id missing."}), 403)
 
-        user_session = storage.get_session(userSession, session_id)
+        hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+        user_session = storage.get_session(userSession, hashed_session_id)
         if not user_session:
             return make_response(jsonify({"Message": "Invalid session"}), 401)
 #       print(user_session)
@@ -56,11 +56,14 @@ def require_admin_auth(f):
         if not auth_token or len(auth_token) != 64:
             return make_response(jsonify({"Message": "Sorry, you do not have the valid authorization to perform the operation"}), 403)
 
+
         session_id = request.cookies.get('session_id')
         if not session_id:
             return make_response(jsonify({"Message": "Session id missing."}), 403)
 
-        admin_session = storage.get_session(adminSession, session_id)
+        hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+
+        admin_session = storage.get_session(adminSession, hashed_session_id)
         if not admin_session:
             return make_response(jsonify({"Message": "Invalid session"}), 401)
 #       print(user_session)
@@ -86,7 +89,8 @@ def require_doctor_auth(f):
         if not session_id:
             return make_response(jsonify({"Message": "Session id missing."}), 403)
 
-        dkt_session = storage.get_session(doctorSession, session_id)
+        hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+        dkt_session = storage.get_session(doctorSession, hashed_session_id)
         if not dkt_session:
             return make_response(jsonify({"Message": "Invalid session"}), 401)
 #       print(user_session)
@@ -99,19 +103,22 @@ def require_doctor_auth(f):
 
 # HANDLES SECURITY FOR ENDPOINTS THAT ENSURE DATA BETWEEN ADMIN, DOCTOR, USER
 def verify_user_session(auth_token, session_id):
-    user_session = storage.get_session(userSession, session_id)
+    hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+    user_session = storage.get_session(userSession, hashed_session_id)
     if not user_session or user_session.expires_at <= datetime.utcnow() or user_session.authorization_token != auth_token:
         return False
     return True
 
 def verify_admin_session(auth_token, session_id):
-    admin_session = storage.get_session(adminSession, session_id)
+    hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+    admin_session = storage.get_session(adminSession, hashed_session_id)
     if not admin_session or admin_session.expires_at <= datetime.utcnow() or admin_session.authorization_token != auth_token:
         return False
     return True
 
 def verify_doctor_session(auth_token, session_id):
-    dkt_session = storage.get_session(doctorSession, session_id)
+    hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
+    dkt_session = storage.get_session(doctorSession, hashed_session_id)
     if not dkt_session or dkt_session.expires_at <= datetime.utcnow() or dkt_session.authorization_token != auth_token:
         return False
     return True
@@ -122,6 +129,7 @@ def require_user_or_admin_auth(f):
     def wrapper(*args, **kwargs):
         auth_token = request.headers.get('X-Custom-Token')
         session_id = request.cookies.get('session_id')
+        hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
 
         if not auth_token or not session_id:
             return make_response(jsonify({"Message": "Missing credentials"}), 403)
