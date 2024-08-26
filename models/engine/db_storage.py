@@ -99,8 +99,13 @@ class DBStorage:
         query = self.__session.query(cls).filter(cls.email == email)
         return query.first()
 
-    def get_session(self, cls, session_token):
+    def get_session(self, cls, authorization_token):
         """A method to retrieve session data based on session_id"""
-        query = self.__session.query(cls).filter(cls.session_token == session_token)
+        query = self.__session.query(cls).filter(cls.authorization_token == authorization_token)
         return query.first()
+    def get_email(self, cls, email):
+        """A method to retrieve objects by email. Used to check whether the email is used"""
+        query = self.__session.query(cls).filter(cls.email == email)
+        return query.first()
+
 
