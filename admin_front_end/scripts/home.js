@@ -9,7 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageNumSpan = document.getElementById('page-num');
     orderData = [];
 
-    fetch(requestUrl)
+    const customToken = localStorage.getItem('X-Custom-Token');
+
+    function getAuthHeaders() {
+        return {
+            'X-Custom-Token': customToken
+        };
+    }
+
+    fetch(requestUrl, { headers: getAuthHeaders()})
         .then(response => response.json())
         .then(data => {
             console.log("API data:", data);
@@ -34,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
            
 
             const totalPayment = 'http://0.0.0.0:5000/api/v1/payments';
-            return fetch(totalPayment);
+            return fetch(totalPayment, { headers: getAuthHeaders()});
         })
         .then(response => response.json())
         .then(paymentData => {
@@ -50,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         function fetchOrders() {
-            fetch(requestOrders)
+            fetch(requestOrders, { headers: getAuthHeaders()})
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -88,18 +96,18 @@ document.addEventListener('DOMContentLoaded', () => {
                   statusColor = 'green';
                 }
       
-                fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`)
+                fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`, { headers: getAuthHeaders()})
                 .then(response => response.json())
                 .then(patientData => {
                   const patientName = `${patientData.first_name} ${patientData.last_name}`;
             
       
-                  fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`)
+                  fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`, { headers: getAuthHeaders()})
                   .then(response => response.json())
                   .then(medicationData => {
                     const medicationName = medicationData.name;
 
-                    fetch(`http://0.0.0.0:5000/api/v1/doctor/${order.doctor_id}`)
+                    fetch(`http://0.0.0.0:5000/api/v1/doctor/${order.doctor_id}`, { headers: getAuthHeaders()})
                     .then(response => response.json())
                     .then(doctorData => {
                     const doctorName = `${doctorData.first_name} ${doctorData.last_name}`;
@@ -164,18 +172,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
         
         
-                    fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`)
+                    fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`, { headers: getAuthHeaders()})
                     .then(response => response.json())
                     .then(patientData => {
                     const patientName = `${patientData.first_name} ${patientData.last_name}`;
                 
         
-                    fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`)
+                    fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`, { headers: getAuthHeaders()})
                     .then(response => response.json())
                     .then(medicationData => {
                         const medicationName = medicationData.name;
 
-                        fetch(`http://0.0.0.0:5000/api/v1/doctor/${order.doctor_id}`)
+                        fetch(`http://0.0.0.0:5000/api/v1/doctor/${order.doctor_id}`, { headers: getAuthHeaders()})
                         .then(response => response.json())
                         .then(doctorData => {
                             const doctorName = `${doctorData.first_name} ${doctorData.last_name}`;

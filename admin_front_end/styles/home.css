@@ -14,7 +14,7 @@
     /*margin-top: 15vh;*/
     margin-left: 2%;
     width: 96%;
-    height: 33vh;
+    height: 25vh;
     align-items: center;
     display: block;
     overflow-x: auto;
@@ -101,7 +101,7 @@
     
 }
 .content_div:hover{
-    transform: scale(1.08);
+    transform: scale(1.02);
     /*border: solid 1px black;*/
     box-shadow: 1px 1px 4px #9d9fa0;
 }
@@ -459,11 +459,16 @@
     top: 0;
 }
 #separator{
-    /*border: solid 1px red;*/
+    border: solid 1px red;
     height: 6%;
     margin-top: 1%;
     display: flex;
     gap: 1%;
+}
+#div_separators{
+    border: 1px solid #d4d4d4;
+    margin: 1%;
+    width: 98%;
 }
 #first_line{
     /*border: solid 1px red;*/
@@ -706,7 +711,7 @@
 
 
 #search{
-/*    border: solid 1px red;*/
+    /*border: solid 1px red;*/
     width: 50%;
     display: flex;
     align-items: center;
@@ -771,13 +776,16 @@
     border: 1px solid white;
     background-color: white;
     font-size: 15px;
+    outline: #1a6860;
 }
+
+
 
 #search_button_home{
     width: 20%;
     background: white;
     font-size: 10px;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     border: 1px solid white;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -807,8 +815,9 @@
     align-content: center;
     text-align: center;
     font-size: 20px;
-    background-color: #aeafaf;
-    animation: glow 2s infinite alternate;
+    background-color: #1a6860;
+    color: white;
+    animation: glow 7s infinite alternate;
 }
 @keyframes glow {
     from {

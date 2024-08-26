@@ -4,9 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = document.getElementById("password");
     const loginButton = document.getElementById("login_button");
 
-    const passwordEntry = document.getElementById('password');
-    const emailEntry = document.getElementById('email');
-    
     loginButton.addEventListener('click', (event) => {
         event.preventDefault();
 
@@ -17,32 +14,39 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Please fill out all required fields!");
             return;
         }
-    
+
         const loginData = {
             email: emailValue,
             password: passwordValue,
         };
         
         const jsonData = JSON.stringify(loginData);
-    
-        const request = new Request("http://0.0.0.0:5000/api/v1/admin/login", {
+
+        fetch("http://0.0.0.0:5000/api/v1/admin/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: jsonData,
-        });
-        
-        fetch(request)
-        .then(response => response.json())
-        .then(data => {
-            console.log('cheers, here is the data:', data.last_name);
-            if (data.message === 'Login sucessful') {
-                window.location.href = 'home.html'; 
+        })
+        .then(response => {
+            console.log('Response headers:', [...response.headers.entries()]);
+            const customToken = response.headers.get('X-Custom-Token');
+            if (customToken) {
+                localStorage.setItem('X-Custom-Token', customToken);
+                console.log('X-Custom-Token stored:', customToken);
             } else {
-                data.message === 'Invalid password';
-                passwordEntry.style.border = '1px solid red';
-                alert(data.error);
+                console.log('X-Custom-Token not found in response');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data:', data);
+            if (data.Message === 'Login sucessful') {
+              window.location.href = 'home.html'; 
+            } else {
+                password.style.border = '1px solid red';
+                alert(data.error || 'Login failed');
             }
         })
         .catch(error => {
@@ -50,4 +54,5 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('An error occurred during login. Please try again.');
         });
     });
+
 });

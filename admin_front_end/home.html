@@ -10,7 +10,8 @@
     <script type="text/javascript" src="../scripts/home.js"></script>
     <script type="text/javascript" src="../scripts/header.js"></script>
     <script type="text/javascript" src="../scripts/common.js"></script>
-    <script type="text/javascript" src="../scripts/charts.js"></script>
+    <!--"../icons/icons/png/outline/places/home_alt.png";  <script type="text/javascript" src="../scripts/charts.js"></script> -->
+    <link rel="icon" href="../icons/png/outline/places/home_alt.png" type="image/png"> <!-- Favicon link -->
     <title>Home</title>
 </head>
 <body>
@@ -112,11 +113,16 @@
                 <div id="greetings">
                     <h2 id="greeting_text"></h2>
                 </div>
+
+                <div id="session_expired">
+                    <div id="expired_text"> Your session has expired</div>
+                    <button id="okay_button" onclick="hideExpiredSessionDiv()">OK</button>
+                </div>
                 
                 <div id="admin_div">
                    <div id="admin_button" onclick="showDropdownDiv()">
-                        <i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 30px; text-align: center; align-content: center;"></i>
-                        <h4 id="admin_text">Admin</h4>
+                        <!--<i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 25px; text-align: center; align-content: center; color: #686868;"></i>-->
+                        <h4 id="admin_text">njagidave39@gmail.com</h4>
                         <i class="fas fa-angle-down"></i>
                    </div>
                    <div id="dropdown_div">
@@ -227,6 +233,7 @@
                     </div>
                 </div>
 
+                <!--
                 <div id="separator">
                     <div id="first_line">
                         <div id="inner_line_1"></div>
@@ -252,7 +259,10 @@
                         <div id="inner_line_2"></div>
                     </div>
                 </div>
+            
 
+            <div id="div_separators"></div>
+            -->
                 <div id="website_stats">
                     <div id="server_stats_1">
                         <div id="server_stat_txt">Unapproved orders</div>
@@ -303,6 +313,7 @@
                         
                     </div>
                 </div>
+                
 
                 <div id="website_stats_2">
                     <div id="server_stats_2">

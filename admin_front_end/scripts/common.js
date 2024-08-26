@@ -1,6 +1,7 @@
 //This script handles routing around the website's pages
 
 function logOut(){
+  localStorage.clear();
   window.location.href = "landing_page.html"; // Redirect to login page
 }
 
@@ -9,11 +10,7 @@ function routeHome() {
 }
 
 function routeRegions() {
-  regionRoute = document.getElementById('regions');
-  console.log('hello');
-  regionRoute.document.addEventListener('click', () => {
-    window.location.href = "regions.html";
-  })
+  window.location.href = "regions.html";
 }
 
 function routeHospitals() {
@@ -69,12 +66,11 @@ function goBackToDoctor() {
 function goBackToAppoinment() {
   window.location.href = "appointments.html";
 }
-document.addEventListener('DOMContentLoaded', () => {
-  routeRegions();
-  goBackToAppoinment();
-  goBackToDoctor();
-  routeOrders();
-  routeHospitals();
-})
+
+function hideExpiredSessionDiv() {
+  const showSessionExpired = document.getElementById('session_expired');
+  showSessionExpired.style.display = 'none';
+  logOut();
+}
 
 console.log('Functions running succesfuly!!');
