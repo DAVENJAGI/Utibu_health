@@ -13,6 +13,7 @@ from models.admin_session import adminSession
 import json
 import secrets
 import hashlib
+from werkzeug.security import check_password_hash
 
 # app = Flask(__name__)
 #app_views.secret_key = secrets.token_hex(32)
@@ -35,9 +36,8 @@ def admin_login():
     if not admin:
         return make_response(jsonify({"Message": "Login failed: Admin not found"}), 401)
 
-    if admin.password != password:
+    if not check_password_hash(admin.password, password):
         return make_response(jsonify({"Message": "Login failed: Incorrect password"}), 401)
-
 #cookie
     session_id = secrets.token_hex(32)
     hashed_session_id = hashlib.sha256(session_id.encode()).hexdigest()
@@ -49,12 +49,13 @@ def admin_login():
 
 #Auth header
     custom_token = secrets.token_hex(32)
+    hashed_custom_token = hashlib.sha256(custom_token.encode()).hexdigest()
     response.headers['X-Custom-Token'] = custom_token
 
 #Saving the user sessions to database to track sessions
     new_session = adminSession(admin_id=admin.id)
     new_session.session_token = hashed_session_id #secrets.token_hex(32)
-    new_session.authorization_token = custom_token
+    new_session.authorization_token = hashed_custom_token
     storage.new(new_session)
     storage.save()
 
@@ -80,8 +81,9 @@ def user_login():
     if not user:
         return make_response(jsonify({"Message": "Login failed: User not found"}), 401)
 
-    if user.password != password:
+    if not check_password_hash(user.password, password):
         return make_response(jsonify({"Message": "Login failed: Incorrect password"}), 401)
+
 
 #cookie
     session_id = secrets.token_hex(32)
@@ -94,12 +96,13 @@ def user_login():
 
 #Auth header
     custom_token = secrets.token_hex(24)
+    hashed_custom_token = hashlib.sha256(custom_token.encode()).hexdigest()
     response.headers['X-Custom-Token'] = custom_token
 
 #Saving the user sessions to database to track sessions
     new_session = userSession(user_id=user.id)
     new_session.session_token = hashed_session_id #secrets.token_hex(32)
-    new_session.authorization_token = custom_token
+    new_session.authorization_token = hashed_custom_token
     storage.new(new_session)
     storage.save()
 
@@ -126,7 +129,7 @@ def doctor_login():
     if not dkt:
         return make_response(jsonify({"Message": "Login failed: Doctor not found"}), 401)
 
-    if dkt.password != password:
+    if not check_password_hash(dkt.password, password):
         return make_response(jsonify({"Message": "Login failed: Incorrect password"}), 401)
 
 #cookie
@@ -140,12 +143,13 @@ def doctor_login():
 
 #Auth header
     custom_token = secrets.token_hex(24)
+    hashed_custom_token = hashlib.sha256(custom_token.encode()).hexdigest()
     response.headers['X-Custom-Token'] = custom_token
 
 #Saving dkt sessions to database to track sessions
     new_session = doctorSession(doctor_id=dkt.id)
     new_session.session_token = hashed_session_id #secrets.token_hex(32)
-    new_session.authorization_token = custom_token
+    new_session.authorization_token = hashed_custom_token
     storage.new(new_session)
     storage.save()
 

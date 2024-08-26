@@ -78,6 +78,10 @@ def create_doctor():
         return make_response(jsonify({"error": "Missing hospital id"}), 400)
     
     obj = request.get_json()
+    existing_doctor = storage.get_email(Doctor, email)
+    if existing_doctor:
+        return make_response(jsonify({"error": "Email address already in use. Please try another one."}), 400)
+    obj['password'] = generate_password_hash(obj['password'])
     dkt = Doctor(**obj)
     dkt.save()
 #    return (jsonify(dkt.to_dict()), 201)

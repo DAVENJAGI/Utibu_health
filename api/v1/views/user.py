@@ -7,7 +7,7 @@ from models import storage
 from models.user import User
 from models.disease import Disease
 from models.user_session import userSession
-from models.authorization import require_user_auth, require_admin_auth, require_doctor_auth
+from models.authorization import require_user_auth, require_admin_auth, require_doctor_auth, require_doctor_or_admin_or_user_auth
 from models.authorization import require_user_or_admin_auth
 import json
 from datetime import datetime
@@ -27,7 +27,7 @@ def return_users():
     return jsonify(user_list)
 
 @app_views.route("/user/<string:user_id>", methods=['GET'], strict_slashes=False)
-@require_user_or_admin_auth
+@require_doctor_or_admin_or_user_auth
 def get_user_by_id(user_id):
     """get user by id"""
     user = storage.get(User, user_id)
@@ -103,6 +103,10 @@ def create_user():
         return make_response(jsonify({"error": "Missing doctor_id"}), 400)
     
     obj = request.get_json()
+    existing_user = storage.get_email(User, email)
+    if existing_user:
+        return make_response(jsonify({"error": "Email address already in use. Please try another one."}), 400)
+    obj['password'] = generate_password_hash(obj['password'])
     usr = User(**obj)
     usr.save()
     return (jsonify(usr.to_dict()), 201)
