@@ -17,6 +17,12 @@ CORS(app)
 app.register_blueprint(app_views)
 app.secret_key = secrets.token_hex(32)
 
+@app.after_request
+def add_header(response):
+    response.headers.add('Access-Control-Expose-Headers', 'X-Custom-Token')
+#    response.headers.add('Access-Control-Expose-Headers', 'session_id')
+
+    return response
 
 @app.teardown_appcontext
 def teardown(exception=None):
