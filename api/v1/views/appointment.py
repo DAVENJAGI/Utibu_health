@@ -2,15 +2,18 @@
 """Creates the first route, /users"""
 
 from api.v1.views import app_views
-from flask import jsonify, Blueprint, abort, request, make_response
+from flask import jsonify, Blueprint, abort, request, make_response, Flask
 from models import storage
 from models.user import User
 from models.doctor import Doctor
 from models.appointment import Appointment
 from models.authorization import require_user_auth, require_doctor_auth, require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
+from flask_socketio import SocketIO
 
-# user_view = Blueprint("users", __name__)
+app = Flask(__name__)
+socketio = SocketIO(app)
+emit =socketio.emit
 
 # GET ALL APPOINTMENTS AND GET APPOINTMENTS BY ID
 @app_views.route("/appointments", strict_slashes=False, methods=["GET"])
@@ -142,15 +145,14 @@ def update_doctor_appointment(doctor_id):
 #    return (jsonify(appointment.to_dict()), 201)
     return (jsonify({"Message": "Appointment updated successfully. Thank you"}), 201)
 
-
 @app_views.route("/appointment/<string:appointment_id>/", methods=['PUT'], strict_slashes=False)
 @require_doctor_or_admin_auth
 def update_appointment_with_id(appointment_id):
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
-    
+
     appointment = storage.get(Appointment, appointment_id)
-        
+
     if appointment is None:
         abort(404)
 
@@ -158,10 +160,22 @@ def update_appointment_with_id(appointment_id):
 
     appointment_columns = Appointment.__table__.columns.keys()
 
+    old_status = appointment.appointment_status
+
+#    print("Before update:", appointment.to_dict())
     for key, value in data.items():
         if key in appointment_columns and key not in ["id", "created_at", "doctor_id", "updated_at"]:
             setattr(appointment, key, value)
-    storage.save()
-#    return jsonify(appointment.to_dict())
-    return (jsonify({"Message": "Appointment Updated successfully. Thank You"}), 201)
+        else:
+            return make_response(jsonify({"Message": "Key not found in appointment"}), 400)
+#    print("After update:", appointment.to_dict())
 
+    # Use appropriate method for updating (check your ORM documentation)
+    storage.save()
+    print("I'm here")
+    if old_status != appointment.appointment_status and appointment.user_id:
+#        print(f"Emitting appointment update event for user {appointment.user_id}")
+        emit('appointment_update', appointment.to_dict(), room=appointment.user_id)
+        print(f"Emitting appointment update event for user {appointment.user_id}")
+
+    return (jsonify({"Message": "Appointment Updated successfully. Thank You"}), 201)
