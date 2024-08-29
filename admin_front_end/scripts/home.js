@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
     orderData = [];
-
+    
     const customToken = localStorage.getItem('X-Custom-Token');
 
     function getAuthHeaders() {
@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => response.json())
                 .then(patientData => {
                   const patientName = `${patientData.first_name} ${patientData.last_name}`;
+                  
             
       
                   fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`, { headers: getAuthHeaders()})
@@ -157,7 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Filter counties data based on search term
             const filteredOrders = orderData.filter(order =>
                 order.order_status.toLowerCase().includes(searchTerm) ||
-                order.id.toLowerCase().includes(searchTerm)
+                order.id.toLowerCase().includes(searchTerm) ||
+                [order.user.first_name, order.user.last_name].join(' ').toLowerCase().includes(searchTerm) || // Combine first and last name for patient search
+                order.medication.name.toLowerCase().includes(searchTerm) ||
+                [order.doctor.first_name, order.doctor.last_name].join(' ').toLowerCase().includes(searchTerm)
             );
       
             tableBody.innerHTML = '';

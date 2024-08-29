@@ -19,80 +19,92 @@
         <div id="side_panel">
             <div id="inner_side_bar">
                 <div id="title_name"> 
-                    <h1 id="title_text">Utibu Health</h1>
+                    <div id="title_text">Utibu Health</div>
                 </div>
-                
+                <div id="separation"></div>
                 <div id="items_in_sidebar">
                     <div id="overview_div" class="items" onclick="routeHome()">
                         <div id="dashboard_icon" class="icons"></div>
                         <div id="dashboard_text" class="items_in_sidebar_text">
-                            <h2 id="overview_text" class="sidebar_text_text">Overview</h2>
+                            <div id="overview_text" class="sidebar_text_text">Overview</div>
                         </div>
                     </div>
-
-                    <div id="regions_div" class="items" onclick="routeRegions()">
+                    
+                    <div id="regions" class="items" onclick="routeRegions()">
                         <div id="region_icon" class="icons">
                             
                         </div>
                         <div id="region_text" class="items_in_sidebar_text">
-                            <h2 id="region_text" class="sidebar_text_text">Regions</h2>
+                            <div class="sidebar_text_text">Regions</div>
                         </div>
                     </div>
+                    
                     <div id="hospitals" class="items" onclick="routeHospitals()">
                         <div id="hospitals_icon" class="icons">
-                           
+                            
                         </div>
                         <div id="hospital_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Hospitals</h2>
+                            <div class="sidebar_text_text">Hospitals</div>
                         </div>
                     </div>
+                    
                     <div id="doctors" class="items" onclick="routeDoctors()">
                         <div id="doctor_icon" class="icons">
                             
                         </div>
                         <div id="doctor_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Doctors</h2>
+                            <div class="sidebar_text_text">Doctors</div>
                         </div>
                     </div>
+                    
                     <div id="patients" class="items" onclick="routePatients()">
                         <div id="patient_icon" class="icons">
                             
                         </div>
                         <div id="patient_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Patients</h2>
+                            <div class="sidebar_text_text">Patients</div>
                         </div>
                     </div>
+                   
                     <div id="diseases" class="items" onclick="routeDiseases()">
                         <div id="disease_icon" class="icons"></div>
                         <div id="disease_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Diseases</h2>
+                            <div class="sidebar_text_text">Diseases</div>
                         </div>
                     </div>
+                    
                     <div id="medication" class="items" onclick="routeMedications()">
                         <div id="medication_icon" class="icons"></div>
                         <div id="medication_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Medication</h2>
+                            <div class="sidebar_text_text">Medication</div>
                         </div>
                     </div>
+                    
                     <div id="appointments" class="items" onclick="routeAppointments()">
                         <div id="appointment_icon" class="icons"></div>
                         <div id="appointment_text" class="items_in_sidebar_text">
-                            <h2 id="appointment_text" class="sidebar_text_text">Appointments</h2>
+                            <div class="sidebar_text_text">Appointments</div>
                         </div>
                     </div>
+                    
                     <div id="orders" class="items" onclick="routeOrders()">
                         <div id="order_icon" class="icons"></div>
                         <div id="order_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Orders</h2>
+                            <div class="sidebar_text_text">Orders</div>
                         </div>
                     </div>
+                    
                     <div id="payment" class="items" onclick="routePayments()">
                         <div id="payment_icon" class="icons"></div>
                         <div id="payment_text" class="items_in_sidebar_text">
-                            <h2 class="sidebar_text_text">Payment</h2>
+                            <div class="sidebar_text_text">Payment</div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="api_status">
+                <div id="status_text">API:</div>
+                <div id="status_color"></div>
             </div>
         </div>
 

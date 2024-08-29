@@ -170,7 +170,6 @@ def update_appointment_with_id(appointment_id):
             return make_response(jsonify({"Message": "Key not found in appointment"}), 400)
 #    print("After update:", appointment.to_dict())
 
-    # Use appropriate method for updating (check your ORM documentation)
     storage.save()
     print("I'm here")
     if old_status != appointment.appointment_status and appointment.user_id:

@@ -1,12 +1,10 @@
 #hospitals{
-    background-color: #f7f7f7;
-    color: black;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    transform: scale(1.04);
+    background-color: #A7DFF1;
+    border: solid 1px #d1f2fd;
+    transform: scale(1.01);
 }
 #hospital_text{
-    color: orange;
+    color: #1a6860;
 }
 
 
@@ -242,6 +240,7 @@
     border: 1px solid white;
     background-color: white;
     font-size: 15px;
+    outline: #1a6860;
 }
 
 #delete_div{
@@ -314,6 +313,7 @@
     border-bottom: solid 1px #cfcfcf;
     height: 90%;
     overflow: auto;
+    overflow-x: hidden;
 }
 #myHospitalTable{
     background-color: inherit;
@@ -324,7 +324,7 @@
 #myHospitalTable th {
     background-color: white;
     color: #1a6860;
-    text-align: center;
+    text-align: left;
     /*height: 5vh;*/
     border-bottom: solid 2px #d4d4d4;
 }
@@ -337,10 +337,13 @@
     box-shadow: 1px 1px 3px #b3b3b3;
 }
 #myHospitalTable td {
-    text-align: center;
+    text-align: left;
     width: 150px;
     margin: 0 auto;
     height: 1vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 

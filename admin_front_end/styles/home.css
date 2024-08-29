@@ -1,12 +1,10 @@
 #overview_div{
-    background-color: #f7f7f7;
-    color: black;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    transform: scale(1.04);
+    background-color: #A7DFF1;
+    border: solid 1px #d1f2fd;
+    transform: scale(1.01);
 }
 #overview_text{
-    color: orange;
+    color: #1a6860;
 }
 
 #inner_content_container{
@@ -654,7 +652,9 @@
     width: 150px;
     margin: 0 auto;
     height: 1vh;
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
 }
 
 

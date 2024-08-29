@@ -74,3 +74,42 @@ function hideExpiredSessionDiv() {
 }
 
 console.log('Functions running succesfuly!!');
+
+const customToken = localStorage.getItem('X-Custom-Token');
+function getAuthHeaders() {
+  return {
+    'X-Custom-Token': customToken
+  };
+}
+function fetchData() {
+  fetch(`http://0.0.0.0:5000/api/v1/status`, {
+    headers: getAuthHeaders()
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      console.error("Error fetching admin data", response.statusText);
+    }
+  })
+  .then(data => {
+    const showApi = document.getElementById('status_color');
+    if (data.status === 'OK') { 
+      showApi.style.backgroundColor = "#008000";
+      showApi.style.border = "#008000";
+    } else {
+      showApi.style.backgroundColor = "red";
+      showApi.style.border = "red";
+    }
+  })
+  .catch(error => {
+    console.error("Error fetching data:", error);
+    const showApi = document.getElementById('status_color');
+    const expiredSession = document.getElementById('session_expired');
+    showApi.style.backgroundColor = "red";
+    showApi.style.border = "red";
+    expiredSession.style.visibility = "visible";
+  });
+}
+fetchData();
+const intervalId = setInterval(fetchData, 10000);

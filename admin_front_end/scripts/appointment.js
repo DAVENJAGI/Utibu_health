@@ -9,9 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageNumSpan = document.getElementById('page-num');
     appointmentData = [];
 
+    function getAuthHeaders() {
+        return {
+            'X-Custom-Token': customToken
+        };
+    }
 
     function fetchAppointments() {
-        fetch(requestAppointments)
+        fetch(requestAppointments, { headers: getAuthHeaders()})
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -53,13 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 statusColor = '#2A00C7';
             }
   
-            fetch(`http://0.0.0.0:5000/api/v1/user/${appointment.user_id}`)
+            fetch(`http://0.0.0.0:5000/api/v1/user/${appointment.user_id}`, { headers: getAuthHeaders()})
             .then(response => response.json())
             .then(patientData => {
               const patientName = `${patientData.first_name} ${patientData.last_name}`;
         
   
-              fetch(`http://0.0.0.0:5000/api/v1/doctor/${appointment.doctor_id}`)
+              fetch(`http://0.0.0.0:5000/api/v1/doctor/${appointment.doctor_id}`, { headers: getAuthHeaders()})
                 .then(response => response.json())
                 .then(doctorData => {
                     console.log(doctorData);

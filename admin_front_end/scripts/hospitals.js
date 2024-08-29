@@ -9,9 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
 
-    // Function to fetch all counties data
+    function getAuthHeaders() {
+      return {
+          'X-Custom-Token': customToken
+      };
+    }
+
     function fetchAllHospitals() {
-        fetch(requestUrl)
+        fetch(requestUrl, { headers: getAuthHeaders()})
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

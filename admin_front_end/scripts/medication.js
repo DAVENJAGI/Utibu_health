@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
 
-    // Function to fetch all counties data
+    function getAuthHeaders() {
+        return {
+            'X-Custom-Token': customToken
+        };
+    }
+   
     function fetchAllMedications() {
-        fetch(requestUrl)
+        fetch(requestUrl, { headers: getAuthHeaders()})
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -20,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(data => {
-                medicationData = data; // Store all counties data
-                displayCurrentPage(); // Display initial page
+                medicationData = data;
+                displayCurrentPage();
             })
             .catch(error => {
                 console.error("Error fetching data:", error);

@@ -49,3 +49,13 @@ def return_admin():
     for admin in all_admins:
         admin_list.append(admin.to_dict())
     return jsonify(admin_list)
+
+@app_views.route("/admin/<string:admin_id>", methods=['GET'], strict_slashes=False)
+@require_admin_auth
+def get_admin_by_id(admin_id):
+    """get user by id"""
+    admin = storage.get(Admin, admin_id)
+    if admin is None:
+        error_message = f"Admin with id {admin_id} not fouund"
+        return make_response(jsonify({"Message": error_message}), 401)
+    return jsonify(admin.to_dict())

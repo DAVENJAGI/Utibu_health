@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             console.log('Data:', data);
+            localStorage.setItem('id', data.admin.id)
             if (data.Message === 'Login sucessful') {
               window.location.href = 'home.html'; 
             } else {
