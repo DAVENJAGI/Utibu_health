@@ -42,12 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             console.log('Data:', data);
-            localStorage.setItem('id', data.admin.id)
+            
             if (data.Message === 'Login sucessful') {
-              window.location.href = 'home.html'; 
-            } else {
-                password.style.border = '1px solid red';
-                alert(data.error || 'Login failed');
+                localStorage.setItem('id', data.admin.id)
+                window.location.href = 'home.html'; 
+            } else if(data.Message === 'Login failed: Admin not found') {
+                email.style.border = '2px solid red';
+            } else if(data.Message === 'Login failed: Incorrect password') {
+                password.style.border = '2px solid red';
             }
         })
         .catch(error => {
