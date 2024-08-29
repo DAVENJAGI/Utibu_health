@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/landing_page.css">
     <script type="text/javascript" src="../scripts/login.js"></script>
     <link rel="icon" type="image/x-icon" href="../icons/icons/png/filled/people/doctor.png">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
 </head>
 <body>
     <div id="whole_container">
@@ -21,12 +22,18 @@
                     <div id="inputs">
                         <div id="fillouts">
                             <div id="email_entry">
-                                <label for="email" id="email_label">Email:</label> <br>
-                                <input type="email" id="email" name="email" required><br>
+                                <label for="email" id="email_label">Email</label> <br>
+                                <div id="user_icon_div">
+                                    <div id="user_icon"></div>
+                                </div>
+                                <input type="email" id="email" name="email" placeholder="janedoe@gmail.com" required><br>
                             </div>
                             <div id="pass_border">
-                                <label for="password" id="password_label">Password:</label><br>
-                                <input type="password" id="password" name="password" required><br>
+                                <label for="password" id="password_label">Password</label><br>
+                                <div id="password_icon_div">
+                                    <div id="password_icon"></div>
+                                </div>
+                                <input type="password" id="password" name="password" placeholder="*****" required><br>
                             </div>
                             <button type="submit" id="login_button">Login</button>
                         </div>
