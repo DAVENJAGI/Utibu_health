@@ -30,11 +30,16 @@ def add_header(response):
 
     return response
 
+@socketio.on('connect')
+def test_connect():
+    print('client connected')
+    socketio.emit('test_event', {'data': 'Test event emitted!'})
+
+
 @app.teardown_appcontext
 def teardown(exception=None):
     """Closes a session"""
     storage.close()
-
 
 @app.before_request
 def count_api_calls():

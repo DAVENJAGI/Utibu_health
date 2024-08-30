@@ -11,8 +11,8 @@ from models.authorization import require_user_auth, require_doctor_auth, require
 import json
 from flask_socketio import SocketIO
 
-app = Flask(__name__)
-socketio = SocketIO(app)
+#app = Flask(__name__)
+socketio = SocketIO()
 emit =socketio.emit
 
 # GET ALL APPOINTMENTS AND GET APPOINTMENTS BY ID
@@ -145,8 +145,9 @@ def update_doctor_appointment(doctor_id):
 #    return (jsonify(appointment.to_dict()), 201)
     return (jsonify({"Message": "Appointment updated successfully. Thank you"}), 201)
 
+
 @app_views.route("/appointment/<string:appointment_id>/", methods=['PUT'], strict_slashes=False)
-@require_doctor_or_admin_auth
+# @require_doctor_or_admin_auth
 def update_appointment_with_id(appointment_id):
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
@@ -157,24 +158,24 @@ def update_appointment_with_id(appointment_id):
         abort(404)
 
     data = request.get_json()
-
     appointment_columns = Appointment.__table__.columns.keys()
-
     old_status = appointment.appointment_status
 
-#    print("Before update:", appointment.to_dict())
     for key, value in data.items():
         if key in appointment_columns and key not in ["id", "created_at", "doctor_id", "updated_at"]:
             setattr(appointment, key, value)
         else:
             return make_response(jsonify({"Message": "Key not found in appointment"}), 400)
-#    print("After update:", appointment.to_dict())
 
     storage.save()
     print("I'm here")
+    
     if old_status != appointment.appointment_status and appointment.user_id:
-#        print(f"Emitting appointment update event for user {appointment.user_id}")
-        emit('appointment_update', appointment.to_dict(), room=appointment.user_id)
-        print(f"Emitting appointment update event for user {appointment.user_id}")
+        try:
+            socketio.emit('appointment_update', appointment.to_dict()) # room=appointment.user_id)
+            print(f"Emitted appointment update event for user {appointment.user_id}")
+        except Exception as e:
+            print(f"Error emitting appointment update event: {e}")
 
-    return (jsonify({"Message": "Appointment Updated successfully. Thank You"}), 201)
+    return jsonify({"Message": "Appointment Updated successfully. Thank You"}), 201
+
