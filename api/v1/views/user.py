@@ -11,6 +11,8 @@ from models.authorization import require_user_auth, require_admin_auth, require_
 from models.authorization import require_user_or_admin_auth
 import json
 from datetime import datetime
+from werkzeug.security import generate_password_hash
+
 
 from functools import wraps
 import secrets
@@ -103,7 +105,7 @@ def create_user():
         return make_response(jsonify({"error": "Missing doctor_id"}), 400)
     
     obj = request.get_json()
-    existing_user = storage.get_email(User, email)
+    existing_user = storage.get_email(User, obj['email'])
     if existing_user:
         return make_response(jsonify({"error": "Email address already in use. Please try another one."}), 400)
     obj['password'] = generate_password_hash(obj['password'])

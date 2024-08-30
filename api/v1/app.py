@@ -14,7 +14,7 @@ from flask_cors import CORS
 from models.request import Request
 import secrets
 from flask_socketio import SocketIO
-
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 CORS(app)
@@ -23,18 +23,31 @@ app.secret_key = secrets.token_hex(32)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 
+
+#email server
+# Flask-Mail configuration
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
+
+mail = Mail(app)
+
 @app.after_request
 def add_header(response):
     response.headers.add('Access-Control-Expose-Headers', 'X-Custom-Token')
 #    response.headers.add('Access-Control-Expose-Headers', 'session_id')
 
     return response
-
+'''
 @socketio.on('connect')
 def test_connect():
     print('client connected')
     socketio.emit('test_event', {'data': 'Test event emitted!'})
-
+'''
 
 @app.teardown_appcontext
 def teardown(exception=None):

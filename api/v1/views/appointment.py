@@ -10,10 +10,10 @@ from models.appointment import Appointment
 from models.authorization import require_user_auth, require_doctor_auth, require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
 from flask_socketio import SocketIO
+from flask_mail import Mail, Message
+from api.v1.app import mail, app
 
-#app = Flask(__name__)
-socketio = SocketIO()
-emit =socketio.emit
+socketio = SocketIO(app)
 
 # GET ALL APPOINTMENTS AND GET APPOINTMENTS BY ID
 @app_views.route("/appointments", strict_slashes=False, methods=["GET"])
@@ -175,7 +175,35 @@ def update_appointment_with_id(appointment_id):
             socketio.emit('appointment_update', appointment.to_dict()) # room=appointment.user_id)
             print(f"Emitted appointment update event for user {appointment.user_id}")
         except Exception as e:
-            print(f"Error emitting appointment update event: {e}")
+            print(f"Error emmiting the event: {e}")
 
-    return jsonify({"Message": "Appointment Updated successfully. Thank You"}), 201
+        user = storage.get(User, appointment.user_id)
+        if user is None:
+            return make_response(jsonify({"error": "User not found"}), 404)
+
+        user_email = user.email
+        
+        body=f"Your appointment Appointment ID: {appointment.id} has been {appointment.appointment_status}."
+        if appointment.appointment_status == "Rescheduled":
+            body += f"\nNew appointment details will be sent shortly."
+        elif appointment.appointment_status == "cancelled":
+            body += f"\nWe apologize for any inconvenience caused."
+        elif appointment.appointment_status == "No-show":
+            body += f"\n Kindly try setting up another one."
+        body += "We'll keep you updated.\n\n Thank you."
+
+        message = Message(
+                subject=f"Appointment Update - appointment ID: {appointment.id}",
+                recipients=[user_email],
+                body=body
+                )
+
+                
+        try:
+            mail.send(message)
+            print(f"Email sent to {user.email}")
+        except Exception as e:
+            print(f"Error sending email notification: {e}")            
+
+    return jsonify({"Message": "Appointment Updated successfully. Thank You"}), 200
 
