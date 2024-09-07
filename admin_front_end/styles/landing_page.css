@@ -129,9 +129,11 @@
     background-image: url("../icons/png/outline/people/person.png");
     position: absolute;
     /*border: 1px solid red;*/
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     justify-content: center;
+    align-self: center;
+    margin: 3px;
     background-size: cover;
 }
 #password_icon_div{
@@ -146,8 +148,9 @@
     background-image: url("../icons/png/outline/symbols/ui_secure.png");
     position: absolute;
     /*border: 1px solid red;*/
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
+    margin-top: 3px;
     justify-content: center;
     background-size: cover;
 }
