@@ -6,6 +6,7 @@ from flask import jsonify, Blueprint, abort, request, make_response, session
 from models import storage
 from models.user import User
 from models.disease import Disease
+from models.vital import Reading
 from models.user_session import userSession
 from models.authorization import require_user_auth, require_admin_auth, require_doctor_auth, require_doctor_or_admin_or_user_auth
 from models.authorization import require_user_or_admin_auth
@@ -127,3 +128,33 @@ def update_user(user_id):
             setattr(usr, key, value)
     storage.save()
     return jsonify(usr.to_dict())
+# CREATING USER READINGS
+@app_views.route("/user/<string:user_id>/vitals/", methods=['POST'], strict_slashes=False)
+@require_doctor_auth
+def add_vital_reading_to_user(user_id):
+    """add disease to a specific user"""
+    if not request.get_json():
+        return make_response(jsonify({"error": "Not a JSON"}), 400)
+    data = request.json
+
+    user = storage.get(User, user_id)
+    if not user:
+        return make_response(jsonify({"Error": "User not found"}), 400)
+ 
+    obj = request.get_json()
+    vitals = Reading(user_id=user.id, **obj)
+    vitals.save()
+    return (jsonify({"Message": "User readings added successfully"}, vitals.to_dict()), 201)
+
+
+@app_views.route("/user/<string:user_id>/vitals/", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
+def get_vitals_by_user_id(user_id):
+    """get vitals associated with a specific user"""
+    user = storage.get(User, user_id)
+    if user is None:
+        abort(404)
+    vitals = user.patient_vitals_readings
+    vitals_dict = [vital.to_dict() for vital in vitals] if vitals else []
+    return jsonify(vitals_dict), 200
+
