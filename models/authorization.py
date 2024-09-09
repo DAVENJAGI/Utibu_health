@@ -138,7 +138,7 @@ def require_doctor_or_admin_auth(f):
         session_id = request.cookies.get('session_id')
 
         if not auth_token:
-            return make_response(jsonify({"Message": "Missing credentials"}), 403)
+            return make_response(jsonify({"Message": "Sorry, you do not have valid authorization to access this data"}), 403)
 
         if verify_doctor_session(auth_token) or verify_admin_session(auth_token):
             return f(*args, **kwargs)
@@ -154,7 +154,7 @@ def require_doctor_or_admin_or_user_auth(f):
 #        session_id = request.cookies.get('session_id')
 
         if not auth_token:
-            return make_response(jsonify({"Message": "Missing credentials"}), 403)
+            return make_response(jsonify({"Message": "Sorry, you do not have valid authorization to access this data"}), 403)
 
         if verify_doctor_session(auth_token) or verify_user_session(auth_token) or verify_admin_session(auth_token):
             return f(*args, **kwargs)
