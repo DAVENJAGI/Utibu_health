@@ -381,45 +381,36 @@ document.addEventListener("DOMContentLoaded", function() {
   createNewHospital();
 });
 
+function showOverlay() {
+  const overlayDiv = document.getElementById('overlay');
+  const computedStyle = window.getComputedStyle(overlayDiv);
 
-/*
-
-const confirmationDiv = document.getElementById('confirmation_div');
-const button1 = document.getElementById('exit_hospital_form_button');
-const button2 = document.getElementById('save_button');
-
-const disableButtons = () => {
-  button1.disabled = true;
-  button2.disabled = true;
-};
-
-const enableButtons = () => {
-  button1.disabled = false;
-  button2.disabled = false;
-};
-
-confirmationDiv.addEventListener('load', () => {
-
-  if (confirmationDiv.style.display !== 'none') {
-    disableButtons();
+  if (computedStyle.display === 'none') {
+    overlayDiv.style.display = 'block';
   }
-});
+}
 
-const showConfirmationDiv = () => {
-  confirmationDiv.style.display = 'block';
-  disableButtons();
-};
-const hideConfirmationDiv = () => {
-  confirmationDiv.style.display = 'none';
-  enableButtons();
-};
-*/
+function hideOverlayy() {
+  const overlayDiv = document.getElementById('overlay');
+  const computedStyle = window.getComputedStyle(overlayDiv);
+
+  if (computedStyle.display === 'block') {
+    overlayDiv.style.display = 'none';
+  }
+}
 
 function showDeleteConfirmationDiv() {
   const deleteConfirmationDiv = document.getElementById('delete_confirmation_div');
-     
-  if (deleteConfirmationDiv.style.display === 'none') {
+  const computedStyle = window.getComputedStyle(deleteConfirmationDiv);
+  const overlayDiv = document.getElementById('overlay');
+
+  if (computedStyle.display === 'none') {
     deleteConfirmationDiv.style.display = 'block';
+    if (deleteConfirmationDiv.style.display === 'block') {
+      deleteConfirmationDiv.style.zIndex = "200";
+      overlayDiv.style.zIndex = "199";
+      showOverlay();
+    }
   } else {
     deleteConfirmationDiv.style.display = 'block';
   }
@@ -427,18 +418,28 @@ function showDeleteConfirmationDiv() {
 
 function hideDeleteConfirmationDiv() {
   const deleteConfirmationDi = document.getElementById("delete_confirmation_div");
+
   deleteConfirmationDi.style.display = "none";
+  if(deleteConfirmationDi.style.display === "none") {
+    hideOverlayy();
+  }
 }
 
 //FUNCTION TO SHOW THE DELETE FEEDBACK INFO DIV
 function showDeleteFeedbackDiv() {
   const feedbackDiv = document.getElementById("delete_returned_info");
   feedbackDiv.style.display = "block";
+  if (feedbackDiv.style.display === 'block') {
+    feedbackDiv.style.zIndex = "200";
+    overlayDiv.style.zIndex = "199";
+    showOverlay();
+  }
 }
 //HIDES THE RETURNED MESSAGE FROM THE SERVER DIV ON ADDING A NEW HOSPITAL
 function hideDeleteFeedbackDiv() {
   const feedbackDiv = document.getElementById("delete_returned_info");
   feedbackDiv.style.display = "none";
+  hideOverlayy();
   window.location.reload();
 }
 
