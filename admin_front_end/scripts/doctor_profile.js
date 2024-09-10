@@ -2,7 +2,13 @@ const urlParams = new URLSearchParams(window.location.search);
 const doctorId = urlParams.get('doctorId');
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
+  const customToken = localStorage.getItem('X-Custom-Token');
+  function getAuthHeaders() {
+    return {
+      'X-Custom-Token': customToken
+    };
+  }
     
   
     const requestDoctor = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}`;
@@ -19,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageNumSpan = document.getElementById('page-num');
 
 
-    fetch(requestDoctor)
+    fetch(requestDoctor, { headers: getAuthHeaders() })
         .then(response => response.json())
         .then(data => {
             console.log("Doctor API data:", data);
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             licenseNumber.textContent = data.license_no;
 
             const requestHospital = `http://0.0.0.0:5000/api/v1/hospital/${data.hospital_id}`;
-            return fetch(requestHospital);
+            return fetch(requestHospital, { headers: getAuthHeaders() });
         })
         .then(response => response.json())
         .then(hospitalData => {
@@ -59,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // STARTING TO FETCH USERS
     function fetchAllUsers() {
-        fetch(requestDoctorPatients)
+        fetch(requestDoctorPatients, { headers: getAuthHeaders() })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -67,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(data => {
-                userData = data; // Store all counties data
-                displayCurrentPage(); // Display initial page
+                userData = data;
+                displayCurrentPage();
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
@@ -159,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to fetch counties data from the API endpoint
     function fetchDiseases() {
-    fetch("http://0.0.0.0:5000/api/v1/diseases")
+    fetch("http://0.0.0.0:5000/api/v1/diseases", { headers: getAuthHeaders() })
     .then(response => response.json())
     .then(data => {
         console.log('Diseases fetched:', data);
@@ -213,7 +219,7 @@ function createNewPatient() {
       body: jsonData,
     });
     
-    fetch(request)
+    fetch(request, { headers: getAuthHeaders() })
       .then(response => {
         if (response.ok) {
           alert("New Patient saved successfully!");
@@ -280,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // STARTING TO FETCH DOCTOR ORDERS
   function fetchDoctorOrders() {
-      fetch(requestDoctorOrders)
+      fetch(requestDoctorOrders, { headers: getAuthHeaders() })
           .then(response => {
               if (!response.ok) {
                   throw new Error('Network response was not ok');
@@ -317,13 +323,13 @@ document.addEventListener('DOMContentLoaded', () => {
             statusColor = 'green';
           }
 
-          fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`)
+          fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`, { headers: getAuthHeaders() })
           .then(response => response.json())
           .then(patientData => {
             const patientName = `${patientData.first_name} ${patientData.last_name}`;
       
 
-            fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`)
+            fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`, { headers: getAuthHeaders() })
             .then(response => response.json())
             .then(medicationData => {
               const medicationName = medicationData.name;
@@ -380,13 +386,13 @@ document.addEventListener('DOMContentLoaded', () => {
           }
 
 
-          fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`)
+          fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`, getAuthHeaders())
           .then(response => response.json())
           .then(patientData => {
             const patientName = `${patientData.first_name} ${patientData.last_name}`;
       
 
-            fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`)
+            fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`, getAuthHeaders())
             .then(response => response.json())
             .then(medicationData => {
               const medicationName = medicationData.name;
@@ -436,36 +442,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('side_calendar');
   const requestDoctorAppointments = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}/appointments`;
 
-  // var events = [];
-  /*
-  fetch(requestDoctorAppointments)
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(appointment => {
-      console.log("Appoinment data", data);
-      events.push({
-        title: appointment.description,
-        start: appointment.time,
-        description: appointment.date,
-        location: 'Zoom Call'
-      });
-    });
-  });
-  
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    /* plugins: [ 'dayGrid', 'timeGrid' ],
-    initialView: 'dayGridMonth',
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,dayGridWeek,dayGridDay'
-    },
-    events: events,
-  });
-  calendar.render();
-  */
-fetch(requestDoctorAppointments)
+fetch(requestDoctorAppointments, { headers: getAuthHeaders() })
   .then(response => response.json())
   .then(data => {
     
@@ -515,7 +493,7 @@ fetch(requestDoctorAppointments)
   var dayToday = calendarEl.querySelector('.fc-daygrid-day.fc-day-today');
 
   if (dayToday) {
-    dayToday.style.background = '#00D9FF';
+    dayToday.style.background = '#1a6860';
     dayToday.style.color = "white";
   }
   
@@ -533,10 +511,12 @@ fetch(requestDoctorAppointments)
     cell.style.background = '#1a6860';
     cell.style.borderBottom = '#1a6860';
     cell.style.color = "white";
-    cell.style.width = "70px";
+    cell.style.width = "76px";
+    cell.style.height = "45px";
     cell.style.border = "1px solid #1a6860";
     cell.style.textAlign = "center";
-    cell.style.left = "0px";
+    cell.style.zIndex = "10";
+    cell.style.margin = "0px";
   });
 
   
@@ -554,7 +534,7 @@ fetch(requestDoctorAppointments)
     tableHeight.style.borderTop = '1px solid #cfcfcf';
     tableHeight.style.width = '49.5vh';
     tableHeight.style.height = "25vh";
-    // tableHeight.style.overflow = "hidden";
+    
   }
    
   var syncTable = calendarEl.querySelector('.fc-scrollgrid-sync-table');
@@ -592,14 +572,19 @@ fetch(requestDoctorAppointments)
     titleTop.style.border = "1px solid #cfcfcf";
     titleTop.style.marginBottom = "0px";
   }
-
-  var wholeTable = calendarEl.querySelector('.fc-scroller-harness');
-  if (wholeTable) {
-    wholeTable.style.background = '#1a6860';
-  }
+/*
+  var wholeTable1 = calendarEl.querySelector('.fc-scroller-harness');
+  if (wholeTable1) {
+    wholeTable1.style.background = '#1a6860';
+    wholeTable1.style.height = '15px';
+    wholeTable1.style.zIndex = '15';
+  }*/
+  
   var wholeTable = calendarEl.querySelector('.fc-scroller');
   if (wholeTable) {
     wholeTable.style.background = '#1a6860';
+    wholeTable.style.height = "15px";
+    wholeTable.style.overflow = "hidden";
   }
 
 

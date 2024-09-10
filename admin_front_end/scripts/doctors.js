@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
 
+    const customToken = localStorage.getItem('X-Custom-Token');
     function getAuthHeaders() {
       return {
           'X-Custom-Token': customToken

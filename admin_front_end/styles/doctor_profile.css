@@ -1,12 +1,10 @@
 #doctors{
-    background-color: #f7f7f7;
-    color: black;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    transform: scale(1.04);
+    background-color: #A7DFF1;
+    border: solid 1px #d1f2fd;
+    transform: scale(1.01);
 }
 #doctor_text{
-    color: orange;
+    color: #1a6860;
 }
 #content_div{
     position: relative;
@@ -19,7 +17,7 @@
     background: aliceblue;
     /*background: white;*/
     box-shadow: 1px 1px 4px #8c8f91;
-    overflow: auto;
+    overflow: hidden;
     /*border: 1px solid #ff0000*/
 
 }
@@ -158,7 +156,7 @@
     display: flex;
     justify-content: center;
     gap: 8%;
-    overflow: auto;
+    overflow: hidden;
     background: white;
 }
 .route{
@@ -243,7 +241,7 @@
     height: 72.5%;
     background: white;
     display: flex;
-    overflow: auto;
+    overflow: hidden;
     border-bottom: solid 2px #cfcfcf;
     border-bottom-right-radius: 5px;  
     border-bottom-left-radius: 5px;  
@@ -253,7 +251,7 @@
     /*border: 1px solid red;*/
     width: 50%;
     display: block;
-    overflow: auto;
+    overflow: hidden;
 }
 .about_content_data{
     /*border: 1px solid red;*/
@@ -282,7 +280,7 @@
     text-align: center;
     font-weight: 500;
     text-overflow: ellipsis;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 /* APPOINTMENTS CALENDAR*/
@@ -291,7 +289,7 @@
     margin: 1%;
     margin-left: 1.25%;
     background: white;
-    overflow: auto;
+    overflow: hidden;
     height: 95%;
     /*border-radius: 8px;*/
     box-shadow: 1px 1px 3px #8c8f91;
@@ -303,7 +301,7 @@
 #calendar{
     /*border: solid 1px red;*/
     height: 60%;
-    overflow: auto;
+    overflow: hidden;
     display: block;
     
 }
@@ -319,7 +317,7 @@
     margin: 1%;
     height: 37vh;
     display: flex;
-    overflow: auto;
+    overflow: hidden;
     
 }
 #side_calendar{
@@ -356,7 +354,7 @@
     border: solid 1px black;
     margin: 1%;
     height: 90%;
-    overflow: auto;
+    overflow: hidden;
 }
 #app_date{
     /*border: solid 1px red;*/
@@ -405,7 +403,7 @@
     /*border: solid 1px red;*/
     margin-top: 3%;
     height: 30%;
-    overflow: auto;
+    overflow: hidden;
 }
 #short_description{
     border: 1px solid white;
@@ -421,7 +419,7 @@
     height: 70%;
     padding: 10px;
     padding-top: 15px;
-    overflow: auto;
+    overflow: hidden;
     font-size: 18px;
     word-spacing: 1px;
     
@@ -432,7 +430,7 @@
     /*border: solid 1px red;*/
     margin-top: 1%;
     height: 60%;
-    overflow: auto;
+    overflow: hidden;
     
 }
 #about_div_header_1{
@@ -453,7 +451,7 @@
     margin: 1%;
     margin-left: 1.25%;
     background: white;
-    overflow: auto;
+    overflow: hidden;
     height: 100%;
     /*border-radius: 8px;*/
     box-shadow: 1px 1px 3px #8c8f91;
@@ -499,7 +497,7 @@
     /*border: solid 1px red;*/
     margin-top: 1%;
     height: 60%;
-    overflow: auto;
+    overflow: hidden;
     
 }
 #about_div_header_1{
@@ -520,7 +518,7 @@
     margin: 1%;
     margin-left: 1.25%;
     background: white;
-    overflow: auto;
+    overflow: hidden;
     height: 100%;
     /*border-radius: 8px;*/
     box-shadow: 1px 1px 3px #8c8f91;
@@ -571,7 +569,7 @@
     display: none;
     /*box-shadow: 1px 1px 4px #464747;*/
     z-index: 11;
-    overflow: auto;
+    overflow: hidden;
 }
 #header_input{
     /*border: solid 1px red;*/
@@ -609,7 +607,7 @@
     margin: 2%;
     margin-top: 3%;
     height: 99%;
-    overflow: auto;
+    overflow: hidden;
     
 }
 .patient_data_form{
@@ -684,7 +682,7 @@
 #doctors_orders{
     margin-top: 1%;
     height: 60%;
-    overflow: auto;
+    overflow: hidden;
 }
 #doctor_div_inner{
     /*border: 1px red solid;*/
@@ -750,7 +748,7 @@
     background: white;
     border-radius: 8px;
     box-shadow: 1px 1px 3px #b3b3b3;
-    overflow: auto;
+    overflow: hidden;
 }
 #all_patients_tables{
 
@@ -788,7 +786,7 @@
     background-color: inherit;
     width: 100%;
     margin-left: 0;
-
+    overflow-y: hidden;
 }
 #myOrderTable th {
     background-color: white;
@@ -797,7 +795,6 @@
     /*height: 5vh;*/
     border-bottom: solid 2px #d4d4d4;
 }
-
 
 #myOrderTable tbody tr:hover {
     font-weight: 500;
@@ -810,4 +807,7 @@
     width: 150px;
     margin: 0 auto;
     height: 1vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

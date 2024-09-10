@@ -2,7 +2,13 @@ const urlParams = new URLSearchParams(window.location.search);
 const hospitalId = urlParams.get('hospitalId');
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+  
+  const customToken = localStorage.getItem('X-Custom-Token');
+  function getAuthHeaders() {
+    return {
+      'X-Custom-Token': customToken
+    };
+  }
 
 
     const requestUrl = `http://0.0.0.0:5000/api/v1/hospital/${hospitalId}/doctors`; // Replace with your actual API endpoint
@@ -18,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageNumSpan = document.getElementById('page-num');
 
 
-    fetch(requestHospital)
+    fetch(requestHospital, { headers: getAuthHeaders() })
         .then(response => response.json())
         .then(data => {
             console.log("API data:", data);
@@ -36,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hospitalLatitude.textContent = data.latitude;
 
             const requestTown = `http://0.0.0.0:5000/api/v1/ward/${data.town_id}`;
-            return fetch(requestTown);
+            return fetch(requestTown, { headers: getAuthHeaders() });
         })
         .then(response => response.json())
         .then(townData => {
@@ -46,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           hospitalTown.textContent = townData.town_name;
 
           const requestConstituency = `http://0.0.0.0:5000/api/v1/constituency/${townData.constituency_id}`;
-          return fetch(requestConstituency);
+          return fetch(requestConstituency, { headers: getAuthHeaders() });
 
         })
         .then(response => response.json())
@@ -57,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
           hospitalConstituency.textContent = constituencyData.constituency_name;
 
           const requestCounty = `http://0.0.0.0:5000/api/v1/county/${constituencyData.county_id}`;
-          return fetch(requestCounty);
+          return fetch(requestCounty, { headers: getAuthHeaders() });
         })
         .then(response => response.json())
         .then(countyData => {
@@ -76,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to fetch all counties data
     function fetchAllDoctors() {
-        fetch(requestUrl)
+        fetch(requestUrl, { headers: getAuthHeaders() })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

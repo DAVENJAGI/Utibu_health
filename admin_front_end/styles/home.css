@@ -645,7 +645,6 @@
     opacity: 0.98;
     transform: scale(1.0001);
     box-shadow: 1px 1px 3px #b3b3b3;
-    
 }
 #myOrderTable td {
     text-align: center;
@@ -654,12 +653,8 @@
     height: 1vh;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;    
+    text-overflow: ellipsis;
 }
-
-
-
-
 
 
 #placed_orders {

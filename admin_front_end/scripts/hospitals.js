@@ -152,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       fetch(deleteRequest, {
           method: "DELETE",
+          headers: getAuthHeaders(),
       })
       .then(response => {
           if (response.ok) {
