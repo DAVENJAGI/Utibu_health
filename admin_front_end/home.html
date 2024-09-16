@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="stylesheet" href="./styles/common.css">
     <script type="text/javascript" src="../scripts/home.js"></script>
@@ -22,7 +23,7 @@
         <div id="side_panel">
             <div id="inner_side_bar">
                 <div id="title_name"> 
-                    <div id="title_text">Utibu Health</div>
+                    <div id="title_text">ChroniCare</div>
                 </div>
                 <div id="separation"></div>
                 <div id="items_in_sidebar">
@@ -118,10 +119,7 @@
                     <div id="greeting_text"></div>
                 </div>
 
-                <div id="session_expired">
-                    <div id="expired_text"> Your session has expired</div>
-                    <button id="okay_button" onclick="hideExpiredSessionDiv()">OK</button>
-                </div>
+                
                 
                 <div id="admin_div">
                    <div id="admin_button" onclick="showDropdownDiv()">
@@ -140,7 +138,11 @@
             <div id="whole_body">
                 <!--OVERVIEW DIVS-->
                 <div id="inner_content_container">
-                    
+                    <div id="session_expired">
+                        <div id="expired_text"> Your session has expired</div>
+                        <button id="okay_button" onclick="hideExpiredSessionDiv()">x</button>
+                    </div>
+                    <!--<div id="overlay"></div> -->
                     <div id="dash_disp">
                         <div id="inner_content_container2">
                             <div id="regions_div" class="content_div">
@@ -237,36 +239,60 @@
                     </div>
                 </div>
 
-                <!--
-                <div id="separator">
-                    <div id="first_line">
-                        <div id="inner_line_1"></div>
-                    </div>
-                    <div id="stars">
-                        <div id="first_stars">
-                            <div id="inner_first_stars">*</div>
-                            <div id="inner_second_stars">*</div>
-                            <div id="inner_third_stars">*</div>
+                <div id="website_stats_2">
+                    <div id="side_1">
+                        <div id="requests_graph_div">
+                            <div id="appoitment_stat_text">Overall Statistics: 2024</div>
+                            <canvas id="userChart"></canvas>
                         </div>
-                        <div id="middle_stars">
-                            <div id="middle_first_stars">*</div>
-                            <div id="middle_second_stars">*</div>
-                            <div id="middle_third_stars">*</div>
-                        </div>
-                        <div id="last_stars">
-                            <div id="last_first_stars">*</div>
-                            <div id="last_second_stars">*</div>
-                            <div id="last_third_stars">*</div>
+                        <div id="charts">
+                            <div id="requests_graph_div_1">
+                                <canvas id="gender_pie_chart"></canvas>
+                                <canvas id="age_distribution_chart"></canvas>
+                            </div>
+                            <div id="requests_graph_div_2">
+                                <div id="appoitment_stat_text">Appointment Statistics: 2024</div>
+                                <canvas id="bar_chart"></canvas>
+                            </div>
                         </div>
                     </div>
-                    <div id="last_line">
-                        <div id="inner_line_2"></div>
-                    </div>
+                    <div id="side_2">
+                        
+                            <div id="placed_orders_1">
+                                <div id="unapproved_orders_table">
+                                    <div id="order_tables_content">
+                                        <table id="myOrderTable">
+                                          <thead id="table_head">
+                                                <tr>
+                                                    <th><input type="checkbox" class=checkboxes></th>
+                                                    <th>Patient's Name</th>
+                                                    <th>Doctor's Name</th>
+                                                    <th>Medication</th>
+                                                    <th>Quantity</th>
+                                                    <th>Billing Cost</th>
+                                                    <th>Order Status</th>
+                                                    <th>Order Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                
+                                    </div>
+                                    <div id="pagination">
+                                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
+                                        <span id="page-num"></span>
+                                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
                 </div>
-            
 
-            <div id="div_separators"></div>
-            -->
+                <!--
                 <div id="website_stats">
                     <div id="server_stats_1">
                         <div id="server_stat_txt">Unapproved orders</div>
@@ -317,18 +343,7 @@
                         
                     </div>
                 </div>
-                
-
-                <div id="website_stats_2">
-                    <div id="server_stats_2">
-                        <div id="server_stat_txt_1">Server Statistics</div>
-                    </div>
-                    <div id="requests_graph_div">
-                        <div id="line_graph">
-
-                        </div>
-                    </div>
-                </div>
+            -->
                 <div id="chat_bot_div">
                     <div id="chat_bot"><i class="fa fa-comment" aria-hidden="true"></i></div>
                 </div>

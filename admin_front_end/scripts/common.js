@@ -81,6 +81,24 @@ function getAuthHeaders() {
     'X-Custom-Token': customToken
   };
 }
+
+function showOverlay() {
+  const overlayDiv = document.getElementById('overlay');
+  const computedStyle = window.getComputedStyle(overlayDiv);
+
+  if (computedStyle.display === 'none') {
+    overlayDiv.style.display = 'block';
+  }
+}
+
+function hideOverlayy() {
+  const overlayDiv = document.getElementById('overlay');
+  const computedStyle = window.getComputedStyle(overlayDiv);
+
+  if (computedStyle.display === 'block') {
+    overlayDiv.style.display = 'none';
+  }
+}
 function fetchData() {
   fetch(`http://0.0.0.0:5000/api/v1/status`, {
     headers: getAuthHeaders()
@@ -106,9 +124,13 @@ function fetchData() {
     console.error("Error fetching data:", error);
     const showApi = document.getElementById('status_color');
     const expiredSession = document.getElementById('session_expired');
+    const overlayDiv = document.getElementById('overlay');
     showApi.style.backgroundColor = "red";
     showApi.style.border = "red";
     expiredSession.style.visibility = "visible";
+    showOverlay();
+    overlayDiv.style.zIndex = "250";
+    expiredSession.style.zIndex = "800";
   });
 }
 fetchData();
