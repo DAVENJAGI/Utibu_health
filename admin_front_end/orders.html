@@ -127,6 +127,69 @@
                    </div>
                 </div>
             </div>
+            <div id="overlay"></div> 
+            <div id="order_status_div">
+                <div id="order_id_top">
+                    <div id="order_id_id">Order Id: 12cf02e9-11fe-4b82-a015-169efaade69d</div>
+                    <div id="order_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+                <div id="order_details">
+                    <div id="order_image"></div>
+                    <div id="order_description">
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Name</div>
+                            <div class="colon">:</div>
+                            <div id="medication_name" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Quantity</div>
+                            <div class="colon">:</div>
+                            <div id="order_quantity"  class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Price</div>
+                            <div class="colon">:</div>
+                            <div id="order_price" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Patient</div>
+                            <div class="colon">:</div>
+                            <div id="patient_name" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Doctor</div>
+                            <div class="colon">:</div>
+                            <div id="doctor_name" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Placed at</div>
+                            <div class="colon">:</div>
+                            <div id="placed_at" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Updated at</div>
+                            <div class="colon">:</div>
+                            <div id="updated_at" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Status</div>
+                            <div class="colon">:</div>
+                            <div class="order_detail_data">
+                                <select id="order_select" name="order" class="input" required>
+                                    <option value="" class="options" id="option_select_1"></option>
+                                    <option value="" class="options" id="option_select_2">Approve</option>
+                                    <option value="" class="options" id="option_select_3">Cancel</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="order_approval_buttons">
+                    <div id="order_buttons">
+                        <button class="confirmation_buttons" id="update_button">Update</button>
+                    </div>
+                </div>
+            </div>
 
             <div id="top_div">
                 <div id="orders_page_name">All Orders</div>
