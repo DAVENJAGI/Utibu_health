@@ -669,6 +669,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 15px;
 }
 
 
@@ -915,12 +916,12 @@
 #side_1{
     /*border: solid 1px red;*/
     height: 100%;
-    width: 50%;
+    width: 60%;
 }
 #side_2{
     /*border: solid 1px red;*/
     height: 100%;
-    width: 50%;
+    width: 40%;
 }
 #appoitment_stat_text{
     /*border: 1px solid red;*/

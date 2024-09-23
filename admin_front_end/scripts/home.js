@@ -545,8 +545,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     label: 'Rescheduled',
                     data: appointmentData.map(data => data.rescheduled),
-                    backgroundColor: 'rgba(26, 104, 96, 0.8)',
-                    borderColor: 'rgba(26, 104, 96, 1)',
+                    backgroundColor: 'rgba(105, 62, 254, 0.8)',
+                    borderColor: 'rgba(105, 62, 254, 1)',
                     borderWidth: 1
                 },
                 {
