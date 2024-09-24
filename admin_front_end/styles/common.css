@@ -42,6 +42,7 @@
     height: 95vh;
     /*overflow-y: auto;*/
     z-index: 8;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 #title_name{
     width: 92%;
@@ -518,4 +519,119 @@ thead tr{
 @keyframes blink {
   0% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+#returned_info{
+    /*border: solid 1px #898989;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#ok_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+}
+#ok_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#saved_confirmation_text_text{
+    margin: 1%;
+    height: 35%;
+    font-weight: 600;
+    text-align: center;
+    align-content: center;
+    color: #898989;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#delete_returned_info{
+    border: solid 1px #9b9a9a;
+    z-index: 30;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 550px;
+    background: white;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #9b9a9a;
+}
+#delete_ok_button{
+    border: 1px solid #1a6860;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #1a6860;
+    color: white;
+    font-size: 10px;
+    font-family: inherit;
+}
+#delete_ok_button:hover{
+    color: wheat;
+    transform: scale(1.002);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+#delete_saved_confirmation_text_text{
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
+}
+
+#saved_confirmation_text_title{
+    font-weight: 600;
+    font-size: 25px;
+    font-family: inherit;
+    text-align: center;
+}
+
+#confirmation_text{
+    /*border: solid 1px red;*/
+    height: 60%;
+    margin: 1%;
+    align-content: center;
+}
+#confirmation_text_text{
+    /*border: solid 1px red;*/
+    margin: 1%;
+    height: 35%;
+    text-align: center;
+    align-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a6860;
+}
+#confirmation_buttons{
+    /*border: solid 1px red;*/
+    height: 30%;
+    margin: 1%;
+    align-content: center;
+}
+#confirmation_buttons_inner{
+    /*border: 1px solid red;*/
+    align-content: center;
+    height: 80%;
+    margin: 1%;
+    text-align: center;
 }

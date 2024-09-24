@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageNumSpan = document.getElementById('page-num');
     const searchOrderInput = document.getElementById('search_input_home');
     const searchOrderButton = document.getElementById('search_button_home');
+    let orderId = null;
 
     const customToken = localStorage.getItem('X-Custom-Token');
 
@@ -119,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 day: '2-digit'
             });
 
-            console.log(patientName);
             tableRow.innerHTML = `
                 <td><input type="checkbox"></td>
                 <td>${order.id}</td>
@@ -273,8 +273,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.tagName !== 'TD') return;
         const clickedRow = event.target.closest('tr');
         if (!clickedRow) return;
-        const orderId = clickedRow.cells[1].textContent;
-    
+        orderId = clickedRow.cells[1].textContent;
+
+        
         fetchOrderDetails(orderId)
             .then(orderDetails => {
                 const patientId = orderDetails.user_id;
@@ -289,6 +290,94 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error("Error fetching order details or related data:", error);
             });
+    });
+
+    function updateOrder() {
+        if (!orderId) {
+        alert("Order ID is not available. Please select an order first.");
+        return;
+        }
+
+        const selectedOption1 = document.getElementById('option_select_2').value;
+        const selectedOption2 = document.getElementById('option_select_3').value;
+        let selectedOption;
+
+        console.log(selectedOption);
+        
+        if (selectedOption === "") {
+            alert("Please select a valid order status.");
+            return;
+        }
+
+        if(selectedOption1 === "Approved") {
+            selectedOption = selectedOption1;
+        } else if(selectedOption2 === "Cancelled"){
+            selectedOption = selectedOption2;
+        } else{
+            alert("Please select a valid order status");
+            return;
+        }
+
+        
+        const orderData = {
+            order_status: selectedOption,
+        };
+        
+        
+        const jsonData = JSON.stringify(orderData);
+
+        console.log(orderData);
+        
+    
+        const request = new Request(`http://0.0.0.0:5000/api/v1/order/${orderId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            ...getAuthHeaders()
+        },
+        body: jsonData,
+        });
+        
+        fetch(request)
+        .then(response => {
+            if (response.ok) {
+                showFeedbackDiv();
+                return response.json();
+            } else {
+                throw new Error(`Error updating appointment: ${response.statusText}`);
+            }
+        })
+        .then(jsonData => {
+            showFeedbackDiv();
+            console.log(jsonData);
+            const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+            const message = jsonData[0].Message;
+            console.log(message);
+            confirmationTextDiv.textContent = message;
+        })
+        .catch(error => alert(error));
+    }
+
+    const updateButton = document.getElementById('update_button');
+    updateButton.addEventListener('click', () => {
+        hideOrderStatusDiv();
+        updateOrder();
+    });
+
+    function showFeedbackDiv() {
+        const feedbackDiv = document.getElementById("returned_info");
+        feedbackDiv.style.display = "block";
+        feedbackDiv.style.zIndex = "200";
+    }
+    function hideFeedbackDiv() {
+        const feedbackDiv = document.getElementById("returned_info");
+        feedbackDiv.style.display = "none";
+        window.location.reload();
+      }
+
+    const okButton = document.getElementById('ok_button');
+    okButton.addEventListener('click', () => {
+        hideFeedbackDiv();
     });
     
     

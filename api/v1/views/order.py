@@ -138,22 +138,16 @@ def get_order_by_doctor_id(doctor_id):
     return jsonify(doctor_order)
 
 
-@app_views.route("/doctor/<string:doctor_id>/order/<string:order_id>", methods=['PUT'], strict_slashes=False)
+@app_views.route("/order/<string:order_id>", methods=['PUT'], strict_slashes=False)
 # @require_doctor_auth
-def approve_orders(doctor_id, order_id):
+def approve_orders(order_id):
     """Approve patient's orders """
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
-    dkt = storage.get(Doctor, doctor_id)
-    if dkt is None:
-        abort(404)
 
     order = storage.get(Order, order_id)
     if order is None:
         abort(404)
-
-    if order.doctor_id != doctor_id:
-        abort(403)
 
     old_order = order.order_status
     data = request.get_json()

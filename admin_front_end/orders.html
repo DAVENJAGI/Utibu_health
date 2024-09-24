@@ -127,7 +127,18 @@
                    </div>
                 </div>
             </div>
-            <div id="overlay"></div> 
+            <div id="overlay"></div>
+            <div id="returned_info">
+                
+                <div id="confirmation_text">
+                    <div id="saved_confirmation_text_text"></div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                    </div>
+                </div>
+            </div>
             <div id="order_status_div">
                 <div id="order_id_top">
                     <div id="order_id_id">Order Id: 12cf02e9-11fe-4b82-a015-169efaade69d</div>
@@ -177,8 +188,8 @@
                             <div class="order_detail_data">
                                 <select id="order_select" name="order" class="input" required>
                                     <option value="" class="options" id="option_select_1"></option>
-                                    <option value="" class="options" id="option_select_2">Approve</option>
-                                    <option value="" class="options" id="option_select_3">Cancel</option>
+                                    <option value="Approved" id="option_select_2">Approve</option>
+                                    <option value="Cancelled" id="option_select_3">Cancel</option>
                                 </select>
                             </div>
                         </div>
@@ -193,9 +204,6 @@
 
             <div id="top_div">
                 <div id="orders_page_name">All Orders</div>
-                <div id="create_new_item">
-                    <div id="add_new">Create new</div>
-                </div>
             </div>
 
             <div id="orders_div">
