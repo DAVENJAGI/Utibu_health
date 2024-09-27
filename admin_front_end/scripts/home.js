@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
     orderData = [];
+    let orderId = null;
     
     const customToken = localStorage.getItem('X-Custom-Token');
 
@@ -113,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
                     tableRow.innerHTML = `
                         <td><input type="checkbox"></td>
+                        <td>${order.id}</td>
                         <td>${patientName}</td>
                         <td>${doctorName}</td>
                         <td>${medicationName}</td>
@@ -147,77 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchOrders();
       
       
-        searchButton.addEventListener('click', () => {
-            const searchTerm = searchOrder.value.trim().toLowerCase();
-      
-            // Filter counties data based on search term
-            const filteredOrders = orderData.filter(order =>
-                order.order_status.toLowerCase().includes(searchTerm) ||
-                order.id.toLowerCase().includes(searchTerm) ||
-                [order.user.first_name, order.user.last_name].join(' ').toLowerCase().includes(searchTerm) || // Combine first and last name for patient search
-                order.medication.name.toLowerCase().includes(searchTerm) ||
-                [order.doctor.first_name, order.doctor.last_name].join(' ').toLowerCase().includes(searchTerm)
-            );
-      
-            tableBody.innerHTML = '';
-            filteredOrders.forEach(order => {
-                    const tableRow = document.createElement("tr");
         
-                    let statusColor = '';
-                    if (order.order_status === 'pending approval') {
-                    statusColor = 'red';
-                    } else if (order.order_status === 'approved') {
-                    statusColor = 'green';
-                    }
-        
-        
-                    fetch(`http://0.0.0.0:5000/api/v1/user/${order.user_id}`, { headers: getAuthHeaders()})
-                    .then(response => response.json())
-                    .then(patientData => {
-                    const patientName = `${patientData.first_name} ${patientData.last_name}`;
-                
-        
-                    fetch(`http://0.0.0.0:5000/api/v1/medication/${order.medication_id}`, { headers: getAuthHeaders()})
-                    .then(response => response.json())
-                    .then(medicationData => {
-                        const medicationName = medicationData.name;
-
-                        fetch(`http://0.0.0.0:5000/api/v1/doctor/${order.doctor_id}`, { headers: getAuthHeaders()})
-                        .then(response => response.json())
-                        .then(doctorData => {
-                            const doctorName = `${doctorData.first_name} ${doctorData.last_name}`;
-
-                            const formattedDate = new Date(order.created_at).toLocaleDateString('en-US', {
-                                year: 'numeric',
-                                month: '2-digit',
-                                day: '2-digit'
-                            });
-        
-        
-                            tableRow.innerHTML = `
-                                <td><input type="checkbox"></td>                        
-                                <td>${order.id}</td>
-                                <td>${patientName}</td>
-                                <td>${doctorName}</td>
-                                <td>${medicationName}</td>
-                                <td>${order.quantity}</td>
-                                <td>${formattedDate}</td>
-                                <td style="color: ${statusColor};">${order.order_status}</td>
-                                <td>$${order.billing_cost}</td>  
-                                <td>${order.delivery_mode}</td>                 
-                            `;
-                            tableBody.appendChild(tableRow);
-                        })
-                        .catch(error => console.error("Error fetching doctor:", error));
-                    
-                    })
-                    .catch(error => console.error("Error fetching medication:", error));
-                    })
-                    .catch(error => console.error("Error fetching patient:", error));
-            });
-      
-            searchOrder.value = '';
-        });
         
       
         prevButton.addEventListener('click', () => {
@@ -252,6 +184,233 @@ document.addEventListener('DOMContentLoaded', () => {
                 clickedRow.style.color = checkbox.checked ? '#1a6860' : '';
                 clickedRow.style.backgroundColor = checkbox.checked ? '#E2F3E6' : '';
             }
+        });
+
+        function fetchOrderDetails(orderId) {
+            const orderDetailsUrl = `http://0.0.0.0:5000/api/v1/order/${orderId}`;
+            return fetch(orderDetailsUrl, { headers: getAuthHeaders() })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                });
+        }
+        
+        function fetchRelatedData(patientId, doctorId, medicationId) {
+            return Promise.all([
+                fetch(`http://0.0.0.0:5000/api/v1/user/${patientId}`, { headers: getAuthHeaders() }).then(response => response.json()),
+                fetch(`http://0.0.0.0:5000/api/v1/doctor/${doctorId}`, { headers: getAuthHeaders() }).then(response => response.json()),
+                fetch(`http://0.0.0.0:5000/api/v1/medication/${medicationId}`, { headers: getAuthHeaders() }).then(response => response.json())
+            ]);
+        }
+        
+        function updateOrderStatusDiv(orderDetails, patientData, doctorData, medicationData) {
+            const orderStatusDiv = document.getElementById('order_status_div');
+            
+            document.getElementById('order_id_id').textContent = `Order Id: ${orderDetails.id}`;
+            
+            const medicationNameElem = document.getElementById('medication_name');
+            medicationNameElem.textContent = medicationData.name || 'N/A';
+            
+            const orderQuantityElem = document.getElementById('order_quantity');
+            orderQuantityElem.textContent = orderDetails.quantity;
+            
+            const orderPriceElem = document.getElementById('order_price');
+            orderPriceElem.textContent = `$${orderDetails.billing_cost}`;
+            
+            const patientNameElem = document.getElementById('patient_name');
+            patientNameElem.textContent = `${patientData.first_name} ${patientData.last_name}`;
+            
+            const doctorNameElem = document.getElementById('doctor_name');
+            doctorNameElem.textContent = `${doctorData.first_name} ${doctorData.last_name}`;
+            
+            const placedAtElem = document.getElementById('placed_at');
+            const formattedPlacedAt = new Date(orderDetails.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            placedAtElem.textContent = formattedPlacedAt;
+            
+            const updatedAtElem = document.getElementById('updated_at');
+            const formattedUpdatedAt = new Date(orderDetails.updated_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            updatedAtElem.textContent = formattedUpdatedAt;
+            
+            const orderStatus = document.getElementById('option_select_1');
+            const orderSelect = document.getElementById('order_select');
+            orderStatus.textContent = orderDetails.order_status;
+    
+            const status = orderDetails.order_status.trim().toLowerCase(); 
+            if (status === 'pending approval') {
+                orderSelect.style.backgroundColor = '#00B300'; 
+            } else if (status === 'approved') {
+                orderSelect.style.backgroundColor = '#00B300';
+            } else {
+                orderSelect.style.backgroundColor = '#FFBABA';
+            }
+            
+        }
+        
+        function showOrderStatusDiv() {
+            const orderStatusDiv = document.getElementById('order_status_div');
+            const computedStyle = window.getComputedStyle(orderStatusDiv);
+            if (computedStyle.display === "none") {
+                orderStatusDiv.style.display = 'block';
+                if(orderStatusDiv.style.display = 'block'){
+                    orderStatusDiv.style.zIndex = "200";
+                    showOverlay();
+                }
+            }
+        }
+    
+        function hideOrderStatusDiv() {
+            const orderStatusDiv = document.getElementById('order_status_div');
+            const orderSelect = document.getElementById('order_select');
+            const computedStyle = window.getComputedStyle(orderStatusDiv);
+            if (computedStyle.display === "block") {
+                orderStatusDiv.style.display = 'none';
+                orderSelect.selectedIndex = 0;
+            }
+        }
+        function hideOverlay() {
+            const overlayDiv = document.getElementById('overlay');
+            const computedStyle = window.getComputedStyle(overlayDiv);
+          
+            if (computedStyle.display === 'block') {
+              overlayDiv.style.display = 'none';
+            }
+          }
+    
+        function showOverlay() {
+            const overlayDiv = document.getElementById('overlay');
+            const computedStyle = window.getComputedStyle(overlayDiv);
+          
+            if (computedStyle.display === 'none') {
+              overlayDiv.style.display = 'block';
+              overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+            }
+          }
+    
+        const myButton = document.getElementById('order_exit_div');
+                myButton.addEventListener('click', () => {
+                    hideOrderStatusDiv();
+                    hideOverlay();
+                });
+        
+        tableBody.addEventListener('click', (event) => {
+            if (event.target.tagName !== 'TD') return;
+            const clickedRow = event.target.closest('tr');
+            if (!clickedRow) return;
+            orderId = clickedRow.cells[1].textContent;
+    
+            
+            fetchOrderDetails(orderId)
+                .then(orderDetails => {
+                    const patientId = orderDetails.user_id;
+                    const doctorId = orderDetails.doctor_id;
+                    const medicationId = orderDetails.medication_id;
+        
+                    return fetchRelatedData(patientId, doctorId, medicationId).then(([patientData, doctorData, medicationData]) => {
+                        updateOrderStatusDiv(orderDetails, patientData, doctorData, medicationData);
+                        showOrderStatusDiv();
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching order details or related data:", error);
+                });
+        });
+    
+        function updateOrder() {
+            if (!orderId) {
+            alert("Order ID is not available. Please select an order first.");
+            return;
+            }
+    
+            const selectedOption1 = document.getElementById('option_select_2').value;
+            const selectedOption2 = document.getElementById('option_select_3').value;
+            let selectedOption;
+    
+            console.log(selectedOption);
+            
+            if (selectedOption === "") {
+                alert("Please select a valid order status.");
+                return;
+            }
+    
+            if(selectedOption1 === "Approved") {
+                selectedOption = selectedOption1;
+            } else if(selectedOption2 === "Cancelled"){
+                selectedOption = selectedOption2;
+            } else{
+                alert("Please select a valid order status");
+                return;
+            }
+    
+            
+            const orderData = {
+                order_status: selectedOption,
+            };
+            
+            
+            const jsonData = JSON.stringify(orderData);
+    
+            console.log(orderData);
+            
+        
+            const request = new Request(`http://0.0.0.0:5000/api/v1/order/${orderId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                ...getAuthHeaders()
+            },
+            body: jsonData,
+            });
+            
+            fetch(request)
+            .then(response => {
+                if (response.ok) {
+                    showFeedbackDiv();
+                    return response.json();
+                } else {
+                    throw new Error(`Error updating appointment: ${response.statusText}`);
+                }
+            })
+            .then(jsonData => {
+                showFeedbackDiv();
+                console.log(jsonData);
+                const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+                const message = jsonData[0].Message;
+                console.log(message);
+                confirmationTextDiv.textContent = message;
+            })
+            .catch(error => alert(error));
+        }
+    
+        const updateButton = document.getElementById('update_button');
+        updateButton.addEventListener('click', () => {
+            hideOrderStatusDiv();
+            updateOrder();
+        });
+    
+        function showFeedbackDiv() {
+            const feedbackDiv = document.getElementById("returned_info");
+            feedbackDiv.style.display = "block";
+            feedbackDiv.style.zIndex = "200";
+        }
+        function hideFeedbackDiv() {
+            const feedbackDiv = document.getElementById("returned_info");
+            feedbackDiv.style.display = "none";
+            window.location.reload();
+          }
+    
+        const okButton = document.getElementById('ok_button');
+        okButton.addEventListener('click', () => {
+            hideFeedbackDiv();
         });
         
 });
@@ -564,4 +723,5 @@ document.addEventListener('DOMContentLoaded', () => {
               // ... other chart options as needed
           }
       });
+
 });

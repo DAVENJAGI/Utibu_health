@@ -118,9 +118,6 @@
                 <div id="greetings">
                     <div id="greeting_text"></div>
                 </div>
-
-                
-                
                 <div id="admin_div">
                    <div id="admin_button" onclick="showDropdownDiv()">
                         <!--<i id="admin_icon" class="fa fa-user-circle" aria-hidden="true" style="font-size: 25px; text-align: center; align-content: center; color: #686868;"></i>-->
@@ -132,6 +129,81 @@
                     <div id="logout" class="dropdown" onclick="logOut()"> LogOut</div>
 
                    </div>
+                </div>
+            </div>
+
+            <div id="overlay"></div>
+            <div id="returned_info">
+                
+                <div id="confirmation_text">
+                    <div id="saved_confirmation_text_text"></div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div id="order_status_div">
+                <div id="order_id_top">
+                    <div id="order_id_id">Order Id:</div>
+                    <div id="order_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+                <div id="order_details">
+                    <div id="order_image"></div>
+                    <div id="order_description">
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Name</div>
+                            <div class="colon">:</div>
+                            <div id="medication_name" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Quantity</div>
+                            <div class="colon">:</div>
+                            <div id="order_quantity"  class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Price</div>
+                            <div class="colon">:</div>
+                            <div id="order_price" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Patient</div>
+                            <div class="colon">:</div>
+                            <div id="patient_name" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Doctor</div>
+                            <div class="colon">:</div>
+                            <div id="doctor_name" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Placed at</div>
+                            <div class="colon">:</div>
+                            <div id="placed_at" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Updated at</div>
+                            <div class="colon">:</div>
+                            <div id="updated_at" class="order_detail_data"></div>
+                        </div>
+                        <div class="order_description_info">
+                            <div class="order_detail_head">Status</div>
+                            <div class="colon">:</div>
+                            <div class="order_detail_data">
+                                <select id="order_select" name="order" class="input" required>
+                                    <option value="" class="options" id="option_select_1"></option>
+                                    <option value="Approved" id="option_select_2">Approve</option>
+                                    <option value="Cancelled" id="option_select_3">Cancel</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="order_approval_buttons">
+                    <div id="order_buttons">
+                        <button class="confirmation_buttons" id="update_button">Update</button>
+                    </div>
                 </div>
             </div>
             
@@ -259,12 +331,14 @@
                     <div id="side_2">
                         
                             <div id="placed_orders_1">
+                                <div id="unapproved_order_text">Unapproved Orders</div>
                                 <div id="unapproved_orders_table">
                                     <div id="order_tables_content">
                                         <table id="myOrderTable">
                                           <thead id="table_head">
                                                 <tr>
                                                     <th><input type="checkbox" class=checkboxes></th>
+                                                    <th>ID</th>
                                                     <th>Patient's Name</th>
                                                     <th>Doctor's Name</th>
                                                     <th>Medication</th>
@@ -292,58 +366,6 @@
                         </div>
                 </div>
 
-                <!--
-                <div id="website_stats">
-                    <div id="server_stats_1">
-                        <div id="server_stat_txt">Unapproved orders</div>
-                        <div id="search">
-                            <div id="filter_div">
-                                <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>
-                                <div id="filter_txt">Filter By</div>
-                            </div>
-                            <div id="search_div_home">
-                                <div id="search_bar_home">
-                                    <input type="text" id="search_input_home" placeholder="Search Order by patient's name....">
-                                    <button id="search_button_home"><i class="fa fa-search" aria-hidden="true" style="font-size: 20px;"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="placed_orders">
-                        <div id="unapproved_orders_table">
-                            <div id="order_tables_content">
-                                <table id="myOrderTable">
-                                  <thead id="table_head">
-                                        <tr>
-                                            <th><input type="checkbox" class=checkboxes></th>
-                                            <th>Order Id</th>
-                                            <th>Patient's Name</th>
-                                            <th>Doctor's Name</th>
-                                            <th>Medication</th>
-                                            <th>Quantity</th>
-                                            <th>Order Date</th>
-                                            <th>Order Status</th>
-                                            <th>Billing Cost</th>
-                                            <th>Pickup Mode</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        </tr>
-                                    </tbody>
-                                </table>
-        
-                            </div>
-                            <div id="pagination">
-                                <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
-                                <span id="page-num"></span>
-                                <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            -->
                 <div id="chat_bot_div">
                     <div id="chat_bot"><i class="fa fa-comment" aria-hidden="true"></i></div>
                 </div>

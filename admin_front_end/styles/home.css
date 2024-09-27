@@ -95,6 +95,7 @@
     border-radius: 6px;
     background: white;
     border-radius: 13px;
+    box-shadow: 1px 1px 4px #9d9fa0;
     
 }
 .content_div:hover{
@@ -114,7 +115,7 @@
     margin-bottom: 1.75vh;
     column-gap: 5%;
     display: flex;
-    color: #1a6860;
+    color: #38baee;
 }
 .cont_name:hover{
     /*color: white;*/
@@ -134,8 +135,8 @@
     height: 7vh;
     align-content: center;
     color: inherit;
-    font-size: 24px;
-    font-weight: 900;
+    font-size: 20px;
+    font-weight: 700;
 }
 .dash_overview_icons{
     /*border: solid BLUE 1px;*/
@@ -201,259 +202,92 @@
     border-bottom-right-radius: 6px;
     text-align: center;
     align-content: center;
-    font-size: 35px;
-    font-weight: 700;
-    color: #1a6860;
+    font-size: 40px;
+    /*font-weight: 700;*/
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /*color: #1a6860;*/
 }
 
 
 /*REGIONS DASHBOARD DIV*/
-#regions_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #99DBD4;
-    border-left: 3px solid #3fb3a7;
-    
-}
 #regions_icons{
     background-color: #C6EBE7;
     border: 1px solid #99DBD4;
 }
-#regions_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    /*left: 0;*/
-    width: 100%;
-    height: 100%;
-    background: #1E1E2C; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#regions_div:hover:after{
-    top: 0;
-}
-#regions_div:hover *{
-    color: white;
+#regions_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*HOSPITAL DASHBOARD DIV*/
-#hospitals_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #a28089;
-    border-left: solid 3px #a28089;
-}
 #hospital_icons{
     background-color: #E7DFE1;
     border: 1px solid #C5B0B5;
 }
-#hospitals_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    /*left: 0;*/
-    width: 100%;
-    height: 100%;
-    background: #a28089; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#hospitals_div:hover:after{
-    top: 0;
+#hospitals_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*DOCTORS DASHBOARD DIV*/
-#doctors_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #2d545e;
-    border-left: 3px solid #2d545e;
-}
 #doctor_icons{
     background-color: #D9E9ED;
     border: 1px solid #A2C9D2;
 }
-#doctors_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    /*left: 0;*/
-    width: 100%;
-    height: 100%;
-    background: #2d545e; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-    color: white;
-    
-}
-#doctors_div:hover:after{
-    top: 0; 
-    
-}
-#doctors_div:hover * {
-    color: white;
+#doctors_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*PATIENTS DASHBOARD DIV*/
-#patients_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #e1b382;
-    border-left: solid 3px #e1b382;
-    
-}
 #patient_icons{
     background-color: #F4E3D2;
     border: 1px solid #E5BE94;
 }
-#patients_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    /*left: 0;*/
-    width: 100%;
-    height: 100%;
-    background: #e1b382; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#patients_div:hover:after{
-    top: 0;
+#patients_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*DISEASES DASHBOARD DIV*/
-#diseases_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #ff5e6c;
-    border-left: solid 3px #ff5e6c;
-}
 #disease_icons{
     background-color: #FFC7CC;
     border: 1px solid #FF707D;
 }
-#diseases_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #ff5e6c; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#diseases_div:hover:after{
-    top: 0;
+#diseases_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*MEDICATIONS DASHBOARD DIV*/
-#medication_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #8076a3;
-    border-left: solid 3px #8076a3;
-}
 #medication_icons{
     background-color: #E0DDE8;
     border: 1px solid #ADA7C4;
 }
-#medication_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #8076a3; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#medication_div:hover:after{
-    top: 0;
+#medication_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*APPOINTMENTS  DASHBOARD DIV*/
-#appointment_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #c89666;
-    border-left: solid 3px #c89666;
-}
 #appointment_icons{
     background-color: #F0E2D6;
     border: 1px solid #D8B492;
 }
-#appointment_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #c89666; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#appointment_div:hover:after{
-    top: 0;
+#appointment_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*ORDERS  DASHBOARD DIV*/
-#orders_div{
-    background: white;
-    overflow: hidden;
-    border: solid 1px #9bc400;
-    border-left: solid 3px #9bc400;
-}
 #order_icons{
     background-color: #E7FF8F;
     border: 1px solid #D6FF3D;
 }
-#orders_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #9bc400; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#orders_div:hover:after{
-    top: 0;
-}
-#orders_div:hover * {
-    color: white;
+#orders_div:hover{
+    border: solid 1px #99DBD4;
 }
 
 /*PAYMENT  DASHBOARD DIV*/
-#payment_div{
-    background: white;
-    overflow: hidden;
-    margin-right: 1%;
-    border: solid 1px #7c677f;
-    border-left: solid 3px #7c677f;
-}
 #payment_icons{
     background-color: #E0DAE1;
     border: 1px solid #C7BBC8;
 }
-#payment_div:after{
-    content: "";
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #7c677f; 
-    transition: top 0.75s ease-in-out; 
-    z-index: -1;
-}
-#payment_div:hover:after{
-    top: 0;
+#payment_div:hover{
+    border: solid 1px #99DBD4;
 }
 #separator{
     border: solid 1px red;
@@ -618,7 +452,7 @@
     /*border: solid 1px red;*/
     margin-bottom: 1%;
     margin-top: 0px;
-    height: 98%;
+    height: 92%;
 }
 #order_tables_content{
     /*border: solid 1px red;*/
@@ -646,13 +480,17 @@
 }
 #myOrderTable th {
     background-color: white;
-    color: #1a6860;
+    color: #898989;
     max-width: 100px;
     text-align: left;
     font-size: 15px;
     /*border: 1px solid red;*/
     height: 1vh;
     border-bottom: solid 2px #d4d4d4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
 }
 
 #myOrderTable tbody tr:hover {
@@ -669,14 +507,16 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B6B6B;
 }
 
 
 #placed_orders_1{
     /*border: solid 1px red;*/
     margin: 1%;
-    height: 95%;
+    height: 92%;
     background: white;
     border-radius: 8px;
     box-shadow: 1px 1px 3px #b3b3b3;
@@ -817,7 +657,7 @@
 }
 
 #chat_bot{
-    border: solid 1px #1a6860;
+    border: solid 1px #38baee;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -825,16 +665,16 @@
     align-content: center;
     text-align: center;
     font-size: 20px;
-    background-color: #1a6860;
+    background-color: #38baee;
     color: white;
     animation: glow 7s infinite alternate;
 }
 @keyframes glow {
     from {
-        box-shadow: 1 0 0 1px #2d545e, 0 0 0 4px #835460, 0 0 0 8px #4caf50; 
+        box-shadow: 1 0 0 1px #2d545e, 0 0 0 8px #4caf50; 
       }
       to {
-        box-shadow: 0 0 0 1px #4caf50, 0 0 0 4px #866443, 0 0 0 8px #beef00;
+        box-shadow: 0 0 0 1px #4caf50, 0 0 0 8px #beef00;
       }
 }
 #chat_bot:hover{
@@ -930,4 +770,175 @@
     font-size: 8;
     color: #38baee;
     background: white;
+}
+#unapproved_order_text{
+    /*border: 1px solid red;*/
+    width: 75%;
+    margin: 1%;
+    margin-bottom: 2%;
+    font-size: 8;
+    color: #38baee;
+    background: white;
+}
+
+/*ORDER STATUS DIV*/
+#order_status_div{
+    /*border: solid 1px red;*/
+    display: none;
+    border: 1px solid #B8B8B8;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 450px;
+    width: 550px;
+    background: white;
+    z-index: 50;
+    box-shadow: 2px 2px 8px #b3b3b3;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#order_id_top{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 10%;
+    display: flex;
+    align-content: center;
+    border-bottom: 1px solid #B8B8B8;
+}
+#order_id_id{
+    /*border: 1px solid red;*/
+    width: 90%;
+    align-content: center;
+    font-size: 19px;
+    margin: 1%;
+    color: #898989;
+    font-family: inherit;
+    font-weight: 500;
+}
+#order_exit_div{
+    /*border: 1px solid red;*/
+    width: 10%;
+    margin: 1%;
+    text-align: center;
+    align-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #898989;
+}
+#order_exit_div:hover{
+    color: black;
+}
+
+#order_details{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 73%;
+    display: flex;
+}
+#order_image{
+    border: 1px solid #B8B8B8;
+    border-radius: 7px;
+    margin: 1%;
+    width: 30%;
+    height: 40%;
+    background-image: url('../icons/metformin.jpeg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+#order_description{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    width: 70%;
+}
+.order_description_info{
+    /*border: 1px solid red;
+    border-bottom: 1px solid #EBEBEB;*/
+    margin: 1%;
+    height: 10%;
+    display: flex;
+    font-family: inherit;
+}
+.order_detail_head{
+    /*border: solid 1px red;*/
+    width: 30%;
+    align-content: center;
+    font-family: inherit;
+    color: #898989;
+    /*font-weight: 600;*/
+    font-size: 20px;
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.order_detail_data{
+    /*border: solid 1px red;*/
+    width: 75%;
+    margin-left: 1%;
+    align-content: center;
+    font-family: inherit;
+}
+.colon{
+    /*border: 1px solid red;*/
+    width: 3%;
+    font-size: 18px;
+    font-family: inherit;
+    align-content: center;
+    text-align: center;
+}
+#order_select{
+    border: 1px #EBEBEB;
+    border-radius: 5px;
+    height: 90%;
+    background-color: white;
+    outline: none;
+    font-family: inherit;
+    max-width: 60%;
+    font-size: 15px;
+}
+
+#order_approval_buttons{
+    /*border: 1px solid red;*/
+    border-top: 1px solid #B8B8B8;
+    margin: 1%;
+    height: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+#order_buttons{
+    /*border: 1px solid red;*/
+    width: 45%;
+    display: flex;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+}
+.confirmation_buttons{
+    /*border: 1px solid red;*/
+    outline: none;
+    width: 100px;
+    height: 75%;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+}
+#cancel_button{
+    background: #FF5C67;
+    border: 1px solid #FF5C67;
+}
+#update_button{
+    background: #30B3DE;
+    border: 1px solid #30B3DE;
+}
+.confirmation_buttons:hover{
+    opacity: 0.85;
+    color: black;
+}
+.options{
+    height: 50px;
 }

@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (status === 'pending approval') {
             orderSelect.style.backgroundColor = '#00B300'; 
         } else if (status === 'approved') {
-            orderSelect.style.backgroundColor = '#B3E5FC';
+            orderSelect.style.backgroundColor = '#00B300';
         } else {
             orderSelect.style.backgroundColor = '#FFBABA';
         }

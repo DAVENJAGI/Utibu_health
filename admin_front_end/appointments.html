@@ -128,6 +128,82 @@
                 </div>
             </div>
 
+            <div id="overlay"></div>
+            <div id="returned_info">
+                
+                <div id="confirmation_text">
+                    <div id="saved_confirmation_text_text"></div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div id="appointment_status_div">
+                <div id="appointment_id_top">
+                    <div id="appointment_id_id">Appointment Id:</div>
+                    <div id="appointment_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+                <div id="appointment_details">
+                    <div id="appointment_image"></div>
+                    <div id="appointment_description">
+                        <div class="appointment_description_info">
+                            <div class="appointment_detail_head">Date set</div>
+                            <div class="colon">:</div>
+                            <div id="appointment_date" class="appointment_detail_data"></div>
+                        </div>
+                        <div class="appointment_description_info">
+                            <div class="appointment_detail_head">Time set</div>
+                            <div class="colon">:</div>
+                            <div id="appointment_time"  class="appointment_detail_data"></div>
+                        </div>
+                        <div class="appointment_description_info">
+                            <div class="appointment_detail_head">Patient</div>
+                            <div class="colon">:</div>
+                            <div id="patient_name" class="appointment_detail_data"></div>
+                        </div>
+                        <div class="appointment_description_info">
+                            <div class="appointment_detail_head">Doctor</div>
+                            <div class="colon">:</div>
+                            <div id="doctor_name" class="appointment_detail_data"></div>
+                        </div>
+                        <div class="appointment_description_info">
+                            <div class="appointment_detail_head">Placed at</div>
+                            <div class="colon">:</div>
+                            <div id="placed_at" class="appointment_detail_data"></div>
+                        </div>
+                        <div class="appointment_description_info">
+                            <div class="appointment_detail_head">Updated at</div>
+                            <div class="colon">:</div>
+                            <div id="updated_at" class="appointment_detail_data"></div>
+                        </div>
+                        <div class="appointment_description_info">
+                            <div class="appointment_detail_head">Status</div>
+                            <div class="colon">:</div>
+                            <div class="appointment_detail_data">
+                                <select id="appointment_select" name="order" class="input" required>
+                                    <option value="" class="options" id="option_select_1"></option>
+                                    <option value="Confirmed" id="option_select_2">Confirm</option>
+                                    <option value="Cancelled" id="option_select_3">Cancel</option>
+                                    <option value="No-show" id="option_select_4">No-show</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="appointment_description_info" id="appointment_description_div">
+                            <div class="appointment_detail_head">Description</div>
+                            <div class="colon">:</div>
+                            <div id="appointment_details_info" class="appointment_detail_data"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="appointment_approval_buttons">
+                    <div id="appointment_buttons">
+                        <button class="confirmation_buttons" id="update_button">Update</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="top_div">
                 <div id="page_name">Appointments</div>
                 <div id="create_new_item">
@@ -135,48 +211,7 @@
                 </div>
             </div>
 
-<!--
-            <div id="search_div">
-                <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Appointment by patient's name....">
-                    <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
-                </div>
-            </div>
-            
-            <div id="whole_body">
-                <div id="content">
-                    <div id="hospital_title">
-                        <div id="hospital_summary">Appointment Summary</div>
-                    </div>
-                    <div id="tables_content">
-                        <table id="myTable">
-                          <thead id="table_head">
-                                <tr id="">
-                                    <th>ID</th>
-                                    <th>County Code</th>
-                                    <th>County Name</th>
 
-                                    <th>No. of Constituencies</th>
-                                    <th>Number of Wards</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div id="pagination">
-                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
-                        <span id="page-num"></span>
-                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
-                    </div>
-                   
-                </div>
-            </div>
-        -->
         <div id="appointment_div">
             <div id="appointment_div_inner">
                 <div id="search">
