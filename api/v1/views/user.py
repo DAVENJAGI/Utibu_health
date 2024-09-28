@@ -70,7 +70,7 @@ def add_disease_to_user_profile(user_id):
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     data = request.json
     if "disease_id" not in data:
-        return make_response(jsonify({"error": "Missin disease_id"}), 400)
+        return make_response(jsonify({"error": "Missing disease_id"}), 400)
 
     disease_id = data["disease_id"]
 
@@ -83,7 +83,9 @@ def add_disease_to_user_profile(user_id):
 
     user.diseases.append(disease)
     storage.save()
-    return (jsonify({"message": "Disease added successfully"}), 201)
+    message = f"Disease added successfully to {user.first_name} {user.last_name} userId: {user.id}"
+#    return (jsonify({"Message": "Disease added successfully"}), 201)
+    return (jsonify({"Message": message}), 201)
 
 
 @app_views.route("/users/", methods=["POST"], strict_slashes=False)

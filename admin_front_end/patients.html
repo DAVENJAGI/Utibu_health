@@ -128,50 +128,207 @@
                 </div>
             </div>
 
+            <div id="overlay"></div>
+            <div id="returned_info">
+                <div id="head_text_div">
+                    <div id="head_caps_text">Add New Disease</div>
+                </div>
+                <div id="confirmation_text">
+                    <div id="saved_confirmation_text_text"></div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div id="user_status_div">
+                <div id="user_id_top">
+                    <div id="user_id_id">Patient Id:</div>
+                    <div id="user_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+
+                <div id="user_details">
+                    <div id="profile_side_div">
+                        <div id="order_image"></div>
+                        <div id="buttons_div">
+                            <div class="user_profile_button">
+                                <button id="add_disease_button">
+                                    <div id="add_icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                    <div id="new_disease_txt">Add Disease</div>
+                                </button>
+                            </div>
+                            <div class="user_profile_button">
+                                <button id="edit_user_button">
+                                    <div id="edit_icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                                    <div id="edit_txt">Edit Profile</div>
+                                </button>
+                            </div>
+                            <div class="user_profile_button">
+                                <button id="delete_user_button">
+                                    <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                                    <div id="delete_txt" onclick="showConfirmationDiv()">Delete User</div>
+                                </button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div id="user_description">
+                        <div class="user_description_info">
+                            <div class="user_detail_head">First Name</div>
+                            <div class="colon">:</div>
+                            <div id="first_name" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Last Name</div>
+                            <div class="colon">:</div>
+                            <div id="last_name"  class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">D.o.B</div>
+                            <div class="colon">:</div>
+                            <div id="date_of_birth" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">email</div>
+                            <div class="colon">:</div>
+                            <div id="user_email" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">As.. Doctor</div>
+                            <div class="colon">:</div>
+                            <div id="doctor_name" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Phone No</div>
+                            <div class="colon">:</div>
+                            <div id="phone_number" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Sex</div>
+                            <div class="colon">:</div>
+                            <div id="sex" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Address</div>
+                            <div class="colon">:</div>
+                            <div id="patient_address" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Status</div>
+                            <div class="colon">:</div>
+                            <div class="user_detail_data">
+                                <div id="activity_status">Active</div>
+                            </div>
+                        </div>
+                        <div class="user_description_info" id="add_disease_div">
+                            <div class="user_detail_head" id="new_disease_title">New Disease</div>
+                            <div class="colon">:</div>
+                            <div id="patient_address" class="user_detail_data">
+                                <div class="select-wrapper">
+                                    <select id="disease_select" name="disease_id" class="input" required>
+                                    <option value="" id="option_select">Select Disease</option> </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="user_approval_buttons">
+                    <div id="create_disease_buttons">
+                        <button class="confirmation_buttons" id="update_button">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="user_profile_edit">
+                <div id="user_id_top">
+                    <div id="user_edit_id">Patient Id:</div>
+                    <div id="user_edit_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+                <div id="user_details">
+                    <div id="profile_side_div">
+                        <div id="order_image"></div>
+                    </div>
+                    <div id="user_description">                        
+                        <div class="user_description_info">
+                            <div class="user_detail_head">First Name</div>
+                            <div class="colon">:</div>
+                            <input type="text" id="edit_first_name"  class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Last Name</div>
+                            <div class="colon">:</div>
+                            <input type="text" id="edit_last_name"  class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">D.o.B</div>
+                            <div class="colon">:</div>
+                            <input type="text" id="edit_date_of_birth" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">email</div>
+                            <div class="colon">:</div>
+                            <input type="text" id="edit_user_email" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">As.. Doctor</div>
+                            <div class="colon">:</div>
+                            <div id="edit_doctor_name" class="user_detail_data"></div>
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Phone No</div>
+                            <div class="colon">:</div>
+                            <input type="text" id="edit_phone_number" pattern="[0-9]{10}" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Sex</div>
+                            <div class="colon">:</div>
+                            <div class="select-wrapper">
+                                <select id="gender_select" name="disease_id" class="input" required>
+                                    <option value="Male" id="option_select_1"></option>
+                                    <option value="Female" id="option_select2"></option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Address</div>
+                            <div class="colon">:</div>
+                            <input type="text" id="edit_patient_address" class="user_detail_data_input">
+                        </div>
+                    </div>
+                </div>
+                <div id="user_approval_buttons">
+                    <div id="order_buttons">
+                        <button class="confirmation_buttons" id="update_button">Update</button>
+                    </div>
+                </div>
+              <!-- <div id="form_div">
+                    
+                    <form id="newPatientForm">
+                        
+                        <div class="disease_data_form">
+                            <label for="disease_id" class="input_name">Disease:</label>
+                            <br>
+                            <div class="select-wrapper">
+                                <select id="disease_select" name="disease_id" class="input" required>
+                                <option value="" id="option_select">Select Disease</option> </select>
+                            </div>
+                            <br><br>
+                        </div>
+                        
+                    </form>
+                    
+                </div>-->
+                
+                
+            </div>
+
             <div id="top_div">
                 <div id="page_name">Patients</div>
             </div>
-<!--
-            <div id="search_div">
-                <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Patient by first name....">
-                    <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
-                </div>
-            </div>
-            
-            <div id="whole_body">
-                <div id="content">
-                    <div id="hospital_title">
-                        <div id="hospital_summary">Patients summary</div>
-                    </div>
-                    <div id="tables_content">
-                        <table id="myTable">
-                          <thead id="table_head">
-                                <tr id="">
-                                    <th>ID</th>
-                                    <th>first Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Date of Birth</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>
 
-                    </div>
-                    <div id="pagination">
-                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
-                        <span id="page-num"></span>
-                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
-                    </div>
-                   
-                </div>
-            </div>
-        -->
         <div id="confirmation_div">
             <div id="confirmation_text">
                 <div id="confirmation_text_text">Are you sure you want to delete the selected user?</div>
@@ -184,6 +341,7 @@
             </div>
         </div>
         <div id="returned_info">
+            
             <div id="confirmation_text">
                 <div id="saved_confirmation_text_text"></div>
             </div>
@@ -210,12 +368,7 @@
                     </div>
                     
                 </div>
-                <div id="delete_div">
-                    <button id="delete_button">
-                        <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
-                        <div id="delete_txt" onclick="showConfirmationDiv()">Delete</div>
-                    </button>
-                </div>
+                
             </div>
             <div id="patient_table_div">
                 <div id="all_patient_table">

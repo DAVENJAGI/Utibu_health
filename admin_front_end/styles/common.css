@@ -524,7 +524,7 @@ thead tr{
 }
 
 #returned_info{
-    /*border: solid 1px #898989;*/
+    border: solid 1px #b9b9b9;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -534,7 +534,7 @@ thead tr{
     background: white;
     display: none;
     border-radius: 5px;
-    box-shadow: 1px 1px 8px #9b9a9a;
+    box-shadow: 1px 1px 4px #9b9a9a;
 }
 #ok_button{
     border: 1px solid #38baee;
@@ -552,14 +552,25 @@ thead tr{
     /*transform: scale(1.0001);*/
     box-shadow: 1px 1px 4px #9b9a9a;
 }
-#saved_confirmation_text_text{
+#head_text_div{
+    /*border: 1px solid red;*/
     margin: 1%;
-    height: 35%;
-    font-weight: 600;
+    height: 20%;
     text-align: center;
     align-content: center;
     color: #898989;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 22px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#saved_confirmation_text_text{
+    margin: 1%;
+    height: 35%;
+    /*font-weight: 550;*/
+    text-align: center;
+    align-content: center;
+    color: #898989;
+    font-size: 16px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -611,7 +622,7 @@ thead tr{
 
 #confirmation_text{
     /*border: solid 1px red;*/
-    height: 60%;
+    height: 40%;
     margin: 1%;
     align-content: center;
 }
@@ -627,7 +638,7 @@ thead tr{
 }
 #confirmation_buttons{
     /*border: solid 1px red;*/
-    height: 30%;
+    height: 20%;
     margin: 1%;
     align-content: center;
 }

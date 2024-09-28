@@ -180,6 +180,9 @@
     color: #898989;
     font-family: inherit;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 #appointment_exit_div{
     /*border: 1px solid red;*/
