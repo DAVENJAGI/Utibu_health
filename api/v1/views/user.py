@@ -117,7 +117,7 @@ def create_user():
     return (jsonify(usr.to_dict()), 201)
 
 @app_views.route("/user/<string:user_id>", methods=['PUT'], strict_slashes=False)
-@require_user_auth
+@require_doctor_or_admin_or_user_auth
 def update_user(user_id):
     """updates user's properties except the created, updated, email, and id"""
     if not request.get_json():
@@ -129,7 +129,12 @@ def update_user(user_id):
         if key not in ["id", "email", "created_at", "updated_at"]:
             setattr(usr, key, value)
     storage.save()
-    return jsonify(usr.to_dict())
+#    return jsonify(usr.to_dict())
+    message = f"Patient {usr.first_name} {usr.last_name} with userId: {usr.id} profile updated successfully."
+#    return (jsonify({"Message": "Disease added successfully"}), 201)
+    return (jsonify({"Message": message}), 201)
+
+
 # CREATING USER READINGS
 @app_views.route("/user/<string:user_id>/vitals/", methods=['POST'], strict_slashes=False)
 @require_doctor_auth

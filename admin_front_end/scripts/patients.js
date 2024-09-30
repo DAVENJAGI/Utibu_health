@@ -168,6 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const sexElem = document.getElementById('sex');
         sexElem.textContent = userDetails.sex || 'N/A';
+        const userStatusElem = document.getElementById('activity_status');
+        if(userDetails.status === "Active"){
+            userStatusElem.style.background = "#A3DDF0";
+            userStatusElem.style.border = "1px solid #89D3EC";
+        } else {
+            userStatusElem.style.background = "#FF8F8F";
+            userStatusElem.style.border = "1px solid #FF7070";
+        }
+        console.log(userDetails.status);
+        userStatusElem.textContent = userDetails.status;
         
         const addressElem = document.getElementById('patient_address');
         addressElem.textContent = userDetails.address || 'N/A';
@@ -196,14 +206,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const userDescriptionElem = document.getElementById('edit_user_email');
         userDescriptionElem.value = userDetails.email;
         
-                
-        const doctorNameElem = document.getElementById('edit_doctor_name');
+                        
+        const doctorNameElem = document.getElementById('doctor_option_select_1');
         doctorNameElem.textContent = `${doctorData.first_name} ${doctorData.last_name}`;
         
         const telephoneElem = document.getElementById('edit_phone_number');
         telephoneElem.value = userDetails.telephone_no || 'N/A';
 
         const sexElem = document.getElementById('option_select_1');
+        // const genderSelect = document.getElementById("gender_select");
+        const option1 = document.getElementById("option_select_1");
+        const option2 = document.getElementById("option_select2");
+        const option3 = document.getElementById("option_select3");
+        
+        option1.textContent = "Select Gender";
+        option2.textContent = "Female";
+
+
+        if(userDetails.sex === "Male"){
+            option1.textContent = "Male";
+            option3.textContent = "Female";
+            option2.style.display = "none";
+        } else if(userDetails.sex === "Female"){
+            option1.textContent = 'Female';
+            option2.textContent = 'Male';
+            option3.style.display = "none";
+        } else {
+            option1.textContent = 'Select Gender';
+            option2.textContent = "Male";
+            option3.textContent = "Female";
+        }
         sexElem.textContent = userDetails.sex || 'Select Gender';
         
         const addressElem = document.getElementById('edit_patient_address');
@@ -336,47 +368,74 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error("Error fetching user details or related data:", error);
             });
+    });
+    
+    //FETCHES ALL DOCTORS TO UPDATE USER DISEASES
+    const doctorSelect = document.getElementById("doctor_select");
+    let doctorId;
+
+    function fetchDoctors() {
+    fetch ("http://0.0.0.0:5000/api/v1/doctors", {
+        headers: {
+            ...getAuthHeaders(),
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Doctors fetched:', data);
+        data.forEach(doctor => {
+            const option = document.createElement("option");
+            
+            option.value = doctor.id; 
+            option.innerText = `${doctor.first_name} ${doctor.last_name}`;
+            doctorSelect.appendChild(option);
         });
-   
-    /*
+        })
+        .catch(error => console.error("Error fetching doctors:", error));
+    }
+    console.log('finished fetching doctors')
+    fetchDoctors();
+
+    doctorSelect.addEventListener("change", function() {
+        doctorId = this.value;
+    });
+
+    const genderSelect = document.getElementById("gender_select");
+    let selectedGender;
+
+    genderSelect.addEventListener('change', function () {
+        selectedGender = genderSelect.value;
+    });
+    
+    console.log(selectedGender);
     function updateUser() {
-        if (!userId) {
-        alert("user ID is not available. Please select an user first.");
-        return;
-        }
-    
-        const selectedOption1 = document.getElementById('option_select_2').value;
-        const selectedOption2 = document.getElementById('option_select_3').value;
-        const selectedOption3 = document.getElementById('option_select_4').value;
-        let selectedOption;
-    
-        console.log(selectedOption);
         
-        if (selectedOption === "") {
-            alert("Please select a valid user status.");
-            return;
-        }
-    
-        if(selectedOption1 === "Confirmed") {
-            selectedOption = selectedOption1;
-        } else if(selectedOption2 === "Cancelled"){
-            selectedOption = selectedOption2;
-        } else if(selectedOption3 === "No-show"){
-            selectedOption = selectedOption2;
-        } else{
-            alert("Please select a valid user status");
-            return;
-        }
-    
-        
-        const userData = {
-            user_status: selectedOption,
+        const originalUserData = {
+            first_name: document.getElementById('edit_first_name').value,
+            last_name: document.getElementById('edit_last_name').value,
+            date_of_birth: document.getElementById('edit_date_of_birth').value,
+            doctor_id: doctorId,
+            email: document.getElementById('edit_user_email').value,
+            telephone_no: document.getElementById('edit_phone_number').value || null,
+            sex: selectedGender,
+            address: document.getElementById('edit_patient_address').value,
         };
         
+        const changedData = {};
+        Object.keys(originalUserData).forEach(key => {
+            if (originalUserData[key] !== userDetails[key]) {
+                changedData[key] = originalUserData[key];
+            }
+        });
+
+        if (Object.keys(changedData).length === 0) {
+            alert('No changes detected');
+            return;
+        }
         
-        const jsonData = JSON.stringify(userData);
+        const jsonData = JSON.stringify(changedData);
     
-        console.log(userData);
+        console.log(changedData);
         
     
         const request = new Request(`http://0.0.0.0:5000/api/v1/user/${userId}`, {
@@ -387,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: jsonData,
         });
-        
+
         fetch(request)
         .then(response => {
             if (response.ok) {
@@ -398,6 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .then(jsonData => {
+            hideUserEditProfileDiv();
             showFeedbackDiv();
             console.log(jsonData);
             const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
@@ -408,11 +468,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => alert(error));
     }
     
-    const updateButton = document.getElementById('update_button');
+    const updateButton = document.getElementById('update_user_profile_button');
     updateButton.addEventListener('click', () => {
         hideUserStatusDiv();
-        updateUser();
-    });*/
+        updateUser(window.userDetails);
+    });
     
     function showFeedbackDiv() {
         const feedbackDiv = document.getElementById("returned_info");
@@ -469,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => alert("Error sending request:", error));
     }
 
-    //FETCHES ALL DISEASES FIRST
+    //FETCHES ALL DISEASES TO UPDATE USER DISEASES
     const diseaseSelect = document.getElementById("disease_select");
     let diseaseId;
 

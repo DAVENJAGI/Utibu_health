@@ -131,7 +131,7 @@
             <div id="overlay"></div>
             <div id="returned_info">
                 <div id="head_text_div">
-                    <div id="head_caps_text">Add New Disease</div>
+                    <div id="head_caps_text">Patient Details Update</div>
                 </div>
                 <div id="confirmation_text">
                     <div id="saved_confirmation_text_text"></div>
@@ -218,7 +218,7 @@
                             <div class="user_detail_head">Status</div>
                             <div class="colon">:</div>
                             <div class="user_detail_data">
-                                <div id="activity_status">Active</div>
+                                <div id="activity_status"></div>
                             </div>
                         </div>
                         <div class="user_description_info" id="add_disease_div">
@@ -236,7 +236,7 @@
 
                 <div id="user_approval_buttons">
                     <div id="create_disease_buttons">
-                        <button class="confirmation_buttons" id="update_button">Update</button>
+                        <button class="confirmation_buttons" id="update_button">New</button>
                     </div>
                 </div>
             </div>
@@ -274,7 +274,12 @@
                         <div class="user_description_info">
                             <div class="user_detail_head">As.. Doctor</div>
                             <div class="colon">:</div>
-                            <div id="edit_doctor_name" class="user_detail_data"></div>
+                            <div class="select-wrapper">
+                                <select id="doctor_select" class="select_divs" name="doctor_id" class="input" required>
+                                    <option id="doctor_option_select_1"></option>
+                                </select>
+                            </div>
+                            <div id="choose_doctor" class="user_detail_data"></div>
                         </div>
                         <div class="user_description_info">
                             <div class="user_detail_head">Phone No</div>
@@ -286,8 +291,9 @@
                             <div class="colon">:</div>
                             <div class="select-wrapper">
                                 <select id="gender_select" name="disease_id" class="input" required>
-                                    <option value="Male" id="option_select_1"></option>
-                                    <option value="Female" id="option_select2"></option>
+                                    <option id="option_select_1"></option>
+                                    <option value="Male" id="option_select2"></option>
+                                    <option value="Female" id="option_select3"></option>
                                 </select>
                             </div>
                             
@@ -301,7 +307,7 @@
                 </div>
                 <div id="user_approval_buttons">
                     <div id="order_buttons">
-                        <button class="confirmation_buttons" id="update_button">Update</button>
+                        <button class="confirmation_buttons" id="update_user_profile_button">Update</button>
                     </div>
                 </div>
               <!-- <div id="form_div">
