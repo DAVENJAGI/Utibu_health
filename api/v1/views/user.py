@@ -40,16 +40,18 @@ def get_user_by_id(user_id):
     return jsonify(user.to_dict())
 
 @app_views.route("user/<string:user_id>", methods=["DELETE"], strict_slashes=False)
-@require_user_auth
+@require_doctor_or_admin_or_user_auth
 def delete_user(user_id):
     """deletes  user with  specific id"""
     user = storage.get(User, user_id)
     if user is None:
         abort(404)
+
     user.delete()
     storage.save()
-#    return jsonify({})
-    return (jsonify({"Message": "User deleted successfully. Thank you"}), 201)
+    message = f"Patient {user.first_name} {user.last_name} with userId: {user.id} profile updated successfully."
+    return (jsonify({"Message": message}), 200)
+
 
 @app_views.route("/user/<string:user_id>/disease/", methods=['GET'], strict_slashes=False)
 @require_user_auth
@@ -126,7 +128,7 @@ def update_user(user_id):
     if usr is None:
         abort(404)
     for key, value in request.get_json().items():
-        if key not in ["id", "email", "created_at", "updated_at"]:
+        if key not in ["id", "created_at", "updated_at"]:
             setattr(usr, key, value)
     storage.save()
 #    return jsonify(usr.to_dict())

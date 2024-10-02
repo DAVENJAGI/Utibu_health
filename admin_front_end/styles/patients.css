@@ -130,96 +130,40 @@
     background-color: inherit;
     width: 100%;
     margin-left: 0;
-
 }
+
 #myPatientTable th {
     background-color: white;
-    color: #1a6860;
+    color: #898989;
+    max-width: 100px;
     text-align: left;
-    /*height: 5vh;*/
+    font-size: 15px;
+    /*border: 1px solid red;*/
+    height: 1vh;
     border-bottom: solid 2px #d4d4d4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
 }
-
 
 #myPatientTable tbody tr:hover {
     font-weight: 500;
     opacity: 0.98;
-    transform: scale(1.0001);
+    transform: scale(1.00001);
     box-shadow: 1px 1px 3px #b3b3b3;
 }
 #myPatientTable td {
     text-align: left;
-    width: 150px;
+    max-width: 100px;
     margin: 0 auto;
     height: 1vh;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
-}
-
-#confirmation_div{
-    border: solid 1px #9b9a9a;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 200px;
-    width: 550px;
-    background: white;
-    display: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 8px #9b9a9a;
-}
-
-#confirmation_text_text{
-    /*border: solid 1px red;*/
-    margin: 1%;
-    height: 35%;
-    text-align: center;
-    align-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    color: red;
-}
-
-#confirmation_buttons_inner{
-    /*border: 1px solid red;*/
-    align-content: center;
-    height: 80%;
-    margin: 1%;
-    text-align: center;
-}
-#no_button{
-    border: 1px solid red;
-    width: 90px;
-    height: 30px;
-    border-radius: 4px; 
-    background-color: #FF2C2C;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-    margin-right: 3%;
-    
-}
-#yes_button{
-    border: 1px solid #1a6860;
-    width: 90px;
-    height: 30px;
-    border-radius: 4px;
-    background-color: #1a6860;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-}
-#no_button:hover{
-    color: wheat;
-    transform: scale(1.002);
-    box-shadow: 1px 1px 4px #9b9a9a;
-}
-#yes_button:hover{
-    color: wheat;
-    transform: scale(1.002);
-    box-shadow: 1px 1px 4px #9b9a9a;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B6B6B;
 }
 
 /*ORDER STATUS DIV*/
@@ -488,8 +432,6 @@
     text-align: center;
 }
 #activity_status{
-    background: ;
-    border: ;
     width: 60px;
     height: 25px;
     text-align: center;
@@ -574,6 +516,17 @@
     outline: none;
     margin-left: 7%;
 }
+#disease_select{
+    border: 1px solid rgb(48, 179, 222, 0.4);
+    width: 60%;
+    height: 28px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    background: white;
+    outline: none;
+    margin-left: 7%;
+}
 
 #gender_select{
     border: 1px solid rgb(48, 179, 222, 0.4);
@@ -614,4 +567,19 @@
     z-index: 50;
     box-shadow: 2px 2px 8px #b3b3b3;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.status-indicator {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 18px;
+    border: 1px solid white;
+    /*background-color: #38baea;*/
+    text-align: center;
+    width: 80px;
+    min-height: 20px;
+    margin-top: 20px;
+}
+th:first-child {
+    min-width: 20px;
 }

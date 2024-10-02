@@ -142,6 +142,21 @@
                     </div>
                 </div>
             </div>
+            <div id="confirmation_div">
+                <div id="head_text_div">
+                    <div id="head_caps_text">Delete Patient</div>
+                </div>
+                <div id="confirmation_text">
+                    <div id="confirmation_text_text">Are you sure you want to delete the selected user?</div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="no_button">No</button>
+                        <button id="yes_button">Yes</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="user_status_div">
                 <div id="user_id_top">
                     <div id="user_id_id">Patient Id:</div>
@@ -167,7 +182,7 @@
                             <div class="user_profile_button">
                                 <button id="delete_user_button">
                                     <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
-                                    <div id="delete_txt" onclick="showConfirmationDiv()">Delete User</div>
+                                    <div id="delete_txt">Delete User</div>
                                 </button>
                             </div>
                             
@@ -310,54 +325,12 @@
                         <button class="confirmation_buttons" id="update_user_profile_button">Update</button>
                     </div>
                 </div>
-              <!-- <div id="form_div">
-                    
-                    <form id="newPatientForm">
-                        
-                        <div class="disease_data_form">
-                            <label for="disease_id" class="input_name">Disease:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="disease_select" name="disease_id" class="input" required>
-                                <option value="" id="option_select">Select Disease</option> </select>
-                            </div>
-                            <br><br>
-                        </div>
-                        
-                    </form>
-                    
-                </div>-->
-                
-                
             </div>
 
             <div id="top_div">
                 <div id="page_name">Patients</div>
             </div>
-
-        <div id="confirmation_div">
-            <div id="confirmation_text">
-                <div id="confirmation_text_text">Are you sure you want to delete the selected user?</div>
-            </div>
-            <div id="confirmation_buttons">
-                <div id="confirmation_buttons_inner">
-                    <button id="no_button" onclick="hideConfirmationDiv()">No</button>
-                    <button id="yes_button">Yes</button>
-                </div>
-            </div>
-        </div>
-        <div id="returned_info">
-            
-            <div id="confirmation_text">
-                <div id="saved_confirmation_text_text"></div>
-            </div>
-            <div id="confirmation_buttons">
-                <div id="confirmation_buttons_inner">
-                    <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
-                </div>
-            </div>
-        </div>
-
+        
         <div id="patient_div">
             <div id="patient_div_inner">
                 <div id="search">
@@ -388,10 +361,17 @@
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Date of Birth</th>
+                                    <th>Sex</th>
+                                    <th>Telephone No</th>
+                                    <th>Status</th>
+                                    <th>Address</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td style="text-align: center;">
+                                        <span class="status-indicator">${user.status || 'N/A'}</span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

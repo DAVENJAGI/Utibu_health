@@ -30,13 +30,15 @@ class User(BaseModel, Base):
         doctors = relationship("Doctor", backref="users")
         diseases = relationship("Disease", secondary="user_disease")
         disease_id = Column(String(64), ForeignKey("diseases.id"), nullable=True)
-        appointments = relationship("Appointment", backref="users")
+        appointments = relationship("Appointment", backref="users", cascade="delete")
         orders = relationship("Order", backref="users", cascade="delete")
+        sessions = relationship("userSession", backref="users", cascade="delete")
         patient_vitals_readings = relationship("Reading", backref="users", cascade="delete")
         sex = Column(String(64), nullable=True)
         address = Column(String(64), nullable=True)
         status = Column(String(64), nullable=True)
         telephone_no = Column(String(13), nullable=True)
+
 
     else:
         email = ""

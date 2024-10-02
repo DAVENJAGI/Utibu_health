@@ -52,16 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
         // Clear existing table rows before adding new ones
         tableBody.innerHTML = '';
 
+        
         // Loop through counties for the current page and populate table rows
         currentPageUser.forEach(user => {
             const tableRow = document.createElement("tr");
+
+            let statusColor = '';
+            if (user.status === 'Inactive') {
+                statusColor = 'red';
+            } else {
+                statusColor = '#30B3DE';
+            }
+
             tableRow.innerHTML = `
-                <td><input type="checkbox" id="checkbox-${user.id}"></td>
+                <td style="max-width: 10px;"><input type="checkbox" id="checkbox-${user.id}"></td>
                 <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
                 <td>${user.email}</td>
                 <td>${user.date_of_birth}</td>
+                <td>${user.sex || 'N/A'}</td>
+                <td>${user.telephone_no || 'N/A'}</td>
+                <td span class="status-indicator" style="background-color: ${user.status === 'Active' ? '#B0E1F2' : '#FFA3A3'}; margin-top: 15%; text-align: center; color: ${statusColor};">${user.status}</td>
+                <td>${user.address || 'N/A'}</td>
             `;
             tableBody.appendChild(tableRow);
         });
@@ -407,7 +420,6 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedGender = genderSelect.value;
     });
     
-    console.log(selectedGender);
     function updateUser() {
         
         const originalUserData = {
@@ -505,15 +517,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    //FUNCTION THAT DELETES A USER
-    function deleteUser(userId) {
-        const deleteRequest = `http://0.0.0.0:5000/api/v1/user/${userId}`;
+    // SHOWS CONFIRMATION DIV
+    function showConfirmationDiv() {
+        const confirmationDiv = document.getElementById('confirmation_div');
+        const computedStyle = window.getComputedStyle(confirmationDiv);
+        if (computedStyle.display === 'none') {
+            confirmationDiv.style.display = 'block';
+            confirmationDiv.style.zIndex = "250";
+            hideUserStatusDiv();
+            showOverlay();
+        }
+    }
+    function hideConfirmationDiv() {
+        const confirmationDiv = document.getElementById("confirmation_div");
+        confirmationDiv.style.display = "none";
+    }
+    const deletePatientConfirmationButton = document.getElementById('delete_user_button');
+    deletePatientConfirmationButton.addEventListener("click", function() {
+        showConfirmationDiv();
+    });
+    const hideDeletePatientButton = document.getElementById('no_button');
+    hideDeletePatientButton.addEventListener("click", function() {
+        hideConfirmationDiv();
+        hideOverlay();
+        window.location.reload();
+    });
     
+    
+    //FUNCTION THAT DELETES A USER
+    function deleteUser() {
+        const deleteRequest = `http://0.0.0.0:5000/api/v1/user/${userId}`;
+        
         fetch(deleteRequest, {
             method: "DELETE",
+            headers: {
+                ...getAuthHeaders()
+            },
         })
         .then(response => {
             if (response.ok) {
+                console.log("yes yes yes");
                 hideConfirmationDiv();
                 return response.json();
             } else {
@@ -521,13 +564,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .then(jsonData => {
+        hideUserStatusDiv();
         showFeedbackDiv();
-        console.log(jsonData);
+        console.log("this is", jsonData);
         const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
-        confirmationTextDiv.textContent = jsonData.Message;
+        const message = jsonData.Message;
+        // console.log(message);
+        confirmationTextDiv.textContent = message;
       })
       .catch(error => alert("Error sending request:", error));
     }
+    const deletePatientButton = document.getElementById('yes_button');
+    deletePatientButton.addEventListener("click", function() {
+        deleteUser();
+        hideConfirmationDiv();
+        hideOverlay();
+        window.location.reload();
+    });
+
 
     //FETCHES ALL DISEASES TO UPDATE USER DISEASES
     const diseaseSelect = document.getElementById("disease_select");
@@ -611,19 +665,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// SHOWS CONFIRMATION DIV
-function showConfirmationDiv() {
-  const confirmationDiv = document.getElementById('confirmation_div');
-     
-  if (confirmationDiv.style.display === 'none') {
-    confirmationDiv.style.display = 'block';
-  }
-}
 
-function hideConfirmationDiv() {
-    const confirmationDiv = document.getElementById("confirmation_div");
-    confirmationDiv.style.display = "none";
-}
+
+
 // FUNCTION TO DISPLAY THE DIV
 function showFeedbackDiv() {
     const feedbackDiv = document.getElementById("returned_info");
@@ -634,9 +678,10 @@ function hideFeedbackDiv() {
     feedbackDiv.style.display = "none";
 
 }
+/*
 document.addEventListener('DOMContentLoaded', () => {
     showConfirmationDiv();
     hideConfirmationDiv();
     showFeedbackDiv();
     hideFeedbackDiv();
-})
+})*/

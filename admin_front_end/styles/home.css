@@ -96,7 +96,7 @@
     background: white;
     border-radius: 13px;
     box-shadow: 1px 1px 4px #9d9fa0;
-    
+    background-image: linear-gradient(to bottom, #f1fafd 20%, white 70%);
 }
 .content_div:hover{
     transform: scale(1.02);
