@@ -199,6 +199,7 @@
     font-weight: 600;
     font-family: inherit;
     color: #6B6B6B;
+    font-size: 25px;
 }
 
 
@@ -221,6 +222,9 @@
 #admin_text{
     font-size: 12px;
     font-weight: 600;
+    color: #5e5d5d;
+}
+#dropdown_icon{
     color: #5e5d5d;
 }
 
