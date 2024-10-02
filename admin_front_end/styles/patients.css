@@ -139,6 +139,7 @@
     text-align: left;
     font-size: 15px;
     /*border: 1px solid red;*/
+    top: 0;
     height: 1vh;
     border-bottom: solid 2px #d4d4d4;
     white-space: nowrap;
