@@ -18,4 +18,6 @@ class Reading(BaseModel, Base):
         blood_sugar_level = Column(Float, nullable=True, default=0)
         systolic_blood_pressure = Column(Integer, nullable=True, default=0)
         diastolic_blood_pressure = Column(Integer, nullable=True, default=0)
+        weight = Column(Integer, nullable=True, default=0)
+        height = Column(Integer, nullable=True, default=0)
 

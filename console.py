@@ -18,12 +18,13 @@ from models.medication import Medication
 from models.user import User
 from models.constituency import Constituency
 from models.user_session import userSession
+from models.vital import Reading
 from models.doctor_session import doctorSession
 from models.admin_session import adminSession
 
 """Maps the names eg, "Amenity", to classes, egw class Amenity"""
 
-classes = {"Appointment": Appointment, "BaseModel": BaseModel, "County": County, "Town": Town,
+classes = {"Appointment": Appointment, "Reading": Reading, "BaseModel": BaseModel, "County": County, "Town": Town,
            "Hospital": Hospital, "UserSession": userSession, "DoctorSession": doctorSession, "AdminSession": adminSession, "Constituency": Constituency, "Doctor": Doctor, "User": User, "Disease": Disease, "Medication": Medication}
 
 

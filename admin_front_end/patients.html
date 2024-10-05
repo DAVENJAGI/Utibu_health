@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/patients.css">
     <script type="text/javascript" src="../scripts/patients.js"></script>
@@ -185,6 +187,13 @@
                                     <div id="delete_txt">Delete User</div>
                                 </button>
                             </div>
+
+                            <div class="user_profile_button">
+                                <button id="user_vital_button">
+                                    <div id="vital_icon"><i class='bx bx-pulse'></i></div>
+                                    <div id="vital_txt">Patient Vitals</div>
+                                </button>
+                            </div>
                             
                         </div>
                     </div>
@@ -323,6 +332,55 @@
                 <div id="user_approval_buttons">
                     <div id="order_buttons">
                         <button class="confirmation_buttons" id="update_user_profile_button">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="user_vital_div">
+                <div id="user_id_top">
+                    <div id="user_id_id">Patient Id:</div>
+                    <div id="user_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+
+                <div id="user_vitals">
+                    <canvas id="vital_charts"></canvas>
+                </div>
+
+                
+                <div id="user_read_details">
+                    <div class="first_part">
+                        <div class="user_vital_info">
+                            <div class="vital_title">Avg. Weight</div>
+                            <div id="divs_separator">:</div>
+                            <div id="avg_weight" class="vital_number">0.0</div>
+                        </div>
+                        <div class="user_vital_info">
+                            <div class="vital_title">Avg. Height</div>
+                            <div id="divs_separator">:</div>
+                            <div id="avg_height" class="vital_number">0.0</div>
+                        </div>
+                        <div class="user_vital_info">
+                            <div class="vital_title">Avg Heart rate</div>
+                            <div id="divs_separator">:</div>
+                            <div id="avg_hr" class="vital_number">00</div>
+                        </div>
+                    </div>
+                    <div  class="second_part">
+                        <div class="user_vital_info">
+                            <div class="vital_title">Avg. Sugar level</div>
+                            <div id="divs_separator">:</div>
+                            <div id="avg_sl" class="vital_number">0.0</div>
+                        </div>
+                        <div class="user_vital_info">
+                            <div class="vital_title">Avg. Systolic BP</div>
+                            <div id="divs_separator">:</div>
+                            <div id="avg_sbp" class="vital_number">0.0</div>
+                        </div>
+                        <div class="user_vital_info">
+                            <div class="vital_title">Avg. Distolic BP</div>
+                            <div id="divs_separator">:</div>
+                            <div id="avg_dbp" class="vital_number">0.0</div>
+                        </div>
                     </div>
                 </div>
             </div>

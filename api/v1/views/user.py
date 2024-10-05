@@ -157,7 +157,7 @@ def add_vital_reading_to_user(user_id):
 
 
 @app_views.route("/user/<string:user_id>/vitals/", methods=['GET'], strict_slashes=False)
-@require_doctor_or_admin_or_user_auth
+# @require_doctor_or_admin_or_user_auth
 def get_vitals_by_user_id(user_id):
     """get vitals associated with a specific user"""
     user = storage.get(User, user_id)

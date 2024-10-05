@@ -660,8 +660,161 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDiseaseButton.addEventListener("click", function() {
         createNewDisease();
     });
-      
-  
+
+    // FUNCTION TO DISPLAY USER VITALS
+
+    function getUserVitals () {
+        const bloodSugarLevels = [];
+        const restingHeartRate = [];
+        const systolicBloodPressure= [];
+        const diastolicBloodPresure = [];
+        const patientWeight = [];
+        const patientHeight = [];
+
+        console.log(userId);
+        fetch(`http://0.0.0.0:5000/api/v1/user/${userId}/vitals`, { headers: getAuthHeaders() })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(vitalData => {
+            console.log(vitalData);
+            const ctx = document.getElementById('vital_charts').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: vitalData.map(data => new Date(data.created_at).toLocaleDateString()),
+                    datasets: [{
+                        label: 'Blood Sugar Levels',
+                        data: vitalData.map(data => data.blood_sugar_level),
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Resting Heart Rate',
+                        data: vitalData.map(data => data.resting_heart_rate),
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Systolic Blood Pressure',
+                        data: vitalData.map(data => data.systolic_blood_pressure),
+                        borderColor: 'rgba(26, 104, 96, 1)',
+                        backgroundColor: 'rgba(26, 104, 96, 0.2)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Diastolic Blood Pressure',
+                        data: vitalData.map(data => data.diastolic_blood_pressure),
+                        borderColor: 'rgba(200, 150, 102, 1)',
+                        backgroundColor: 'rgba(200, 150, 102, 0.2)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Weight',
+                        data: vitalData.map(data => data.weight),
+                        borderColor: 'rgba(105, 62, 254, 1)',
+                        backgroundColor: 'rgba(105, 62, 254, 0.2)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Height',
+                        data: vitalData.map(data => data.height),
+                        borderColor: 'rgba(165,206,110, 1)',
+                        backgroundColor: 'rgba(165, 206, 110, 0.2)',
+                        borderWidth: 1,
+                    }
+                ]
+                },
+                options: {
+                    x: {
+                        display: true,
+                        label: 'Date',
+                        ticks: { 
+                        }
+                    },
+                    y: {
+                        display: true,
+                        label: {
+                            display: true,
+                            text: 'Values'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            vitalData.forEach(value => {
+                bloodSugarLevels.push(value.blood_sugar_level);
+                restingHeartRate.push(value.resting_heart_rate);
+                systolicBloodPressure.push(value.systolic_blood_pressure);
+                diastolicBloodPresure.push(value.diastolic_blood_pressure);
+                patientWeight.push(value.weight);
+                patientHeight.push(value.height);
+            });
+
+            const avgHeight = document.getElementById('avg_height');
+            const avgWeight = document.getElementById('avg_weight');
+            const avgHr = document.getElementById('avg_hr');
+            const avgSl = document.getElementById('avg_sl');
+            const avgSbp = document.getElementById('avg_sbp');
+            const avgDbp = document.getElementById('avg_dbp');
+
+            if(patientHeight.length === 0) {
+                avgHeight.textContent = "0.0 M";
+            } else {
+                avgHeight.textContent = calculateAverage(patientHeight).toFixed(3) + ' ' + 'M';
+            }
+
+            if(patientWeight.length === 0) {
+                avgWeight.textContent = "0.0 Kgs";
+            } else {
+                avgWeight.textContent = calculateAverage(patientWeight).toFixed(3) + ' ' + 'Kgs';
+            }
+
+            if(restingHeartRate.length === 0) {
+                avgHr.textContent = "0.0 bpm";
+            } else {
+                avgHr.textContent = calculateAverage(restingHeartRate).toFixed(3) + ' ' + 'bpm';
+            }
+
+            if(bloodSugarLevels.length === 0) {
+                avgSl.textContent = "0.0 mg/dl";
+            } else {
+                avgSl.textContent = calculateAverage(bloodSugarLevels).toFixed(3) + ' ' + 'mg/dL';
+            }
+            
+            if(systolicBloodPressure.length === 0) {
+                avgSbp.textContent = "0.0 mmHg";
+            } else {
+                avgSbp.textContent = calculateAverage(systolicBloodPressure).toFixed(3) + ' ' + 'mmHg';
+            }
+
+            if(diastolicBloodPresure.length === 0) {
+                avgDbp.textContent = "0.0 mmHg";
+            } else {
+                avgDbp.textContent = calculateAverage(diastolicBloodPresure).toFixed(3) + ' ' + 'mmHg';
+            }
+
+            function calculateAverage(data) {
+                const sum = data.reduce((accumulator, current) => accumulator + current, 0) ;
+                const average = sum / data.length;
+                return average;
+            }
+
+        })
+    }
+
+    const showUserVitals = document.getElementById('user_vital_button');
+    showUserVitals.addEventListener("click", function() {
+        getUserVitals(userId);
+    });
 
 });
 
@@ -678,10 +831,3 @@ function hideFeedbackDiv() {
     feedbackDiv.style.display = "none";
 
 }
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    showConfirmationDiv();
-    hideConfirmationDiv();
-    showFeedbackDiv();
-    hideFeedbackDiv();
-})*/
