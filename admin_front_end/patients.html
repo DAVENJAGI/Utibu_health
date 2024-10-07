@@ -181,17 +181,32 @@
                                     <div id="edit_txt">Edit Profile</div>
                                 </button>
                             </div>
-                            <div class="user_profile_button">
-                                <button id="delete_user_button">
-                                    <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
-                                    <div id="delete_txt">Delete User</div>
-                                </button>
-                            </div>
-
+                            
                             <div class="user_profile_button">
                                 <button id="user_vital_button">
                                     <div id="vital_icon"><i class='bx bx-pulse'></i></div>
                                     <div id="vital_txt">Patient Vitals</div>
+                                </button>
+                            </div>
+
+                            <div class="user_profile_button">
+                                <button id="user_disease_button">
+                                    <div id="vital_icon"><i class='bx bxs-virus'></i></div>
+                                    <div id="vital_txt">Patient Diseases</div>
+                                </button>
+                            </div>
+
+                            <div class="user_profile_button">
+                                <button id="user_medication_button">
+                                    <div id="vital_icon"><i class='bx bxs-capsule' ></i></div>
+                                    <div id="vital_txt">Medication</div>
+                                </button>
+                            </div>
+
+                            <div class="user_profile_button">
+                                <button id="delete_user_button">
+                                    <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                                    <div id="delete_txt">Delete User</div>
                                 </button>
                             </div>
                             
@@ -338,8 +353,8 @@
 
             <div id="user_vital_div">
                 <div id="user_id_top">
-                    <div id="user_id_id">Patient Id:</div>
-                    <div id="user_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                    <div id="user_id_id_vitals"></div>
+                    <div id="user_exit_vitals_div"><i class="fa fa-times" aria-hidden="true"></i></div>
                 </div>
 
                 <div id="user_vitals">
@@ -400,12 +415,10 @@
                     </div>
 
                     <div id="filter_div">
-                        <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>
-                        <div id="filter_txt">Filter By</div>
+                        <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>                        
                     </div>
                     
                 </div>
-                
             </div>
             <div id="patient_table_div">
                 <div id="all_patient_table">
@@ -441,7 +454,6 @@
                         <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
                     </div>
                 </div>
-                
             </div>
         </div>
         </div>

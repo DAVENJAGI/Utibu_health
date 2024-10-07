@@ -105,19 +105,72 @@ document.addEventListener('DOMContentLoaded', () => {
         tableBody.innerHTML = '';
         filteredUsers.forEach(user => {
             const tableRow = document.createElement("tr");
+            let statusColor = '';
+            if (user.status === 'Inactive') {
+                statusColor = 'red';
+            } else {
+                statusColor = '#30B3DE';
+            }
+
             tableRow.innerHTML = `
-                <td><input type="checkbox" id="checkbox-${user.id}"></td>
+                <td style="max-width: 10px;"><input type="checkbox" id="checkbox-${user.id}"></td>
                 <td>${user.id}</td>
                 <td>${user.first_name}</td>
                 <td>${user.last_name}</td>
                 <td>${user.email}</td>
                 <td>${user.date_of_birth}</td>
+                <td>${user.sex || 'N/A'}</td>
+                <td>${user.telephone_no || 'N/A'}</td>
+                <td span class="status-indicator" style="background-color: ${user.status === 'Active' ? '#B0E1F2' : '#FFA3A3'}; margin-top: 15%; text-align: center; color: ${statusColor};">${user.status}</td>
+                <td>${user.address || 'N/A'}</td>
             `;
             tableBody.appendChild(tableRow);
         });
 
         // Clear search input
         searchInput.value = '';
+    });
+
+    searchInput.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            const filteredUsers = userData.filter(user =>
+                user.first_name.toLowerCase().includes(searchTerm) ||
+                user.last_name.toLowerCase().includes(searchTerm) ||
+                user.email.toLowerCase().includes(searchTerm) ||
+                user.id.toLowerCase().includes(searchTerm)
+            );
+
+            // Update table with filtered data
+            tableBody.innerHTML = '';
+            filteredUsers.forEach(user => {
+                const tableRow = document.createElement("tr");
+                let statusColor = '';
+                if (user.status === 'Inactive') {
+                    statusColor = 'red';
+                } else {
+                    statusColor = '#30B3DE';
+                }
+
+                tableRow.innerHTML = `
+                    <td style="max-width: 10px;"><input type="checkbox" id="checkbox-${user.id}"></td>
+                    <td>${user.id}</td>
+                    <td>${user.first_name}</td>
+                    <td>${user.last_name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.date_of_birth}</td>
+                    <td>${user.sex || 'N/A'}</td>
+                    <td>${user.telephone_no || 'N/A'}</td>
+                    <td span class="status-indicator" style="background-color: ${user.status === 'Active' ? '#B0E1F2' : '#FFA3A3'}; margin-top: 15%; text-align: center; color: ${statusColor};">${user.status}</td>
+                    <td>${user.address || 'N/A'}</td>
+                `;
+                tableBody.appendChild(tableRow);
+            });
+
+            // Clear search input
+            searchInput.value = '';
+        }
     });
     
 
@@ -268,6 +321,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function showUserVitalsDiv() {
+        const userVitalsDiv = document.getElementById('user_vital_div');
+        const computedStyle = window.getComputedStyle(userVitalsDiv);
+        if (computedStyle.display === "none") {
+            userVitalsDiv.style.display = 'block';
+            if(userVitalsDiv.style.display = 'block'){
+                userVitalsDiv.style.zIndex = "200";
+                showOverlay();
+            }
+        }
+    }
+    function hideUserVitalsDiv() {
+        const userVitalsDiv = document.getElementById('user_vital_div');
+        
+        const computedStyle = window.getComputedStyle(userVitalsDiv);
+        if (computedStyle.display === "block") {
+            userVitalsDiv.style.display = 'none';
+        }
+    }
+
         
     function hideUserStatusDiv() {
         const userStatusDiv = document.getElementById('user_status_div');
@@ -337,6 +410,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeProfileButton = document.getElementById('user_edit_exit_div');
     closeProfileButton.addEventListener('click', () => {
         hideUserEditProfileDiv();
+    });
+
+    const closeVitalsButton = document.getElementById('user_exit_vitals_div');
+    closeVitalsButton.addEventListener('click', () => {
+        hideUserVitalsDiv();
     });
     
     
@@ -809,11 +887,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         })
+
+        const patientId = document.getElementById('user_id_id_vitals');
+        patientId.textContent = 'Patient Id:' + ' ' + userId;
     }
 
+    
     const showUserVitals = document.getElementById('user_vital_button');
     showUserVitals.addEventListener("click", function() {
         getUserVitals(userId);
+        showUserVitalsDiv();
+    });
+
+    const showScroll = document.getElementById('buttons_div');
+    showScroll.addEventListener("mouseover", function() {
+        if(showScroll.style.overflowY === "hidden"){
+            showScroll.style.overflowY = 'visible'
+        } else{
+            showScroll.style.overflowY = "hidden"
+        }
     });
 
 });
