@@ -85,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     searchButton.addEventListener('click', () => {
         const searchTerm = searchInput.value.trim().toLowerCase();
 
-        // Filter counties data based on search term
         const filteredDoctors = doctorData.filter(doctor =>
             doctor.first_name.toLowerCase().includes(searchTerm) ||
             doctor.last_name.toLowerCase().includes(searchTerm) ||
@@ -93,10 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
             doctor.id.toLowerCase().includes(searchTerm)
         );
 
-        // Update table with filtered data
         tableBody.innerHTML = '';
         filteredDoctors.forEach(doctor => {
             const tableRow = document.createElement("tr");
+            let statusColor = '';
+            if (doctor.status === 'Inactive') {
+                statusColor = 'red';
+            } else {
+                statusColor = '#30B3DE';
+            }
             tableRow.innerHTML = `
                 <td><input type="checkbox"></td>
                 <td>${doctor.id}</td>
@@ -104,6 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${doctor.last_name}</td>
                 <td>${doctor.email}</td>
                 <td>${doctor.license_no}</td>
+                <td>${doctor.specialization || 'N/A'}</td>
+                <td>${doctor.telephone_no || 'N/A'}</td>
+                <td span class="status-indicator" style="background-color: ${doctor.status === 'Active' ? '#B0E1F2' : '#FFA3A3'}; margin-top: 12%; text-align: center; color: ${statusColor};">${doctor.status}</td>
+                <td>${doctor.availability}</td>
             `;
             tableBody.appendChild(tableRow);
         });
@@ -112,6 +120,43 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.value = '';
     });
     
+    searchInput.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+
+            const filteredDoctors = doctorData.filter(doctor =>
+                doctor.first_name.toLowerCase().includes(searchTerm) ||
+                doctor.last_name.toLowerCase().includes(searchTerm) ||
+                doctor.email.toLowerCase().includes(searchTerm) ||
+                doctor.id.toLowerCase().includes(searchTerm)
+            );
+
+            tableBody.innerHTML = '';
+            filteredDoctors.forEach(doctor => {
+                const tableRow = document.createElement("tr");
+                let statusColor = '';
+                if (doctor.status === 'Inactive') {
+                    statusColor = 'red';
+                } else {
+                    statusColor = '#30B3DE';
+                }
+                tableRow.innerHTML = `
+                    <td><input type="checkbox"></td>
+                    <td>${doctor.id}</td>
+                    <td>${doctor.first_name}</td>
+                    <td>${doctor.last_name}</td>
+                    <td>${doctor.email}</td>
+                    <td>${doctor.license_no}</td>
+                    <td>${doctor.specialization || 'N/A'}</td>
+                    <td>${doctor.telephone_no || 'N/A'}</td>
+                    <td span class="status-indicator" style="background-color: ${doctor.status === 'Active' ? '#B0E1F2' : '#FFA3A3'}; margin-top: 12%; text-align: center; color: ${statusColor};">${doctor.status}</td>
+                    <td>${doctor.availability}</td>
+                `;
+                tableBody.appendChild(tableRow);
+            });
+            searchInput.value = '';
+        }
+    });
 
     // Add click event listeners for pagination buttons and increments them on clicking till there' no more data to append to table
     prevButton.addEventListener('click', () => {
