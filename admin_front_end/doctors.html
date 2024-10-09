@@ -127,134 +127,149 @@
                    </div>
                 </div>
             </div>
-<!--
-            <div id="new_doctor">
-                <div id="form_div">
-                    <div id="header_input">ADD NEW DOCTOR</div>
-                    
-                    <form id="newDoctorForm">
-                        <div id="feedback_info"></div>
-                        <div class="doctor_data_form">
-                            <label for="county_id" class="input_name">County:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="county_select" name="county_id" class="input" required>
-                                <option value="" id="option_select">Select County</option> </select>
-                            </div>
-                            <br><br>
-                        </div>
 
-                        <div class="doctor_data_form">
-                            <label for="constituency_id" class="input_name">Constituency:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="constituency_select" name="constituency_id" class="input" required>
-                                <option value="">Select Constituency</option> </select>
-                            </div>
-                            <br><br>
-                        </div>
-
-                        <div class="doctor_data_form">
-                            <label for="town_id" class="input_name">Ward:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="town_select" name="town_id" class="input" required>
-                                <option value="">Select Ward</option> </select>
-                            </div>
-                            <br><br>
-                        </div>
-
-                        <div class="doctor_data_form">
-                            <label for="hospital_id" class="input_name">Hospital:</label>
-                            <br>
-                            <div class="select-wrapper">
-                                <select id="hospital_select" name="hospital_id" class="input" required>
-                                <option value="">Select Hospital</option> </select>
-                            </div>
-                            <br><br>
-                        </div>
-
-
-                        <div class="doctor_data_form">
-                            <label for="name" class="input_name">Doctor Name:</label> <br>
-                            <input type="text" id="name" class="input" name="name" required><br><br>
-                        </div>
-                        
-
-                        <div class="doctor_data_form">
-                            <label for="email" class="input_name">Email:</label><br>
-                            <input type="email" id="email" name="email" class="input" required><br><br>
-                        </div>
-                        <div class="doctor_data_form">
-                            <label for="password" class="input_name">Password:</label><br>
-                            <input type="text" id="latitude" name="license_no" class="input" required><br><br>
-                        </div>
-                        <div class="doctor_data_form" class="input_name">
-                            <label for="license_no" class="input_name">License No:</label><br>
-                            <input type="text" id="license_no" name="license_no" class="input" required><br><br>
-                        </div>
-                    </form>
-                    
+            <div id="overlay"></div>
+            <div id="doctor_status_div">
+                <div id="doctor_id_top">
+                    <div id="doctor_id_id">Doctor Id:</div>
+                    <div id="doctor_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
                 </div>
-                <div id="exit_div">
-                    <div id="inner_exit_div">
-                        <div class="inner_button_div">
-                            <button id="exit_hospital_form_button" class="inner_exit_div_button" onclick="showAddNewDoctor()">Cancel</button>
-                        </div>
-                        <div class="inner_button_div">
-                            <button id="save_button" class="inner_exit_div_button" onclick="createNewDoctor()">ADD</button>
+
+                <div id="doctor_details">
+                    <div id="profile_side_div">
+                        <div id="upper_div">
+                            <div id="doctor_image"></div>
+                            <div id="doctor_buttons">
+                                <div class="doctor_profile_button">
+                                    <button id="edit_doctor_button">
+                                        <div id="edit_icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                                        <div id="edit_txt">Edit Profile</div>
+                                    </button>
+                                </div>
+                                <div class="doctor_profile_button">
+                                    <button id="add_patient_button">
+                                        <div id="add_icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                        <div id="edit_txt">Add Patients</div>
+                                    </button>
+                                </div>
+                                <div class="doctor_profile_button">
+                                    <button id="delete_doctor_button">
+                                        <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                                        <div id="delete_txt">Del Doctor</div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>                   
+                        
+                        <div id="profile_bio">
+                            <div id="profile_info_div">
+                                <!--
+                                <div class="doctor_profile_button">
+                                    <button id="add_disease_button">
+                                        <div id="add_icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                        <div id="new_disease_txt">Add Disease</div>
+                                    </button>
+                                </div>
+                                <div class="doctor_profile_button">
+                                    <button id="edit_doctor_button">
+                                        <div id="edit_icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                                        <div id="edit_txt">Edit Profile</div>
+                                    </button>
+                                </div>
+                                
+                                <div class="doctor_profile_button">
+                                    <button id="doctor_vital_button">
+                                        <div id="vital_icon"><i class='bx bx-pulse'></i></div>
+                                        <div id="vital_txt">Patient Vitals</div>
+                                    </button>
+                                </div>
+
+                                <div class="doctor_profile_button">
+                                    <button id="doctor_disease_button">
+                                        <div id="vital_icon"><i class='bx bxs-virus'></i></div>
+                                        <div id="vital_txt">Patient Diseases</div>
+                                    </button>
+                                </div>
+
+                                <div class="doctor_profile_button">
+                                    <button id="doctor_medication_button">
+                                        <div id="vital_icon"><i class='bx bxs-capsule' ></i></div>
+                                        <div id="vital_txt">Medication</div>
+                                    </button>
+                                </div>
+
+                                <div class="doctor_profile_button">
+                                    <button id="delete_doctor_button">
+                                        <div id="delete_icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                                        <div id="delete_txt">Delete User</div>
+                                    </button>
+                                </div>
+                            -->
+                            </div>                            
                         </div>
                     </div>
+                    <div id="doctor_description">
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">First Name</div>
+                            <div class="colon">:</div>
+                            <div id="first_name" class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Last Name</div>
+                            <div class="colon">:</div>
+                            <div id="last_name"  class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">License No</div>
+                            <div class="colon">:</div>
+                            <div id="license_no" class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">email</div>
+                            <div class="colon">:</div>
+                            <div id="doctor_email" class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">As.. Hospital</div>
+                            <div class="colon">:</div>
+                            <div id="hospital_name" class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Phone No</div>
+                            <div class="colon">:</div>
+                            <div id="phone_number" class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Specialization</div>
+                            <div class="colon">:</div>
+                            <div id="specialization" class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Availability</div>
+                            <div class="colon">:</div>
+                            <div id="doctor_availability" class="doctor_detail_data"></div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Status</div>
+                            <div class="colon">:</div>
+                            <div class="doctor_detail_data">
+                                <div id="activity_status"></div>
+                            </div>
+                        </div>                        
+                    </div>
                 </div>
-                
+
+                <div id="doctor_approval_buttons">
+                    <div id="create_disease_buttons">
+                        
+                    </div>
+                </div>
             </div>
-        -->
+
             <div id="top_div">
                 <div id="page_name">Doctors</div>
             </div>
-            <!--
-            <div id="search_div">
-                <div id="search_bar">
-                    <input type="text" id="search_input" placeholder="Search Doctor by first name....">
-                    <button id="search_button"><i class="fa fa-search" aria-hidden="true" style="font-size: 25px;"></i></button>
-                </div>
-            </div>
             
-            
-            <div id="whole_body">
-                <div id="content">
-                    <div id="hospital_title">
-                        <div id="hospital_summary">Doctors Summary</div>
-                    </div>
-                    <div id="tables_content">
-                        <table id="myTable">
-                          <thead id="table_head">
-                                <tr id="">
-                                    <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>License Number</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div id="pagination">
-                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
-                        <span id="page-num"></span>
-                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
-                    </div>
-                   
-                </div>
-            </div>
-        -->
-
         <div id="doctor_div">
             <div id="doctor_div_inner">
                 <div id="search">
@@ -284,10 +299,17 @@
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>License Number</th>
+                                    <th>Specialization</th>
+                                    <th>Telephone No</th>
+                                    <th>Doctor Status</th>
+                                    <th>Available</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td style="text-align: center;">
+                                        <span class="status-indicator">${doctor.status || 'N/A'}</span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
