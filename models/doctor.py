@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 import models
 from os import getenv
-from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
+from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table, Boolean
 from sqlalchemy.orm import relationship
 
 
@@ -22,6 +22,13 @@ class Doctor(BaseModel, Base):
         appointments = relationship("Appointment", backref="doctors")
         orders = relationship("Order", backref="doctors")
         patients =  relationship("User", back_populates="doctors", overlaps="users")
+        status = Column(String(64), nullable=True)
+        telephone_no = Column(String(13), nullable=True)
+        specialization = Column(String(128), nullable=False)
+        profile_bio = Column(String(256), nullable=True)
+        certification = Column(String(256), nullable=True)
+        availability = Column(Boolean, default=True)
+
   
 
 
