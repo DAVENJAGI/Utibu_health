@@ -142,8 +142,8 @@ def update_doctor_appointment(doctor_id):
     appointment.date = request.get_json().get('date', appointment.date)
      
     storage.save()
-#    return (jsonify(appointment.to_dict()), 201)
-    return (jsonify({"Message": "Appointment updated successfully. Thank you"}), 201)
+    message = f"Appointment with appointmentId:{appointment.id} updated successfully. Thank you"
+    return (jsonify({"Message": message}), 201)
 
 
 @app_views.route("/appointment/<string:appointment_id>/", methods=['PUT'], strict_slashes=False)
