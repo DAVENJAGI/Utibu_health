@@ -25,24 +25,22 @@
     align-items: center;
 }
 #filter_div{
-    /*border: solid 1px red;*/
-    margin-left: 5%;
-    width: 20%;
+    /*margin-left: 5%;*/
+    width: 55px;
     margin-right: 2%;
     display: flex;
-    color: #525252;
-    height: 90%;
+    color: hsl(0, 0%, 32%);
+    height: 45px;
     border-radius: 7px;
     background-color: white;
     border: 1px solid #d4d4d4;
     overflow: auto;
 }
 #filter_icon{
-    /*border: solid 1px red;*/
-    width: 33%;
+    width: 100%;
     align-content: center;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
 }
 #filter_txt{
     /*border: solid 1px red;*/
@@ -56,8 +54,8 @@
 #search_div_home{
     border: 1px solid #d4d4d4;
     margin-right: 1%;
-    height: 90%;
-    width: 50%;
+    height: 45px;
+    width: 35%;
     float: right;
     position: center;
     align-content: center;
@@ -123,27 +121,38 @@
 }
 #myAppointmentTable th {
     background-color: white;
-    color: #1a6860;
+    color: #898989;
+    max-width: 100px;
     text-align: left;
-    /*height: 5vh;*/
+    font-size: 15px;
+    /*border: 1px solid red;*/
+    top: 0;
+    height: 1vh;
     border-bottom: solid 2px #d4d4d4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
 }
 
 
 #myAppointmentTable tbody tr:hover {
     font-weight: 500;
     opacity: 0.98;
-    transform: scale(1.0001);
+    transform: scale(1.00001);
     box-shadow: 1px 1px 3px #b3b3b3;
 }
 #myAppointmentTable td {
     text-align: left;
-    max-width: 150px;
+    max-width: 100px;
     margin: 0 auto;
     height: 1vh;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;   
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B6B6B;  
 }
 
 /*ORDER STATUS DIV*/

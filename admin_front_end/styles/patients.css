@@ -306,14 +306,14 @@
     /*border: 1px solid red;*/
     margin: 1%;
     margin-top: 12%;
-    height: 50%;
+    height: 55%;
     overflow: auto;
     overflow-y: hidden;
 }
 .user_profile_button{
     /*border: 1px solid red;*/
-    margin: 1%;
-    margin-bottom: 2%;
+    /*margin: 1%;*/
+    margin-bottom: 1%;
     height: 25%;
     align-content: center;
     text-align: center;
