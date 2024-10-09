@@ -1,22 +1,90 @@
+function fetchDoctorDetails(doctorId) {
+    const doctorDetailsUrl = `http://0.0.0.0:5000/api/v1/doctor/${doctorId}`;
+    return fetch(doctorDetailsUrl, { headers: getAuthHeaders() })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        });
+}
+
+function fetchRelatedData(doctorId, hospitalId) {
+    console.log(doctorId);
+    return Promise.all([
+        fetch(`http://0.0.0.0:5000/api/v1/doctor/${doctorId}`, { headers: getAuthHeaders() }).then(response => response.json()),
+        fetch(`http://0.0.0.0:5000/api/v1/hospital/${hospitalId}`, { headers: getAuthHeaders() }).then(response => response.json()),
+    ]);
+}
+
+//UPDATES USER PPROFILE DATA
+function updateDoctorStatusDiv(doctorDetails, doctorData, doctorData) {
+    const doctorStatusDiv = document.getElementById('doctor_status_div');
+    
+    document.getElementById('doctor_id_id').textContent = `Patient Id: ${doctorDetails.id}`;
+
+    const doctorNameElem = document.getElementById('first_name');
+    doctorNameElem.textContent = doctorDetails.first_name || 'N/A';
+    
+    const doctorNameElem1 = document.getElementById('last_name');
+    doctorNameElem1.textContent = doctorDetails.last_name || 'N/A';  
+            
+    const doctorLicenseNo = document.getElementById('license_no');
+    doctorLicenseNo.textContent = doctorDetails.license_no;
+    
+    const doctorDescriptionElem = document.getElementById('doctor_email');
+    doctorDescriptionElem.textContent = doctorDetails.email;
+    
+            
+    const assignedHospital = document.getElementById('hospital_name');
+    assignedHospital.textContent = hospitalDetails.name;
+    
+    const telephoneElem = document.getElementById('phone_number');
+    telephoneElem.textContent = doctorDetails.telephone_no || 'N/A';
+
+    const specializationElem = document.getElementById('specialization');
+    specializationElem.textContent = doctorDetails.specialization || 'N/A';
+    const doctorStatusElem = document.getElementById('activity_status');
+    if(doctorDetails.status === "Active"){
+        doctorStatusElem.style.background = "#A3DDF0";
+        doctorStatusElem.style.border = "1px solid #89D3EC";
+    } else {
+        doctorStatusElem.style.background = "#FF8F8F";
+        doctorStatusElem.style.border = "1px solid #FF7070";
+    }
+    console.log(doctorDetails.status);
+    doctorStatusElem.textContent = doctorDetails.status;
+    
+    const addressElem = document.getElementById('patient_address');
+    addressElem.textContent = doctorDetails.address || 'N/A';
+    
+    
+}
+
+
 tableBody.addEventListener('click', (event) => {
     if (event.target.tagName !== 'TD') return;
     const clickedRow = event.target.closest('tr');
     if (!clickedRow) return;
-    userId = clickedRow.cells[1].textContent;
+    doctorId = clickedRow.cells[1].textContent;
 
     
-    fetchUserDetails(userId)
-        .then(userDetails => {
-            const userId = userDetails.user_id;
-            const doctorId = userDetails.doctor_id;
-            const medicationId = userDetails.medication_id;
-
-            return fetchRelatedData(userId, doctorId, medicationId).then(([userData, doctorData, medicationData]) => {
-                updateUserStatusDiv(userDetails, userData, doctorData, medicationData);
-                showUserStatusDiv();
+    fetchDoctorDetails(doctorId)
+        .then(doctorDetails => {
+            const doctorId = doctorDetails.id;
+            const hospitalId = doctorDetails.hospital_id;
+            return fetchRelatedData(doctorId, doctorId)
+            .then(([doctorData, doctorData]) => {
+                updateDoctorStatusDiv(doctorDetails, doctorData, doctorData);
+                //  updateDoctorEditDiv(doctorDetails, doctorData, doctorData);
+                window.doctorDetails = doctorDetails;
+                window.doctorData = doctorData;
+                window.doctorData = doctorData;
+                console.log("there are", doctorDetails);
+                showDoctorStatusDiv();
             });
         })
         .catch(error => {
-            console.error("Error fetching user details or related data:", error);
+            console.error("Error fetching doctor details or related data:", error);
         });
 });

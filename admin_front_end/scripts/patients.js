@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const computedStyle = window.getComputedStyle(userVitalsDiv);
         if (computedStyle.display === "block") {
             userVitalsDiv.style.display = 'none';
+        //    chart = null;
         }
     }
 
@@ -347,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const computedStyle = window.getComputedStyle(userStatusDiv);
         if (computedStyle.display === "block") {
-            userStatusDiv.style.display = 'none';
+            userStatusDiv.style.display = 'none';            
         }
     }
     function hideOverlay() {
@@ -426,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
           overlayDiv.style.display = 'block';
           overlayDiv.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
         }
-      }
+    }
     
     const myButton = document.getElementById('user_exit_div');
     myButton.addEventListener('click', () => {
@@ -492,12 +493,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const genderSelect = document.getElementById("gender_select");
-    let selectedGender;
-
-    genderSelect.addEventListener('change', function () {
-        selectedGender = genderSelect.value;
-    });
     
+    console.log(userData);
     function updateUser() {
         
         const originalUserData = {
@@ -507,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
             doctor_id: doctorId,
             email: document.getElementById('edit_user_email').value,
             telephone_no: document.getElementById('edit_phone_number').value || null,
-            sex: selectedGender,
+            sex: genderSelect.value,
             address: document.getElementById('edit_patient_address').value,
         };
         
@@ -524,7 +521,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         const jsonData = JSON.stringify(changedData);
-    
         console.log(changedData);
         
     
@@ -561,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateButton = document.getElementById('update_user_profile_button');
     updateButton.addEventListener('click', () => {
         hideUserStatusDiv();
-        updateUser(window.userDetails);
+        updateUser(userId);
     });
     
     function showFeedbackDiv() {
@@ -749,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const patientWeight = [];
         const patientHeight = [];
 
-        console.log(userId);
+        
         fetch(`http://0.0.0.0:5000/api/v1/user/${userId}/vitals`, { headers: getAuthHeaders() })
         .then(response => {
             if (!response.ok) {
@@ -758,7 +754,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(vitalData => {
-            console.log(vitalData);
             const ctx = document.getElementById('vital_charts').getContext('2d');
             const chart = new Chart(ctx, {
                 type: 'line',
@@ -828,6 +823,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            console.log(vitalData);
             vitalData.forEach(value => {
                 bloodSugarLevels.push(value.blood_sugar_level);
                 restingHeartRate.push(value.resting_heart_rate);
@@ -887,17 +883,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         })
-
         const patientId = document.getElementById('user_id_id_vitals');
         patientId.textContent = 'Patient Id:' + ' ' + userId;
     }
 
-    
     const showUserVitals = document.getElementById('user_vital_button');
     showUserVitals.addEventListener("click", function() {
         getUserVitals(userId);
         showUserVitalsDiv();
     });
+    
 
     const showScroll = document.getElementById('buttons_div');
     showScroll.addEventListener("mouseover", function() {

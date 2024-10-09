@@ -105,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchTerm = searchAppointmentInput.value.trim().toLowerCase();
   
         const filteredAppointments = appointmentData.filter(appointment =>
-            appointment.appointment_status.toLowerCase().includes(searchTerm)
+            appointment.appointment_status.toLowerCase().includes(searchTerm) ||
+            appointment.id.toLowerCase().includes(searchTerm)
         );
   
         tableBody.innerHTML = '';
@@ -139,10 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         year: 'numeric',
                         month: '2-digit',
                         day: '2-digit'
-                        });
-
-
-    
+                        });  
     
                         tableRow.innerHTML = `
                             <td><input type="checkbox"></td>
@@ -152,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <td>${formattedDate}</td>
                             <td>$${appointment.time}</td> 
                             <td style="color: ${statusColor};">${appointment.appointment_status}</td>
-                            <td>$${appointment.description}</td> 
+                            <td>${appointment.description}</td> 
                         `;
                         tableBody.appendChild(tableRow);
                     })
