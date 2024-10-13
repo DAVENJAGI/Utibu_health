@@ -112,11 +112,14 @@ def create_user():
     obj = request.get_json()
     existing_user = storage.get_email(User, obj['email'])
     if existing_user:
-        return make_response(jsonify({"error": "Email address already in use. Please try another one."}), 400)
+        message = f"Email address {existing_user.email} already in use. Please try using another email. Thank you"
+        return (jsonify({"Message": message}), 400)
     obj['password'] = generate_password_hash(obj['password'])
     usr = User(**obj)
     usr.save()
-    return (jsonify(usr.to_dict()), 201)
+    message = f"New patient {usr.first_name} {usr.last_name} with patientId: {usr.id} created successfully."
+    return (jsonify({"Message": message}), 201)
+
 
 @app_views.route("/user/<string:user_id>", methods=['PUT'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
