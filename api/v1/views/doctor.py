@@ -99,8 +99,10 @@ def update_doctor(doctor_id):
     if dkt is None:
         abort(404)
     for key, value in request.get_json().items():
-        if key not in ["id", "email", "created_at", "updated_at"]:
+        if key not in ["id", "created_at", "updated_at"]:
             setattr(dkt, key, value)
     storage.save()
-    return jsonify(dkt.to_dict())
+#    return jsonify(dkt.to_dict())
+    message = f"Doctor {dkt.first_name} {dkt.last_name} with doctorId: {dkt.id} profile updated successfully."
+    return (jsonify({"Message": message}), 201)
 

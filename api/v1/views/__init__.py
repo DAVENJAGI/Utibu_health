@@ -21,4 +21,5 @@ from api.v1.views.appointment import *
 from api.v1.views.request import *
 from api.v1.views.payment import *
 from api.v1.views.admin import *
+from api.v1.views.department import *
 

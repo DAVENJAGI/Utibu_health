@@ -5,6 +5,7 @@ from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response
 from models import storage
 from models.hospital import Hospital 
+from models.department import Department
 from models.doctor import Doctor
 from models.authorization import require_admin_auth, require_user_or_admin_auth, require_doctor_or_admin_auth, require_doctor_or_admin_or_user_auth
 import json
@@ -95,4 +96,52 @@ def update_hospital(hospital_id):
             setattr(hosp, key, value)
     storage.save()
     return jsonify(hosp.to_dict())
+
+
+@app_views.route("/hospital/<string:hospital_id>/departments", methods=['GET'], strict_slashes=False)
+@require_doctor_or_admin_or_user_auth
+def get_departments_in_hospital(hospital_id):
+    """gets all departments in a specific hospital"""
+    hospital = storage.get(Hospital, hospital_id)
+
+    if hospital is None:
+        error_message = f"Hospital with hospitalId {hospital_id} not fouund"
+        return make_response(jsonify({"Message": error_message}), 401)
+
+    all_departments = hospital.departments
+
+    if not all_departments:
+        return make_response(jsonify({"Error": "No departments added for this hospital yet"}), 400)
+    else:
+        departments = [department.to_dict() for department in all_departments] # if  all_meds else []
+        return jsonify(departments)
+
+
+@app_views.route("/hospital/<string:hospital_id>/departments", methods=['POST'], strict_slashes=False)
+def add_hospital_department(hospital_id):
+    """create new department in a hospital"""
+    if not request.get_json():
+        return make_response(jsonify({"Error": "Not a JSON"}), 400)
+
+    data = request.json
+
+    if "department_id" not in data:
+        return make_response(jsonify({"Error": "Missing department_id"}), 400)
+
+    department_id = data['department_id']
+
+    hospital = storage.get(Hospital, hospital_id)
+    if not hospital:
+        error_message = f"Hospital with hospitalId: {hospital.id} not found"
+        return make_response(jsonify({"Message": error_message}), 401)
+        
+    department = storage.get(Department, department_id)
+    if not department:
+        error_message = f"Department with departmentId {department.id} not found"
+        return make_response(jsonify({"Message": error_message}), 401)
+
+    hospital.departments.append(department)
+    storage.save()
+    message = f"{department.name} department added to {hospital.name} with hospitalId: {hospital.id} successfully"
+    return make_response(jsonify({"Message": message}), 201) 
 
