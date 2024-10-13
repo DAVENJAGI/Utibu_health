@@ -19,6 +19,14 @@ if models.storage_type == 'db':
                                             ondelete='CASCADE'),
                                  primary_key=True))
 
+if models.storage_type == 'db':
+    hospital_departments = Table('hospital_departments', Base.metadata,
+                          Column('hospital_id', String(64),
+                                 ForeignKey('hospitals.id'), nullable=False),
+                          Column('department_id', String(64),
+                                 ForeignKey('departments.id'), nullable=False)
+                         )
+
 
 
 class Hospital(BaseModel, Base):
@@ -31,15 +39,7 @@ class Hospital(BaseModel, Base):
         longitude = Column(Float, nullable=True)
         latitude = Column(Float, nullable=True)
         doctors = relationship("Doctor", backref="assigned_hospital", cascade="all, delete-orphan")
-        
-
-    else:
-        town_id = ""
-        email = ""
-        name = ""
-        longitude = 0.0
-        latitude = 0.0
-        doctors = []
+        departments = relationship("Department", secondary=hospital_departments, back_populates="hospitals")
 
         @property
         def doctor(self):
