@@ -19,6 +19,7 @@ from models.constituency import Constituency
 from models.user_session import userSession
 from models.admin_session import adminSession
 from models.doctor_session import doctorSession
+from models.department import Department
 from models.admin import Admin
 from models.vital import Reading
 import sqlalchemy
@@ -29,7 +30,7 @@ from os import getenv
 
 """Maps the names eg, "Amenity", to classes, egw class Amenity"""
 
-classes = {"Appointment": Appointment, "Reading": Reading, "Admin": Admin, "userSession": userSession, "doctorSession": doctorSession, "adminSession": adminSession, "BaseModel": BaseModel, "County": County, "Town": Town,
+classes = {"Appointment": Appointment, "Reading": Reading, "Admin": Admin, "Department": Department, "userSession": userSession, "doctorSession": doctorSession, "adminSession": adminSession, "BaseModel": BaseModel, "County": County, "Town": Town,
            "Hospital": Hospital, "Order": Order, "Request": Request, "Doctor": Doctor, "User": User, "Constituency": Constituency, "Disease": Disease, "Medication": Medication}
 
 class DBStorage:
