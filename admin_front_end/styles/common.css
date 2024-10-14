@@ -579,6 +579,7 @@ thead tr{
     display: none;
     border-radius: 5px;
     box-shadow: 1px 1px 4px #9b9a9a;
+    z-index: 361;
 }
 #ok_button{
     border: 1px solid #38baee;

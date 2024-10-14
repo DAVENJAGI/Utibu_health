@@ -314,7 +314,17 @@
                 <div id="website_stats_2">
                     <div id="side_1">
                         <div id="requests_graph_div">
-                            <div id="appoitment_stat_text">Overall Statistics: 2024</div>
+                            <div id="top_div">
+                                <div id="appoitment_stat_top_text">Overall Statistics: 2024</div>
+                                <div id="time_dropdown" class="select-wrapper">
+                                    <select id="time_select" name="time_id" class="input" required>
+                                        <option id="option_select_1">This year</option>
+                                        <option value="weekly" id="option_select2">This month</option>
+                                        <option value="daily" id="option_select3">This week</option>
+                                        <option value="daily" id="option_select3">Today</option>
+                                    </select>
+                                </div>
+                            </div>
                             <canvas id="userChart"></canvas>
                         </div>
                         <div id="charts">

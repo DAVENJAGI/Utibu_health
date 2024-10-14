@@ -182,29 +182,29 @@
     align-items: center;
 }
 #filter_div{
-    /*border: solid 1px red;*/
-    margin-left: 5%;
-    width: 20%;
+    /*margin-left: 5%;*/
+    width: 55px;
     margin-right: 2%;
     display: flex;
-    color: #525252;
-    height: 90%;
+    color: hsl(0, 0%, 32%);
+    height: 45px;
     border-radius: 7px;
     background-color: white;
     border: 1px solid #d4d4d4;
     overflow: auto;
+    /*border: solid 1px red;*/
 }
 #filter_icon{
     /*border: solid 1px red;*/
-    width: 33%;
+    width: 100%;
     align-content: center;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
 }
 #filter_txt{
     /*border: solid 1px red;*/
     width: 67%;
-    font-size: 16px;
+    font-size: 12px;
     align-content: center;
     text-align: center;
     overflow: hidden;
@@ -213,8 +213,8 @@
 #search_div_home{
     border: 1px solid #d4d4d4;
     margin-right: 1%;
-    height: 90%;
-    width: 50%;
+    height: 45px;
+    width: 35%;
     float: right;
     position: center;
     align-content: center;
@@ -241,6 +241,19 @@
     background-color: white;
     font-size: 15px;
     outline: #1a6860;
+}
+
+#search_button_home{
+    width: 20%;
+    background: white;
+    /*border: 1px solid black;*/
+    border: 1px solid white;
+    border-radius: 10px;
+}
+#search_button_home:hover{
+    transform: scale(0.90);
+    opacity: 0.75;
+    color: #1a6860;
 }
 
 #delete_div{
@@ -323,27 +336,38 @@
 }
 #myHospitalTable th {
     background-color: white;
-    color: #1a6860;
+    color: #898989;
+    max-width: 100px;
     text-align: left;
-    /*height: 5vh;*/
+    font-size: 15px;
+    /*border: 1px solid red;*/
+    top: 0;
+    height: 1vh;
     border-bottom: solid 2px #d4d4d4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
 }
 
 
 #myHospitalTable tbody tr:hover {
     font-weight: 500;
     opacity: 0.98;
-    transform: scale(1.0001);
+    transform: scale(1.00001);
     box-shadow: 1px 1px 3px #b3b3b3;
 }
 #myHospitalTable td {
     text-align: left;
-    width: 150px;
+    max-width: 100px;
     margin: 0 auto;
     height: 1vh;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B6B6B;
 }
 
 #overlay {
@@ -586,4 +610,343 @@
     font-size: 24px;
     font-weight: 700;
     color: #1a6860;
+}
+
+
+/*DOCTOR PROFILE*/
+#hospital_status_div{
+    /*border: solid 1px red;
+    display: none;*/
+    border: 1px solid #B8B8B8;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 750px;
+    background: white;
+    z-index: 50;
+    box-shadow: 2px 2px 8px #b3b3b3;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#hospital_id_top{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 10%;
+    display: flex;
+    align-content: center;
+    border-bottom: 1px solid #B8B8B8;
+    font-family: inherit;
+}
+#hospital_id_id{
+    /*border: 1px solid red;*/
+    width: 90%;
+    align-content: center;
+    font-size: 19px;
+    margin: 1%;
+    color: #898989;
+    font-family: inherit;
+    font-weight: 500;
+}
+#hospital_id_id_vitals{
+    width: 90%;
+    align-content: center;
+    font-size: 19px;
+    margin: 1%;
+    color: #898989;
+    font-family: inherit;
+    font-weight: 500;
+}
+#hospital_edit_id{
+    width: 90%;
+    align-content: center;
+    font-size: 19px;
+    margin: 1%;
+    color: #898989;
+    font-family: inherit;
+    font-weight: 500;
+}
+#hospital_exit_div{
+    /*border: 1px solid red;*/
+    width: 10%;
+    margin: 1%;
+    text-align: center;
+    align-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #898989;
+    font-family: inherit;
+}
+#hospital_exit_div:hover{
+    color: black;
+}
+#edit_hospital_exit_div{
+    /*border: 1px solid red;*/
+    width: 10%;
+    margin: 1%;
+    text-align: center;
+    align-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #898989;
+    font-family: inherit;
+}
+#edit_hospital_exit_div:hover{
+    color: black;
+}
+#hospital_details{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 73%;
+    display: flex;
+    font-family: inherit;
+}
+#hospital_vitals{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 60%;
+    display: flex;
+}
+#profile_side_div{
+    /*border: 1px solid #B8B8B8;*/
+    border-radius: 7px;
+    width: 50%;
+    height: 100%;
+    display: block;
+    /*margin: 1%;*/
+}
+#profile_bio{
+    margin: 1%;
+    /*margin-top: 12%;*/
+    height: 55%;
+    overflow: auto;
+    border-radius: 8px;
+    overflow-y: hidden;
+    border: solid 0.5px #A3DDF0;
+}
+
+#profile_info_div{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    font-size: 13px;
+    /*margin-top: 12%;*/
+    height: 96%;
+    overflow: auto;
+    color: #898989;
+    /*font-weight: 550;*/
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /*display: none;*/
+    /*overflow-y: hidden;*/
+}
+
+#hospital_image{
+    /*border: 1px solid #A3DDF0;*/
+    border-radius: 7px;
+    width: 300px;
+    height: 148px;
+    /*border-radius: 50%;*/
+    /*margin: 1%;*/
+    background-image: url('../icons/dkt.jpg');
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+#hospital_buttons{
+    /*border: 1px solid red;*/
+    width: 50%;
+    margin: 1%;
+    margin-left: 3%;
+    display: block;
+}
+.hospital_profile_button{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 25%;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+
+/*EDIT USER BUTTON*/
+#edit_hospital_button{
+    border: 1px solid #30B3DE;
+    display: flex;
+    color: white;
+    background: #30B3DE;
+    /*border: 1px solid black;*/
+    height: 40px;
+    border-radius: 4px;
+    margin: auto;
+    font-size: 15px;
+    width: 125px;
+    
+}
+#edit_hospital_button:hover{
+    transform: scale(1.0001);
+    opacity: 0.85;
+    box-shadow: 1px 1px 3px #c7c5c5;
+}
+#edit_icon{
+    /*border: 1px solid black;*/
+    height: 100%;
+    align-content: center;
+    font-size: 14px;
+    width: 20px;
+    font-weight: 600;
+}
+#edit_txt{
+    /*border: 1px solid black;*/
+    height: 100%;
+    align-content: center;
+    margin-left: 4px;
+    font-weight: 600;
+    font-family: inherit;
+}
+#add_patient_button{
+    border: 1px solid #A3DDF0;
+    display: flex;
+    color: white;
+    background: #A3DDF0;
+    /*border: 1px solid black;*/
+    height: 40px;
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 8%;
+    font-size: 14px;
+    width: 125px;
+}
+#add_patient_button:hover{
+    transform: scale(1.0001);
+    opacity: 0.85;
+    box-shadow: 1px 1px 3px #c7c5c5;
+}
+#add_icon{
+    /*border: 1px solid black;*/
+    height: 100%;
+    align-content: center;
+    font-size: 14px;
+    width: 20px;
+    font-weight: 900;
+}
+
+/*DELETE USER BUTTON*/
+#delete_hospital_button{
+    border: 1px solid red;
+    display: flex;
+    color: white;
+    background: red;
+    /*border: 1px solid black;*/
+    height: 38px;
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 14%;
+    width: 125px;
+    font-weight: 600;
+    font-size: 15px;
+}
+#delete_hospital_button:hover{
+    transform: scale(1.0001);
+    opacity: 0.85;
+    box-shadow: 1px 1px 3px #c7c5c5;
+}
+#delete_icon{
+    /*border: 1px solid black;*/
+    height: 100%;
+    align-content: center;
+    font-size: 14px;
+    width: 20px;
+}
+#delete_txt{
+    /*border: 1px solid black;*/
+    height: 100%;
+    align-content: center;
+    margin-left: 4px;
+    font-family: inherit;
+}
+#upper_div{
+    /*border: 1px solid #B8B8B8;*/
+    border-radius: 7px;
+    height: 150px;
+    margin: 1%;
+    width: 97%;
+    overflow: auto;
+    border-radius: 8px;
+    overflow-y: hidden;
+    /*border: solid 0.5px #d4d4d4;*/
+    display: flex;
+}
+.hospital_profile_button{
+    /*border: 1px solid red;*/
+    /*margin: 1%;*/
+    margin-bottom: 1%;
+    height: 25%;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+#hospital_description{
+    /*border: 1px solid red;*/
+    margin-left: 1%;
+    width: 50%;
+    overflow: auto;
+    font-family: inherit;
+}
+.hospital_description_info{
+    /*border: 1px solid red;
+    border-bottom: 1px solid #EBEBEB;*/
+    margin-bottom: 1%;
+    height: 10%;
+    display: flex;
+    font-family: inherit;
+}
+.hospital_detail_head{
+    /*border: solid 1px red;*/
+    min-width: 30%;
+    align-content: center;
+    font-family: inherit;
+    color: #898989;
+    /*font-weight: 600;*/
+    font-size: 20px;
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.hospital_detail_data{
+    /*border: solid 1px red;*/
+    width: 75%;
+    margin-left: 1%;
+    align-content: center;
+    font-family: inherit;
+}
+.hospital_detail_data_input{
+    width: 75%;
+    margin-left: 1%;
+    align-content: center;
+    font-family: inherit;
+    border-radius: 8px;
+    border: 1px solid rgb(48, 179, 222, 0.4);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    height: 25px;
+}
+.colon{
+    /*border: 1px solid red;*/
+    width: 3%;
+    font-size: 18px;
+    font-family: inherit;
+    align-content: center;
+    text-align: center;
+}
+#hospital_approval_buttons{
+    /*border: 1px solid red;*/
+    border-top: 1px solid #B8B8B8;
+    margin: 1%;
+    height: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
 }

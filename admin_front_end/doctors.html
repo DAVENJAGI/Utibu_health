@@ -129,6 +129,35 @@
             </div>
 
             <div id="overlay"></div>
+
+            <div id="returned_info">
+                <div id="head_text_div">
+                    <div id="head_caps_text">Doctor Details Update</div>
+                </div>
+                <div id="confirmation_text">
+                    <div id="saved_confirmation_text_text"></div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div id="confirmation_div">
+                <div id="head_text_div">
+                    <div id="head_caps_text">Delete Patient</div>
+                </div>
+                <div id="confirmation_text">
+                    <div id="confirmation_text_text">Are you sure you want to delete the selected user?</div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="no_button">No</button>
+                        <button id="yes_button">Yes</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="doctor_status_div">
                 <div id="doctor_id_top">
                     <div id="doctor_id_id">Doctor Id:</div>
@@ -266,6 +295,161 @@
                 </div>
             </div>
 
+            <div id="edit_doctor_status_div">
+                <div id="doctor_id_top">
+                    <div id="doctor_edit_id">Doctor Id:</div>
+                    <div id="edit_doctor_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+
+                <div id="doctor_details">
+                    <div id="profile_side_div">
+                        <div id="edit_upper_div">
+                            <div id="doctor_image"></div>
+                            
+                        </div>                   
+                        
+                        <div id="profile_bio">
+                            <textarea id="input_profile_info_div"></textarea>                            
+                        </div>
+                    </div>
+                    <div id="doctor_description">
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">First Name</div>
+                            <div class="colon">:</div>
+                            <input id="edit_first_name" class="input_doctor_detail_data"></input>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Last Name</div>
+                            <div class="colon">:</div>
+                            <input id="edit_last_name"  class="input_doctor_detail_data"></input>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">License No</div>
+                            <div class="colon">:</div>
+                            <input id="edit_license_no" class="input_doctor_detail_data"></input>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">email</div>
+                            <div class="colon">:</div>
+                            <input id="edit_doctor_email" class="input_doctor_detail_data"></input>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">As.. Hospital</div>
+                            <div class="colon">:</div>
+                            <div class="select-wrapper">
+                                <select id="hospital_select" class="select_divs" name="hospital_id" class="input" required>
+                                    <option id="hospital_option_select_1"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Phone No</div>
+                            <div class="colon">:</div>
+                            <input id="edit_phone_number" class="input_doctor_detail_data"></input>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Specialization</div>
+                            <div class="colon">:</div>
+                            <input id="edit_specialization" class="input_doctor_detail_data"></input>
+                        </div>
+                        <div class="doctor_description_info">
+                            <div class="doctor_detail_head">Availability</div>
+                            <div class="colon">:</div>
+                            <div class="select-wrapper">
+                                <select id="availability_select" name="availability_id" class="input" required>
+                                    <option id="option_select_1"></option>
+                                    <option value="Available" id="option_select2"></option>
+                                    <option value="Unavailable" id="option_select3"></option>
+                                </select>
+                            </div>
+                        </div>                       
+                    </div>
+                </div>
+
+                <div id="doctor_approval_buttons">
+                    <div id="order_buttons">
+                        <button class="confirmation_buttons" id="update_doctor_profile_button">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="create_new_user">
+                <div id="user_id_top">
+                    <div id="user_edit_id">Create New Patient </div>
+                    <div id="user_edit_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+                <div id="user_details">
+                    <div id="new_use_profile_side_div">
+                        <div id="order_image"></div>
+                    </div>
+                    <div id="user_description">                        
+                        <div class="user_description_info">
+                            <div class="user_detail_head">First Name</div>
+                            <div class="colon">:</div>
+                            <input type="text" id="patient_first_name" placeholder="Jane" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Last Name</div>
+                            <div class="colon">:</div>
+                            <input type="text" placeholder="Doe" id="patient_last_name"  class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">D.o.B</div>
+                            <div class="colon">:</div>
+                            <input type="text" placeholder="YYYY-MM-DD" id="edit_date_of_birth" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">email</div>
+                            <div class="colon">:</div>
+                            <input type="text" placeholder="janedoe1@gmail.com" id="edit_user_email" class="user_detail_data_input">
+                        </div>
+                       
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Phone No</div>
+                            <div class="colon">:</div>
+                            <input type="text" placeholder="+254xxxxxxxxx" id="patient_phone_number" pattern="[0-9]{10}" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Password</div>
+                            <div class="colon">:</div>
+                            <input type="text" placeholder="password" id="edit_password" pattern="[0-9]{10}" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Sex</div>
+                            <div class="colon">:</div>
+                            <div class="select-wrapper">
+                                <select id="gender_select" name="disease_id" class="input" required>
+                                    <option id="option_select_1">Select Gender</option>
+                                    <option value="Male" id="option_select2">Male</option>
+                                    <option value="Female" id="option_select3">Female</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                        <div class="user_description_info">
+                            <div class="user_detail_head">Address</div>
+                            <div class="colon">:</div>
+                            <input type="text" placeholder="045-0100, Thika" id="edit_patient_address" class="user_detail_data_input">
+                        </div>
+                        <div class="user_description_info" id="add_disease_div">
+                            <div class="user_detail_head" id="new_disease_title">New Disease</div>
+                            <div class="colon">:</div>
+                            <div id="patient_address" class="user_detail_data">
+                                <div class="select-wrapper">
+                                    <select id="disease_select" name="disease_id" class="input" required>
+                                    <option value="" id="option_select">Select Disease</option> </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="user_approval_buttons">
+                    <div id="order_buttons">
+                        <button class="confirmation_buttons" id="create_new_user_button">Create</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="top_div">
                 <div id="page_name">Doctors</div>
             </div>
@@ -281,8 +465,7 @@
                     </div>
 
                     <div id="filter_div">
-                        <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>
-                        <div id="filter_txt">Filter By</div>
+                        <div id="filter_icon"><i class="fa fa-filter" aria-hidden="true"></i></div>                        
                     </div>
                     
                 </div>
