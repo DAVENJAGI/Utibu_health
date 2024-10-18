@@ -380,6 +380,16 @@
     z-index: 120;
     display: none; 
 }
+#overlay1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 220;
+    display: none; 
+}
 #confirmation_div{
     border: solid 1px black;
     position: relative;
@@ -394,36 +404,8 @@
     box-shadow: 5px 5px 8px black;
     z-index: 125;
 }
-#confirmation_text{
-    /*border: solid 1px red;*/
-    height: 50%;
-    margin: 1%;
-    align-content: center;
-    margin-bottom: 3%;
-}
-#confirmation_text_text{
-    /*border: solid 1px red;*/
-    margin: 1%;
-    height: 35%;
-    text-align: center;
-    align-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1a6860;
-}
-#confirmation_buttons{
-    /*border: solid 1px red;*/
-    height: 30%;
-    margin: 1%;
-    align-content: center;
-}
-#confirmation_buttons_inner{
-    /*border: 1px solid red;*/
-    align-content: center;
-    height: 80%;
-    margin: 1%;
-    text-align: center;
-}
+
+
 #no_button{
     border: 1px solid red;
     width: 90px;
@@ -494,13 +476,7 @@
     margin: 1%;
     align-content: center;
 }
-#delete_confirmation_buttons_inner{
-    /*border: 1px solid red;*/
-    align-content: center;
-    height: 80%;
-    margin: 1%;
-    text-align: center;
-}
+
 #delete_no_button{
     border: 1px solid red;
     width: 90px;
@@ -534,89 +510,10 @@
     box-shadow: 1px 1px 4px #9b9a9a;
 }
 
-
-
-#returned_info{
-    border: solid 1px #9b9a9a;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 200px;
-    width: 550px;
-    background: white;
-    display: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 8px #9b9a9a;
-}
-#ok_button{
-    border: 1px solid #1a6860;
-    width: 90px;
-    height: 30px;
-    border-radius: 4px;
-    background-color: #1a6860;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-}
-#ok_button:hover{
-    color: wheat;
-    transform: scale(1.002);
-    box-shadow: 1px 1px 4px #9b9a9a;
-}
-#saved_confirmation_text_text{
-    margin: 1%;
-    height: 35%;
-    text-align: center;
-    align-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1a6860;
-}
-#delete_returned_info{
-    border: solid 1px #9b9a9a;
-    z-index: 30;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 200px;
-    width: 550px;
-    background: white;
-    display: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 8px #9b9a9a;
-}
-#delete_ok_button{
-    border: 1px solid #1a6860;
-    width: 90px;
-    height: 30px;
-    border-radius: 4px;
-    background-color: #1a6860;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-}
-#delete_ok_button:hover{
-    color: wheat;
-    transform: scale(1.002);
-    box-shadow: 1px 1px 4px #9b9a9a;
-}
-#delete_saved_confirmation_text_text{
-    margin: 1%;
-    height: 35%;
-    text-align: center;
-    align-content: center;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1a6860;
-}
-
-
-/*DOCTOR PROFILE*/
+/*HOSPITAL PROFILE*/
 #hospital_status_div{
-    /*border: solid 1px red;
-    display: none;*/
+    /*border: solid 1px red;*/
+    display: none;
     border: 1px solid #B8B8B8;
     border-radius: 8px;
     position: absolute;
@@ -629,6 +526,7 @@
     z-index: 50;
     box-shadow: 2px 2px 8px #b3b3b3;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow:scroll;
 }
 #hospital_id_top{
     /*border: 1px solid red;*/
@@ -638,6 +536,9 @@
     align-content: center;
     border-bottom: 1px solid #B8B8B8;
     font-family: inherit;
+    position: sticky;
+    top: 0;
+    background: white;
 }
 #hospital_id_id{
     /*border: 1px solid red;*/
@@ -747,7 +648,7 @@
     height: 148px;
     /*border-radius: 50%;*/
     /*margin: 1%;*/
-    background-image: url('../icons/dkt.jpg');
+    background-image: url('../icons/hospital.jpg');
     background-size: contain;
     background-position: 50%;
     background-repeat: no-repeat;
@@ -897,7 +798,7 @@
     /*border: 1px solid red;
     border-bottom: 1px solid #EBEBEB;*/
     margin-bottom: 1%;
-    height: 10%;
+    height: 11%;
     display: flex;
     font-family: inherit;
 }
@@ -920,6 +821,9 @@
     margin-left: 1%;
     align-content: center;
     font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .hospital_detail_data_input{
     width: 75%;
@@ -949,4 +853,517 @@
     display: flex;
     align-items: center;
     justify-content: center;   
+}
+#hospital_pple{
+    /*border: 1px solid red;*/
+    border-top: 1px solid #B8B8B8;
+    margin: 1%;
+    /*height: 35%;*/
+    margin-top: 3%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+/*EDIT HOSPITAL PROFILE*/
+#edit_hospital_status_div{
+    /*border: solid 1px red;*/
+    display: none;
+    border: 1px solid #B8B8B8;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 750px;
+    background: white;
+    z-index: 255;
+    box-shadow: 2px 2px 8px #b3b3b3;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.input_hospital_detail_data{
+    /*border: solid 1px red;*/
+    width: 75%;
+    margin-left: 2%;
+    align-content: center;
+    font-family: inherit;
+    border: 1px solid rgb(48, 179, 222, 0.4);
+    border-radius: 8px;
+    outline: none;
+}
+#hospital_select{
+    border: 1px solid rgb(48, 179, 222, 0.4);
+    min-width: 100px;
+    height: 35px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    background: white;
+    outline: none;
+    margin-left: 1%;
+}
+#availability_select{
+    border: 1px solid rgb(48, 179, 222, 0.4);
+    min-width: 130px;
+    height: 35px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    background: white;
+    outline: none;
+    margin-left: 5%;
+}
+#input_profile_info_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*margin: 1%;*/
+    padding: 1%;
+    border: solid 1px white;
+    font-size: 13px;
+    height: auto;
+    height: 96%;
+    min-width: 98%;
+    overflow: auto;
+    padding: 3px;
+    color: #898989;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    outline: none;
+    overflow-wrap: break-word;
+}
+#edit_upper_div{
+    /*border: 1px solid #B8B8B8;*/
+    border-radius: 7px;
+    height: 150px;
+    margin: 1%;
+    width: 97%;
+    overflow: auto;
+    border-radius: 8px;
+    overflow-y: hidden;
+    /*border: solid 0.5px #d4d4d4;*/
+    display: flex;
+    justify-content: center;
+}
+#update_hospital_profile_button{
+    border: 1px solid #38baee;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #38baee;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    outline: none;
+}
+.confirmation_buttons:hover{
+    opacity: 0.85;
+    color: black;
+}
+
+#create_new_user{
+    /*border: solid 1px red;*/
+    display: none;
+    border: 1px solid #B8B8B8;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 450px;
+    width: 550px;
+    background: white;
+    z-index: 50;
+    box-shadow: 2px 2px 8px #b3b3b3;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#user_edit_exit_div{
+    /*border: 1px solid red;*/
+    width: 10%;
+    margin: 1%;
+    text-align: center;
+    align-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #898989;
+}
+#user_edit_exit_div:hover{
+    color: black;
+}
+#user_details{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 73%;
+    display: flex;
+}
+#order_image{
+    border: 1px solid #B8B8B8;
+    border-radius: 7px;
+    width: 100%;
+    height: 40%;
+    background-image: url('../icons/patient.jpg');
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+#new_use_profile_side_div{
+    /*border: 1px solid #B8B8B8;*/
+    border-radius: 7px;
+    width: 30%;
+    height: 100%;
+    display: block;
+    /*margin: 1%;*/
+}
+#buttons_div{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    margin-top: 12%;
+    height: 55%;
+    overflow: auto;
+    overflow-y: hidden;
+}
+.user_profile_button{
+    /*border: 1px solid red;*/
+    /*margin: 1%;*/
+    margin-bottom: 1%;
+    height: 25%;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+#user_id_top{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 10%;
+    display: flex;
+    align-content: center;
+    border-bottom: 1px solid #B8B8B8;
+}
+#user_id_id{
+    /*border: 1px solid red;*/
+    width: 90%;
+    align-content: center;
+    font-size: 19px;
+    margin: 1%;
+    color: #898989;
+    font-family: inherit;
+    font-weight: 500;
+}
+#user_edit_id{
+    width: 90%;
+    align-content: center;
+    font-size: 19px;
+    margin: 1%;
+    color: #898989;
+    font-family: inherit;
+    font-weight: 500;
+}
+#user_description{
+    /*border: 1px solid red;*/
+    margin-left: 1%;
+    width: 70%;
+    overflow: auto;
+}
+.user_description_info{
+    /*border: 1px solid red;
+    border-bottom: 1px solid #EBEBEB;*/
+    margin-bottom: 1%;
+    height: 10%;
+    display: flex;
+    font-family: inherit;
+}
+.user_detail_head{
+    /*border: solid 1px red;*/
+    min-width: 30%;
+    align-content: center;
+    font-family: inherit;
+    color: #898989;
+    /*font-weight: 600;*/
+    font-size: 20px;
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.user_detail_data{
+    /*border: solid 1px red;*/
+    width: 75%;
+    margin-left: 1%;
+    align-content: center;
+    font-family: inherit;
+}
+.user_detail_data_input{
+    width: 75%;
+    margin-left: 1%;
+    align-content: center;
+    font-family: inherit;
+    border-radius: 8px;
+    border: 1px solid rgb(48, 179, 222, 0.4);
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    height: 25px;
+
+}
+.colon{
+    /*border: 1px solid red;*/
+    width: 3%;
+    font-size: 18px;
+    font-family: inherit;
+    align-content: center;
+    text-align: center;
+}
+
+#dksts_depts_in_hosp{
+    /*border: 1px solid red;*/
+    height: 200px;
+    width: 350px;
+    /*margin-top: 10%;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.pple_in_hosp{
+    height: 70%;
+    width: 40%;
+    border-radius: 8px;
+    border: 1px solid rgb(48, 179, 222, 0.3);
+    box-shadow: 1px 1px 4px #d6d6d6;
+}
+.pple_in_hosp:hover{
+    transform: scale(1.01);
+    box-shadow: 1px 1px 4px #9b9a9a;
+}
+.top_icon{
+    height: 50px;
+    margin: auto;
+    margin-top: 5%;
+    width: 50px;
+    align-self: center;
+    /*margin-left: 95px;*/
+    border-radius: 50%;
+    align-content: center;
+    text-align: center;
+    font-size: 40px;
+    color: rgb(48, 179, 222, 0.5);
+    border: 1px solid rgb(48, 179, 222, 0.3);
+}
+.bottom_info{
+    /*border: solid 1px red;*/
+    height: 45%;
+    margin: 1%;
+    align-content: center;
+    text-align: center;
+    font-family: inherit;
+    color: rgb(48, 179, 222, 0.5);
+    font-weight: 800;
+}
+#doctor_icon_hosp{
+    font-size: 30px;
+}
+
+/*DEPARTMENT PROFILE*/
+#department_profile_edit{
+    /*border: solid 1px red;*/
+    display: none;
+    border: 1px solid #B8B8B8;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 450px;
+    width: 550px;
+    background: white;
+    z-index: 50;
+    box-shadow: 2px 2px 8px #b3b3b3;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#department_exit_div{
+    /*border: 1px solid red;*/
+    width: 10%;
+    margin: 1%;
+    text-align: center;
+    align-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #898989;
+    font-family: inherit;
+}
+#department_exit_div:hover{
+    color: black;
+}
+#department_edit_exit_div{
+    /*border: 1px solid red;*/
+    width: 10%;
+    margin: 1%;
+    text-align: center;
+    align-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #898989;
+    font-family: inherit;
+}
+#department_edit_exit_div:hover{
+    color: black;
+}
+#department_details{
+    /*border: 1px solid red;*/
+    margin: 1%;
+    height: 73%;
+    /*display: flex;*/
+    font-family: inherit;
+}
+#department_description{
+    border: 1px solid #B8B8B8;
+    /*width: 50%;*/
+    margin-top: 1%;
+    height: 68%;
+    overflow-y: auto;
+    font-family: inherit;
+}
+#department_description_info{
+    /*border: 1px solid red;*/
+    /*border-bottom: 1px solid #EBEBEB;*/
+    margin-top: 1%;
+    height: 10%;
+    display: none;
+    font-family: inherit;
+    bottom: 13%;
+    /*position: fixed;*/
+    align-items: center;
+    width: 90%;
+    /*visibility: none;*/
+}
+#create_new_dept{
+    /*border: 1px solid red;*/
+    height: 16%;
+    margin: 1%;
+    align-content: center;
+}
+.new_dept_button{
+    /*border: 1px solid red;*/
+    /*margin: 1%;*/
+    height: auto;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+
+#add_dept_button{
+    border: 1px solid #38baea;
+    display: flex;
+    color: white;
+    background: #38baea;
+    /*border: 1px solid black;*/
+    height: 40px;
+    border-radius: 4px;
+    margin: auto;
+    /*margin-top: 8%;*/
+    font-size: 14px;
+    width: 130px;
+    float: right;
+}
+#add_dept_button:hover{
+    transform: scale(1.0001);
+    opacity: 0.85;
+    box-shadow: 1px 1px 3px #c7c5c5;
+}
+#add_icon{
+    /*border: 1px solid black;*/
+    height: 100%;
+    align-content: center;
+    font-size: 16px;
+    width: 20px;
+    font-weight: 900;
+}
+#department_approval_buttons{
+    /*border: 1px solid red;*/
+    border-top: 1px solid #B8B8B8;
+    margin: 1%;
+    height: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+#update_hospital_department_{
+    border: 1px solid #38baee;
+    width: 90px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #38baee;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    outline: none;
+}
+.confirmation_buttons:hover{
+    opacity: 0.85;
+    color: black;
+}
+#dept_select{
+    border: 1px solid rgb(48, 179, 222, 0.4);
+    width: auto;
+    height: 28px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    background: white;
+    outline: none;
+    margin-left: 7%;
+    font-weight: 550;
+    color: #898989;
+}
+.department_detail_head{
+    /*border: solid 1px red;*/
+    min-width: 40%;
+    align-content: center;
+    font-family: inherit;
+    color: #898989;
+    /*font-weight: 600;*/
+    font-size: 20px;
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.department_detail_data{
+    /*border: solid 1px red;*/
+    width: 75%;
+    margin-left: 1%;
+    align-content: center;
+    font-family: inherit;
+}
+#department_div{
+    /*border: 1px solid red;*/
+    height: 93%;
+    margin: 1%;
+    border: 1px solid #B8B8B8;
+    overflow: hidden;
+    border-radius: 8px;
+    color: #898989;
+}
+.dept_name{
+    /*border: 1px solid red;*/
+    border-bottom: solid 1px #B8B8B8;
+    height: 20%;
+    margin: 1%;
+    align-content: center;
+    text-align: center;
+    font-size: 20px;
+    font-family: inherit;
+    font-weight: 550;
+}
+.dept_description{
+    /*border: 1px solid red;*/
+    height: 71%;
+    margin-top: 1%;
+    font-size: 14px;
+    padding: 1%;
+    overflow: auto;
+    color: #898989;
+    margin: 1%;
 }

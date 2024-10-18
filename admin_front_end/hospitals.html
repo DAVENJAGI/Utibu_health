@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/hospitals.css">
     <script type="text/javascript" src="../scripts/hospitals.js"></script>
@@ -132,6 +133,7 @@
             </div>
 
             <div id="overlay"></div>
+            <div id="overlay1"></div>
             <div id="confirmation_div">
                 <div id="confirmation_text">
                     <div id="confirmation_text_text">Are you sure you want to add a new hospital??</div>
@@ -176,16 +178,23 @@
                             </div>
                         </div>                   
                         
-                        <div id="profile_bio">
-                            <div id="profile_info_div">
-                            </div>                            
-                        </div>
+                        <div id="dksts_depts_in_hosp">
+                            <div id="department_click" class="pple_in_hosp">
+                                <div class="top_icon"><i class='bx bx-group' ></i></div>
+                                <div class="bottom_info">Departments</div>
+                            </div>
+                            <div class="pple_in_hosp">
+                                <div class="top_icon" id="doctor_icon_hosp"><i class="fa fa-user-md" aria-hidden="true"></i>
+                                </div>
+                                <div class="bottom_info">Doctors</div>
+                            </div>
+                        </div> 
                     </div>
                     <div id="hospital_description">
                         <div class="hospital_description_info">
                             <div class="hospital_detail_head">Name</div>
                             <div class="colon">:</div>
-                            <div id="first_name" class="hospital_detail_data"></div>
+                            <div id="hosp_name" class="hospital_detail_data"></div>
                         </div>
                         <div class="hospital_description_info">
                             <div class="hospital_detail_head">email</div>
@@ -222,40 +231,124 @@
                             <div class="hospital_detail_head">Town</div>
                             <div class="colon">:</div>
                             <div id="town_name" class="hospital_detail_data"></div>
+                        </div>                                  
+                    </div>
+                </div>
+
+                <div id="hospital_pple">
+                    
+                </div>
+            </div>
+            <div id="returned_info">
+                <div id="head_text_div">
+                    <div id="head_caps_text">Hospital Details Update</div>
+                </div>
+                <div id="confirmation_text">
+                    <div id="saved_confirmation_text_text"></div>
+                </div>
+                <div id="confirmation_buttons">
+                    <div id="confirmation_buttons_inner">
+                        <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="edit_hospital_status_div">
+                <div id="hospital_id_top">
+                    <div id="hospital_edit_id">Hospital Id:</div>
+                    <div id="edit_hospital_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+            
+                <div id="hospital_details">
+                    <div id="profile_side_div">
+                        <div id="edit_upper_div">
+                            <div id="hospital_image"></div>
+                            
+                        </div>                   
+                        
+                        <div id="profile_bio">
+                            <textarea id="input_profile_info_div"></textarea>                            
+                        </div>
+                    </div>
+                    <div id="hospital_description">
+                        <div class="hospital_description_info">
+                            <div class="hospital_detail_head">Name</div>
+                            <div class="colon">:</div>
+                            <input id="edit_hosp_name" class="input_hospital_detail_data"></input>
                         </div>
                         <div class="hospital_description_info">
-                            <div class="hospital_detail_head">Longitude</div>
+                            <div class="hospital_detail_head">email</div>
                             <div class="colon">:</div>
-                            <div id="longitude_info" class="hospital_detail_data"></div>
+                            <input id="edit_hospital_email" class="input_hospital_detail_data"></input>
+                        </div>
+                        <div class="hospital_description_info">
+                            <div class="hospital_detail_head">Phone No</div>
+                            <div class="colon">:</div>
+                            <input id="edit_phone_number" class="input_hospital_detail_data"></input>
                         </div>
                         <div class="hospital_description_info">
                             <div class="hospital_detail_head">Latitude</div>
                             <div class="colon">:</div>
-                            <div id="latitude" class="hospital_detail_data"></div>
+                            <input id="edit_latitude" class="input_hospital_detail_data"></input>
                         </div>
-                                              
+                        <div class="hospital_description_info">
+                            <div class="hospital_detail_head">Longitude</div>
+                            <div class="colon">:</div>
+                            <input id="edit_longitude" class="input_hospital_detail_data"></input>
+                        </div>
+                                            
                     </div>
                 </div>
-
+            
                 <div id="hospital_approval_buttons">
-                    <div id="create_disease_buttons">
+                    <div id="order_buttons">
+                        <button class="confirmation_buttons" id="update_hospital_profile_button">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="department_profile_edit">
+                <div id="hospital_id_top">
+                    <div id="hospital_edit_id">Present Departments</div>
+                    <div id="department_edit_exit_div"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+                <div id="department_details">
+                    <div id="create_new_dept">
+                        <div class="new_dept_button">
+                            <button id="add_dept_button">
+                                <div id="add_icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                                <div id="edit_txt">New department</div>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="department_description">                        
+                        <div id="department_div">
+                            <div class="dept_name"></div>
+                            <div class="dept_description"> </div>
+                        </div>
                         
+                    </div>
+                    <div id="department_description_info">
+                        <div class="department_detail_head">Choose Department</div>
+                        <div class="colon">:</div>
+                        <div class="select-wrapper">
+                            <select id="dept_select" class="select_divs" name="doctor_id" class="input" required>
+                                <option id="doctor_option_select_1">Choose Departments</option>
+                            </select>
+                        </div>
+                        <div id="choose_doctor" class="department_detail_data"></div>
+                    </div>
+                </div>
+                <div id="department_approval_buttons">
+                    <div id="order_buttons">
+                        <button class="confirmation_buttons" id="update_hospital_department_">Create</button>
                     </div>
                 </div>
             </div>
 
             <div id="new_hospital">
                                 
-                <div id="returned_info">
-                    <div id="confirmation_text">
-                        <div id="saved_confirmation_text_text"></div>
-                    </div>
-                    <div id="confirmation_buttons">
-                        <div id="confirmation_buttons_inner">
-                            <button id="ok_button" onclick="hideFeedbackDiv()">OK</button>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div id="form_div">
                     <div id="header_input">
@@ -337,40 +430,6 @@
             </div>
 
                         
-            
-            <!--
-            <div id="whole_body">
-                <div id="content">
-                    <div id="hospital_title">
-                        <div id="hospital_summary">Hospital Summary</div>
-                    </div>
-                    <div id="tables_content">
-                        <table id="myTable">
-                          <thead id="table_head">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Hospital Name</th>
-                                    <th>Hospital Email</th>
-                                    <th>Longitude</th>
-                                    <th>Latitude</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr >
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <div id="pagination">
-                        <div id="prev" class="nav_buttons"><i class="fa fa-chevron-circle-left" aria-hidden="true" style="font-size: 35px;"></i></div>
-                        <span id="page-num"></span>
-                        <div id="next" class="nav_buttons"><i class="fa fa-chevron-circle-right" aria-hidden="true" style="font-size: 35px;"></i></div>
-                    </div>
-                   
-                </div>
-            </div>
-        -->
             <div id="delete_confirmation_div">
                 <div id="delete_confirmation_text">
                     <div id="delete_confirmation_text_text">Are you sure you want to delete the selected Hospital?</div>
@@ -382,17 +441,7 @@
                     </div>
                 </div>
             </div>
-            <div id="delete_returned_info">
-                <div id="delete_confirmation_text">
-                    <div id="delete_saved_confirmation_text_text"></div>
-                </div>
-                <div id="delete_confirmation_buttons">
-                    <div id="delete_confirmation_buttons_inner">
-                        <button id="ok_button" onclick="hideDeleteFeedbackDiv()">OK</button>
-                    </div>
-                </div>
-            </div>
-
+            
             <div id="hospital_div">
                 <div id="hospital_div_inner">
                     <div id="search">

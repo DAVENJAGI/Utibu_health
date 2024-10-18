@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const pageNumSpan = document.getElementById('page-num');
+    let townId;
+    // let countyId;
 
     function getAuthHeaders() {
       return {
@@ -127,15 +129,14 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchHospitalDetails(hospitalId)
         .then(hospitalDetails => {
             const hospitalId = hospitalDetails.id;
-            const countyId = hospitalDetails.county_id;
-            return fetchRelatedData(hospitalId, countyId)
-            .then(([hospitalData, countyData]) => {
-                updateHospitalStatusDiv(hospitalDetails, hospitalData, countyData);
+            townId = hospitalDetails.town_id;
+            return fetchRelatedData(hospitalId, townId)
+            .then(([hospitalData, townData, constituencyData]) => {
+                updateHospitalStatusDiv(hospitalDetails, hospitalData, townData, constituencyData);
                 //  updateHospitalEditDiv(hospitalDetails, hospitalData, hospitalData);
                 window.hospitalDetails = hospitalDetails;
                 window.hospitalData = hospitalData;
-                window.countyData = countyData;
-                console.log("there are", countyData);
+                window.townData = townData;
                 showHospitalStatusDiv();
             });
         })
@@ -154,45 +155,88 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         });
   }
-  function fetchRelatedData(hospitalId, countyId) {
+  // const constituencyId = townData.constituency_id
+  function fetchRelatedData(hospitalId, townId) {
     console.log(hospitalId);
     return Promise.all([
-        fetch(`http://0.0.0.0:5000/api/v1/hospital/${hospitalId}`, { headers: getAuthHeaders() }).then(response => response.json()),
-        fetch(`http://0.0.0.0:5000/api/v1/county/${countyId}`, { headers: getAuthHeaders() }).then(response => response.json()),
+        fetch(`http://0.0.0.0:5000/api/v1/hospital/${hospitalId}`, { headers: getAuthHeaders() })
+        .then(response => response.json())
+        .then(hospitalData => {
+          console.log(hospitalData);
+          return fetch(`http://0.0.0.0:5000/api/v1/hospital/${hospitalId}/departments`, { headers: getAuthHeaders() })
+          .then(response => response.json())
+          .then(departmentData => {
+            console.log(departmentData);
+            numberOfDepartments = departmentData.length;
+            const deptNo = document.getElementById('dept_no');
+            deptNo.textContent = numberOfDepartments; 
+          })
+        }),
+
+        fetch(`http://0.0.0.0:5000/api/v1/hospital/${hospitalId}/doctors`, { headers: getAuthHeaders() })
+        .then(response => response.json())
+        .then(doctorData => {
+
+          numberOfDoctors = doctorData.length;
+          const doctNo = document.getElementById('dkt_no');
+          doctNo.textContent = numberOfDoctors; 
+        }),
+
+        fetch(`http://0.0.0.0:5000/api/v1/ward/${townId}`, { headers: getAuthHeaders() })
+        .then(response => response.json())
+        .then(townData => {
+          const constituencyId = townData.constituency_id;
+          window.townData = townData;
+          console.log("constituency id is:", constituencyId);
+          return fetch(`http://0.0.0.0:5000/api/v1/constituency/${constituencyId}`, { headers: getAuthHeaders() })
+          .then(response => response.json())
+          .then(constituencyData => {
+              console.log("Here is constituency Data:", constituencyData);
+              window.constituencyData = constituencyData;
+              hospitalCountyId = constituencyData.county_id;
+              console.log("hospital county id is:", hospitalCountyId);
+              return fetch(`http://0.0.0.0:5000/api/v1/county/${hospitalCountyId}`, { headers: getAuthHeaders() })
+              .then(response => response.json())
+              .then(hospitalCountyData => {
+                window.hospitalCountyData = hospitalCountyData;
+                console.log("County data in which the hospital is found in:", hospitalCountyData);
+              })
+          })
+        }),
     ]);
   }
 
   //UPDATES DOCTOR PPROFILE DATA
-  function updateHospitalStatusDiv(hospitalDetails, hospitalData, countyData) {
+  function updateHospitalStatusDiv(hospitalDetails, hospitalData, townData, constituencyData) {
     const hospitalStatusDiv = document.getElementById('hospital_status_div');
     
     document.getElementById('hospital_id_id').textContent = `Hospital Id: ${hospitalDetails.id}`;
 
-    const hospitalNameElem = document.getElementById('first_name');
-    hospitalNameElem.textContent = hospitalDetails.first_name || 'N/A';
+    const hospitalNameElem = document.getElementById('hosp_name');
+    hospitalNameElem.textContent = hospitalDetails.name || 'N/A';
     
-    const hospitalNameElem1 = document.getElementById('last_name');
-    hospitalNameElem1.textContent = hospitalDetails.last_name || 'N/A';  
-            
-    const hospitalLicenseNo = document.getElementById('license_no');
-    hospitalLicenseNo.textContent = hospitalDetails.license_no;
+    const hospitalEmailElem = document.getElementById('hospital_email');
+    hospitalEmailElem.textContent = hospitalDetails.email || 'N/A'; 
     
-    const hospitalDescriptionElem = document.getElementById('hospital_email');
-    hospitalDescriptionElem.textContent = hospitalDetails.email;
-    
-            
-    const assignedHospital = document.getElementById('county_name');
-    assignedHospital.textContent = countyData.name;
-    
-    const telephoneElem = document.getElementById('phone_number');
+    const telephoneElem = document.getElementById('tel_no');
     telephoneElem.textContent = hospitalDetails.telephone_no || 'N/A';
 
+    const constituencyFound = document.getElementById('constituency_name');
+    constituencyFound.textContent = window.constituencyData.constituency_name;
+
+    const townIn = document.getElementById('town_name');
+    townIn.textContent = window.townData.town_name;
+
+    const countyIn = document.getElementById('county_found');
+    countyIn.textContent = window.hospitalCountyData.name;
+   /* 
     const profileInfoElem = document.getElementById('profile_info_div');
-    profileInfoElem.textContent = hospitalDetails.profile_bio || 'N/A';
+    profileInfoElem.textContent = hospitalDetails.description || 'This hospital does not have currently set profile information';
 
 
     const specializationElem = document.getElementById('specialization');
     specializationElem.textContent = hospitalDetails.specialization || 'N/A';
+
     const hospitalStatusElem = document.getElementById('activity_status');
     if(hospitalDetails.status === "Active"){
         hospitalStatusElem.style.background = "#A3DDF0";
@@ -211,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else{
         availabilityElem.textContent = "Not Available";
     }
-    
+    */
     
     
   }
@@ -237,6 +281,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
   }
+
+  function showDepartmentsDiv() {
+    const hospitalDepartmentDiv = document.getElementById('department_profile_edit');
+    const computedStyle = window.getComputedStyle(hospitalDepartmentDiv);
+    if (computedStyle.display === "none") {
+      hospitalDepartmentDiv.style.display = 'block';
+        if(hospitalDepartmentDiv.style.display = 'block'){
+          hospitalDepartmentDiv.style.zIndex = "230";
+            showOverlay1();
+        }
+    }
+  }
+  function hideDepartmentsDiv() {
+    const hospitalDepartmentDiv = document.getElementById('department_profile_edit');
+    const computedStyle = window.getComputedStyle(hospitalDepartmentDiv);
+    if (computedStyle.display === "block") {
+      hospitalDepartmentDiv.style.display = 'none';            
+    }
+  }
+  
+  function showOverlay1() {
+    const overlayDiv1 = document.getElementById('overlay1');
+    const computedStyle = window.getComputedStyle(overlayDiv1);
+
+    if (computedStyle.display === 'none') {
+      overlayDiv1.style.display = 'block';
+      overlayDiv1.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    }
+  }
+  function hideOverlay1() {
+    const overlayDiv1 = document.getElementById('overlay1');
+    const computedStyle = window.getComputedStyle(overlayDiv1);
+
+    if (computedStyle.display === 'block') {
+      overlayDiv1.style.display = 'none';
+    }
+  }
+  const showDepartmentButton = document.getElementById('department_click');
+  showDepartmentButton.addEventListener('click', () => {
+    showDepartmentsDiv();
+    fetchHospitalDepartments();
+  });
+  const closeShowDepartmentButton = document.getElementById('department_edit_exit_div');
+  closeShowDepartmentButton.addEventListener('click', () => {
+    hideDepartmentsDiv();
+    hideOverlay1();
+  });
+
+
+  function showAddDeptDiv() {
+    const deptDiv = document.getElementById('department_description_info');
+    const computedStyle = window.getComputedStyle(deptDiv);
+    if (computedStyle.display === "none") {
+      deptDiv.style.display = 'flex';
+    } else {
+      deptDiv.style.display = "none";
+    }
+  }
+  const addNewDeptButton = document.getElementById('add_dept_button');
+  addNewDeptButton.addEventListener('click', () => {
+    showAddDeptDiv();
+  });
 
   function hideHospitalStatusDiv() {
     const hospitalStatusDiv = document.getElementById('hospital_status_div');
@@ -273,6 +379,133 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
   }
+
+  // FILLS DEPARTMENT DATA IN THE DIV 
+  function fetchHospitalDepartments() {
+    fetch (`http://0.0.0.0:5000/api/v1/hospital/${hospitalId}/departments`, {
+    headers: {
+      ...getAuthHeaders(),
+    },
+    })
+    .then(response => response.json())
+    .then(hospitalDepartmentData => {
+      console.log('Departments fetched:', hospitalDepartmentData);
+
+      // Clear previous departments
+      const departmentContainer = document.getElementById('department_description');
+      departmentContainer.innerHTML = ''; // Clear old content
+
+      hospitalDepartmentData.forEach(department => {
+        // Create a new div for each department
+        const departmentDiv = document.createElement('div');
+        departmentDiv.classList.add('department_div');
+        departmentDiv.style.border = "1px solid #B8B8B8";
+        departmentDiv.style.margin = "1%";
+        departmentDiv.style.borderRadius = "8px";
+        departmentDiv.style.overflow = "auto";
+
+        // Create new elements for department name and description
+        const departmentName = document.createElement('div');
+        departmentName.classList.add('dept_name');
+        departmentName.textContent = department.name;
+        departmentName.style.color = "#898989";
+        departmentName.style.padding = "1%";
+        departmentName.style.margin = "1%";
+
+        const departmentDescription = document.createElement('div');
+        departmentDescription.classList.add('dept_description');
+        departmentDescription.textContent = department.description;
+
+        // Append the name and description to the department div
+        departmentDiv.appendChild(departmentName);
+        departmentDiv.appendChild(departmentDescription);
+
+        // Append the department div to the main container
+        departmentContainer.appendChild(departmentDiv);
+      });
+    })
+    .catch(error => console.error("Error fetching departments:", error));
+  }
+
+
+  //FETCHES ALL DEPARTMENTS TO ADD TO HOSPITALS.
+  const departmentSelect = document.getElementById("dept_select");
+  let departmentId;
+
+  function fetchDepartments() {
+    fetch ("http://0.0.0.0:5000/api/v1/departments", {
+    headers: {
+      ...getAuthHeaders(),
+    },
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Departments fetched:', data);
+      data.forEach(department => {
+        const option = document.createElement("option");
+        option.value = department.id; 
+        option.innerText = department.name;
+        departmentSelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error("Error fetching departments:", error));
+  }
+  console.log('finished fetching department')
+  fetchDepartments();
+
+  departmentSelect.addEventListener("change", function() {
+    departmentId = this.value;
+  });
+
+  // FUNCTION THAT CREATES NEW HOSPITAL DEPARTMENT
+  function createNewHospitalDepartment() {
+       
+    const hopitalDepartmentData = {
+      department_id: departmentId,
+    };
+    
+    const jsonData = JSON.stringify(hopitalDepartmentData);
+  
+    const request = new Request(`http://0.0.0.0:5000/api/v1/hospital/${hospitalId}/departments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...getAuthHeaders()
+      },
+      body: jsonData,
+    });
+    
+    fetch(request)
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+          console.error("Error creating new disease:", response.statusText);
+          
+        }
+    })
+    .then(jsonData => {
+        hideDepartmentsDiv();
+        //hideOverlay1();
+        //hideHospitalStatusDiv();
+        showFeedbackDiv();
+        console.log("this is", jsonData);
+        const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+        const message = jsonData.Message;
+        // console.log(message);
+        confirmationTextDiv.textContent = message;
+    })
+    .catch(error => {
+        const confirmationTextDiv = document.getElementById('saved_confirmation_text_text');
+        confirmationTextDiv.textContent = "Error while adding a new department to hospital. Check to make sure you're connected to the internet"; 
+    });
+  }
+  const newDeptButton = document.getElementById('update_hospital_department_');
+  newDeptButton.addEventListener('click', () => {
+    createNewHospitalDepartment();
+  });
+
+
   function hideEditHospitalDiv() {
     const hospitalEditDiv = document.getElementById('edit_hospital_status_div');
     const computedStyle = window.getComputedStyle(hospitalEditDiv);
@@ -284,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const editHospitalProfile = document.getElementById('edit_hospital_button');
   editHospitalProfile.addEventListener('click', () => {
     showEditHospitalDiv();
-    updateHospitalEditDiv(window.location.hospitalDetails, hospitalData, countyData);
+    updateHospitalEditDiv(window.location.hospitalDetails, hospitalData);
   });
 
   const closeEditHospitalProfile = document.getElementById('edit_hospital_exit_div');
@@ -292,19 +525,20 @@ document.addEventListener('DOMContentLoaded', () => {
     hideEditHospitalDiv();
   });
 
-  //FETCHES ALL HOSPITALS TO UPDATE DOCTORS TO
+  
+  //FETCHES ALL counties TO UPDATE HOSPITALS TO
   const countySelect = document.getElementById("county_select");
-  let countyId;
+  let newCountyId;
 
   function fetchHospitals() {
-  fetch ("http://0.0.0.0:5000/api/v1/countys", {
+  fetch ("http://0.0.0.0:5000/api/v1/counties", {
     headers: {
         ...getAuthHeaders(),
     },
   })
   .then(response => response.json())
   .then(data => {
-    console.log('Hospitals fetched:', data);
+    console.log('Counties fetched:', data);
     data.forEach(county => {
         const option = document.createElement("option");
         
@@ -319,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchHospitals();
 
   countySelect.addEventListener("change", function() {
-    countyId = this.value;
+    newCountyId = this.value;
   });
 
   function updateHospitalEditDiv() {
@@ -330,62 +564,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerText = document.getElementById('hospital_edit_id');
     headerText.textContent = `Hospital Id: ${hospitalDetails.id}`;
     
-    const hospitalNameElem = document.getElementById('edit_first_name');
-    hospitalNameElem.value = hospitalDetails.first_name || 'N/A';
-            
-    const hospitalNameElem1 = document.getElementById('edit_last_name');
-    hospitalNameElem1.value = hospitalDetails.last_name || 'N/A';  
-            
-    const hospitalDateOfBirth = document.getElementById('edit_license_no');
-    hospitalDateOfBirth.value = hospitalDetails.license_no;
+    const hospitalNameElem = document.getElementById('edit_hosp_name');
+    hospitalNameElem.value = hospitalDetails.name || 'N/A';
     
     const hospitalDescriptionElem = document.getElementById('edit_hospital_email');
     hospitalDescriptionElem.value = hospitalDetails.email;
     
-    const countyNameElem = document.getElementById('county_option_select_1');
-    countyNameElem.textContent = countyData.name || 'Select Hospital';
-    
     const telephoneElem = document.getElementById('edit_phone_number');
     telephoneElem.value = hospitalDetails.telephone_no || 'N/A';
-
-    const specializationElem = document.getElementById('edit_specialization');
-    specializationElem.value = hospitalDetails.specialization || 'N/A';
-
-    const availabilityElem = document.getElementById('option_select_1');
-    // const genderSelect = document.getElementById("gender_select");
-    const option1 = document.getElementById("option_select_1");
-    const option2 = document.getElementById("option_select2");
-    const option3 = document.getElementById("option_select3");
     
-    option1.textContent = "Select Availability";
-    option2.textContent = "Unavailable";
+    const latitudeElem = document.getElementById('edit_latitude');
+    latitudeElem.value = hospitalDetails.latitude || 'N/A';
 
+    const longitudeElem = document.getElementById('edit_longitude');
+    longitudeElem.value = hospitalDetails.longitude || 'N/A';
 
-    if(hospitalDetails.availability === true){
-        option1.textContent = "Available";
-        option3.textContent = "Unavailable";
-        option2.style.display = "none";
-    } else if(hospitalDetails.availability === false){
-        option1.textContent = 'Unavailable';
-        option2.textContent = 'Available';
-        option3.style.display = "none";
-    } else {
-        option1.textContent = 'Select Availability';
-        option2.textContent = "Available";
-        option3.textContent = "Unavailable";
-    }
-    // availabilityElem.textContent = hospitalDetails.availability || 'Select Availability';
-    
     const profileBioElem = document.getElementById('input_profile_info_div');
-    profileBioElem.value = hospitalDetails.profile_bio || 'N/A';
+    profileBioElem.value = hospitalDetails.description || 'N/A';
   }
 
   // FEEDBACK DIVS
   function showFeedbackDiv() {
     const feedbackDiv = document.getElementById("returned_info");
     feedbackDiv.style.display = "block";
-    feedbackDiv.style.zIndex = "450";
-  }
+    feedbackDiv.style.zIndex = "351";
+}
   function hideFeedbackDiv() {
     const feedbackDiv = document.getElementById("returned_info");
     feedbackDiv.style.display = "none";
@@ -398,26 +601,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   //PUT HTTP REQUEST TO UPDATE DOCTOR DATA
-  const availabilitySelect = document.getElementById("availability_select");
   function updateHospital() {
 
-    let availabilityValue;
-    if(availabilitySelect.value === "Available") {
-        availabilityValue = true;
-    } else {
-        availabilityValue = false;
-    }
     
     const originalHospitalData = {
-        first_name: document.getElementById('edit_first_name').value,
-        last_name: document.getElementById('edit_last_name').value,
-        license_no: document.getElementById('edit_license_no').value,
+        name: document.getElementById('edit_hosp_name').value,
         email: document.getElementById('edit_hospital_email').value,
-        county_id: countyId,
-        telephone_no: document.getElementById('edit_phone_number').value || null,
-        specialization: document.getElementById('edit_specialization').value,
-        availability: availabilityValue,
-        profile_bio: document.getElementById('input_profile_info_div').value,
+        telephone_no: document.getElementById('edit_phone_number').value,
+        longitude: document.getElementById('edit_longitude').value,
+        latitude: document.getElementById('edit_latitude').value,
+        description: document.getElementById('input_profile_info_div').value,
     };
     
     const changedData = {};
@@ -465,7 +658,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => alert(error));
   }
-
+  
   const updateHospitalButton = document.getElementById('update_hospital_profile_button');
   updateHospitalButton.addEventListener('click', () => {
     hideHospitalStatusDiv();
@@ -477,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showNewUserEditDiv();
     showOverlay();
   });
-
+/*
   //FETCHES ALL DISEASES TO UPDATE USER DISEASES
   const diseaseSelect = document.getElementById("disease_select");
   let diseaseId;
@@ -509,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const genderSelect = document.getElementById("gender_select");
-
+*/
   function createUser() {
     
     const originalUserData = {
@@ -607,10 +800,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
-
-
-  const countySelect = document.getElementById("county_select");
+  
+  const countyNameSelect = document.getElementById("county_select");
   const constituencySelect = document.getElementById("constituency_select");
   const townSelect = document.getElementById("town_select");
   const dropdownIcon = document.getElementById("dropdown_icon");
@@ -624,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const option = document.createElement("option");
           option.value = county.id; 
           option.innerText = county.name;
-          countySelect.appendChild(option);
+          countyNameSelect.appendChild(option);
         });
       })
       .catch(error => console.error("Error fetching counties:", error));
@@ -700,7 +891,6 @@ document.addEventListener('DOMContentLoaded', () => {
       townSelect.innerHTML = "";
     }
   });
-
 
 });
 
