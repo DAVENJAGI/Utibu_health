@@ -91,11 +91,14 @@ def update_hospital(hospital_id):
     hosp = storage.get(Hospital, hospital_id)
     if hosp is None:
         abort(404)
+        message = f"Hospital with hospitalId {hospital_id} not found"
+        return make_response(jsonify({"Message": message}), 404)
     for key, value in request.get_json().items():
         if key not in ["id", "created_at", "updated_at"]:
             setattr(hosp, key, value)
     storage.save()
-    return jsonify(hosp.to_dict())
+    message = f"Hospital {hosp.name} with hospitalId: {hosp.id} updated successfully"
+    return make_response(jsonify({"Message": message}), 200) 
 
 
 @app_views.route("/hospital/<string:hospital_id>/departments", methods=['GET'], strict_slashes=False)
@@ -110,11 +113,14 @@ def get_departments_in_hospital(hospital_id):
 
     all_departments = hospital.departments
 
+    departments = [department.to_dict() for department in all_departments] # if  all_meds else []
+    return jsonify(departments)
+'''
     if not all_departments:
-        return make_response(jsonify({"Error": "No departments added for this hospital yet"}), 400)
+        return make_response(jsonify({"Message": "There are currently no departments added for this hospital yet"}), 200)
     else:
-        departments = [department.to_dict() for department in all_departments] # if  all_meds else []
-        return jsonify(departments)
+'''
+
 
 
 @app_views.route("/hospital/<string:hospital_id>/departments", methods=['POST'], strict_slashes=False)

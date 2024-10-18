@@ -20,7 +20,7 @@ from functools import wraps
 import secrets
 
 
-@app_views.route("/department", strict_slashes=False, methods=["GET"])
+@app_views.route("/departments", strict_slashes=False, methods=["GET"])
 @require_admin_auth
 def return_departments():
     """get all departments"""
