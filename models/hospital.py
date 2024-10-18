@@ -36,10 +36,12 @@ class Hospital(BaseModel, Base):
         town_id = Column(String(60), ForeignKey('wards.id'), nullable=False)
         email = Column(String(128), unique=True, nullable=False)
         name = Column(String(128), nullable=False)
+        description = Column(String(1024), nullable=False)
         longitude = Column(Float, nullable=True)
         latitude = Column(Float, nullable=True)
         doctors = relationship("Doctor", backref="assigned_hospital", cascade="all, delete-orphan")
         departments = relationship("Department", secondary=hospital_departments, back_populates="hospitals")
+        telephone_no = Column(String(13), nullable=False)
 
         @property
         def doctor(self):
