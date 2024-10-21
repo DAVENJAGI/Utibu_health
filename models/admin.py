@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the admin details"""
 from models.base_model import BaseModel, Base
 import models
 from os import getenv
@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 
 class Admin(BaseModel, Base):
-    """Represents user details"""
+    """Represents admin details"""
     if models.storage_type == 'db':
         __tablename__ = 'admin'
         email = Column(String(128), unique=True, nullable=False)

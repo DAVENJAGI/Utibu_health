@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the hospital details"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -30,7 +30,7 @@ if models.storage_type == 'db':
 
 
 class Hospital(BaseModel, Base):
-    """Represents user details"""
+    """Represents hospital details"""
     if models.storage_type == 'db':
         __tablename__ = 'hospitals'
         town_id = Column(String(60), ForeignKey('wards.id'), nullable=False)

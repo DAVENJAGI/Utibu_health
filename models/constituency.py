@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" holds class City"""
+""" holds class constituency"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 
 class Constituency(BaseModel, Base):
-    """Representation of city """ 
+    """Representation of constituency class """ 
     if models.storage_type == "db":
         __tablename__ = 'constituencies'
         county_id = Column(String(60), ForeignKey('counties.id'), nullable=False)

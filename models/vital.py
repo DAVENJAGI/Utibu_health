@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the patient vital details"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -10,7 +10,7 @@ from sqlalchemy.schema import PrimaryKeyConstraint
 from models.user import User
 
 class Reading(BaseModel, Base):
-    """Represents patient reading details"""
+    """Represents patient vital reading details"""
     if models.storage_type == "db":
         __tablename__ = 'patient_vitals_readings'
         user_id = Column(String(60), ForeignKey('users.id'), nullable=False)

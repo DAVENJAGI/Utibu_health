@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the medication details"""
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 import models
 
 class Medication(BaseModel, Base):
-    """Represents user details"""
+    """Represents medication details"""
     if models.storage_type == "db":
         __tablename__ = 'medication'
         name = Column(String(128), nullable=False)

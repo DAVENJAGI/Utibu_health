@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the department details"""
 from models.base_model import BaseModel, Base
 import models
 from os import getenv
@@ -8,7 +8,7 @@ from sqlalchemy.orm import relationship
 from models.hospital import hospital_departments
 
 class Department(BaseModel, Base):
-    """Represents user details"""
+    """Represents department details"""
     if models.storage_type == 'db':
         __tablename__ = 'departments'
         name = Column(String(128), nullable=False)

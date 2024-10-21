@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the appointment details"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
@@ -20,7 +20,7 @@ if models.storage_type == 'db':
 
 
 class Appointment(BaseModel, Base):
-    """Represents user details"""
+    """Represents appointment details"""
     if models.storage_type == "db":
         __tablename__ = 'appointment'
         description = Column(String(256), nullable=False, default="There is currently no set appointment. Kindly set one with your doctor")

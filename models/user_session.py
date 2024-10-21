@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the user session details"""
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
@@ -9,7 +9,7 @@ import models
 from datetime import datetime, timedelta
 
 class userSession(BaseModel, Base):
-    """Represents user details"""
+    """Represents user session details"""
 
     if models.storage_type == 'db':
         __tablename__ = 'user_sessions'

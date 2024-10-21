@@ -1,5 +1,8 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the request details
+it is responsible for storing every single request 
+object created apis
+"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv

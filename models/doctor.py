@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the doctor  details"""
 from models.base_model import BaseModel, Base
 import models
 from os import getenv
@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 
 
 class Doctor(BaseModel, Base):
-    """Represents user details"""
+    """Represents doctor details"""
     if models.storage_type == 'db':
         __tablename__ = 'doctors'
         email = Column(String(128), unique=True, nullable=False)

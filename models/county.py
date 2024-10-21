@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" holds class State"""
+""" holds class county"""
 import models
 from models.base_model import BaseModel, Base
 from models.town import Town
@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 
 
 class County(BaseModel, Base):
-    """Representation of state """
+    """Representation of county"""
     
     if models.storage_type == "db":
         __tablename__ = 'counties'

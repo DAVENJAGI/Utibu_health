@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""This is a class containing the user  details"""
+"""This is a class containing the patient order details  details"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
