@@ -25,7 +25,7 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 
 #email server
-# Flask-Mail configuration
+"""This is a session that handles the flask email configuration""" 
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
 app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
