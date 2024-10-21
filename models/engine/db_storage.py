@@ -28,7 +28,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from os import getenv
 
 
-"""Maps the names eg, "Amenity", to classes, egw class Amenity"""
+"""Maps the names eg, "Order", to classes, eg class Order"""
 
 classes = {"Appointment": Appointment, "Reading": Reading, "Admin": Admin, "Department": Department, "userSession": userSession, "doctorSession": doctorSession, "adminSession": adminSession, "BaseModel": BaseModel, "County": County, "Town": Town,
            "Hospital": Hospital, "Order": Order, "Request": Request, "Doctor": Doctor, "User": User, "Constituency": Constituency, "Disease": Disease, "Medication": Medication}
@@ -107,7 +107,7 @@ class DBStorage:
         query = self.__session.query(cls).filter(cls.authorization_token == authorization_token)
         return query.first()
     def get_email(self, cls, email):
-        """A method to retrieve objects by email. Used to check whether the email is used"""
+        """A method to retrieve objects by email. Used to check whether the email is used while creating new user"""
         query = self.__session.query(cls).filter(cls.email == email)
         return query.first()
 
