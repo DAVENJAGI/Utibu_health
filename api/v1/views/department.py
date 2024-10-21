@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""Creates the routes associated with departments"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response, session
@@ -33,7 +33,7 @@ def return_departments():
 @app_views.route("/department/<string:department_id>", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_department_by_id(department_id):
-    """get department by id"""
+    """get department by department id"""
     department = storage.get(Department, department_id)
     if department is None:
         error_message = f"Department with id {department_id} not found"

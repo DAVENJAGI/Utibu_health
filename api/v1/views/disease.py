@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""Creates the routes associated with diseases"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response
@@ -12,7 +12,7 @@ import json
 
 @app_views.route("/diseases", strict_slashes=False, methods=["GET"])
 def return_diseases():
-    """get all users"""
+    """get all diseases"""
     all_diseases = storage.all(Disease).values()
     disease_list = []
     for disease in all_diseases:
@@ -21,7 +21,7 @@ def return_diseases():
 
 @app_views.route("/disease/<string:disease_id>", methods=['GET'], strict_slashes=False)
 def get_disease_by_id(disease_id):
-    """get user by id"""
+    """get a disease based on disease id"""
     disease = storage.get(Disease, disease_id)
     if disease is None:
         abort(400)
@@ -29,7 +29,7 @@ def get_disease_by_id(disease_id):
 
 @app_views.route("/disease/<string:disease_id>/medication", methods=['GET'], strict_slashes=False)
 def get_medication_by_disease_id(disease_id):
-    """get doctor by id"""
+    """gets all medication associated to a certain disease"""
     disease = storage.get(Disease, disease_id)
     
     if disease is None:
@@ -43,7 +43,7 @@ def get_medication_by_disease_id(disease_id):
 
 @app_views.route("/disease/<string:disease_id>/medication", methods=['POST'], strict_slashes=False)
 def update_disease_medication_by_medication_id(disease_id):
-    """get doctor by id"""
+    """Adds a new medication to a ceartain disease"""
     if not request.get_json():
         return make_response(jsonify({"Error": "Not a JSON"}), 400)
 
@@ -68,7 +68,7 @@ def update_disease_medication_by_medication_id(disease_id):
 
 @app_views.route("/disease/<string:disease_id>", methods=["DELETE"], strict_slashes=False)
 def delete_disease(disease_id):
-    """deletes doctor with  specific id"""
+    """deletes a disease with  specific disease id"""
     disease = storage.get(Diseae, disease_id)
     if disease is None:
         abort(404)
@@ -79,7 +79,7 @@ def delete_disease(disease_id):
 
 @app_views.route("/diseases/", methods=["POST"], strict_slashes=False)
 def create_disease():
-    """Creates a new user"""
+    """Creates a new disease"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'name' not in request.get_json():
@@ -97,7 +97,7 @@ def create_disease():
 
 @app_views.route("/disease/<string:disease_id>", methods=['PUT'], strict_slashes=False)
 def update_disease(disease_id):
-    """updates user's properties except the created, updated, email, and id"""
+    """updates properties of a disease except the created_at, updated_at, and disease id"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     dis = storage.get(Disease, disease_id)

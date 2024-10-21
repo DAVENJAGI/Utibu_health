@@ -1,5 +1,5 @@
 #!/usr/biin/python3
-"""Creates the first route, /users"""
+"""A fiel that contains all the endpoints associated with orders"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response
@@ -18,8 +18,6 @@ socketio = SocketIO(app)
 
 # user_view = Blueprint("users", __name__)
 
-
-# GET ALL ORDERS AND GET APPOINTMENTS BY ID"""
 @app_views.route("/orders", strict_slashes=False, methods=["GET"])
 @require_doctor_or_admin_or_user_auth
 def get_all_orders():
@@ -34,7 +32,7 @@ def get_all_orders():
 @app_views.route("/order/<string:order_id>", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_order_by_id(order_id):
-    """get order by id"""
+    """get order based on id"""
     order = storage.get(Order, order_id)
     if order is None:
         return make_response(jsonify({"Error": "Order with id not found"}), 400)
@@ -45,7 +43,7 @@ def get_order_by_id(order_id):
 @app_views.route("/user/<string:user_id>/orders", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_order_by_user_id(user_id):
-    """gets orders by user id"""
+    """gets orders associated to a specific user"""
     user = storage.get(User, user_id)
     
     if user is None:
@@ -62,7 +60,7 @@ def get_order_by_user_id(user_id):
 @app_views.route("/user/<string:user_id>/order", methods=['POST'], strict_slashes=False)
 @require_user_auth
 def create_a_new_user_order(user_id):
-    """create an order for the user"""
+    """create an order for a user"""
 
     user = storage.get(User, user_id)
 
@@ -141,7 +139,7 @@ def get_order_by_doctor_id(doctor_id):
 @app_views.route("/order/<string:order_id>", methods=['PUT'], strict_slashes=False)
 # @require_doctor_auth
 def approve_orders(order_id):
-    """Approve patient's orders """
+    """Update a certain order properties"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
@@ -162,7 +160,7 @@ def approve_orders(order_id):
             socketio.emit('order_update', order.to_dict(), room=order.user_id)
             print(f"Emitted appointment update event for user {order.user_id}")
         except Exception as e:
-            print(f"Error emmittinf an order update event: {e}")
+            print(f"Error emmitting an order update event: {e}")
 
         user = storage.get(User, order.user_id)
         if user is None:

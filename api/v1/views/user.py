@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""A file that contains all the endpoints associated with user"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response, session
@@ -32,7 +32,7 @@ def return_users():
 @app_views.route("/user/<string:user_id>", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_user_by_id(user_id):
-    """get user by id"""
+    """get user based on id"""
     user = storage.get(User, user_id)
     if user is None:
         error_message = f"User with id {user_id} not fouund"
@@ -42,7 +42,7 @@ def get_user_by_id(user_id):
 @app_views.route("user/<string:user_id>", methods=["DELETE"], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def delete_user(user_id):
-    """deletes  user with  specific id"""
+    """deletes  user with specific id"""
     user = storage.get(User, user_id)
     if user is None:
         abort(404)
@@ -53,7 +53,7 @@ def delete_user(user_id):
     return (jsonify({"Message": message}), 200)
 
 
-@app_views.route("/user/<string:user_id>/disease/", methods=['GET'], strict_slashes=False)
+@app_views.route("/user/<string:user_id>/diseases/", methods=['GET'], strict_slashes=False)
 @require_user_auth
 def get_disease_by_user_id(user_id):
     """get disease associated with a specific user"""
@@ -93,7 +93,7 @@ def add_disease_to_user_profile(user_id):
 @app_views.route("/users/", methods=["POST"], strict_slashes=False)
 # @require_doctor_auth
 def create_user():
-    """Creates a new user"""
+    """Creates a new user object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'email' not in request.get_json():
@@ -124,7 +124,7 @@ def create_user():
 @app_views.route("/user/<string:user_id>", methods=['PUT'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def update_user(user_id):
-    """updates user's properties except the created, updated, email, and id"""
+    """updates user's properties except the created_at, updated_at, and id"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     usr = storage.get(User, user_id)
@@ -144,7 +144,7 @@ def update_user(user_id):
 @app_views.route("/user/<string:user_id>/vitals/", methods=['POST'], strict_slashes=False)
 @require_doctor_auth
 def add_vital_reading_to_user(user_id):
-    """add disease to a specific user"""
+    """Creates vitals for a specific user"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     data = request.json
@@ -162,7 +162,7 @@ def add_vital_reading_to_user(user_id):
 @app_views.route("/user/<string:user_id>/vitals/", methods=['GET'], strict_slashes=False)
 # @require_doctor_or_admin_or_user_auth
 def get_vitals_by_user_id(user_id):
-    """get vitals associated with a specific user"""
+    """gets all vitals associated with a specific user"""
     user = storage.get(User, user_id)
     if user is None:
         abort(404)

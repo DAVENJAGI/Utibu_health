@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""A file that contains endpoints associated with requests"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request

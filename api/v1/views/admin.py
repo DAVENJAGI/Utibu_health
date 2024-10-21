@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""Creates the routes associated with admin"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response
@@ -15,7 +15,7 @@ from models.authorization import require_admin_auth
 @app_views.route("/admins/", methods=["POST"], strict_slashes=False)
 @require_admin_auth
 def create_admin():
-    """Creates a new user"""
+    """Creates a new admin"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'email' not in request.get_json():
@@ -53,7 +53,7 @@ def return_admin():
 @app_views.route("/admin/<string:admin_id>", methods=['GET'], strict_slashes=False)
 @require_admin_auth
 def get_admin_by_id(admin_id):
-    """get user by id"""
+    """get admin by id"""
     admin = storage.get(Admin, admin_id)
     if admin is None:
         error_message = f"Admin with id {admin_id} not fouund"

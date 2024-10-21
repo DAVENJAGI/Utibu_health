@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the endpoint route for /users"""
+"""A file that contains all the endpoints associated with location"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response
@@ -27,7 +27,7 @@ def return_counties():
 @app_views.route("/county/<string:county_id>", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_county_by_id(county_id):
-    """get a specific county by county_id"""
+    """get a specific county based on the county_id"""
     county = storage.get(County, county_id)
     if county is None:
         abort(400) 
@@ -55,7 +55,7 @@ def get_constituency_by_id(constituency_id):
 @app_views.route("/county/<string:county_id>/wards", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_wards_by_county_id(county_id):
-    """gets all constituencies in a county"""
+    """gets all towns in a county"""
     county = storage.get(County, county_id)
 
     if county is None:
@@ -72,7 +72,7 @@ def get_wards_by_county_id(county_id):
 @app_views.route("/county/<string:county_id>/constituencies", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_consitituencies_by_county_id(county_id):
-    """gets all wards in a county"""
+    """gets all constituencies in a county"""
     county = storage.get(County, county_id)
 
     if county is None:
@@ -92,7 +92,7 @@ def get_consitituencies_by_county_id(county_id):
 @app_views.route("/constituency/<string:constituency_id>/wards", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_wards_in_constituency(constituency_id):
-    """gets all wards in a specific constituency"""
+    """gets all wards associated with a specific constituency"""
     constituency = storage.get(Constituency, constituency_id)
 
     if constituency is None:

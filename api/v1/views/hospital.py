@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the endpoint route for /users"""
+""" A file containing all the endpoints associated with hospital"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response
@@ -26,7 +26,7 @@ def return_hospitals():
 @app_views.route("/hospital/<string:hospital_id>", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_hospital_by_id(hospital_id):
-    """get a specific hospital by hospital_id"""
+    """get a specific hospital based on hospital_id"""
     hospital = storage.get(Hospital, hospital_id)
     if hospital is None:
         abort(400) 
@@ -48,7 +48,7 @@ def delete_hospital(hospital_id):
 @app_views.route("/hospital/<string:hospital_id>/doctors/", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_auth
 def get_doctor_by_hospital_id(hospital_id):
-    """get doctor related to a specific hospital"""
+    """get all doctors related to a specific hospital"""
     hospital = storage.get(Hospital, hospital_id)
     
     if hospital is None:
@@ -115,12 +115,6 @@ def get_departments_in_hospital(hospital_id):
 
     departments = [department.to_dict() for department in all_departments] # if  all_meds else []
     return jsonify(departments)
-'''
-    if not all_departments:
-        return make_response(jsonify({"Message": "There are currently no departments added for this hospital yet"}), 200)
-    else:
-'''
-
 
 
 @app_views.route("/hospital/<string:hospital_id>/departments", methods=['POST'], strict_slashes=False)

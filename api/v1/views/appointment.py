@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the first route, /users"""
+"""Creates the routes associated with appointments"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request, make_response, Flask
@@ -29,7 +29,7 @@ def return_appointments():
 @app_views.route("/appointment/<string:appointment_id>", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_appointment_by_id(appointment_id):
-    """get app by id"""
+    """get appointment by appointment id"""
     app = storage.get(Appointment, appointment_id)
     if app is None:
         abort(400)
@@ -46,8 +46,7 @@ def get_appointment_by_user_id(user_id):
     if user is None:
         abort(404)
         
-    all_apps = user.appointments # storage.all(Appointment)
-    
+    all_apps = user.appointments    
 
     appointment = [app.to_dict() for app in all_apps] # if  all_meds else []
     return jsonify(appointment)
@@ -72,8 +71,7 @@ def get_appointment_by_doctor_id(doctor_id):
 @app_views.route("/user/<string:user_id>/appointment", methods=['POST'], strict_slashes=False)
 @require_user_auth
 def create_a_new_user_appointment(user_id):
-    """create anew user appointment"""
-
+    """create a new user appointment"""
     user = storage.get(User, user_id)
 
     if not request.get_json():
@@ -98,7 +96,7 @@ def create_a_new_user_appointment(user_id):
 @app_views.route("/doctor/<string:doctor_id>/appointment", methods=['POST'], strict_slashes=False)
 @require_doctor_or_admin_auth
 def create_a_new_doctor_appointment(doctor_id):
-    """create anew user appointment"""
+    """create anew doctor appointment"""
 
     dkt = storage.get(Doctor, doctor_id)
 
@@ -126,7 +124,7 @@ def create_a_new_doctor_appointment(doctor_id):
 @app_views.route("/doctor/<string:doctor_id>/appointment/", methods=['PUT'], strict_slashes=False)
 @require_doctor_or_admin_auth
 def update_doctor_appointment(doctor_id):
-    """create anew user appointment"""
+    """update a doctors appointment"""
 
     app_id = request.get_json().get('id')
     if not app_id:
@@ -149,6 +147,7 @@ def update_doctor_appointment(doctor_id):
 @app_views.route("/appointment/<string:appointment_id>/", methods=['PUT'], strict_slashes=False)
 # @require_doctor_or_admin_auth
 def update_appointment_with_id(appointment_id):
+    """Update an appointment detail"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 

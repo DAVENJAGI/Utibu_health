@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates the route medication"""
+"""A file that handles all the endpoints associated with medication"""
 
 from api.v1.views import app_views
 from flask import jsonify, Blueprint, abort, request
@@ -23,7 +23,7 @@ def return_meds():
 @app_views.route("/medication/<string:medication_id>", methods=['GET'], strict_slashes=False)
 @require_doctor_or_admin_or_user_auth
 def get_medication_by_id(medication_id):
-    """get a specific medication by id"""
+    """get a specific medication based on medication_id"""
     med = storage.get(Medication, medication_id)
     if med is None:
         abort(400) 
@@ -46,7 +46,7 @@ def delete_medication(medication_id):
 @app_views.route("/medications/", methods=["POST"], strict_slashes=False)
 @require_admin_auth
 def create_medication():
-    """Creates a new medication"""
+    """Creates a new medication object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
     if 'name' not in request.get_json():

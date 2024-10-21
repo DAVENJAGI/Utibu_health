@@ -16,6 +16,7 @@ from models.order import Order
 from models.appointment import Appointment
 from models.authorization import require_admin_auth
 from models.request import Request
+from models.vital import Vital
 import json
 
 @app_views.route("/status")
@@ -39,6 +40,7 @@ def count_objects():
             "Constituencies": storage.count(Constituency),
             "Orders": storage.count(Order),
             "Appointments": storage.count(Appointment),
-            "Requests": storage.count(Request)
+            "Requests": storage.count(Request),
+            "Vital": storage.count(Vital)
             }
     return jsonify(data)
